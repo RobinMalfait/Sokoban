@@ -12,4 +12,6 @@ package domein;
 public class Test
 {
     private String robin, bob, bram, demian;
+    public int resultaat = 100;
+    
 }
