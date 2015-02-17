@@ -12,6 +12,6 @@ package domein;
 public class Test
 {
     private String robin, bob, bram, demian;
-    protected int resultaat = 100;
+    protected int resultaat = 1000;
     
 }
