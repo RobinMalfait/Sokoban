@@ -25,7 +25,7 @@ public class SpelerMapper extends Mapper
         List<Speler> spelers = new ArrayList<>();
         
         try {
-            ResultSet rs = this.selectQuery("SELECT * FROM speler");
+            ResultSet rs = this.selectQuery("SELECT * FROM Speler");
             
             while (rs.next())
             {

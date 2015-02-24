@@ -20,15 +20,18 @@ abstract class Mapper extends Connectie
     {
         Connection conn = this.getConnection();
         
-        try
+        if (conn != null)
         {
-            PreparedStatement query = conn.prepareStatement(selectQuery);
+            try
+            {
+                PreparedStatement query = conn.prepareStatement(selectQuery);
 
-            return query.executeQuery();
-            
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+                return query.executeQuery();
+
+            } catch (SQLException ex)
+            {
+                Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         return null;
