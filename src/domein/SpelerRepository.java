@@ -5,12 +5,12 @@ import persistentie.SpelerMapper;
 
 public class SpelerRepository
 {
-    private final SpelerMapper Spelermapper; 
+    private final SpelerMapper spelerMapper; 
     private List<Speler> spelers;
 
     public SpelerRepository()
     {
-        this.Spelermapper = new SpelerMapper();
+        this.spelerMapper = new SpelerMapper();
     }
 
     /**
@@ -21,8 +21,18 @@ public class SpelerRepository
      */
     public Speler meldAan(String gebruikersnaam, String wachtwoord)
     {
-        // TODO - implement SpelerRepository.meldAan
-        throw new UnsupportedOperationException();
+        // Speler zoeken uit de SpelerMapper
+        Speler speler = spelerMapper.geefSpeler(gebruikersnaam);
+        
+        // Controleer of het wachtwoord van de speler overeenkomt met die uit de parameter
+        if (speler.getWachtwoord().equals(wachtwoord)) {
+            return speler;
+        }
+        else {
+            return null;
+        }
+        
+        
     }
 
 }
