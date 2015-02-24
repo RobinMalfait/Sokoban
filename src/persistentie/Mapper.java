@@ -16,22 +16,19 @@ abstract class Mapper extends Connectie
      * @param selectQuery
      * @return 
      */
-    public ResultSet selectQuery(String selectQuery)
+    public ResultSet selectQuery(String selectQuery) throws SQLException
     {
         Connection conn = this.getConnection();
         
-        if (conn != null)
+        try
         {
-            try
-            {
-                PreparedStatement query = conn.prepareStatement(selectQuery);
+            PreparedStatement query = conn.prepareStatement(selectQuery);
 
-                return query.executeQuery();
+            return query.executeQuery();
 
-            } catch (SQLException ex)
-            {
-                Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return null;
