@@ -1,3 +1,5 @@
+package gui;
+
 import domein.Speler;
 import java.util.List;
 import persistentie.SpelerMapper;
@@ -6,10 +8,15 @@ import persistentie.SpelerMapper;
  *
  * @author robin
  */
-public class Test 
+public class MeldAanApplicatie 
 {
-    public static void main(String[] args)
+    public void start()
     {
         List<Speler> spelers = (new SpelerMapper()).geefSpelers();
+        
+        for(Speler speler : spelers)
+        {
+            System.out.print(speler);
+        }
     }
 }
