@@ -20,7 +20,7 @@ public class SpelerRepository
      * @param gebruikersnaam
      * @param wachtwoord
      */
-    public Speler meldAan(String gebruikersnaam, String wachtwoord) throws SQLException
+    public Speler meldAan(String gebruikersnaam, String wachtwoord)
     {
         // Speler zoeken uit de SpelerMapper
         Speler speler = spelerMapper.geefSpeler(gebruikersnaam);

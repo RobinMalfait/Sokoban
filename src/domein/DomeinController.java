@@ -1,7 +1,5 @@
 package domein;
 
-import java.sql.SQLException;
-
 public class DomeinController
 {
 
@@ -19,7 +17,7 @@ public class DomeinController
      * @param gebruikersnaam
      * @param wachtwoord
      */
-    public boolean meldAan(String gebruikersnaam, String wachtwoord) throws SQLException
+    public boolean meldAan(String gebruikersnaam, String wachtwoord)
     {
         Speler speler = spelerRepository.meldAan(gebruikersnaam, wachtwoord);
         if (speler == null)

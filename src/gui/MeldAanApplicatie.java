@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 public class MeldAanApplicatie 
 {
-    public void start(DomeinController domeinController) throws SQLException
+    public void start(DomeinController domeinController)
     {       
         
         if(domeinController.meldAan("DemianD", "demian123"))
