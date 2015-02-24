@@ -2,10 +2,14 @@ package domein;
 
 public class DomeinController
 {
-
+    private final SpelerRepository spelerRepository;
     private Speler huidigeSpeler;
-    private SpelerRepository spelerRepository;
-
+    
+    public DomeinController()
+    {
+        spelerRepository = new SpelerRepository();
+    }
+    
     /**
      *
      * @param gebruikersnaam
@@ -13,7 +17,7 @@ public class DomeinController
      */
     public void meldAan(String gebruikersnaam, String wachtwoord)
     {
-        //
+        //spelerRepository.geefSpeler("dd", "dd");
     }
 
     /**
