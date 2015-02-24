@@ -22,7 +22,7 @@ abstract class Connectie
     /**
      * Database Password
      */
-    private static final String DB_PASS = "xF3+]OiN[$9V";
+    private static final String DB_PASS = "Sokoban123";
 
     /**
      * Database Host
@@ -39,19 +39,15 @@ abstract class Connectie
      */
     private static final String JDBC_URL = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "?user=" + DB_USER + "&password=" + DB_PASS;
 
-
-    
-    public Connection getConnection()
+    /**
+     * Get a connection.
+     * 
+     * @return Connection
+     * @throws SQLException 
+     */
+    public Connection getConnection() throws SQLException
     {
-        try
-        {
-            return DriverManager.getConnection(Connectie.JDBC_URL);
-        } catch (SQLException ex)
-        {
-            Logger.getLogger(Connectie.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return null;
+        return DriverManager.getConnection(Connectie.JDBC_URL);
     }
     
 }

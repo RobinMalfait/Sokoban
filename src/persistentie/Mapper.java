@@ -16,7 +16,7 @@ abstract class Mapper extends Connectie
      * @param selectQuery
      * @return 
      */
-    public ResultSet selectQuery(String selectQuery)
+    public ResultSet selectQuery(String selectQuery) throws SQLException
     {
         Connection conn = this.getConnection();
         
@@ -25,7 +25,7 @@ abstract class Mapper extends Connectie
             PreparedStatement query = conn.prepareStatement(selectQuery);
 
             return query.executeQuery();
-            
+
         } catch (SQLException ex)
         {
             Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
