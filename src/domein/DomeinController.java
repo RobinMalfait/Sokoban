@@ -1,5 +1,7 @@
 package domein;
 
+import java.sql.SQLException;
+
 public class DomeinController
 {
     private final SpelerRepository spelerRepository;
@@ -16,15 +18,18 @@ public class DomeinController
      * @param gebruikersnaam
      * @param wachtwoord
      */
-    public void meldAan(String gebruikersnaam, String wachtwoord)
+    public boolean meldAan(String gebruikersnaam, String wachtwoord) throws SQLException
     {
         Speler speler = spelerRepository.meldAan(gebruikersnaam, wachtwoord);
-        if(speler ==  null) {
+        if(speler == null) {
+            return false;
             // Geen gebruiker gevonden
         }
         else {
+            
             // Gebruiker gevonden, deze slaan we op in de domeincontroller.
             this.setHuidigeSpeler(speler);
+            return true;
         }
     }
 

@@ -15,35 +15,38 @@ public class SpelerMapper extends Mapper
      *
      * @param gebruikersnaam
      */
-    public Speler geefSpeler(String gebruikersnaam)
+    public Speler geefSpeler(String gebruikersnaam) throws SQLException
     {
-        return null;
+        ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = '" + gebruikersnaam + "'");
+        return maakSpeler(rs);
     }
 
-    public List<Speler> geefSpelers()
+    public List<Speler> geefSpelers() throws SQLException
     {
         List<Speler> spelers = new ArrayList<>();
-        
-        try {
-            ResultSet rs = this.selectQuery("SELECT * FROM Speler");
-            
-            while (rs.next())
-            {
-                int id = rs.getInt("id");
-                String naam = rs.getString("naam");
-                String voornaam = rs.getString("voornaam");
-                String gebruikersnaam = rs.getString("gebruikersnaam");
-                String wachtwoord = rs.getString("wachtwoord");
-                
-                spelers.add(new Speler(id, naam, voornaam, gebruikersnaam, wachtwoord));
-            }
-            
-            return spelers;
-        } catch (SQLException ex)
+
+        ResultSet rs = this.selectQuery("SELECT * FROM Speler");
+
+        while (rs.next())
         {
-            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+            spelers.add(maakSpeler(rs));
         }
-        
+
         return spelers;
+
     }
+
+
+    private Speler maakSpeler(ResultSet rs) throws SQLException
+    {
+        
+        int id = rs.getInt("id");
+        String naam = rs.getString("naam");
+        String voornaam = rs.getString("voornaam");
+        String gebruikersnaam = rs.getString("gebruikersnaam");
+        String wachtwoord = rs.getString("wachtwoord");
+
+        return new Speler(id, naam, voornaam, gebruikersnaam, wachtwoord);
+    }
+
 }

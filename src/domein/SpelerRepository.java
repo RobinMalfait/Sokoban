@@ -1,5 +1,6 @@
 package domein;
 
+import java.sql.SQLException;
 import java.util.*;
 import persistentie.SpelerMapper;
 
@@ -19,7 +20,7 @@ public class SpelerRepository
      * @param gebruikersnaam
      * @param wachtwoord
      */
-    public Speler meldAan(String gebruikersnaam, String wachtwoord)
+    public Speler meldAan(String gebruikersnaam, String wachtwoord) throws SQLException
     {
         // Speler zoeken uit de SpelerMapper
         Speler speler = spelerMapper.geefSpeler(gebruikersnaam);
