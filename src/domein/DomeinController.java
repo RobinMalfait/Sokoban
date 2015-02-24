@@ -36,5 +36,20 @@ public class DomeinController
     {
         this.huidigeSpeler = huidigeSpeler;
     }
+    
+    public String[] geefHuidigeSpeler() 
+    {
+        if (huidigeSpeler == null) 
+            return null;
+
+        String[] spelerString = new String[3];
+        
+        spelerString[0] = huidigeSpeler.getNaam();
+        spelerString[1] = huidigeSpeler.getVoornaam();
+        spelerString[2] = huidigeSpeler.getGebruikersnaam();
+        
+        return spelerString;
+        
+    }
 
 }
