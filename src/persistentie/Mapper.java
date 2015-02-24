@@ -24,7 +24,7 @@ abstract class Mapper extends Connectie
             Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
             
             PreparedStatement query = conn.prepareStatement(selectQuery);
-            
+
             return query.executeQuery();
             
         } catch (SQLException ex)

@@ -6,22 +6,22 @@ abstract class Connectie
     /**
      * Database Name
      */
-    private static final String DB_NAME = "p1g03";
+    private static final String DB_NAME = "demian_sokoban";
 
     /**
      * Database Username
      */
-    private static final String DB_USER = "root";
+    private static final String DB_USER = "demian_project";
 
     /**
      * Database Password
      */
-    private static final String DB_PASS = "root";
+    private static final String DB_PASS = "xF3+]OiN[$9V";
 
     /**
      * Database Host
      */
-    private static final String DB_HOST = "localhost";
+    private static final String DB_HOST = "195.238.75.48";
 
     /**
      * Database Port
