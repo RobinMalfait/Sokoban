@@ -53,56 +53,104 @@ public class Speler
         this.setId(id);
     }
 
+    /**
+     * 
+     * @param id 
+     */
     public void setId(int id)
     {
         this.id = id;
     }
 
+    /**
+     * 
+     * @param naam 
+     */
     public void setNaam(String naam)
     {
         this.naam = naam;
     }
 
+    /**
+     * 
+     * @param voornaam 
+     */
     public void setVoornaam(String voornaam)
     {
         this.voornaam = voornaam;
     }
 
+    /**
+     * 
+     * @param gebruikersnaam 
+     */
     public void setGebruikersnaam(String gebruikersnaam)
     {
         this.gebruikersnaam = gebruikersnaam;
     }
 
+    /**
+     * 
+     * @param wachtwoord 
+     */
     public void setWachtwoord(String wachtwoord)
     {
         this.wachtwoord = wachtwoord;
     }
 
+    /**
+     * 
+     * @return int
+     */
     public int getId()
     {
         return id;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getNaam()
     {
         return naam;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getVoornaam()
     {
         return voornaam;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getGebruikersnaam()
     {
         return gebruikersnaam;
     }
 
+    /**
+     * 
+     * @return String
+     */
     public String getWachtwoord()
     {
         return wachtwoord;
     }
 
-    
+    /**
+     * 
+     * @return String
+     */
+    @Override
+    public String toString()
+    {
+        return String.format("Speler(%d, %s, %s, %s)%n", this.id, this.gebruikersnaam, this.voornaam, this.naam);
+    } 
     
 }
