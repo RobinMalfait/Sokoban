@@ -8,10 +8,10 @@ public class FR extends Language
 {
     public FR()
     {
-        add("user.username", "");
-        add("user.name", "");
-        add("user.logged.in", "");
-        add("user.logged.out", "");
-        add("credentials.wrong", "");
+        map("user.username", "");
+        map("user.name", "");
+        map("user.logged.in", "");
+        map("user.logged.out", "");
+        map("credentials.wrong", "");
     }
 }

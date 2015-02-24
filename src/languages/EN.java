@@ -8,10 +8,10 @@ public class EN extends Language
 {
     public EN()
     {
-        add("user.username", "username");
-        add("user.name", "name");
-        add("user.logged.in", "logged in");
-        add("user.logged.out", "logged out");
-        add("credentials.wrong", "wrong credentials");
+        map("user.username", "username");
+        map("user.name", "name");
+        map("user.logged.in", "logged in");
+        map("user.logged.out", "logged out");
+        map("credentials.wrong", "wrong credentials");
     }
 }

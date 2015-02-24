@@ -16,7 +16,7 @@ abstract public class Language
         return this.languages.get(index);
     }
     
-    public void add(String key, String value)
+    public void map(String key, String value)
     {
         this.languages.put(key, value);
     }
