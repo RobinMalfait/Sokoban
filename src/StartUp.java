@@ -1,5 +1,7 @@
 
+import domein.DomeinController;
 import gui.MeldAanApplicatie;
+import java.sql.SQLException;
 
 /**
  *
@@ -7,8 +9,8 @@ import gui.MeldAanApplicatie;
  */
 public class StartUp 
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws SQLException
     {
-        (new MeldAanApplicatie()).start();
+        (new MeldAanApplicatie()).start(new DomeinController());
     }
 }

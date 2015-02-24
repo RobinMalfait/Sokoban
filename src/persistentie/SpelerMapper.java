@@ -18,7 +18,7 @@ public class SpelerMapper extends Mapper
     public Speler geefSpeler(String gebruikersnaam) throws SQLException
     {
         ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = '" + gebruikersnaam + "'");
-        return maakSpeler(rs);
+        return maakSpeler(rs).get(0);
     }
 
     public List<Speler> geefSpelers() throws SQLException
@@ -27,26 +27,23 @@ public class SpelerMapper extends Mapper
 
         ResultSet rs = this.selectQuery("SELECT * FROM Speler");
 
-        while (rs.next())
-        {
-            spelers.add(maakSpeler(rs));
-        }
-
-        return spelers;
-
+        return maakSpeler(rs);
     }
 
-
-    private Speler maakSpeler(ResultSet rs) throws SQLException
+    private List<Speler> maakSpeler(ResultSet rs) throws SQLException
     {
-        
-        int id = rs.getInt("id");
-        String naam = rs.getString("naam");
-        String voornaam = rs.getString("voornaam");
-        String gebruikersnaam = rs.getString("gebruikersnaam");
-        String wachtwoord = rs.getString("wachtwoord");
+        List<Speler> spelers = new ArrayList<>();
+        while (rs.next())
+        {
+            int id = rs.getInt("id");
+            String naam = rs.getString("naam");
+            String voornaam = rs.getString("voornaam");
+            String gebruikersnaam = rs.getString("gebruikersnaam");
+            String wachtwoord = rs.getString("wachtwoord");
 
-        return new Speler(id, naam, voornaam, gebruikersnaam, wachtwoord);
+            spelers.add(new Speler(id, naam, voornaam, gebruikersnaam, wachtwoord));
+        }
+        return spelers;
     }
 
 }

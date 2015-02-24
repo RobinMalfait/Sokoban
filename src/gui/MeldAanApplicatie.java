@@ -1,8 +1,7 @@
 package gui;
 
-import domein.Speler;
-import java.util.List;
-import persistentie.SpelerMapper;
+import domein.DomeinController;
+import java.sql.SQLException;
 
 /**
  *
@@ -10,13 +9,16 @@ import persistentie.SpelerMapper;
  */
 public class MeldAanApplicatie 
 {
-    public void start()
-    {
-        List<Speler> spelers = (new SpelerMapper()).geefSpelers();
+    public void start(DomeinController domeinController) throws SQLException
+    {       
         
-        for(Speler speler : spelers)
+        if(domeinController.meldAan("DemianD", "demian123"))
         {
-            System.out.print(speler);
+            System.out.println("Ingelogd");
         }
+        else {
+            System.out.println("Foute gegegevens");
+        }
+        
     }
 }
