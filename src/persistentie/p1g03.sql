@@ -17,7 +17,7 @@ USE `p1g03` ;
 -- -----------------------------------------------------
 -- Table `p1g03`.`speler`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `p1g03`.`speler` (
+CREATE TABLE IF NOT EXISTS `p1g03`.`Speler` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `gebruikersnaam` VARCHAR(30) NOT NULL,
   `wachtwoord` VARCHAR(30) NOT NULL,
