@@ -78,6 +78,31 @@ public class Speler
         this.wachtwoord = wachtwoord;
     }
 
+    public int getId()
+    {
+        return id;
+    }
+
+    public String getNaam()
+    {
+        return naam;
+    }
+
+    public String getVoornaam()
+    {
+        return voornaam;
+    }
+
+    public String getGebruikersnaam()
+    {
+        return gebruikersnaam;
+    }
+
+    public String getWachtwoord()
+    {
+        return wachtwoord;
+    }
+
     
     
 }

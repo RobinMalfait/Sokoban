@@ -11,13 +11,21 @@ public class DomeinController
     }
     
     /**
-     *
+     * Meld een speler aan aan de hand van Gebruikersnaam en wachtwoord.
+     * 
      * @param gebruikersnaam
      * @param wachtwoord
      */
     public void meldAan(String gebruikersnaam, String wachtwoord)
     {
-        //spelerRepository.geefSpeler("dd", "dd");
+        Speler speler = spelerRepository.meldAan(gebruikersnaam, wachtwoord);
+        if(speler ==  null) {
+            // Geen gebruiker gevonden
+        }
+        else {
+            // Gebruiker gevonden, deze slaan we op in de domeincontroller.
+            this.setHuidigeSpeler(speler);
+        }
     }
 
     /**
