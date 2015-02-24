@@ -13,11 +13,11 @@ public class FR implements Language
 
     public FR()
     {
-        languages.put("user.username", "gebruikersnaam");
-        languages.put("user.name", "naam");
-        languages.put("user.logged.in", "ingelogd");
-        languages.put("user.logged.out", "uitgelogd");
-        languages.put("credentials.wrong", "foute gegevens");
+        languages.put("user.username", "");
+        languages.put("user.name", "");
+        languages.put("user.logged.in", "");
+        languages.put("user.logged.out", "");
+        languages.put("credentials.wrong", "");
     }
     
     @Override
