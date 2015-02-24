@@ -1,7 +1,6 @@
 package persistentie;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,10 +18,10 @@ abstract class Mapper extends Connectie
      */
     public ResultSet selectQuery(String selectQuery)
     {
+        Connection conn = this.getConnection();
+        
         try
         {
-            Connection conn = DriverManager.getConnection(Connectie.JDBC_URL);
-            
             PreparedStatement query = conn.prepareStatement(selectQuery);
 
             return query.executeQuery();
