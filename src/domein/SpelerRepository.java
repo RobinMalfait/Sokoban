@@ -12,16 +12,7 @@ public class SpelerRepository
     {
         this.Spelermapper = new SpelerMapper();
     }
-    
-    /**
-     * 
-     * @param gebruikersnaam
-     * @param wachtwoord
-     */
-    public Speler meldAan(String gebruikersnaam, String wachtwoord) 
-    {
-        return null;       
-    }
+
     /**
      * 
      * 
