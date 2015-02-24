@@ -13,9 +13,9 @@ public class SpelerMapper extends Mapper
 
     /**
      *
-     * @param emailadres
+     * @param gebruikersnaam
      */
-    public Speler geefSpeler(String emailadres)
+    public Speler geefSpeler(String gebruikersnaam)
     {
         return null;
     }
