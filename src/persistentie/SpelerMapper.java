@@ -20,7 +20,7 @@ public class SpelerMapper extends Mapper
         try
         {
             ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = '" + gebruikersnaam + "'");
-            return maakSpeler(rs).get(0);
+            return verkrijgSpelers(rs).get(0);
         } catch (SQLException ex)
         {
             Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,7 +37,7 @@ public class SpelerMapper extends Mapper
             
             ResultSet rs = this.selectQuery("SELECT * FROM Speler");
             
-            return maakSpeler(rs);
+            return verkrijgSpelers(rs);
         } catch (SQLException ex)
         {
             Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -46,7 +46,7 @@ public class SpelerMapper extends Mapper
         return new ArrayList<>();
     }
 
-    private List<Speler> maakSpeler(ResultSet rs) throws SQLException
+    private List<Speler> verkrijgSpelers(ResultSet rs) throws SQLException
     {
         List<Speler> spelers = new ArrayList<>();
         while (rs.next())
@@ -61,6 +61,11 @@ public class SpelerMapper extends Mapper
         }
         
         return spelers;
+    }
+    
+    public void addSpeler(Speler speler)
+    {
+        
     }
 
 }

@@ -19,7 +19,7 @@ public class DomeinController
      */
     public boolean meldAan(String gebruikersnaam, String wachtwoord)
     {
-        Speler speler = spelerRepository.meldAan(gebruikersnaam, wachtwoord);
+        Speler speler = spelerRepository.ZoekSpelerViaGebruikersnaamWachtwoord(gebruikersnaam, wachtwoord);
         if (speler == null)
             return false;
         else {
@@ -53,6 +53,14 @@ public class DomeinController
 
         return spelerString;
 
+    }
+    
+    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord)
+    {
+        Speler sp = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
+        setHuidigeSpeler(sp);
+        
+        
     }
 
 }
