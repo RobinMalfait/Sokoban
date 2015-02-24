@@ -30,7 +30,7 @@ public class LanguageManager
             output += ", " + language.getClass().getSimpleName();
         }
         
-        return output;
+        return output.substring(2);
     }
     
     public boolean setLanguage(String newLanguage)
