@@ -1,12 +1,23 @@
 package languages;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author robin
  */
-public interface Language
+abstract public class Language
 {
-
-    String get(String index);
+    protected final Map<String, String> languages = new HashMap<>();
     
+    public String get(String index)
+    {
+        return this.languages.get(index);
+    }
+    
+    public void add(String key, String value)
+    {
+        this.languages.put(key, value);
+    }
 }

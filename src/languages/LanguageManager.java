@@ -16,9 +16,11 @@ public class LanguageManager
     public LanguageManager()
     {
         this.languages = new ArrayList<>();
-        
-        this.languages.add(new NL());
-        this.languages.add(new EN());
+    }
+    
+    public void addLanguage(Language lang)
+    {
+        this.languages.add(lang);
     }
     
     public String getKeuzes()

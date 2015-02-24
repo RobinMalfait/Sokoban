@@ -13,7 +13,7 @@ public class MeldAanApplicatie
     public void start(DomeinController domeinController)
     {   
         Scanner input = new Scanner(System.in);
-        LanguageManager lang = new LanguageManager();
+        LanguageManager lang = domeinController.getLanguageManager();
         
         System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
         lang.setLanguage(input.next());

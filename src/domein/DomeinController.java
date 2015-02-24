@@ -1,13 +1,17 @@
 package domein;
 
+import languages.LanguageManager;
+
 public class DomeinController
 {
 
     private final SpelerRepository spelerRepository;
     private Speler huidigeSpeler;
+    private LanguageManager languageManager;
 
-    public DomeinController()
+    public DomeinController(LanguageManager languageManager)
     {
+        this.languageManager = languageManager;
         spelerRepository = new SpelerRepository();
     }
 
@@ -61,6 +65,11 @@ public class DomeinController
         setHuidigeSpeler(sp);
         
         
+    }
+
+    public LanguageManager getLanguageManager()
+    {
+        return this.languageManager;
     }
 
 }

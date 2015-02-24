@@ -1,28 +1,17 @@
 package languages;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * @author robin
  */
-public class NL implements Language 
+public class NL extends Language 
 {
-    private final Map<String, String> languages = new HashMap<>();
-
     public NL()
     {
-        languages.put("user.username", "gebruikersnaam");
-        languages.put("user.name", "naam");
-        languages.put("user.logged.in", "ingelogd");
-        languages.put("user.logged.out", "uitgelogd");
-        languages.put("credentials.wrong", "foute gegevens");
-    }
-    
-    @Override
-    public String get(String index)
-    {
-        return this.languages.get(index);
+        add("user.username", "gebruikersnaam");
+        add("user.name", "naam");
+        add("user.logged.in", "ingelogd");
+        add("user.logged.out", "uitgelogd");
+        add("credentials.wrong", "foute gegevens");
     }
 }
