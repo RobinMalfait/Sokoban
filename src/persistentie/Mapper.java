@@ -25,17 +25,19 @@ abstract class Mapper extends Connectie
         try
         {
             PreparedStatement query = conn.prepareStatement(selectQuery);
-
             return query.executeQuery();
-
-        } catch (SQLException ex)
+        } 
+        catch (SQLException ex)
         {
             Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return null;
-        
-        
     }  
+    
+    public void insertQuery(String insertQuery) throws SQLException
+    {
+        
+    }
 
 }
