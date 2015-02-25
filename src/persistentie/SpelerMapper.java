@@ -21,7 +21,7 @@ public class SpelerMapper extends Mapper
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = '" + gebruikersnaam + "'");
+            ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = ?", gebruikersnaam);
             return verkrijgSpelers(rs).get(0);
         } catch (SQLException ex)
         {
