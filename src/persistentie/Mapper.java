@@ -63,6 +63,18 @@ abstract class Mapper extends Connectie
     }
     
     /**
+     * Execute a delete query.
+     * 
+     * @param deleteQuery
+     * @param args
+     * @throws SQLException 
+     */
+    public void deleteQuery(String deleteQuery, Object... args) throws SQLException
+    {
+        this.executeQuery(deleteQuery, args);
+    }
+    
+    /**
      * Execute a query.
      * 
      * @param query

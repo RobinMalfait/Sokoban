@@ -12,8 +12,10 @@ public class SpelerMapper extends Mapper
 {
 
     /**
-     *
+     * Geef een speler terug.
+     * 
      * @param gebruikersnaam
+     * @return 
      */
     public Speler geefSpeler(String gebruikersnaam)
     {
