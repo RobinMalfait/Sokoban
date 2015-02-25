@@ -45,7 +45,23 @@ public class SpelerMapper extends Mapper
         
         return new ArrayList<>();
     }
-
+    
+    public void addSpeler(Speler speler)
+    {
+        try {
+            
+            this.insertQuery("INSERT INTO Speler (gebruikersnaam, wachtwoord, naam, voornaam) VALUES (?, ?, ?, ?)",
+                speler.getGebruikersnaam(),
+                speler.getWachtwoord(),
+                speler.getNaam(),
+                speler.getVoornaam()
+            );
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private List<Speler> verkrijgSpelers(ResultSet rs) throws SQLException
     {
         List<Speler> spelers = new ArrayList<>();
@@ -61,11 +77,6 @@ public class SpelerMapper extends Mapper
         }
         
         return spelers;
-    }
-    
-    public void addSpeler(Speler speler)
-    {
-        
     }
 
 }

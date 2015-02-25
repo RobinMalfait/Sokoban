@@ -20,11 +20,9 @@ abstract class Mapper extends Connectie
      */
     public ResultSet selectQuery(String selectQuery) throws SQLException
     {
-        Connection conn = this.getConnection();
-        
         try
         {
-            PreparedStatement query = conn.prepareStatement(selectQuery);
+            PreparedStatement query = this.getConnection().prepareStatement(selectQuery);
             return query.executeQuery();
         } 
         catch (SQLException ex)
@@ -35,9 +33,16 @@ abstract class Mapper extends Connectie
         return null;
     }  
     
-    public void insertQuery(String insertQuery) throws SQLException
+    public void insertQuery(String insertQuery, Object... args) throws SQLException
     {
+        PreparedStatement query = this.getConnection().prepareStatement(insertQuery);
         
+        for (int i = 0; i < args.length; i++)
+        {
+            query.setObject(i + 1, args[i]);
+        }
+        
+        query.executeUpdate();
     }
 
 }
