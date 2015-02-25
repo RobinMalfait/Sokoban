@@ -7,25 +7,26 @@ import static org.junit.Assert.*;
 /**
  *
  * @author robin
- */
+ */  
 public class LanguageManagerTest
 {
     private LanguageManager languageManager;
+    private Language EN;
+    private Language NL;
     
     @Before
     public void setUp()
     {
         this.languageManager = new LanguageManager();
+        this.EN = new EN();
+        this.NL = new NL();
     }
 
     @Test
     public void it_should_add_a_language()
     {
-        Language en = new EN();
-        Language nl = new NL();
-        
-        this.languageManager.addLanguage(en);
-        this.languageManager.addLanguage(nl);
+        this.languageManager.addLanguage(this.EN);
+        this.languageManager.addLanguage(this.NL);
         
         assertEquals(2, this.languageManager.countLanguages());
     }
@@ -33,12 +34,25 @@ public class LanguageManagerTest
     @Test
     public void it_should_get_the_choices()
     {
-        Language en = new EN();
-        Language nl = new NL();
-        
-        this.languageManager.addLanguage(en);
-        this.languageManager.addLanguage(nl);
+        this.languageManager.addLanguage(this.EN);
+        this.languageManager.addLanguage(this.NL);
         
         assertEquals("EN, NL", this.languageManager.getKeuzes());
+    }
+    
+    @Test
+    public void it_should_translate()
+    {
+        this.EN.map("test", "Test - EN");
+        this.NL.map("test", "Test - NL");
+        
+        this.languageManager.addLanguage(this.NL);
+        this.languageManager.addLanguage(this.EN);
+        
+        this.languageManager.setLanguage("EN");
+        assertEquals("Test - EN", this.languageManager.get("test"));
+        
+        this.languageManager.setLanguage("NL");
+        assertEquals("Test - NL", this.languageManager.get("test"));
     }
 }

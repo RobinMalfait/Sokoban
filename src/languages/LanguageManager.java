@@ -45,7 +45,7 @@ public class LanguageManager
     {
         for (Language lang : languages)
         {
-            if (language.getClass().getSimpleName().equals(newLanguage))
+            if (lang.getClass().getSimpleName().equals(newLanguage))
             {
                 this.language = lang;
                 return true;
