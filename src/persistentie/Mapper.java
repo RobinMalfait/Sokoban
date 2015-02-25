@@ -1,13 +1,8 @@
 package persistentie;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 abstract class Mapper extends Connectie
 {
@@ -20,29 +15,60 @@ abstract class Mapper extends Connectie
      */
     public ResultSet selectQuery(String selectQuery) throws SQLException
     {
-        try
+        return this.selectQuery(selectQuery, (Object) null);
+    }
+    
+    /**
+     * Execute a select query with params.
+     * 
+     * @param selectQuery
+     * @param args
+     * @return
+     * @throws SQLException 
+     */
+    public ResultSet selectQuery(String selectQuery, Object... args) throws SQLException
+    {
+        PreparedStatement query = this.getConnection().prepareStatement(selectQuery);
+        
+        for (int i = 0; i < args.length; i++)
         {
-            PreparedStatement query = this.getConnection().prepareStatement(selectQuery);
-            return query.executeQuery();
-        } 
-        catch (SQLException ex)
-        {
-            Logger.getLogger(Mapper.class.getName()).log(Level.SEVERE, null, ex);
+            query.setObject(i + 1, args[i]);
         }
         
-        return null;
-    }  
+        return query.executeQuery();
+    }
     
+    /**
+     * Execute an insert query.
+     * 
+     * @param insertQuery
+     * @param args
+     * @throws SQLException 
+     */
     public void insertQuery(String insertQuery, Object... args) throws SQLException
     {
         this.executeQuery(insertQuery, args);
     }
     
+    /**
+     * Executte an update query.
+     * 
+     * @param updateQuery
+     * @param args
+     * @throws SQLException 
+     */
     public void updateQuery(String updateQuery, Object... args) throws SQLException
     {
         this.executeQuery(updateQuery, args);
     }
     
+    /**
+     * Execute a query.
+     * 
+     * @param query
+     * @param args
+     * @throws SQLException 
+     */
     private void executeQuery(String query, Object... args) throws SQLException
     {
         PreparedStatement qry = this.getConnection().prepareStatement(query);
