@@ -18,6 +18,11 @@ public class LanguageManager
     {
         this.languages = new ArrayList<>();
     }
+    
+    public int countLanguages()
+    {
+        return this.languages.size();
+    }
 
     public void addLanguage(Language lang)
     {
