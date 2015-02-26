@@ -20,7 +20,7 @@ public class SpelerRepository
      * @param gebruikersnaam
      * @param wachtwoord
      */
-    public Speler ZoekSpelerViaGebruikersnaamWachtwoord(String gebruikersnaam, String wachtwoord)
+    public Speler zoekSpelerViaGebruikersnaamWachtwoord(String gebruikersnaam, String wachtwoord)
     {
         // Speler zoeken uit de SpelerMapper
         Speler speler = spelerMapper.geefSpeler(gebruikersnaam);

@@ -23,7 +23,7 @@ public class DomeinController
      */
     public boolean meldAan(String gebruikersnaam, String wachtwoord)
     {
-        Speler speler = spelerRepository.ZoekSpelerViaGebruikersnaamWachtwoord(gebruikersnaam, wachtwoord);
+        Speler speler = spelerRepository.zoekSpelerViaGebruikersnaamWachtwoord(gebruikersnaam, wachtwoord);
         if (speler == null)
             return false;
         else {
