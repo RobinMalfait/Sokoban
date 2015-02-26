@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.WachtwoordBevestigingNietCorrectException;
 import languages.LanguageManager;
 
 public class DomeinController
@@ -61,7 +62,7 @@ public class DomeinController
     
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
-        if (!wachtwoord.equals(wachtwoordBevestiging)) {
+        if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
             throw new WachtwoordBevestigingNietCorrectException();
         }
 

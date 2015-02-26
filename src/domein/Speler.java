@@ -1,5 +1,8 @@
 package domein;
 
+import exceptions.GebruikersnaamTeKortException;
+import exceptions.WachtwoordException;
+
 public class Speler
 {
     private int id;
@@ -86,23 +89,22 @@ public class Speler
      */
     public void setGebruikersnaam(String gebruikersnaam)
     {
-        if (gebruikersnaam.length() < 8)
+        if (gebruikersnaam.length() < 8) {
             throw new GebruikersnaamTeKortException();
+        }
         
         this.gebruikersnaam = gebruikersnaam;
     }
 
     /**
      * 
-     * @param wachtwoord 
+     * @param wachtwoord
      */
     public void setWachtwoord(String wachtwoord)
     {
-        if(wachtwoord.length() < 8)
-            throw new WachtwoordTeKortException();
-        
-        if(wachtwoord.length() > 30)
-            throw new WachtwoordTeLangException();
+        if (wachtwoord.length() < 8 || wachtwoord.length() > 30) {
+            throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
+        }
         
         this.wachtwoord = wachtwoord;
     }
