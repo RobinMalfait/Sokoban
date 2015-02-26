@@ -59,12 +59,15 @@ public class DomeinController
 
     }
     
-    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord)
+    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
-        Speler sp = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
-        setHuidigeSpeler(sp);
-        
-        
+        if (!wachtwoord.equals(wachtwoordBevestiging)) {
+            throw new WachtwoordBevestigingNietCorrectException();
+        }
+
+        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
+        setHuidigeSpeler(nieuweSpeler);
+        spelerRepository.voegToe(nieuweSpeler);  
     }
 
     public LanguageManager getLanguageManager()

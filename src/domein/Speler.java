@@ -86,6 +86,9 @@ public class Speler
      */
     public void setGebruikersnaam(String gebruikersnaam)
     {
+        if (gebruikersnaam.length() < 8)
+            throw new GebruikersnaamTeKortException();
+        
         this.gebruikersnaam = gebruikersnaam;
     }
 
@@ -95,6 +98,12 @@ public class Speler
      */
     public void setWachtwoord(String wachtwoord)
     {
+        if(wachtwoord.length() < 8)
+            throw new WachtwoordTeKortException();
+        
+        if(wachtwoord.length() > 30)
+            throw new WachtwoordTeLangException();
+        
         this.wachtwoord = wachtwoord;
     }
 
