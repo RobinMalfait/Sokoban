@@ -1,13 +1,6 @@
 import domein.DomeinController;
-import gui.MeldAanApplicatie;
-import gui.RegistreerApplicatie;
 import gui.ConsoleApplicatie;
 import java.util.Scanner;
-import languages.EN;
-import languages.FR;
-import languages.NL;
-import languages.LanguageManager;
-
 /**
  *
  * @author robin
