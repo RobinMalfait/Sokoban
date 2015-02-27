@@ -10,11 +10,10 @@ public class StartUp
 
     public static void main(String[] args)
     {
-        
-        DomeinController dc = new DomeinController();
-        Scanner input = new Scanner(System.in);
-
-        (new ConsoleApplicatie()).start(dc, input);
+        (new ConsoleApplicatie()).start(
+            new DomeinController(), 
+            new Scanner(System.in)
+        );
 
     }
 }
