@@ -1,7 +1,6 @@
 package domein;
 
 import exceptions.WachtwoordBevestigingNietCorrectException;
-import languages.LanguageManager;
 import security.BCrypt;
 
 public class DomeinController
@@ -10,9 +9,9 @@ public class DomeinController
     private final SpelerRepository spelerRepository;
     private Speler huidigeSpeler;
 
+ 
     /**
      * 
-     * @param languageManager 
      */
     public DomeinController()
     {
@@ -90,9 +89,4 @@ public class DomeinController
         spelerRepository.voegToe(nieuweSpeler);  
     }
     
-    /**
-     * 
-     * @return 
-     */
-
 }

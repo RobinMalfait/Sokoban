@@ -19,16 +19,28 @@ public class LanguageManager
         this.languages = new ArrayList<>();
     }
     
+    /**
+     * 
+     * @return 
+     */
     public int countLanguages()
     {
         return this.languages.size();
     }
 
+    /**
+     * 
+     * @param lang 
+     */
     public void addLanguage(Language lang)
     {
         this.languages.add(lang);
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String getKeuzes()
     {
         String output = "";
@@ -41,6 +53,11 @@ public class LanguageManager
         return output.substring(2);
     }
 
+    /**
+     * 
+     * @param newLanguage
+     * @return 
+     */
     public boolean setLanguage(String newLanguage)
     {
         for (Language lang : languages)
@@ -55,6 +72,11 @@ public class LanguageManager
         return false;
     }
 
+    /**
+     * 
+     * @param index
+     * @return 
+     */
     public String get(String index)
     {
         return this.language.get(index);

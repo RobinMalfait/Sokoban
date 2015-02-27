@@ -38,6 +38,10 @@ public class SpelerMapper extends Mapper
         return null;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public List<Speler> geefSpelers()
     {
         try
@@ -53,6 +57,10 @@ public class SpelerMapper extends Mapper
         return new ArrayList<>();
     }
     
+    /**
+     * 
+     * @param speler 
+     */
     public void addSpeler(Speler speler)
     {
         try {
@@ -69,6 +77,12 @@ public class SpelerMapper extends Mapper
         }
     }
     
+    /**
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     private List<Speler> verkrijgSpelers(ResultSet rs) throws SQLException
     {
         List<Speler> spelers = new ArrayList<>();

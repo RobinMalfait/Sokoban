@@ -159,7 +159,7 @@ public class Speler
     @Override
     public String toString()
     {
-        return String.format("Speler(%d,%s,%s,%s)%n", this.id, this.gebruikersnaam, this.voornaam, this.naam);
+        return String.format("Speler(%d, %s, %s, %s)%n", this.id, this.gebruikersnaam, this.voornaam, this.naam);
     }
 
 }
