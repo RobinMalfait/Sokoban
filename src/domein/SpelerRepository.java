@@ -9,13 +9,14 @@ public class SpelerRepository
 {
     
     private final SpelerMapper spelerMapper;
-    private List<Speler> spelers;
+    private final List<Speler> spelers;
 
     /**
      * 
      */
     public SpelerRepository()
     {
+        this.spelers = new ArrayList<>();
         this.spelerMapper = new SpelerMapper();
     }
 
