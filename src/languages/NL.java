@@ -16,5 +16,7 @@ public class NL extends Language
         map("user.logged.in", "ingelogd");
         map("user.logged.out", "uitgelogd");
         map("credentials.wrong", "foute gegevens");
+        map("sign.in", "aanmelden");
+        map("sign.up", "registreren");
     }
 }

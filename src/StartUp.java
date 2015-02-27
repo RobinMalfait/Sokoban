@@ -1,7 +1,7 @@
 import domein.DomeinController;
 import gui.MeldAanApplicatie;
 import gui.RegistreerApplicatie;
-import gui.TaalkeuzeApplicatie;
+import gui.ConsoleApplicatie;
 import java.util.Scanner;
 import languages.EN;
 import languages.FR;
@@ -21,7 +21,7 @@ public class StartUp
         DomeinController dc = new DomeinController();
         Scanner input = new Scanner(System.in);
 
-        (new TaalkeuzeApplicatie()).start(dc, input);
+        (new ConsoleApplicatie()).start(dc, input);
 
     }
 }

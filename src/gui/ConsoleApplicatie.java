@@ -8,7 +8,7 @@ import languages.FR;
 import languages.LanguageManager;
 import languages.NL;
 
-public class TaalkeuzeApplicatie {
+public class ConsoleApplicatie {
 
     public void start(DomeinController dc, Scanner input)
     {
@@ -23,7 +23,7 @@ public class TaalkeuzeApplicatie {
         System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
         lang.setLanguage(input.next());
         
-        System.out.printf("Wat wenst u te doen?%n1: Aanmelden%n2: Registreren%nMijn keuze: ");
+        System.out.printf("Wat wenst u te doen?%n1: "+ lang.get("sign.in") +"%n2: "+ lang.get("sign.up") +"%nMijn keuze: ");
         keuze = input.nextInt();
         
         System.out.println();
