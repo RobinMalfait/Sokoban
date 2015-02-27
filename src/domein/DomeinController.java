@@ -8,7 +8,7 @@ public class DomeinController
 
     private final SpelerRepository spelerRepository;
     private Speler huidigeSpeler;
-    private LanguageManager languageManager;
+    private final LanguageManager languageManager;
 
     /**
      * 
@@ -25,13 +25,15 @@ public class DomeinController
      *
      * @param gebruikersnaam
      * @param wachtwoord
+     * @return 
      */
     public boolean meldAan(String gebruikersnaam, String wachtwoord)
     {
         Speler speler = spelerRepository.zoekSpelerViaGebruikersnaamWachtwoord(gebruikersnaam, wachtwoord);
-        if (speler == null)
-            return false;
-        else {
+        
+        if (speler == null) {
+            return false;  
+        } else {
              // Gebruiker gevonden, deze slaan we op in de domeincontroller.
             this.setHuidigeSpeler(speler);
             return true;
