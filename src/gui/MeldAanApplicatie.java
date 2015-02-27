@@ -18,7 +18,7 @@ public class MeldAanApplicatie
         System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
         lang.setLanguage(input.next());
         
-        if(domeinController.meldAan("DemianD", "demian123"))
+        if(domeinController.meldAan("demiandekoninck", "demian123"))
         {
             System.out.println(lang.get("user.logged.in"));
         }

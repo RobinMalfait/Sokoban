@@ -22,7 +22,14 @@ public class SpelerMapper extends Mapper
         try
         {
             ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = ?", gebruikersnaam);
-            return verkrijgSpelers(rs).get(0);
+            
+            List<Speler> spelers = verkrijgSpelers(rs);
+            
+            if ( ! spelers.isEmpty()) {
+                return spelers.get(0);
+            }
+            
+            return null;            
         } catch (SQLException ex)
         {
             Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -35,8 +42,6 @@ public class SpelerMapper extends Mapper
     {
         try
         {
-            List<Speler> spelers = new ArrayList<>();
-            
             ResultSet rs = this.selectQuery("SELECT * FROM Speler");
             
             return verkrijgSpelers(rs);
@@ -67,6 +72,7 @@ public class SpelerMapper extends Mapper
     private List<Speler> verkrijgSpelers(ResultSet rs) throws SQLException
     {
         List<Speler> spelers = new ArrayList<>();
+        
         while (rs.next())
         {
             int id = rs.getInt("id");

@@ -19,29 +19,29 @@ public class RegistreerApplicatie
         lang.setLanguage("NL");
 
         //ingeven van gegevens
-        System.out.println("Registratie van een nieuwe gebruiker:");
+        System.out.print("Registratie van een nieuwe gebruiker: ");
         System.out.println();
 
-        System.out.println(lang.get("user.firstname") + ":");
+        System.out.print(lang.get("user.firstname") + ": ");
         voornaam = input.nextLine().trim();
 
-        System.out.println(lang.get("user.name") + ":");
+        System.out.print(lang.get("user.name") + ": ");
         naam = input.nextLine().trim();
 
-        System.out.println(lang.get("user.username") + "*:");
+        System.out.print(lang.get("user.username") + "*: ");
         gebruikersnaam = input.nextLine().trim();
 
-        System.out.println(lang.get("user.password") + "*:");
+        System.out.print(lang.get("user.password") + "*: ");
         wachtwoord = input.nextLine().trim();
 
-        System.out.println(lang.get("user.password.repeat") + "*:");
+        System.out.print(lang.get("user.password.repeat") + "*: ");
         wachtwoordBevestiging = input.nextLine().trim();
 
         //controle ingevoerde gegevens
         if (gebruikersnaam.isEmpty() || wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty())
         {
             System.out.println("Gelieve de verplichte velden in te vullen (*)!");
-        } else if (!wachtwoord.equals(wachtwoordBevestiging))
+        } else if ( ! wachtwoord.equals(wachtwoordBevestiging))
         {
             System.out.println("Het wachtwoord en de wachtwoordbevestiging komen niet overeen.");
         }

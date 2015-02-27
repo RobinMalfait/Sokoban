@@ -29,7 +29,7 @@ public class SpelerRepository
     public Speler zoekSpelerViaGebruikersnaamWachtwoord(String gebruikersnaam, String wachtwoord)
     {
         // Speler zoeken uit de SpelerMapper
-        Speler speler = spelerMapper.geefSpeler(gebruikersnaam);
+        Speler speler = this.spelerMapper.geefSpeler(gebruikersnaam);
 
         // Controleer of het wachtwoord van de speler overeenkomt met die uit de parameter
         return BCrypt.checkpw(wachtwoord, speler.getWachtwoord()) ? speler : null;
@@ -46,8 +46,8 @@ public class SpelerRepository
             throw new GebruikerBestaatException("De gebruikersnaam is al in gebruik.");
         }
 
-        spelerMapper.addSpeler(speler);
-        spelers.add(speler);
+        this.spelerMapper.addSpeler(speler);
+        this.spelers.add(speler);
     }
     
     /**

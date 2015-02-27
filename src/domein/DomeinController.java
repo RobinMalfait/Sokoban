@@ -2,6 +2,7 @@ package domein;
 
 import exceptions.WachtwoordBevestigingNietCorrectException;
 import languages.LanguageManager;
+import security.BCrypt;
 
 public class DomeinController
 {
@@ -83,6 +84,8 @@ public class DomeinController
         if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
             throw new WachtwoordBevestigingNietCorrectException();
         }
+        
+        wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
 
         Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
         setHuidigeSpeler(nieuweSpeler);
