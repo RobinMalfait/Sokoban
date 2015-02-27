@@ -16,5 +16,8 @@ public class FR extends Language
         map("user.logged.in", "");
         map("user.logged.out", "");
         map("credentials.wrong", "");
+        map("sign.in", "");
+        map("sign.up", "");
+        
     }
 }
