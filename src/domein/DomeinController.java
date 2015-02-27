@@ -10,6 +10,10 @@ public class DomeinController
     private Speler huidigeSpeler;
     private LanguageManager languageManager;
 
+    /**
+     * 
+     * @param languageManager 
+     */
     public DomeinController(LanguageManager languageManager)
     {
         this.languageManager = languageManager;
@@ -43,6 +47,10 @@ public class DomeinController
         this.huidigeSpeler = huidigeSpeler;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public String[] geefHuidigeSpeler()
     {
         if (huidigeSpeler == null)
@@ -60,6 +68,14 @@ public class DomeinController
 
     }
     
+    /** 
+     * 
+     * @param naam 
+     * @param voornaam 
+     * @param gebruikersnaam 
+     * @param wachtwoord
+     * @param wachtwoordBevestiging 
+     */
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
         if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
@@ -70,7 +86,11 @@ public class DomeinController
         setHuidigeSpeler(nieuweSpeler);
         spelerRepository.voegToe(nieuweSpeler);  
     }
-
+    
+    /**
+     * 
+     * @return 
+     */
     public LanguageManager getLanguageManager()
     {
         return this.languageManager;
