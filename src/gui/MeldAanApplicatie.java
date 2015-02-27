@@ -24,7 +24,7 @@ public class MeldAanApplicatie
         }
         else {
             System.out.println(lang.get("credentials.wrong"));
-        }
-        
+        } 
+       
     }
 }
