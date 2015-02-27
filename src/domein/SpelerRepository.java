@@ -47,8 +47,8 @@ public class SpelerRepository
             throw new GebruikerBestaatException("De gebruikersnaam is al in gebruik.");
         }
 
-        this.spelerMapper.addSpeler(speler);
         this.spelers.add(speler);
+        this.spelerMapper.addSpeler(speler);
     }
     
     /**
