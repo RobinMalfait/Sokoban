@@ -8,15 +8,10 @@ import languages.LanguageManager;
 public class RegistreerApplicatie
 {
 
-    public void start(DomeinController dc)
+    public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        Scanner input = new Scanner(System.in);
-        LanguageManager lang = dc.getLanguageManager();
         String naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging;
         String[] huidigeSpeler;
-        
-        //taalkeuze (wordt ingesteld op meldAanScherm)
-        lang.setLanguage("NL");
 
         //ingeven van gegevens
         System.out.print("Registratie van een nieuwe gebruiker: ");

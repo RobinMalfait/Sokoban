@@ -10,15 +10,9 @@ import languages.LanguageManager;
  */
 public class MeldAanApplicatie 
 {
-    public void start(DomeinController domeinController)
+    public void start(DomeinController domeinController, Scanner input, LanguageManager lang)
     {   
-        Scanner input = new Scanner(System.in);
-        LanguageManager lang = domeinController.getLanguageManager();
         String gebruikersnaam, wachtwoord;
-        
-        //taalkeuze
-        System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
-        lang.setLanguage(input.next());
         
         //inloggegevens
         System.out.print(lang.get("user.username") + "*: ");

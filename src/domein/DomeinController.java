@@ -9,15 +9,13 @@ public class DomeinController
 
     private final SpelerRepository spelerRepository;
     private Speler huidigeSpeler;
-    private final LanguageManager languageManager;
 
     /**
      * 
      * @param languageManager 
      */
-    public DomeinController(LanguageManager languageManager)
+    public DomeinController()
     {
-        this.languageManager = languageManager;
         spelerRepository = new SpelerRepository();
     }
 
@@ -87,7 +85,7 @@ public class DomeinController
         
         wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
 
-        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
+        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);        
         setHuidigeSpeler(nieuweSpeler);
         spelerRepository.voegToe(nieuweSpeler);  
     }
@@ -96,9 +94,5 @@ public class DomeinController
      * 
      * @return 
      */
-    public LanguageManager getLanguageManager()
-    {
-        return this.languageManager;
-    }
 
 }
