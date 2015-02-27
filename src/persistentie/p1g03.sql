@@ -20,7 +20,7 @@ USE `p1g03` ;
 CREATE TABLE IF NOT EXISTS `p1g03`.`Speler` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `gebruikersnaam` VARCHAR(30) NOT NULL,
-  `wachtwoord` VARCHAR(30) NOT NULL,
+  `wachtwoord` VARCHAR(60) NOT NULL,
   `naam` VARCHAR(30) NULL COMMENT '	',
   `voornaam` VARCHAR(30) NULL,
   PRIMARY KEY (`id`))
