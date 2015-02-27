@@ -21,7 +21,7 @@ public class BCryptTest
     }
     
     @Test
-    public void it_should_check_a_hashed_passowrd()
+    public void it_should_check_a_hashed_password()
     {
         assertEquals(true, BCrypt.checkpw(this.password, this.hashed));
     }
