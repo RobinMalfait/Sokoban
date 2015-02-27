@@ -90,7 +90,7 @@ public class Speler
      */
     public void setGebruikersnaam(String gebruikersnaam)
     {
-        if (wachtwoord.length() < 8 || wachtwoord.length() > 30)
+        if (gebruikersnaam.length() < 8 || gebruikersnaam.length() > 30)
             throw new GebruikersnaamException("De gebruikersnaam voldoet niet aan de eisen.");
 
         this.gebruikersnaam = gebruikersnaam;
@@ -102,7 +102,7 @@ public class Speler
      */
     public void setWachtwoord(String wachtwoord)
     {
-        if (wachtwoord.length() < 8 || wachtwoord.length() > 30)
+        if (wachtwoord.length() < 8)
             throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
 
         this.wachtwoord = wachtwoord;
