@@ -1,10 +1,9 @@
-
 package domein;
 
 import exceptions.GebruikerBestaatException;
-import java.sql.SQLException;
 import java.util.*;
 import persistentie.SpelerMapper;
+import security.BCrypt;
 
 public class SpelerRepository
 {
@@ -33,13 +32,7 @@ public class SpelerRepository
         Speler speler = spelerMapper.geefSpeler(gebruikersnaam);
 
         // Controleer of het wachtwoord van de speler overeenkomt met die uit de parameter
-        if (speler.getWachtwoord().equals(wachtwoord))
-        {
-            return speler;
-        } else
-        {
-            return null;
-        }
+        return BCrypt.checkpw(wachtwoord, speler.getWachtwoord()) ? speler : null;
     }
 
     /**
