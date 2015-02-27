@@ -5,23 +5,54 @@ import domein.DomeinController;
 import java.util.Scanner;
 import languages.LanguageManager;
 
-public class RegistreerApplicatie {
+public class RegistreerApplicatie
+{
 
     public void start(DomeinController dc)
-    {   
+    {
         Scanner input = new Scanner(System.in);
         LanguageManager lang = dc.getLanguageManager();
+        String naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging;
+        String[] huidigeSpeler;
         
-        System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
-        lang.setLanguage(input.next());
-        
-        if(dc.meldAan("DemianD", "demian123"))
+        //taalkeuze (wordt ingesteld op meldAanScherm)
+        lang.setLanguage("NL");
+
+        //ingeven van gegevens
+        System.out.println("Registratie van een nieuwe gebruiker:");
+        System.out.println();
+
+        System.out.println(lang.get("user.firstname") + ":");
+        voornaam = input.nextLine().trim();
+
+        System.out.println(lang.get("user.name") + ":");
+        naam = input.nextLine().trim();
+
+        System.out.println(lang.get("user.username") + "*:");
+        gebruikersnaam = input.nextLine().trim();
+
+        System.out.println(lang.get("user.password") + "*:");
+        wachtwoord = input.nextLine().trim();
+
+        System.out.println(lang.get("user.password.repeat") + "*:");
+        wachtwoordBevestiging = input.nextLine().trim();
+
+        //controle ingevoerde gegevens
+        if (gebruikersnaam.isEmpty() || wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty())
         {
-            System.out.println(lang.get("user.logged.in"));
+            System.out.println("Gelieve de verplichte velden in te vullen (*)!");
+        } else if (!wachtwoord.equals(wachtwoordBevestiging))
+        {
+            System.out.println("Het wachtwoord en de wachtwoordbevestiging komen niet overeen.");
         }
-        else {
-            System.out.println(lang.get("credentials.wrong"));
-        } 
-       
+        else
+        {
+            dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
+            huidigeSpeler = dc.geefHuidigeSpeler();
+            
+            for (String element : huidigeSpeler)
+                System.out.println(element);
+        }
+
     }
 }

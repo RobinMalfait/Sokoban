@@ -1,5 +1,6 @@
 import domein.DomeinController;
 import gui.MeldAanApplicatie;
+import gui.RegistreerApplicatie;
 import languages.EN;
 import languages.FR;
 import languages.NL;
@@ -22,6 +23,8 @@ public class StartUp
 
         DomeinController dc = new DomeinController(languageManager);
 
-        (new MeldAanApplicatie()).start(dc);
+        //(new MeldAanApplicatie()).start(dc);
+        (new RegistreerApplicatie()).start(dc);
+
     }
 }
