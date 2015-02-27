@@ -1,6 +1,7 @@
 
 package domein;
 
+import exceptions.GebruikerBestaatException;
 import java.sql.SQLException;
 import java.util.*;
 import persistentie.SpelerMapper;
