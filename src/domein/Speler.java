@@ -1,6 +1,7 @@
+
 package domein;
 
-import exceptions.GebruikersnaamTeKortException;
+import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
 
 public class Speler
@@ -13,10 +14,10 @@ public class Speler
 
     /**
      * Create a Speler object.
-     * 
+     *
      * @param naam
      * @param voornaam
-     * @param gebruikersnaam 
+     * @param gebruikersnaam
      */
     public Speler(String naam, String voornaam, String gebruikersnaam)
     {
@@ -24,41 +25,41 @@ public class Speler
         this.setVoornaam(voornaam);
         this.setGebruikersnaam(gebruikersnaam);
     }
-    
+
     /**
      * Create a Speler object.
-     * 
+     *
      * @param naam
      * @param voornaam
      * @param gebruikersnaam
-     * @param wachtwoord 
+     * @param wachtwoord
      */
     public Speler(String naam, String voornaam, String gebruikersnaam, String wachtwoord)
     {
         this(naam, voornaam, gebruikersnaam);
-        
+
         this.setWachtwoord(wachtwoord);
     }
 
     /**
      * Create a Speler object.
-     * 
+     *
      * @param id
      * @param naam
      * @param voornaam
-     * @param gebruikersnaam 
-     * @param wachtwoord 
+     * @param gebruikersnaam
+     * @param wachtwoord
      */
     public Speler(int id, String naam, String voornaam, String gebruikersnaam, String wachtwoord)
     {
         this(naam, voornaam, gebruikersnaam, wachtwoord);
-        
+
         this.setId(id);
     }
 
     /**
-     * 
-     * @param id 
+     *
+     * @param id
      */
     public void setId(int id)
     {
@@ -66,8 +67,8 @@ public class Speler
     }
 
     /**
-     * 
-     * @param naam 
+     *
+     * @param naam
      */
     public void setNaam(String naam)
     {
@@ -75,8 +76,8 @@ public class Speler
     }
 
     /**
-     * 
-     * @param voornaam 
+     *
+     * @param voornaam
      */
     public void setVoornaam(String voornaam)
     {
@@ -84,33 +85,31 @@ public class Speler
     }
 
     /**
-     * 
-     * @param gebruikersnaam 
+     *
+     * @param gebruikersnaam
      */
     public void setGebruikersnaam(String gebruikersnaam)
     {
-        if (gebruikersnaam.length() < 8) {
-            throw new GebruikersnaamTeKortException();
-        }
-        
+        if (wachtwoord.length() < 8 || wachtwoord.length() > 30)
+            throw new GebruikersnaamException("De gebruikersnaam voldoet niet aan de eisen.");
+
         this.gebruikersnaam = gebruikersnaam;
     }
 
     /**
-     * 
+     *
      * @param wachtwoord
      */
     public void setWachtwoord(String wachtwoord)
     {
-        if (wachtwoord.length() < 8 || wachtwoord.length() > 30) {
+        if (wachtwoord.length() < 8 || wachtwoord.length() > 30)
             throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
-        }
-        
+
         this.wachtwoord = wachtwoord;
     }
 
     /**
-     * 
+     *
      * @return int
      */
     public int getId()
@@ -119,7 +118,7 @@ public class Speler
     }
 
     /**
-     * 
+     *
      * @return String
      */
     public String getNaam()
@@ -128,7 +127,7 @@ public class Speler
     }
 
     /**
-     * 
+     *
      * @return String
      */
     public String getVoornaam()
@@ -137,7 +136,7 @@ public class Speler
     }
 
     /**
-     * 
+     *
      * @return String
      */
     public String getGebruikersnaam()
@@ -146,7 +145,7 @@ public class Speler
     }
 
     /**
-     * 
+     *
      * @return String
      */
     public String getWachtwoord()
@@ -155,13 +154,13 @@ public class Speler
     }
 
     /**
-     * 
+     *
      * @return String
      */
     @Override
     public String toString()
     {
         return String.format("Speler(%d, %s, %s, %s)%n", this.id, this.gebruikersnaam, this.voornaam, this.naam);
-    } 
-    
+    }
+
 }
