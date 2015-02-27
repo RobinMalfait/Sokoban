@@ -16,10 +16,10 @@ public class MeldAanApplicatie
         
         //inloggegevens
         System.out.print(lang.get("user.username") + "*: ");
-        gebruikersnaam = input.nextLine().trim();
+        gebruikersnaam = input.next().trim();
 
         System.out.print(lang.get("user.password") + "*: ");
-        wachtwoord = input.nextLine().trim();
+        wachtwoord = input.next().trim();
         
         //controle inloggegevens
         if(domeinController.meldAan(gebruikersnaam, wachtwoord))
