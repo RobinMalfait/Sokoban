@@ -2,8 +2,8 @@ import domein.DomeinController;
 import gui.MeldAanApplicatie;
 import languages.EN;
 import languages.FR;
-import languages.LanguageManager;
 import languages.NL;
+import languages.LanguageManager;
 
 /**
  *
