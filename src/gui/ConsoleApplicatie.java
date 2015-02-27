@@ -29,8 +29,12 @@ public class ConsoleApplicatie {
         System.out.println();
         
         switch(keuze) {
-            case 1: (new MeldAanApplicatie()).start(dc, input, lang); break;
-            case 2: (new RegistreerApplicatie()).start(dc, input, lang); break;
+            case 1: 
+                (new MeldAanApplicatie()).start(dc, input, lang); 
+                break;
+            case 2: 
+                (new RegistreerApplicatie()).start(dc, input, lang); 
+                break;
         }            
     }
 }
