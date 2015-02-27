@@ -14,11 +14,21 @@ public class MeldAanApplicatie
     {   
         Scanner input = new Scanner(System.in);
         LanguageManager lang = domeinController.getLanguageManager();
+        String gebruikersnaam, wachtwoord;
         
+        //taalkeuze
         System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
         lang.setLanguage(input.next());
         
-        if(domeinController.meldAan("demiandekoninck", "demian123"))
+        //inloggegevens
+        System.out.print(lang.get("user.username") + "*: ");
+        gebruikersnaam = input.nextLine().trim();
+
+        System.out.print(lang.get("user.password") + "*: ");
+        wachtwoord = input.nextLine().trim();
+        
+        //controle inloggegevens
+        if(domeinController.meldAan(gebruikersnaam, wachtwoord))
         {
             System.out.println(lang.get("user.logged.in"));
         }
