@@ -1,4 +1,3 @@
-
 package domein;
 
 import exceptions.GebruikersnaamException;
