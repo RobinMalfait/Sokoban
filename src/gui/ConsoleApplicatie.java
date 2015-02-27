@@ -25,8 +25,10 @@ public class ConsoleApplicatie {
         
         System.out.printf("Wat wenst u te doen?%n1: "+ lang.get("sign.in") +"%n2: "+ lang.get("sign.up") +"%nMijn keuze: ");
         keuze = input.nextInt();
-        
         System.out.println();
+        
+        // Buffer leegmaken
+        input.nextLine();
         
         switch(keuze) {
             case 1: 
