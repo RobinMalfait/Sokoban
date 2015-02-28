@@ -21,9 +21,9 @@ public class DomeinController
     /**
      * Meld een speler aan aan de hand van Gebruikersnaam en wachtwoord.
      *
-     * @param gebruikersnaam
-     * @param wachtwoord
-     * @return 
+     * @param gebruikersnaam String
+     * @param wachtwoord String
+     * @return boolean
      */
     public boolean meldAan(String gebruikersnaam, String wachtwoord)
     {
@@ -39,8 +39,9 @@ public class DomeinController
     }
 
     /**
-     *
-     * @param huidigeSpeler
+     * Markeer als huidige speler.
+     * 
+     * @param huidigeSpeler Speler
      */
     private void setHuidigeSpeler(Speler huidigeSpeler)
     {
@@ -48,8 +49,9 @@ public class DomeinController
     }
 
     /**
+     * Geef de huidige speler terug.
      * 
-     * @return 
+     * @return String[]
      */
     public String[] geefHuidigeSpeler()
     {
@@ -69,12 +71,13 @@ public class DomeinController
     }
     
     /** 
+     * Registreer een nieuwe speler.
      * 
-     * @param naam 
-     * @param voornaam 
-     * @param gebruikersnaam 
-     * @param wachtwoord
-     * @param wachtwoordBevestiging 
+     * @param naam String
+     * @param voornaam String
+     * @param gebruikersnaam String
+     * @param wachtwoord String
+     * @param wachtwoordBevestiging String
      */
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {

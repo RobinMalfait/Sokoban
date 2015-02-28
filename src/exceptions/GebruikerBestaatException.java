@@ -12,7 +12,7 @@ public class GebruikerBestaatException extends RuntimeException
     
     /**
      * 
-     * @param message 
+     * @param message String
      */
     public GebruikerBestaatException(String message)
     {
@@ -21,8 +21,8 @@ public class GebruikerBestaatException extends RuntimeException
 
     /**
      * 
-     * @param message
-     * @param cause 
+     * @param message String
+     * @param cause Throwable
      */
     public GebruikerBestaatException(String message, Throwable cause)
     {
@@ -31,7 +31,7 @@ public class GebruikerBestaatException extends RuntimeException
 
     /**
      * 
-     * @param cause 
+     * @param cause Throwable
      */
     public GebruikerBestaatException(Throwable cause)
     {
@@ -40,10 +40,10 @@ public class GebruikerBestaatException extends RuntimeException
 
     /**
      * 
-     * @param message
-     * @param cause
-     * @param enableSuppression
-     * @param writableStackTrace 
+     * @param message String
+     * @param cause Throwable
+     * @param enableSuppression boolean
+     * @param writableStackTrace boolean
      */
     public GebruikerBestaatException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
     {

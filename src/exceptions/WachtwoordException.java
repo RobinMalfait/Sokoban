@@ -12,7 +12,7 @@ public class WachtwoordException extends RuntimeException
     
     /**
      * 
-     * @param message 
+     * @param message String
      */
     public WachtwoordException(String message)
     {
@@ -21,8 +21,8 @@ public class WachtwoordException extends RuntimeException
 
     /**
      * 
-     * @param message
-     * @param cause 
+     * @param message String
+     * @param cause Throwable
      */
     public WachtwoordException(String message, Throwable cause)
     {
@@ -31,7 +31,7 @@ public class WachtwoordException extends RuntimeException
 
     /**
      * 
-     * @param cause 
+     * @param cause Throwable
      */
     public WachtwoordException(Throwable cause)
     {
@@ -40,10 +40,10 @@ public class WachtwoordException extends RuntimeException
 
     /**
      * 
-     * @param message
-     * @param cause
-     * @param enableSuppression
-     * @param writableStackTrace 
+     * @param message String
+     * @param cause Throwable
+     * @param enableSuppression boolean
+     * @param writableStackTrace boolean
      */
     public WachtwoordException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace)
     {

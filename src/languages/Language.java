@@ -12,19 +12,21 @@ abstract public class Language
     protected final Map<String, String> languages = new HashMap<>();
     
     /**
+     * Verkrijg de value voor een bepaalde key.
      * 
-     * @param index
-     * @return 
+     * @param key String
+     * @return String
      */
-    public String get(String index)
+    public String get(String key)
     {
-        return this.languages.get(index);
+        return this.languages.get(key);
     }
     
     /**
+     * Map een key aan een value.
      * 
-     * @param key
-     * @param value 
+     * @param key String
+     * @param value String
      */
     public void map(String key, String value)
     {

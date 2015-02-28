@@ -41,7 +41,7 @@ abstract class Connectie
      * Get a connection.
      * 
      * @return Connection
-     * @throws SQLException 
+     * @throws SQLException SQLException
      */
     public Connection getConnection() throws SQLException
     {

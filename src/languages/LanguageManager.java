@@ -20,8 +20,9 @@ public class LanguageManager
     }
     
     /**
+     * Tel hoeveel talen er geregistreerd zijn.
      * 
-     * @return 
+     * @return int
      */
     public int countLanguages()
     {
@@ -29,8 +30,9 @@ public class LanguageManager
     }
 
     /**
+     * Voeg een taal toe.
      * 
-     * @param lang 
+     * @param lang Language
      */
     public void addLanguage(Language lang)
     {
@@ -38,8 +40,9 @@ public class LanguageManager
     }
 
     /**
+     * Verkrijg een lijst van keuzes.
      * 
-     * @return 
+     * @return String
      */
     public String getKeuzes()
     {
@@ -54,9 +57,10 @@ public class LanguageManager
     }
 
     /**
+     * Stel de huidige taal in.
      * 
-     * @param newLanguage
-     * @return 
+     * @param newLanguage String
+     * @return boolean
      */
     public boolean setLanguage(String newLanguage)
     {
@@ -73,13 +77,13 @@ public class LanguageManager
     }
 
     /**
-     * 
-     * @param index
-     * @return 
+     * Verkrijg de value voor een bepaalde key.
+     * @param key String
+     * @return String
      */
-    public String get(String index)
+    public String get(String key)
     {
-        return this.language.get(index);
+        return this.language.get(key);
     }
 
 }

@@ -14,8 +14,8 @@ public class SpelerMapper extends Mapper
     /**
      * Geef een speler terug.
      * 
-     * @param gebruikersnaam
-     * @return 
+     * @param gebruikersnaam String
+     * @return Speler | null
      */
     public Speler geefSpeler(String gebruikersnaam)
     {
@@ -29,7 +29,6 @@ public class SpelerMapper extends Mapper
                 return spelers.get(0);
             }
             
-            return null;            
         } catch (SQLException ex)
         {
             Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -39,8 +38,9 @@ public class SpelerMapper extends Mapper
     }
 
     /**
+     * Geef een lijst van spelers terug.
      * 
-     * @return 
+     * @return List&lt;Speler&gt;
      */
     public List<Speler> geefSpelers()
     {
@@ -58,8 +58,9 @@ public class SpelerMapper extends Mapper
     }
     
     /**
+     * Voeg een speler toe aan de database;
      * 
-     * @param speler 
+     * @param speler Speler
      */
     public void addSpeler(Speler speler)
     {
@@ -78,9 +79,10 @@ public class SpelerMapper extends Mapper
     }
     
     /**
+     * Verkrijg een lijst van spelers.
      * 
-     * @param rs
-     * @return
+     * @param rs ResultSet
+     * @return  List&lt;Speler&gt;
      * @throws SQLException 
      */
     private List<Speler> verkrijgSpelers(ResultSet rs) throws SQLException

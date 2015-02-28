@@ -10,8 +10,9 @@ abstract class Mapper extends Connectie
     /**
      * Execute a select query.
      * 
-     * @param selectQuery
-     * @return 
+     * @param selectQuery String
+     * @return ResultSet
+     * @throws SQLException SQLException
      */
     public ResultSet selectQuery(String selectQuery) throws SQLException
     {
@@ -21,10 +22,10 @@ abstract class Mapper extends Connectie
     /**
      * Execute a select query with params.
      * 
-     * @param selectQuery
-     * @param args
-     * @return
-     * @throws SQLException 
+     * @param selectQuery String
+     * @param args Object...
+     * @return ResultSet
+     * @throws SQLException SQLException
      */
     public ResultSet selectQuery(String selectQuery, Object... args) throws SQLException
     {
@@ -41,9 +42,9 @@ abstract class Mapper extends Connectie
     /**
      * Execute an insert query.
      * 
-     * @param insertQuery
-     * @param args
-     * @throws SQLException 
+     * @param insertQuery String
+     * @param args Object...
+     * @throws SQLException SQLException
      */
     public void insertQuery(String insertQuery, Object... args) throws SQLException
     {
@@ -53,9 +54,9 @@ abstract class Mapper extends Connectie
     /**
      * Executte an update query.
      * 
-     * @param updateQuery
-     * @param args
-     * @throws SQLException 
+     * @param updateQuery String
+     * @param args Object...
+     * @throws SQLException SQLException
      */
     public void updateQuery(String updateQuery, Object... args) throws SQLException
     {
@@ -65,9 +66,9 @@ abstract class Mapper extends Connectie
     /**
      * Execute a delete query.
      * 
-     * @param deleteQuery
-     * @param args
-     * @throws SQLException 
+     * @param deleteQuery String
+     * @param args Object...
+     * @throws SQLException SQLException
      */
     public void deleteQuery(String deleteQuery, Object... args) throws SQLException
     {
@@ -77,9 +78,9 @@ abstract class Mapper extends Connectie
     /**
      * Execute a query.
      * 
-     * @param query
-     * @param args
-     * @throws SQLException 
+     * @param query String
+     * @param args Object...
+     * @throws SQLException SQLException
      */
     private void executeQuery(String query, Object... args) throws SQLException
     {

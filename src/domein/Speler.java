@@ -12,11 +12,11 @@ public class Speler
     private String wachtwoord;
 
     /**
-     * Create a Speler object.
+     * Maak een nieuw Speler object.
      *
-     * @param naam
-     * @param voornaam
-     * @param gebruikersnaam
+     * @param naam String
+     * @param voornaam String
+     * @param gebruikersnaam String
      */
     public Speler(String naam, String voornaam, String gebruikersnaam)
     {
@@ -26,12 +26,12 @@ public class Speler
     }
 
     /**
-     * Create a Speler object.
+     * Maak een nieuw Speler object.
      *
-     * @param naam
-     * @param voornaam
-     * @param gebruikersnaam
-     * @param wachtwoord
+     * @param naam String
+     * @param voornaam String
+     * @param gebruikersnaam String
+     * @param wachtwoord String
      */
     public Speler(String naam, String voornaam, String gebruikersnaam, String wachtwoord)
     {
@@ -41,13 +41,13 @@ public class Speler
     }
 
     /**
-     * Create a Speler object.
+     * Maak een nieuw Speler object.
      *
-     * @param id
-     * @param naam
-     * @param voornaam
-     * @param gebruikersnaam
-     * @param wachtwoord
+     * @param id int
+     * @param naam String
+     * @param voornaam String
+     * @param gebruikersnaam String
+     * @param wachtwoord String
      */
     public Speler(int id, String naam, String voornaam, String gebruikersnaam, String wachtwoord)
     {
@@ -57,8 +57,9 @@ public class Speler
     }
 
     /**
-     *
-     * @param id
+     * Stel het id in.
+     * 
+     * @param id int
      */
     public void setId(int id)
     {
@@ -66,8 +67,9 @@ public class Speler
     }
 
     /**
-     *
-     * @param naam
+     * Stel de naam in.
+     * 
+     * @param naam String
      */
     public void setNaam(String naam)
     {
@@ -75,8 +77,9 @@ public class Speler
     }
 
     /**
-     *
-     * @param voornaam
+     * Stel de voornaam in.
+     * 
+     * @param voornaam String
      */
     public void setVoornaam(String voornaam)
     {
@@ -84,8 +87,9 @@ public class Speler
     }
 
     /**
-     *
-     * @param gebruikersnaam
+     * Stel de gebruikersnaam in.
+     * 
+     * @param gebruikersnaam String
      */
     public void setGebruikersnaam(String gebruikersnaam)
     {
@@ -96,8 +100,9 @@ public class Speler
     }
 
     /**
-     *
-     * @param wachtwoord
+     * Stel het wachtwoord in.
+     * 
+     * @param wachtwoord String
      */
     public void setWachtwoord(String wachtwoord)
     {
@@ -108,7 +113,8 @@ public class Speler
     }
 
     /**
-     *
+     * Verkrijg het id van de speler.
+     * 
      * @return int
      */
     public int getId()
@@ -117,7 +123,8 @@ public class Speler
     }
 
     /**
-     *
+     * Verkrijg de naam van de speler.
+     * 
      * @return String
      */
     public String getNaam()
@@ -126,7 +133,8 @@ public class Speler
     }
 
     /**
-     *
+     * Verkrijg de voornaam van de speler.
+     * 
      * @return String
      */
     public String getVoornaam()
@@ -135,7 +143,8 @@ public class Speler
     }
 
     /**
-     *
+     * Verkrijg de gebruikersnaam van de speler.
+     * 
      * @return String
      */
     public String getGebruikersnaam()
@@ -144,7 +153,8 @@ public class Speler
     }
 
     /**
-     *
+     * Verkrijg het wachtwoord van de speler.
+     * 
      * @return String
      */
     public String getWachtwoord()
@@ -153,7 +163,8 @@ public class Speler
     }
 
     /**
-     *
+     * Transformeer het speler object naar een String.
+     * 
      * @return String
      */
     @Override

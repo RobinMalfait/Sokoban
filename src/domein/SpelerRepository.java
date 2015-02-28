@@ -21,11 +21,11 @@ public class SpelerRepository
     }
 
     /**
+     * Zoek een speler via de gebruikersnaam en het wachtwoord.
      *
-     *
-     * @param gebruikersnaam
-     * @param wachtwoord
-     * @return
+     * @param gebruikersnaam String
+     * @param wachtwoord String
+     * @return Speler | null
      */
     public Speler zoekSpelerViaGebruikersnaamWachtwoord(String gebruikersnaam, String wachtwoord)
     {
@@ -37,8 +37,9 @@ public class SpelerRepository
     }
 
     /**
+     * Voeg een speler toe
      * 
-     * @param speler 
+     * @param speler Speler
      */
     public void voegToe(Speler speler)
     {
@@ -52,9 +53,10 @@ public class SpelerRepository
     }
     
     /**
+     * Controleer of er al een speler bestaat met deze gebruikersnaam.
      * 
-     * @param gebruikersnaam
-     * @return 
+     * @param gebruikersnaam String
+     * @return boolean
      */
 
     private boolean bestaatSpeler(String gebruikersnaam)
