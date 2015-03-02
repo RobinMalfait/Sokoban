@@ -114,6 +114,21 @@ public class LanguageTest
         assertEquals("Speler bob heeft een score van 900 punten", given);
     }
     
+    @Test
+    public void it_should_can_have_variables_in_1_side()
+    {
+        int x = 12;
+        
+        String given1 = this.language.choice("partial_variables", x,
+            "x", x
+        );
+        assertEquals("deel 12", given1);
+        
+        String given2 = this.language.choice("partial_variables", 1);
+        assertEquals("deel 1", given2);
+        
+    }
+    
     public class LanguageImpl extends Language
     {
         public LanguageImpl() 
@@ -124,6 +139,7 @@ public class LanguageTest
             map("multiple", "replace :foo and :bar");
             map("singular_plural", "singular|plural");
             map("punten", "Speler :speler heeft een score van :score punt|Speler :speler heeft een score van :score punten");
+            map("partial_variables", "deel 1|deel :x");
         }
     }
     
