@@ -10,6 +10,7 @@ public class Speler
     private String voornaam;
     private String gebruikersnaam;
     private String wachtwoord;
+    private boolean admin;
 
     /**
      * Maak een nieuw Speler object.
@@ -39,6 +40,22 @@ public class Speler
 
         this.setWachtwoord(wachtwoord);
     }
+    
+    /**
+     * Maak een nieuw Speler object.
+     *
+     * @param naam String
+     * @param voornaam String
+     * @param gebruikersnaam String
+     * @param wachtwoord String
+     * @param admin boolean
+     */
+    public Speler(String naam, String voornaam, String gebruikersnaam, String wachtwoord, boolean admin)
+    {
+        this(naam, voornaam, gebruikersnaam, wachtwoord);
+
+        this.setAdmin(admin);
+    }
 
     /**
      * Maak een nieuw Speler object.
@@ -48,10 +65,11 @@ public class Speler
      * @param voornaam String
      * @param gebruikersnaam String
      * @param wachtwoord String
+     * @param admin boolean
      */
-    public Speler(int id, String naam, String voornaam, String gebruikersnaam, String wachtwoord)
+    public Speler(int id, String naam, String voornaam, String gebruikersnaam, String wachtwoord, boolean admin)
     {
-        this(naam, voornaam, gebruikersnaam, wachtwoord);
+        this(naam, voornaam, gebruikersnaam, wachtwoord, admin);
 
         this.setId(id);
     }
@@ -113,6 +131,16 @@ public class Speler
     }
 
     /**
+     * 
+     * @param admin boolean
+     */
+    public void setAdmin(boolean admin)
+    {
+        this.admin = admin;
+    }
+    
+
+    /**
      * Verkrijg het id van de speler.
      * 
      * @return int
@@ -163,6 +191,15 @@ public class Speler
     }
 
     /**
+     * 
+     * @return boolean
+     */
+    public boolean isAdmin()
+    {
+        return admin;
+    }
+
+    /**
      * Transformeer het speler object naar een String.
      * 
      * @return String
@@ -170,7 +207,12 @@ public class Speler
     @Override
     public String toString()
     {
-        return String.format("Speler(%d, %s, %s, %s)%n", this.id, this.gebruikersnaam, this.voornaam, this.naam);
+        return String.format("Speler(%d, %s, %s, %s, %s)%n", 
+                this.id, 
+                this.gebruikersnaam, 
+                this.voornaam, 
+                this.naam,
+                (admin ? "Admin" : "Geen admin"));
     }
 
 }
