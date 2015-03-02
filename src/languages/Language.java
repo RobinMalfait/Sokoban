@@ -23,6 +23,31 @@ abstract public class Language
     }
     
     /**
+     * Verkrijg de value voor een bepaalde key, en vervang de variabelen.
+     * 
+     * @param key
+     * @param replacements
+     * @return 
+     */
+    public String get(String key, Object... replacements)
+    {
+        String data = this.get(key);
+        
+        if (replacements.length % 2 != 0) {
+            throw new IllegalArgumentException("Keys and values must be pairs.");
+        }
+        
+        for(int i = 0; i < replacements.length; i += 2)
+        {
+            String k = (String) replacements[i].toString();
+            String v = (String) replacements[i + 1].toString();
+            data = data.replace(":" + k, v);
+        }
+        
+        return data;
+    }
+    
+    /**
      * Map een key aan een value.
      * 
      * @param key String
