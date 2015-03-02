@@ -39,8 +39,8 @@ abstract public class Language
         
         for(int i = 0; i < replacements.length; i += 2)
         {
-            String k = (String) replacements[i].toString();
-            String v = (String) replacements[i + 1].toString();
+            String k = replacements[i].toString();
+            String v = replacements[i + 1].toString();
             data = data.replace(":" + k, v);
         }
         
