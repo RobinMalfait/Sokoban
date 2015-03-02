@@ -10,6 +10,7 @@ public class RegistreerApplicatie
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
         String naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging;
+        boolean admin;
         String[] huidigeSpeler;
 
         //ingeven van gegevens
@@ -30,22 +31,28 @@ public class RegistreerApplicatie
 
         System.out.print(lang.get("user.password.repeat") + "*: ");
         wachtwoordBevestiging = input.nextLine().trim();
+        
+        System.out.print(lang.get("user.admin") + " (0 of 1): ");
+        admin = input.nextBoolean();
 
         //controle ingevoerde gegevens
         if (gebruikersnaam.isEmpty() || wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty())
         {
             System.out.println("Gelieve de verplichte velden in te vullen (*)!");
-        } else if ( ! wachtwoord.equals(wachtwoordBevestiging))
+        } 
+        else if ( ! wachtwoord.equals(wachtwoordBevestiging))
         {
             System.out.println("Het wachtwoord en de wachtwoordbevestiging komen niet overeen.");
         }
         else
         {
-            dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
+            dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging, admin);
             huidigeSpeler = dc.geefHuidigeSpeler();
             
+            System.out.print("Nieuwe speler toegevoegd: ");
+            
             for (String element : huidigeSpeler)
-                System.out.println(element);
+                System.out.print(element + ", ");
         }
 
     }
