@@ -1,6 +1,6 @@
 package domein;
 
-import exceptions.WachtwoordBevestigingNietCorrectException;
+import exceptions.WachtwoordException;
 import security.BCrypt;
 
 public class DomeinController
@@ -62,8 +62,8 @@ public class DomeinController
 
         String[] spelerString = new String[3];
 
-        spelerString[0] = huidigeSpeler.getNaam();
-        spelerString[1] = huidigeSpeler.getVoornaam();
+        spelerString[0] = huidigeSpeler.getVoornaam();
+        spelerString[1] = huidigeSpeler.getNaam();
         spelerString[2] = huidigeSpeler.getGebruikersnaam();
 
         return spelerString;
@@ -83,7 +83,7 @@ public class DomeinController
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging, boolean admin)
     {
         if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
-            throw new WachtwoordBevestigingNietCorrectException();
+            throw new WachtwoordException("Het wachtwoord en de wachtwoordBevestiging komen niet overeen.");
         }
         
         wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
