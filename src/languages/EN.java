@@ -13,6 +13,7 @@ public class EN extends Language
         map("user.firstname",           "first name");
         map("user.password",            "password");
         map("user.password.repeat",     "repeat password");
+        map("user.admin",               "administrator");
         map("user.logged.in",           "logged in");
         map("user.logged.out",          "logged out");
         map("credentials.wrong",        "wrong credentials");

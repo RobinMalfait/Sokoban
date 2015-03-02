@@ -13,6 +13,7 @@ public class FR extends Language
         map("user.firstname",           "");
         map("user.password",            "");
         map("user.password.repeat",     "");
+        map("user.admin",               "");
         map("user.logged.in",           "");
         map("user.logged.out",          "");
         map("credentials.wrong",        "");
