@@ -31,7 +31,7 @@ public class SpelerRepository
     {
         // Speler zoeken uit de SpelerMapper
         Speler speler = this.spelerMapper.geefSpeler(gebruikersnaam);
-
+        
         // Controleer of het wachtwoord van de speler overeenkomt met die uit de parameter
         return BCrypt.checkpw(wachtwoord, speler.getWachtwoord()) ? speler : null;
     }
