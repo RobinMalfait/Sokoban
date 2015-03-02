@@ -46,14 +46,14 @@ public class RegistreerApplicatie
         }
         else
         {
+            input.nextLine();
+
             dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging, admin);
             huidigeSpeler = dc.geefHuidigeSpeler();
             
-                System.out.printf("%nNieuwe speler toegevoegd: %nvoornaam: %s, %nnaam: %s, %ngebruikersnaam: %s%n", huidigeSpeler[0], huidigeSpeler[1], huidigeSpeler[2]);
+            System.out.printf("%nNieuwe speler toegevoegd: %nvoornaam: %s%nnaam: %s%ngebruikersnaam: %s%n", huidigeSpeler[0], huidigeSpeler[1], huidigeSpeler[2]);
         }
         
-        // Buffer leegmaken
-        input.nextLine();
 
     }
 }
