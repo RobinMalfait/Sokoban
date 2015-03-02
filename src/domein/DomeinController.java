@@ -78,8 +78,9 @@ public class DomeinController
      * @param gebruikersnaam String
      * @param wachtwoord String
      * @param wachtwoordBevestiging String
+     * @param admin boolean
      */
-    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
+    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging, boolean admin)
     {
         if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
             throw new WachtwoordBevestigingNietCorrectException();
@@ -87,7 +88,7 @@ public class DomeinController
         
         wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
 
-        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);        
+        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord, admin);        
         setHuidigeSpeler(nieuweSpeler);
         spelerRepository.voegToe(nieuweSpeler);  
     }
