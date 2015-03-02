@@ -62,7 +62,7 @@ public class LanguageTest
     {
         this.language.get("multiple",
             "foo", "a",
-            "bar"
+            "bar" // Missing replacement, should throw an error!
         );
     }
     
