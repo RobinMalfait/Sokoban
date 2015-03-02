@@ -66,11 +66,12 @@ public class SpelerMapper extends Mapper
     {
         try {
             
-            this.insertQuery("INSERT INTO Speler (gebruikersnaam, wachtwoord, naam, voornaam) VALUES (?, ?, ?, ?)",
+            this.insertQuery("INSERT INTO Speler (gebruikersnaam, wachtwoord, naam, voornaam, admin) VALUES (?, ?, ?, ?, ?)",
                 speler.getGebruikersnaam(),
                 speler.getWachtwoord(),
                 speler.getNaam(),
-                speler.getVoornaam()
+                speler.getVoornaam(),
+                speler.isAdmin()
             );
             
         } catch (SQLException ex) {
@@ -96,8 +97,9 @@ public class SpelerMapper extends Mapper
             String voornaam = rs.getString("voornaam");
             String gebruikersnaam = rs.getString("gebruikersnaam");
             String wachtwoord = rs.getString("wachtwoord");
+            boolean admin = rs.getBoolean("admin");
 
-            spelers.add(new Speler(id, naam, voornaam, gebruikersnaam, wachtwoord));
+            spelers.add(new Speler(id, naam, voornaam, gebruikersnaam, wachtwoord, admin));
         }
         
         return spelers;
