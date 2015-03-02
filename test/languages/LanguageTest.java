@@ -29,32 +29,32 @@ public class LanguageTest
     @Test 
     public void it_should_replace_content()
     {
-        String expected = this.language.get("test", 
-            "name", "robin"
+        String given = this.language.get("test", 
+            "name", "demian"
         );
         
-        assertEquals("test robin", expected);
+        assertEquals("test demian", given);
     }
     
     @Test 
     public void it_should_replace_multiple_variables()
     {        
-        String expected = this.language.get("multiple", 
+        String given = this.language.get("multiple", 
             "foo", "a",
             "bar", "b"
         );
         
-        assertEquals("replace a and b", expected);
+        assertEquals("replace a and b", given);
     }
     
     @Test
     public void it_should_convert_int_to_string()
     {
-        String expected = this.language.get("test", 
+        String given = this.language.get("test", 
             "name", 123
         );
         
-        assertEquals("test 123", expected);
+        assertEquals("test 123", given);
     }
     
     @Test(expected=IllegalArgumentException.class)
@@ -66,6 +66,54 @@ public class LanguageTest
         );
     }
     
+    @Test
+    public void it_should_give_a_singular_response()
+    {
+        String given = this.language.choice("singular_plural", 1);
+        
+        assertEquals("singular", given);
+    }
+    
+    @Test 
+    public void it_should_give_a_plural_response()
+    {
+        String given = this.language.choice("singular_plural", 42);
+        
+        assertEquals("plural", given);
+    }
+           
+    @Test 
+    public void it_should_give_a_plural_response_for_zero()
+    {
+        String given = this.language.choice("singular_plural", 0);
+        
+        assertEquals("plural", given);
+    }
+    
+    @Test
+    public void it_should_give_a_singular_response_with_replacements()
+    {
+        int punten = 1;
+        String given = this.language.choice("punten", punten,
+            "score", punten,
+            "speler", "Bram"
+        );
+        
+        assertEquals("Speler Bram heeft een score van 1 punt", given);
+    }
+    
+    @Test
+    public void it_should_give_a_plural_response_with_replacements()
+    {
+        int punten = 900;
+        String given = this.language.choice("punten", punten,
+            "score", punten,
+            "speler", "bob"
+        );
+        
+        assertEquals("Speler bob heeft een score van 900 punten", given);
+    }
+    
     public class LanguageImpl extends Language
     {
         public LanguageImpl() 
@@ -74,6 +122,8 @@ public class LanguageTest
             map("bar", "baz");
             map("test", "test :name");
             map("multiple", "replace :foo and :bar");
+            map("singular_plural", "singular|plural");
+            map("punten", "Speler :speler heeft een score van :score punt|Speler :speler heeft een score van :score punten");
         }
     }
     
