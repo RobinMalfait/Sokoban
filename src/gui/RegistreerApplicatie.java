@@ -36,13 +36,17 @@ public class RegistreerApplicatie
         admin = input.nextBoolean();
 
         //controle ingevoerde gegevens
-        if (gebruikersnaam.isEmpty() || wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty())
+        if (gebruikersnaam.isEmpty())
         {
-            System.out.println("Gelieve de verplichte velden in te vullen (*)!");
+            System.out.print(lang.get("mandatory.fields.username"));
         } 
+        
+         //|| wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty()
+        
         else if ( ! wachtwoord.equals(wachtwoordBevestiging))
         {
-            System.out.println("Het wachtwoord en de wachtwoordbevestiging komen niet overeen.");
+            System.out.print(lang.get("compared.passwords"));
+            
         }
         else
         {
