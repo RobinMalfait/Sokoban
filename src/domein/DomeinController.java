@@ -11,7 +11,7 @@ public class DomeinController
 
  
     /**
-     * 
+     * Maak een DomeinController-object aan
      */
     public DomeinController()
     {
@@ -80,15 +80,19 @@ public class DomeinController
      * @param wachtwoordBevestiging String
      * @param admin boolean
      */
-    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging, boolean admin)
+    public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
         if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
             throw new WachtwoordException("Het wachtwoord en de wachtwoordBevestiging komen niet overeen.");
         }
         
+        if(wachtwoord.length() < 8 || !wachtwoord.matches(".*[A-Z].*") || !wachtwoord.matches(".*[a-z].*") || !wachtwoord.matches(".*[0-9].*"))
+            throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
+            
+        
         wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
 
-        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord, admin);        
+        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);        
         setHuidigeSpeler(nieuweSpeler);
         spelerRepository.voegToe(nieuweSpeler);  
     }
