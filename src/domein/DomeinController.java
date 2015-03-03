@@ -2,14 +2,16 @@ package domein;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
+import java.util.List;
 import security.BCrypt;
 
 public class DomeinController
 {
 
     private final SpelerRepository spelerRepository;
+    private final SpelbordRepository spelbordRepository;
     private Speler huidigeSpeler;
-
+    private Spel spel;
  
     /**
      * Maak een DomeinController-object aan
@@ -17,6 +19,7 @@ public class DomeinController
     public DomeinController()
     {
         spelerRepository = new SpelerRepository();
+        spelbordRepository = new SpelbordRepository();
     }
 
     /**
@@ -100,9 +103,14 @@ public class DomeinController
         spelerRepository.voegToe(nieuweSpeler); 
     }
     
-    public void speelSpel(String spel, String spelbord)
+    public void speelSpel()
     {
+        this.spel = new Spel(0); // De 0 slaat op het eerste Spelbord       
+    }
         
+    public void toonSpelbord()
+    {
+        spel.toonSpelbord();
     }
     
 }
