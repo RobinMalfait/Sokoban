@@ -18,11 +18,12 @@ USE `p1g03` ;
 -- Table `p1g03`.`speler`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `p1g03`.`Speler` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `gebruikersnaam` VARCHAR(30) NOT NULL,
-  `wachtwoord` VARCHAR(60) NOT NULL,
-  `naam` VARCHAR(30) NULL COMMENT '	',
-  `voornaam` VARCHAR(30) NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `voornaam` varchar(30) DEFAULT NULL,
+  `naam` varchar(30) DEFAULT NULL COMMENT '	',
+  `gebruikersnaam` varchar(30) NOT NULL,
+  `wachtwoord` varchar(60) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
