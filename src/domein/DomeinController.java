@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
 import security.BCrypt;
 
@@ -82,19 +83,21 @@ public class DomeinController
      */
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
-        if ( ! wachtwoord.equals(wachtwoordBevestiging)) {
+        if ( !wachtwoord.equals(wachtwoordBevestiging))
             throw new WachtwoordException("Het wachtwoord en de wachtwoordBevestiging komen niet overeen.");
-        }
+        
+        //controle DR Nieuwe Speler
+        if(gebruikersnaam.length() < 8)
+            throw new GebruikersnaamException("De gebruikersnaam moet minstens 8 karakters lang zijn.");
         
         if(wachtwoord.length() < 8 || !wachtwoord.matches(".*[A-Z].*") || !wachtwoord.matches(".*[a-z].*") || !wachtwoord.matches(".*[0-9].*"))
             throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
-            
-        
+
         wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
 
-        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);        
+        Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
         setHuidigeSpeler(nieuweSpeler);
-        spelerRepository.voegToe(nieuweSpeler);  
+        spelerRepository.voegToe(nieuweSpeler); 
     }
     
 }

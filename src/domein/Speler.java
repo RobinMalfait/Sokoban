@@ -24,6 +24,7 @@ public class Speler
         this.setNaam(naam);
         this.setVoornaam(voornaam);
         this.setGebruikersnaam(gebruikersnaam);
+        this.setAdmin(false);
     }
 
     /**
@@ -39,6 +40,7 @@ public class Speler
         this(naam, voornaam, gebruikersnaam);
 
         this.setWachtwoord(wachtwoord);
+        this.setAdmin(false);
     }
     
     /**
@@ -111,8 +113,8 @@ public class Speler
      */
     public void setGebruikersnaam(String gebruikersnaam)
     {
-        if (gebruikersnaam.length() < 8 || gebruikersnaam.length() > 30)
-            throw new GebruikersnaamException("De gebruikersnaam voldoet niet aan de eisen.");
+        if (gebruikersnaam.length() < 8)
+            throw new GebruikersnaamException("De gebruikersnaam moet minstens 8 karakters lang zijn.");
 
         this.gebruikersnaam = gebruikersnaam;
     }
@@ -123,10 +125,7 @@ public class Speler
      * @param wachtwoord String
      */
     public void setWachtwoord(String wachtwoord)
-    {
-        if (wachtwoord.length() < 8)
-            throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
-
+    {        
         this.wachtwoord = wachtwoord;
     }
 
@@ -207,12 +206,12 @@ public class Speler
     @Override
     public String toString()
     {
-        return String.format("Speler(%d, %s, %s, %s, %s)%n", 
+        return String.format("Speler(id: %d, gebruikersnaam: %s, voornaam: %s, naam: %s, %s)%n", 
                 this.id, 
                 this.gebruikersnaam, 
                 this.voornaam, 
                 this.naam,
-                (admin ? "Admin" : "Geen admin"));
+                (admin ? "admin" : "geen admin"));
     }
 
 }
