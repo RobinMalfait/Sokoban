@@ -32,8 +32,6 @@ public class RegistreerApplicatie
         System.out.print(lang.get("user.password.repeat") + "*: ");
         wachtwoordBevestiging = input.nextLine().trim();
         
-        System.out.print(lang.get("user.admin") + " (true or false): ");
-        admin = input.nextBoolean();
 
         //controle ingevoerde gegevens
         if (gebruikersnaam.isEmpty())
