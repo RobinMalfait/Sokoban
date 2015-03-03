@@ -100,4 +100,9 @@ public class DomeinController
         spelerRepository.voegToe(nieuweSpeler); 
     }
     
+    public void speelSpel(String spel, String spelbord)
+    {
+        
+    }
+    
 }
