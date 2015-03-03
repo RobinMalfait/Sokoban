@@ -33,6 +33,61 @@ abstract public class Language
     {
         String data = this.get(key);
         
+        return this.replaceData(data, replacements);
+    }
+    
+    /**
+     * Choose between singular and plural
+     * 
+     * @param key
+     * @param count
+     * @return 
+     */
+    public String choice(String key, int count)
+    {
+        String data = this.get(key);
+        
+        return this.choose(data, count);
+    }
+
+    /**
+     * Choose between singular and plural + replacements
+     * 
+     * @param key
+     * @param count
+     * @param replacements
+     * @return 
+     */
+    public String choice(String key, int count, Object... replacements)
+    {
+        String data = this.get(key);
+        
+        data = this.choose(data, count);
+        
+        return this.replaceData(data, replacements);
+    }
+    
+    /**
+     * Map een key aan een value.
+     * 
+     * @param key String
+     * @param value String
+     */
+    public void map(String key, String value)
+    {
+        this.languages.put(key, value);
+    }
+    
+    /**
+     * Replace data in a given String
+     * 
+     * @param data
+     * @param replacements
+     * @return
+     * @throws IllegalArgumentException 
+     */
+    private String replaceData(String data, Object[] replacements) throws IllegalArgumentException
+    {
         if (replacements.length % 2 != 0) {
             throw new IllegalArgumentException("Keys and values must be pairs.");
         }
@@ -47,14 +102,14 @@ abstract public class Language
         return data;
     }
     
-    /**
-     * Map een key aan een value.
-     * 
-     * @param key String
-     * @param value String
-     */
-    public void map(String key, String value)
+    private String choose(String data, int count)
     {
-        this.languages.put(key, value);
+        String parts[] = data.split("\\|");
+        
+        if (count == 1) {
+            return parts[0];
+        }
+        
+        return parts[1];
     }
 }
