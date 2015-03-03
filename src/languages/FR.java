@@ -8,16 +8,18 @@ public class FR extends Language
 {
     public FR()
     {
-        map("user.username",            "");
-        map("user.name",                "");
-        map("user.firstname",           "");
-        map("user.password",            "");
-        map("user.password.repeat",     "");
-        map("user.admin",               "");
-        map("user.logged.in",           "");
-        map("user.logged.out",          "");
-        map("credentials.wrong",        "");
-        map("sign.in",                  "");
-        map("sign.up",                  "");       
+        map("user.username",            "nom d'utilisateur");
+        map("user.name",                "nom");
+        map("user.firstname",           "prénom");
+        map("user.password",            "mot d'acces");
+        map("user.password.repeat",     "repete le mot d'acces");
+        map("user.admin",               "administrateur");
+        map("user.logged.in",           "connecté");
+        map("user.logged.out",          "déconnecté");
+        map("credentials.wrong",        "mal informations d'identification");
+        map("sign.in",                  "se connecter");
+        map("sign.up",                  "s'inscrire");       
     }
 }
+
+
