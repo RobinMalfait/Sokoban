@@ -54,8 +54,13 @@ public class Spelbord
     
     public String[][] toonSpelbord()
     {
-        // 
+        return null;
     }
-    
+
+    public List<Vak> getVakken()
+    {
+        return vakken;
+    }
+
     
 }

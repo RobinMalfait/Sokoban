@@ -21,4 +21,14 @@ public class Spel
     {
         return spelbord.toonSpelbord();
     }
+
+    public Spelbord getSpelbord()
+    {
+        return spelbord;
+    }
+
+    public void setSpelbord(Spelbord spelbord)
+    {
+        this.spelbord = spelbord;
+    }
 }

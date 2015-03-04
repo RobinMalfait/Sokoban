@@ -2,6 +2,7 @@ package domein;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
+import exceptions.GebruikerBestaatException;
 import java.util.List;
 import security.BCrypt;
 
@@ -82,7 +83,6 @@ public class DomeinController
      * @param gebruikersnaam String
      * @param wachtwoord String
      * @param wachtwoordBevestiging String
-     * @param admin boolean
      */
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
@@ -105,12 +105,14 @@ public class DomeinController
     
     public void speelSpel()
     {
-        this.spel = new Spel(0); // De 0 slaat op het eerste Spelbord       
+        this.setSpel(new Spel(0)); // De 0 slaat op het eerste Spelbord      
+        //spel.toonSpelbord();
     }
-        
-    public void toonSpelbord()
+
+    public void setSpel(Spel spel)
     {
-        spel.toonSpelbord();
+        this.spel = spel;
     }
+    
     
 }

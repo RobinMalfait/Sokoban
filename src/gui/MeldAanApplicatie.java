@@ -10,7 +10,7 @@ import languages.LanguageManager;
  */
 public class MeldAanApplicatie 
 {
-    public void start(DomeinController domeinController, Scanner input, LanguageManager lang)
+    public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {   
         String gebruikersnaam, wachtwoord;
         
@@ -22,13 +22,14 @@ public class MeldAanApplicatie
         wachtwoord = input.next().trim();
         
         //controle inloggegevens
-        if(domeinController.meldAan(gebruikersnaam, wachtwoord))
+        if(dc.meldAan(gebruikersnaam, wachtwoord))
         {
             System.out.println(lang.get("user.logged.in"));
+            new speelSpelApplicatie().start(dc, input, lang); 
         }
         else {
             System.out.println(lang.get("credentials.wrong"));
         } 
-       
+        
     }
 }
