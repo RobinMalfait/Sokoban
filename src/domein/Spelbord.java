@@ -52,9 +52,21 @@ public class Spelbord
         vakken = vakMapper.geefVakken(spelbordId);
     }
     
-    public String[][] toonSpelbord()
+    public String toonSpelbord()
     {
-        return null;
+        geefVakken();
+        String res = "";
+        for(Vak vak: vakken)
+        {
+            if(vak instanceof Muur)
+            {
+                res += String.format("M");
+            }
+            else {
+                res += String.format("O");
+            }
+        }
+        return res;
     }
 
     public List<Vak> getVakken()

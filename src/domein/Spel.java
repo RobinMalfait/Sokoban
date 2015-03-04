@@ -17,7 +17,7 @@ public class Spel
         spelbord = spelbordRepository.kiesSpelbord(spelbordnummer);
     }
     
-    public String[][] toonSpelbord()
+    public String toonSpelbord()
     {
         return spelbord.toonSpelbord();
     }

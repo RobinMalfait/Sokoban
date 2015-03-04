@@ -114,5 +114,9 @@ public class DomeinController
         this.spel = spel;
     }
     
+    public String toonSpelbord()
+    {
+        return spel.toonSpelbord()+"test";
+    }
     
 }

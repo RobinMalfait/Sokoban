@@ -17,11 +17,11 @@ public class speelSpelApplicatie
 {
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        String[] spelerString = dc.geefHuidigeSpeler();
         
         System.out.printf("Welkom %s%n", dc.geefHuidigeSpeler()[0]);
         System.out.printf("U zult nu een spel spelen.");
         
         dc.speelSpel();
+        System.out.printf("%s", dc.toonSpelbord());
     }    
 }
