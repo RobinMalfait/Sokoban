@@ -54,10 +54,17 @@ public class Spelbord
     
     public String toonSpelbord()
     {
+        // Dit moet nog verbeterd worden. In een array enzo. Dit is om te testen.
         geefVakken();
         String res = "";
+        int x = 0;
         for(Vak vak: vakken)
         {
+            if(vak.getPosX() != x)
+            {
+                res += String.format("%n");
+                x++;
+            }
             if(vak instanceof Muur)
             {
                 res += String.format("M");

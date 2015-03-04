@@ -27,7 +27,7 @@ public class VakMapper extends Mapper
     {
         try 
         {
-             ResultSet rs = selectQuery("SELECT * FROM Item WHERE spelbord_id = ?", spelbordId);
+             ResultSet rs = selectQuery("SELECT * FROM Item WHERE spelbord_id = ? ORDER BY posX ASC, posY ASC", spelbordId);
              return creerVakken(rs);
         } 
         catch (SQLException ex)

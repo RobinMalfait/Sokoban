@@ -19,9 +19,9 @@ public class speelSpelApplicatie
     {
         
         System.out.printf("Welkom %s%n", dc.geefHuidigeSpeler()[0]);
-        System.out.printf("U zult nu een spel spelen.");
+        System.out.printf("U zult nu een spel spelen.%n");
         
         dc.speelSpel();
-        System.out.printf("%s", dc.toonSpelbord());
+        System.out.printf("%s%n", dc.toonSpelbord());
     }    
 }

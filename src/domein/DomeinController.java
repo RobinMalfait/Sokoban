@@ -116,7 +116,7 @@ public class DomeinController
     
     public String toonSpelbord()
     {
-        return spel.toonSpelbord()+"test";
+        return spel.toonSpelbord();
     }
     
 }
