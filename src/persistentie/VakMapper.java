@@ -56,6 +56,7 @@ public class VakMapper extends Mapper
                 case 2:                                     // Leeg Vak - Met Doel
                     vakken.add(new Toegankelijk(posX, posY, true));
                     break;                
+                // Nu nog of er een kist/speler op staat.
             }
         }
         return vakken;

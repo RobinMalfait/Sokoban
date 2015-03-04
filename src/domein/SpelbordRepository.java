@@ -30,9 +30,12 @@ public class SpelbordRepository
         return spelborden;
     }
     
-    public Spelbord geefSpelbord(int spelbordnummer)
+    public Spelbord kiesSpelbord(int spelbordnummer)
     {
         Spelbord spelbord = spelbordMapper.geefSpelbord(spelbordnummer);
+        if(spelbord == null)
+            throw new IllegalArgumentException("Het spelbod met opgegeven spelbordnummer bestond niet.");
+        
         return spelbord;
     }
 }

@@ -1,17 +1,18 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.List;
 import persistentie.VakMapper;
 
 public class Spelbord
 {
-    private final int spelbordId;
-    private String naam;
-    private boolean voltooid = false;
-    private int verplaatsingen = 0;
+    private final int spelbordId;       // Hebben we nodig om data uit de database te halen
+    private final String naam;          // Naam de van het Spelbord
+    private boolean voltooid = false;   // Al dan niet voltooid
+    private int verplaatsingen = 0;     // Het aantal verplatsingen
     
-    private final VakMapper vakMapper;
-    private List<Vak> vakken;
+    private final VakMapper vakMapper;  // Mapper om de vakken/items uit de database op te halen
+    private List<Vak> vakken;           // Een lijst van Vakken om de vakken/items bij te houden.
     
     
     public Spelbord(int spelbordId, String naam)
@@ -51,13 +52,9 @@ public class Spelbord
         vakken = vakMapper.geefVakken(spelbordId);
     }
     
-    public void toonSpelbord()
+    public String[][] toonSpelbord()
     {
-        String spelbord = "";
-        for(Vak vak: vakken)
-        {
-            // Hier een string van een Map voor de console ofz.
-        }
+        // 
     }
     
     
