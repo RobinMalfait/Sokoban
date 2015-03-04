@@ -1,10 +1,12 @@
 
 package domein;
 
+import java.util.List;
+
 public class Spel 
 {    
     private final SpelbordRepository spelbordRepository;
-    private Spelbord spelbord;
+    private Spelbord huidigSpelbord;
     
     public Spel(int spelbordnummer)
     {
@@ -12,23 +14,29 @@ public class Spel
         this.kiesSpelbord(spelbordnummer);
         
     }
+    
     public void kiesSpelbord(int spelbordnummer)
     {
-        spelbord = spelbordRepository.kiesSpelbord(spelbordnummer);
+        
     }
     
     public String toonSpelbord()
     {
-        return spelbord.toonSpelbord();
+        return huidigSpelbord.toonSpelbord();
     }
 
-    public Spelbord getSpelbord()
+    public Spelbord getHuidigSpelbord()
     {
-        return spelbord;
+        return huidigSpelbord;
     }
 
-    public void setSpelbord(Spelbord spelbord)
+    public void setHuidigSpelbord(Spelbord spelbord)
     {
-        this.spelbord = spelbord;
+        this.huidigSpelbord = spelbord;
+    }
+    
+    public List<Spelbord> geefSpelborden()
+    {
+        return null;
     }
 }

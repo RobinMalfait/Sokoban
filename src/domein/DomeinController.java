@@ -10,9 +10,9 @@ public class DomeinController
 {
 
     private final SpelerRepository spelerRepository;
-    private final SpelbordRepository spelbordRepository;
+    private final SpelRepository spelRepository;
     private Speler huidigeSpeler;
-    private Spel spel;
+    private Spel huidigSpel;
  
     /**
      * Maak een DomeinController-object aan
@@ -20,7 +20,7 @@ public class DomeinController
     public DomeinController()
     {
         spelerRepository = new SpelerRepository();
-        spelbordRepository = new SpelbordRepository();
+        spelRepository = new SpelRepository();
     }
 
     /**
@@ -105,18 +105,38 @@ public class DomeinController
     
     public void speelSpel()
     {
-        this.setSpel(new Spel(0)); // De 0 slaat op het eerste Spelbord      
+        this.setHuidigSpel(new Spel(0)); // De 0 slaat op het eerste Spelbord      
         //spel.toonSpelbord();
     }
 
-    public void setSpel(Spel spel)
+    private void setHuidigSpel(Spel spel)
     {
-        this.spel = spel;
+        this.huidigSpel = spel;
     }
     
     public String toonSpelbord()
     {
-        return spel.toonSpelbord();
+        return huidigSpel.toonSpelbord();
+    }
+    
+    public List<String> geefSpellen()
+    {
+        return null;
+    }
+    
+    public List<String> geefSpelborden()
+    {
+        return null;
+    }
+    
+    public void kiesSpel(int spelnummer)
+    {
+        this.huidigSpel = spelRepository.zoekSpel(spelnummer);
+    }
+    
+    public void kiesSpelbord(int spelbordnummer)
+    {
+        huidigSpel.kiesSpelbord(spelbordnummer);
     }
     
 }
