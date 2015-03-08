@@ -36,6 +36,11 @@ abstract class Connectie
      * Database Connection URL
      */
     private static final String JDBC_URL = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "?user=" + DB_USER + "&password=" + DB_PASS;
+    
+    /**
+     * A singleton connection
+     */
+    private static Connection connection = null;
 
     /**
      * Get a connection.
@@ -45,7 +50,11 @@ abstract class Connectie
      */
     public Connection getConnection() throws SQLException
     {
-        return DriverManager.getConnection(Connectie.JDBC_URL);
+        if (Connectie.connection == null) {
+            Connectie.connection = DriverManager.getConnection(Connectie.JDBC_URL);
+        }
+        
+        return Connectie.connection;
     }
     
 }
