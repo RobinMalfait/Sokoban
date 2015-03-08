@@ -27,19 +27,16 @@ public class DomeinController
      *
      * @param gebruikersnaam String
      * @param wachtwoord String
-     * @return boolean
      */
-    public boolean meldAan(String gebruikersnaam, String wachtwoord)
+    public void meldAan(String gebruikersnaam, String wachtwoord)
     {
         Speler speler = spelerRepository.zoekSpelerViaGebruikersnaamWachtwoord(gebruikersnaam, wachtwoord);
         
-        if (speler == null) {
-            return false;  
-        } else {
-             // Gebruiker gevonden, deze slaan we op in de domeincontroller.
-            this.setHuidigeSpeler(speler);
-            return true;
-        }
+        if (speler == null)
+            throw new WachtwoordException("De aanmeldgegevens zijn niet correct.");
+        
+        this.setHuidigeSpeler(speler);
+
     }
 
     /**
