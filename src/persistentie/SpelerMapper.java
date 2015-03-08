@@ -80,6 +80,24 @@ public class SpelerMapper extends Mapper
     }
     
     /**
+     * Verwijder een speler uit de database; (Voor tests)
+     * 
+     * @param speler Speler
+     */
+    public void deleteSpeler(Speler speler)
+    {
+        try {
+            
+            this.deleteQuery("DELETE FROM Speler WHERE gebruikersnaam = ?",
+                speler.getGebruikersnaam()
+            );
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
+    /**
      * Verkrijg een lijst van spelers.
      * 
      * @param rs ResultSet
