@@ -2,7 +2,6 @@ package domein;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
-import exceptions.GebruikerBestaatException;
 import java.util.List;
 import security.BCrypt;
 
