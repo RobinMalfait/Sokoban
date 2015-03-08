@@ -22,14 +22,11 @@ public class MeldAanApplicatie
         wachtwoord = input.next().trim();
         
         //controle inloggegevens
-        if(dc.meldAan(gebruikersnaam, wachtwoord))
-        {
-            System.out.println(lang.get("user.logged.in"));
-            new speelSpelApplicatie().start(dc, input, lang); 
-        }
-        else {
-            System.out.println(lang.get("credentials.wrong"));
-        } 
+        dc.meldAan(gebruikersnaam, wachtwoord);
+        
+        System.out.println(lang.get("user.logged.in"));
+        new speelSpelApplicatie().start(dc, input, lang); 
+        
         
     }
 }

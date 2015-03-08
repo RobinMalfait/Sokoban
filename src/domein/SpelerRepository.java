@@ -32,8 +32,13 @@ public class SpelerRepository
         // Speler zoeken uit de SpelerMapper
         Speler speler = this.spelerMapper.geefSpeler(gebruikersnaam);
         
+        // Als er geen speler gevonden werd in de repository
+        if(speler == null)
+            return null;
+        
         // Controleer of het wachtwoord van de speler overeenkomt met die uit de parameter
         return BCrypt.checkpw(wachtwoord, speler.getWachtwoord()) ? speler : null;
+        
     }
 
     /**
@@ -44,9 +49,7 @@ public class SpelerRepository
     public void voegToe(Speler speler)
     {
         if (bestaatSpeler(speler.getGebruikersnaam()))
-        {
             throw new GebruikerBestaatException("De gebruikersnaam is al in gebruik.");
-        }
 
         this.spelers.add(speler);
         this.spelerMapper.addSpeler(speler);

@@ -1,4 +1,4 @@
-package persistentie;
+    package persistentie;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,11 +30,14 @@ abstract class Mapper extends Connectie
     public ResultSet selectQuery(String selectQuery, Object... args) throws SQLException
     {
         PreparedStatement query = this.getConnection().prepareStatement(selectQuery);
-        
+
+      
         for (int i = 0; i < args.length; i++)
         {
             query.setObject(i + 1, args[i]);
         }
+        
+        
         
         return query.executeQuery();
     }
@@ -93,4 +96,5 @@ abstract class Mapper extends Connectie
         
         qry.executeUpdate();
     }
+
 }
