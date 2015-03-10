@@ -28,6 +28,11 @@ public class speelSpelApplicatie
         {
             System.out.printf("%10s%20s%n", spelString[0], spelString[1]);
         }
-
+        
+        System.out.printf("%nKies een spel: ");
+        int spelId = input.nextInt();
+        
+        System.out.printf("Het spelbord wordt geladen:%n");
+        dc.speelSpel(spelId);
     }    
 }

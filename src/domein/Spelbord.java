@@ -15,10 +15,10 @@ public class Spelbord
     private List<Vak> vakken;           // Een lijst van Vakken om de vakken/items bij te houden.
     
     
-    public Spelbord(int spelbordId, String naam)
+    public Spelbord(int nummer, String naam)
     {
         vakMapper = new VakMapper();
-        this.spelbordId = spelbordId;        
+        this.spelbordId = nummer;      
         this.naam = naam;   
     }
 
@@ -35,6 +35,11 @@ public class Spelbord
     public String getNaam()
     {
         return naam;
+    }
+
+    public int getSpelbordId()
+    {
+        return spelbordId;
     }
 
     public void verhoogVerplaatsingen()
