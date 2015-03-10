@@ -40,9 +40,7 @@ public class RegistreerApplicatie
         if (!wachtwoord.equals(wachtwoordBevestiging))
         {
             System.out.print(lang.get("compared.passwords"));
-
         }
-        input.nextLine();
 
         dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
         huidigeSpeler = dc.geefHuidigeSpeler();
