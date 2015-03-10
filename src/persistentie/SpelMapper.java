@@ -38,6 +38,7 @@ public class SpelMapper extends Mapper
 
         return null;        
     }
+    
     private List<Spel> verkrijgSpellen(ResultSet rs) throws SQLException
     {
         List<Spel> spellen = new ArrayList<>();

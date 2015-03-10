@@ -86,9 +86,7 @@ abstract class Mapper extends Connectie
      */
     private void executeQuery(String query, Object... args) throws SQLException
     {
-        Connection conn = this.getConnection();
-        
-        PreparedStatement qry = conn.prepareStatement(query);
+        PreparedStatement qry = this.getConnection().prepareStatement(query);
 
         for (int i = 0; i < args.length; i++)
         {
@@ -96,8 +94,6 @@ abstract class Mapper extends Connectie
         }
 
         qry.executeUpdate();
-
-        conn.close();
     }
 
 }
