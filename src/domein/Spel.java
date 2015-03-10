@@ -31,7 +31,7 @@ public class Spel
         }
     }
     
-    public String toonSpelbord()
+    public String[][] toonSpelbord()
     {
         return huidigSpelbord.toonSpelbord();
     }

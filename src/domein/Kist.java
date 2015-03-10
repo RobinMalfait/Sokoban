@@ -12,7 +12,7 @@ package domein;
 public class Kist
 {
 
-    public Kist(int posX, int posY)
+    public Kist()
     {
         
     }

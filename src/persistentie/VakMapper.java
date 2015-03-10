@@ -5,14 +5,11 @@
  */
 package persistentie;
 
-import domein.Muur;
-import domein.Toegankelijk;
+import domein.Kist;
 import domein.Vak;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +20,7 @@ import java.util.logging.Logger;
 public class VakMapper extends Mapper
 {
     // 
-    public List<Vak> geefVakken(int spelbordId)
+    public Vak[][] geefVakken(int spelbordId)
     {
         try 
         {
@@ -37,9 +34,9 @@ public class VakMapper extends Mapper
         return null;
     }
     
-    public List<Vak> creerVakken(ResultSet rs) throws SQLException 
+    public Vak[][] creerVakken(ResultSet rs) throws SQLException 
     {
-        List<Vak> vakken = new ArrayList();
+        Vak[][] vakken = new Vak[10][10];
         while(rs.next())
         {
             int type = rs.getInt("type");
@@ -48,14 +45,17 @@ public class VakMapper extends Mapper
             
             switch(type) {
                 case 0:                                     // Muur
-                    vakken.add(new Muur(posX, posY));
+                    vakken[posX][posY] = new Vak(posX, posY, false, false);
                     break;
                 case 1:                                     // Leeg Vak - Geen doel
-                    vakken.add(new Toegankelijk(posX, posY, false));
+                    vakken[posX][posY] = new Vak(posX, posY, true, false);
                     break;
                 case 2:                                     // Leeg Vak - Met Doel
-                    vakken.add(new Toegankelijk(posX, posY, true));
-                    break;                
+                    vakken[posX][posY] = new Vak(posX, posY, true, true);
+                    break;       
+                case 3:                                     // Leeg vak - Met Kist
+                    vakken[posX][posY] = new Vak(posX, posY, true, true, new Kist());
+                    break;    
                 // Nu nog of er een kist/speler op staat.
             }
         }

@@ -19,12 +19,19 @@ public class Vak
     
     private Kist kist;
     
-    public Vak(int posX, int posY)
+    public Vak(int posX, int posY, boolean doel, boolean toegankelijk)
     {
         this.posX = posX;
         this.posY = posY;
+        this.doel = doel;
+        this.toegankelijk = toegankelijk;
     }
 
+    public Vak(int posX, int posY, boolean doel, boolean toegankelijk, Kist kist)
+    {
+        this(posX, posY, doel, toegankelijk);
+        this.kist = kist;      
+    }
     public int getPosX()
     {
         return posX;
@@ -65,7 +72,12 @@ public class Vak
         this.kist = kist;
     }
     
-    
+    public boolean bevatKist()
+    {
+        if(this.kist == null)
+            return false;
+        return true;
+    }
     
     
     
