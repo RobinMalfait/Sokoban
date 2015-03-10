@@ -33,13 +33,13 @@ public class RegistreerApplicatie
         //controle ingevoerde gegevens
         if (gebruikersnaam.isEmpty())
         {
-            System.out.print(lang.get("mandatory.fields.username"));
+            System.out.print(lang.get("fields.mandatory.username"));
         }
 
          //|| wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty()
         if (!wachtwoord.equals(wachtwoordBevestiging))
         {
-            System.out.print(lang.get("compared.passwords"));
+            System.out.print(lang.get("passwords.compared"));
         }
 
         dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
