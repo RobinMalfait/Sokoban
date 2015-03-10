@@ -41,6 +41,11 @@ abstract class Connectie
      * A singleton connection
      */
     private static Connection connection = null;
+    
+    /**
+     * Count connections
+     */
+    public static int connections;
 
     /**
      * Get a connection.
@@ -51,6 +56,7 @@ abstract class Connectie
     public Connection getConnection() throws SQLException
     {
         if (Connectie.connection == null) {
+            Connectie.connections++;
             Connectie.connection = DriverManager.getConnection(Connectie.JDBC_URL);
         }
         
