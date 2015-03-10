@@ -6,20 +6,20 @@ import persistentie.VakMapper;
 
 public class Spelbord
 {
+
     private final int spelbordId;       // Hebben we nodig om data uit de database te halen
     private final String naam;          // Naam de van het Spelbord
     private boolean voltooid = false;   // Al dan niet voltooid
     private int verplaatsingen = 0;     // Het aantal verplatsingen
-    
+
     private final VakMapper vakMapper;  // Mapper om de vakken/items uit de database op te halen
-    private List<Vak> vakken;           // Een lijst van Vakken om de vakken/items bij te houden.
-    
-    
+    private Vak[][] vakken;           // Een lijst van Vakken om de vakken/items bij te houden.
+
     public Spelbord(int nummer, String naam)
     {
         vakMapper = new VakMapper();
-        this.spelbordId = nummer;      
-        this.naam = naam;   
+        this.spelbordId = nummer;
+        this.naam = naam;
     }
 
     public boolean isVoltooid()
@@ -51,40 +51,70 @@ public class Spelbord
     {
         voltooid = true;
     }
-    
+
     public void geefVakken()
     {
         vakken = vakMapper.geefVakken(spelbordId);
     }
-    
-    public String toonSpelbord()
+
+    public String[][] toonSpelbord()
     {
         // Dit moet nog verbeterd worden. In een array enzo. Dit is om te testen.
+        /*
+         M:  Muur
+         X:  Doel
+         V:  Doel met Kist
+         O:  Leeg Vak
+         K:  Leeg Vak met Kist 
+         */
         geefVakken();
-        String res = "";
+        String[][] spelbordString = new String[10][10];
         int x = 0;
-        for(Vak vak: vakken)
+        int y = 0;
+        for (Vak[] vakArray : vakken)
         {
-            if(vak.getPosX() != x)
+            y = 0;
+            for (Vak vak : vakArray)
             {
-                res += String.format("%n");
-                x++;
+                if (!vak.isToegankelijk())
+                {
+                    // Muur
+                    spelbordString[x][y] = "M";
+                } else
+                {
+                    // Toegankelijk vak
+                    if (vak.isDoel())
+                    {
+                        // Doel
+                        if (vak.bevatKist())
+                        {
+                           spelbordString[x][y] = "V";
+                        } else
+                        {
+                            spelbordString[x][y] = "X";
+                        }
+                    } else
+                    {
+                        // Leeg Vak
+                        if (vak.bevatKist())
+                        {
+                            spelbordString[x][y] = "K";
+                        } else
+                        {
+                            spelbordString[x][y] = "O";
+                        }
+                    }
+                }
+                y++;
             }
-            if(vak instanceof Muur)
-            {
-                res += String.format("M");
-            }
-            else {
-                res += String.format("O");
-            }
+            x++;
         }
-        return res;
+        return spelbordString;
     }
 
-    public List<Vak> getVakken()
+    public Vak[][] getVakken()
     {
         return vakken;
     }
 
-    
 }

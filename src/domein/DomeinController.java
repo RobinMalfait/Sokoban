@@ -2,6 +2,7 @@ package domein;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
+import java.util.Arrays;
 import java.util.List;
 import security.BCrypt;
 
@@ -104,7 +105,7 @@ public class DomeinController
         kiesSpel(id);
         
         this.huidigSpel.setSpelbord(1);
-        System.out.printf("%s", this.toonSpelbord());
+        System.out.printf("%s", Arrays.deepToString(this.toonSpelbord())); // Om te testen
     }
 
     public void kiesSpel(int spelnummer)
@@ -122,14 +123,8 @@ public class DomeinController
         this.huidigSpel = spel;
     }
     
-    public String toonSpelbord()
+    public String[][] toonSpelbord()
     {
         return huidigSpel.toonSpelbord();
     }
-    
-   
-
-
-
-    
 }
