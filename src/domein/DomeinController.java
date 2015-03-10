@@ -115,11 +115,10 @@ public class DomeinController
         return huidigSpel.toonSpelbord();
     }
     
-    public List<String> geefSpellen()
+    public String[][] geefSpellenString()
     {
-        return null;
-    }
-    
+        return spelRepository.geefSpellenString();
+    }    
     public List<String> geefSpelborden()
     {
         return null;
