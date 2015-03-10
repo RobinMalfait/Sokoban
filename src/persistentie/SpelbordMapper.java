@@ -21,11 +21,11 @@ import java.util.logging.Logger;
 public class SpelbordMapper extends Mapper
 {
 
-    public List<Spelbord> geefSpelborden()
+    public List<Spelbord> geefSpelborden(int id)
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Spelbord ORDER BY posX ASC, posY ASC");
+            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE spel_id = ?", id);
 
             List<Spelbord> spelbord = verkrijgSpelborden(rs);
 
