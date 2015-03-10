@@ -26,8 +26,7 @@ public class SpelbordRepository
     
     public List<Spelbord> geefSpelborden()
     {
-        spelborden = spelbordMapper.geefSpelborden();
-        return spelborden;
+        return null;
     }
     
     public Spelbord kiesSpelbord(int spelbordnummer)

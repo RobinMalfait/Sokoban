@@ -99,12 +99,24 @@ public class DomeinController
         spelerRepository.voegToe(nieuweSpeler); 
     }
     
-    public void speelSpel()
+    public void speelSpel(int id)
     {
-        this.setHuidigSpel(new Spel(0)); // De 0 slaat op het eerste Spelbord      
-        //spel.toonSpelbord();
+        kiesSpel(id);
+        
+        this.huidigSpel.setSpelbord(1);
+        System.out.printf("%s", this.toonSpelbord());
     }
 
+    public void kiesSpel(int spelnummer)
+    {
+        this.huidigSpel = spelRepository.zoekSpel(spelnummer);
+    }
+
+    public String[][] geefSpellenString()
+    {
+        return spelRepository.geefSpellenString();
+    } 
+    
     private void setHuidigSpel(Spel spel)
     {
         this.huidigSpel = spel;
@@ -115,23 +127,9 @@ public class DomeinController
         return huidigSpel.toonSpelbord();
     }
     
-    public String[][] geefSpellenString()
-    {
-        return spelRepository.geefSpellenString();
-    }    
-    public List<String> geefSpelborden()
-    {
-        return null;
-    }
-    
-    public void kiesSpel(int spelnummer)
-    {
-        this.huidigSpel = spelRepository.zoekSpel(spelnummer);
-    }
-    
-    public void kiesSpelbord(int spelbordnummer)
-    {
-        huidigSpel.kiesSpelbord(spelbordnummer);
-    }
+   
+
+
+
     
 }

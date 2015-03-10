@@ -14,6 +14,7 @@ class SpelRepository
     {
         this.spelMapper = new SpelMapper();
         this.spellen = new ArrayList<>();
+        this.geefSpellen();
     }
 
     public List<Spel> geefSpellen()
@@ -24,12 +25,16 @@ class SpelRepository
     
     public Spel zoekSpel(int spelnummer)
     {
+        for(Spel spel: spellen)
+        {
+            if(spel.getId() == spelnummer)
+                return spel;
+        }
         return null;
     }
     
     public String[][] geefSpellenString()
     {
-        this.geefSpellen();
         String[][] spellenString = new String[this.spellen.size()][];
         
         int teller = 0;

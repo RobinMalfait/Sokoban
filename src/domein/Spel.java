@@ -2,32 +2,33 @@
 package domein;
 
 import java.util.List;
+import persistentie.SpelbordMapper;
 
 public class Spel 
 {    
-    private final SpelbordRepository spelbordRepository;
+    private final SpelbordMapper spelbordMapper;
+    private final List<Spelbord> spelborden;
     private Spelbord huidigSpelbord;
     
     private int id;
     private String naam;
     
-    public Spel(int spelbordnummer)
-    {
-        spelbordRepository = new SpelbordRepository();
-        this.kiesSpelbord(spelbordnummer);
-    }
-    
     public Spel(int id, String naam)
     {
-        spelbordRepository = new SpelbordRepository();
+        spelbordMapper = new SpelbordMapper();
+        spelborden = spelbordMapper.geefSpelborden(id);
         
         this.id = id;
         this.naam = naam;
     }
     
-    public void kiesSpelbord(int spelbordnummer)
+    public void setSpelbord(int spelbordnummer)
     {
-        
+        for(Spelbord spelbord: spelborden)
+        {
+            if(spelbord.getSpelbordId() == spelbordnummer)
+                this.huidigSpelbord = spelbord;
+        }
     }
     
     public String toonSpelbord()
