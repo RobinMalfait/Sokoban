@@ -1,7 +1,5 @@
 package domein;
 
-import java.util.ArrayList;
-import java.util.List;
 import persistentie.VakMapper;
 
 public class Spelbord
@@ -13,8 +11,14 @@ public class Spelbord
     private int verplaatsingen = 0;     // Het aantal verplatsingen
 
     private final VakMapper vakMapper;  // Mapper om de vakken/items uit de database op te halen
-    private Vak[][] vakken;           // Een lijst van Vakken om de vakken/items bij te houden.
+    private Vak[][] vakken;             // Een lijst van Vakken om de vakken/items bij te houden.
 
+    /**
+     * Maak een nieuw Spelbord object-aan
+     * 
+     * @param nummer int
+     * @param naam String
+     */
     public Spelbord(int nummer, String naam)
     {
         vakMapper = new VakMapper();
@@ -22,41 +26,75 @@ public class Spelbord
         this.naam = naam;
     }
 
+    /**
+     * Is het spelbord voltooid of niet?
+     * 
+     * @return boolean
+     */
     public boolean isVoltooid()
     {
         return voltooid;
     }
 
+    /**
+     * Verkrijg het aantal verplaatsingen
+     * 
+     * @return int
+     */
     public int getVerplaatsingen()
     {
         return verplaatsingen;
     }
 
+    /**
+     * Verkrijg de naam
+     * 
+     * @return String
+     */
     public String getNaam()
     {
         return naam;
     }
 
+    /**
+     * Verkrijg het spelbord id nummer
+     *
+     * @return int
+     */
     public int getSpelbordId()
     {
         return spelbordId;
     }
 
+    /**
+     * Verhoog het aantal verplaatsingen met 1
+     */
     public void verhoogVerplaatsingen()
     {
         verplaatsingen++;
     }
 
+    /**
+     * Voltooi een spelbord
+     */
     public void maakVoltooid()
     {
         voltooid = true;
     }
 
+    /**
+     * Stel de vakken in voor het spelbord
+     */
     public void geefVakken()
     {
         vakken = vakMapper.geefVakken(spelbordId);
     }
 
+    /**
+     * Toon het spelbord
+     * 
+     * @return String[][]
+     */
     public String[][] toonSpelbord()
     {
         // Dit moet nog verbeterd worden. In een array enzo. Dit is om te testen.
@@ -112,6 +150,11 @@ public class Spelbord
         return spelbordString;
     }
 
+    /**
+     * Verkrijg de vakken
+     * 
+     * @return Vak[][]
+     */
     public Vak[][] getVakken()
     {
         return vakken;

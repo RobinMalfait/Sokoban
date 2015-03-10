@@ -19,7 +19,12 @@ import java.util.logging.Logger;
  */
 public class VakMapper extends Mapper
 {
-    // 
+    /**
+     * Geef vakken op basis van spelbord nummer
+     * 
+     * @param spelbordId int
+     * @return Vak[][]
+     */
     public Vak[][] geefVakken(int spelbordId)
     {
         try 
@@ -34,6 +39,13 @@ public class VakMapper extends Mapper
         return null;
     }
     
+    /**
+     * Map database terug naar vakken
+     * 
+     * @param rs ResultSet
+     * @return Vak[][]
+     * @throws SQLException 
+     */
     public Vak[][] creerVakken(ResultSet rs) throws SQLException 
     {
         Vak[][] vakken = new Vak[10][10];

@@ -102,6 +102,13 @@ abstract public class Language
         return data;
     }
     
+    /**
+     * Kies enkelvoud of meervoud
+     * 
+     * @param data String
+     * @param count int
+     * @return String
+     */
     private String choose(String data, int count)
     {
         String parts[] = data.split("\\|");

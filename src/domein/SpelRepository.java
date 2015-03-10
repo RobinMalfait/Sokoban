@@ -10,6 +10,9 @@ class SpelRepository
     private final SpelMapper spelMapper;
     private List<Spel> spellen;
 
+    /**
+     * Maak een nieuw SpelRepository-object aan
+     */
     public SpelRepository()
     {
         this.spelMapper = new SpelMapper();
@@ -17,12 +20,24 @@ class SpelRepository
         this.geefSpellen();
     }
 
+    
+    /**
+     * Verkrijg een lijst van spellen
+     * 
+     * @return List&lt;Spel&gt;
+     */
     public List<Spel> geefSpellen()
     {
         spellen = spelMapper.geefSpellen();
         return spellen;
     }
     
+    /**
+     * Zoek een spel op basis van spelnummer
+     * 
+     * @param spelnummer int
+     * @return Spel
+     */
     public Spel zoekSpel(int spelnummer)
     {
         for(Spel spel: spellen)
@@ -33,6 +48,11 @@ class SpelRepository
         return null;
     }
     
+    /**
+     * Geef een lijst van spellen
+     * 
+     * @return String[][]
+     */
     public String[][] geefSpellenString()
     {
         String[][] spellenString = new String[this.spellen.size()][];

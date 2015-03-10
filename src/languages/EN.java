@@ -6,6 +6,9 @@ package languages;
  */
 public class EN extends Language 
 {
+    /**
+     * Maak een nieuw EN-object aan
+     */
     public EN()
     {
         map("user.username",            "username");

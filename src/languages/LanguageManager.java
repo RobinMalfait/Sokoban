@@ -14,6 +14,9 @@ public class LanguageManager
 
     private final List<Language> languages;
 
+    /**
+     * Maak een nieuw LanguageManager-object aan
+     */
     public LanguageManager()
     {
         this.languages = new ArrayList<>();

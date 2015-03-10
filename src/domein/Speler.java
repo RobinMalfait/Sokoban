@@ -1,7 +1,6 @@
 package domein;
 
 import exceptions.GebruikersnaamException;
-import exceptions.WachtwoordException;
 
 public class Speler
 {

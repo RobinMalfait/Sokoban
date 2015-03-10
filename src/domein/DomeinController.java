@@ -100,6 +100,11 @@ public class DomeinController
         spelerRepository.voegToe(nieuweSpeler); 
     }
     
+    /**
+     * Speel een spel met bepaald id
+     * 
+     * @param id int
+     */
     public void speelSpel(int id)
     {
         kiesSpel(id);
@@ -108,21 +113,41 @@ public class DomeinController
         System.out.printf("%s", Arrays.deepToString(this.toonSpelbord())); // Om te testen
     }
 
+    /**
+     * Kies een spel
+     * 
+     * @param spelnummer int
+     */
     public void kiesSpel(int spelnummer)
     {
         this.huidigSpel = spelRepository.zoekSpel(spelnummer);
     }
 
+    /**
+     * Geef een lijst van spellen in 2-dimensionele String vorm
+     * 
+     * @return String[][]
+     */
     public String[][] geefSpellenString()
     {
         return spelRepository.geefSpellenString();
     } 
     
+    /**
+     * Stel het huidig spel in
+     * 
+     * @param spel Spel
+     */
     private void setHuidigSpel(Spel spel)
     {
         this.huidigSpel = spel;
     }
     
+    /**
+     * Toon het spelbord
+     * 
+     * @return String[][]
+     */
     public String[][] toonSpelbord()
     {
         return huidigSpel.toonSpelbord();

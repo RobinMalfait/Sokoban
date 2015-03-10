@@ -6,7 +6,6 @@
 package persistentie;
 
 import domein.Spelbord;
-import domein.Speler;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,6 +20,12 @@ import java.util.logging.Logger;
 public class SpelbordMapper extends Mapper
 {
 
+    /**
+     * Geef een lijst van spelborden op basis van spel nummer
+     * 
+     * @param id int
+     * @return List&lt;Spelbord&gt;
+     */
     public List<Spelbord> geefSpelborden(int id)
     {
         try
@@ -42,6 +47,12 @@ public class SpelbordMapper extends Mapper
         return null;
     }
 
+    /**
+     * Geef een spelbord terug op basis van spelbord nummer
+     * 
+     * @param spelbordnummer int
+     * @return Spelbord
+     */
     public Spelbord geefSpelbord(int spelbordnummer)
     {
         try
@@ -63,6 +74,13 @@ public class SpelbordMapper extends Mapper
         return null;
     }
 
+    /**
+     * Verkrijg spelborden
+     * 
+     * @param rs ResultSet
+     * @return List&lt;Spelbord&gt;
+     * @throws SQLException 
+     */
     private List<Spelbord> verkrijgSpelborden(ResultSet rs) throws SQLException
     {
         List<Spelbord> spelborden = new ArrayList<>();
