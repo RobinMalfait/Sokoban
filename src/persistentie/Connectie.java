@@ -42,6 +42,9 @@ abstract class Connectie
      */
     private static Connection connection = null;
     
+    /**
+     * Count connections
+     */
     public static int connections;
 
     /**
