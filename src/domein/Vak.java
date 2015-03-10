@@ -14,6 +14,11 @@ public class Vak
     private final int posX;
     private final int posY;
 
+    private boolean doel;
+    private boolean toegankelijk;
+    
+    private Kist kist;
+    
     public Vak(int posX, int posY)
     {
         this.posX = posX;
@@ -29,6 +34,39 @@ public class Vak
     {
         return posY;
     }
+
+    public boolean isDoel()
+    {
+        return doel;
+    }
+
+    public void setDoel(boolean doel)
+    {
+        this.doel = doel;
+    }
+
+    public boolean isToegankelijk()
+    {
+        return toegankelijk;
+    }
+
+    public void setToegankelijk(boolean toegankelijk)
+    {
+        this.toegankelijk = toegankelijk;
+    }
+
+    public Kist getKist()
+    {
+        return kist;
+    }
+
+    public void setKist(Kist kist)
+    {
+        this.kist = kist;
+    }
+    
+    
+    
     
     
 }
