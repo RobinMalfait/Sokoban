@@ -21,6 +21,7 @@ public class SpelerMapper extends Mapper
     {
         try
         {
+            
             ResultSet rs = selectQuery("SELECT * FROM Speler WHERE gebruikersnaam = ?", gebruikersnaam);
             
             List<Speler> spelers = verkrijgSpelers(rs);

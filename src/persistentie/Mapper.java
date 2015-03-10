@@ -31,10 +31,10 @@ abstract class Mapper extends Connectie
     {
         PreparedStatement query = this.getConnection().prepareStatement(selectQuery);
 
-      
         for (int i = 0; i < args.length; i++)
         {
-            query.setObject(i + 1, args[i]);
+            if(args[i] != null)
+                query.setObject(i + 1, args[i]);
         }
         
         
