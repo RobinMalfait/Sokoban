@@ -86,18 +86,18 @@ abstract class Mapper extends Connectie
      */
     private void executeQuery(String query, Object... args) throws SQLException
     {
-        try(Connection conn = this.getConnection()) {
-            PreparedStatement qry = conn.prepareStatement(query);
+        Connection conn = this.getConnection();
         
-            for (int i = 0; i < args.length; i++)
-            {
-                qry.setObject(i + 1, args[i]);
-            }
+        PreparedStatement qry = conn.prepareStatement(query);
 
-            qry.executeUpdate();
-        } catch (Exception e) {
-            
+        for (int i = 0; i < args.length; i++)
+        {
+            qry.setObject(i + 1, args[i]);
         }
+
+        qry.executeUpdate();
+
+        conn.close();
     }
 
 }
