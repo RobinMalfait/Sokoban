@@ -16,7 +16,7 @@ class SpelRepository
     {
         this.spelMapper = new SpelMapper();
         this.spellen = new ArrayList<>();
-        this.geefSpellen();
+        spellen = this.geefSpellen();
     }
 
     

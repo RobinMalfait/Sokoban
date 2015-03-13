@@ -46,7 +46,7 @@ public class ConsoleApplicatie {
                 (new RegistreerApplicatie()).start(dc, input, lang); 
                 break;
             case 3:
-                (new SpeelSpelSimpeleApplicatie()).start(dc, input, lang);
+                (new SpeelSpelApplicatie()).snelStarten(dc, input, lang);
                 break;
             case 4:
                 System.out.println("Gestopt.");

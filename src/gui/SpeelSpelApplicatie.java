@@ -27,10 +27,10 @@ public class SpeelSpelApplicatie
         
         for (String[] spelString : dc.geefSpellenString())
         {
-            System.out.printf("%4s%20s%n", spelString[0], spelString[1]);
+            System.out.printf("%4s: %-20s%n", spelString[0], spelString[1]);
         }
         
-        System.out.printf("%nKies een spel: ");
+        System.out.printf("Kies een spel: ");
         int spelId = input.nextInt();
 
         System.out.printf("%nHet spelbord wordt geladen:%n");
@@ -77,5 +77,13 @@ public class SpeelSpelApplicatie
         } while (!dc.isSpelbordVoltooid());
 
         System.out.printf("%nSpel voltooid.%n");
+    }
+    
+    public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        
+        dc.meldAan("SpeelSpelTest1","SpeelSpelTest1");
+        
+        this.start(dc, input, lang);
     }
 }
