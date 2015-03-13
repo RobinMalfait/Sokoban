@@ -6,7 +6,7 @@ public class Spelbord
 {
 
     private final int spelbordId;       // Hebben we nodig om data uit de database te halen
-    private final String naam;          // Naam de van het Spelbord
+    private final String naam;          // Naam van het Spelbord
     private boolean voltooid = false;   // Al dan niet voltooid
     private int verplaatsingen = 0;     // Het aantal verplatsingen
 
@@ -15,7 +15,7 @@ public class Spelbord
 
     /**
      * Maak een nieuw Spelbord object-aan
-     * 
+     *
      * @param nummer int
      * @param naam String
      */
@@ -28,7 +28,7 @@ public class Spelbord
 
     /**
      * Is het spelbord voltooid of niet?
-     * 
+     *
      * @return boolean
      */
     public boolean isVoltooid()
@@ -38,7 +38,7 @@ public class Spelbord
 
     /**
      * Verkrijg het aantal verplaatsingen
-     * 
+     *
      * @return int
      */
     public int getVerplaatsingen()
@@ -48,7 +48,7 @@ public class Spelbord
 
     /**
      * Verkrijg de naam
-     * 
+     *
      * @return String
      */
     public String getNaam()
@@ -92,7 +92,7 @@ public class Spelbord
 
     /**
      * Toon het spelbord
-     * 
+     *
      * @return String[][]
      */
     public String[][] toonSpelbord()
@@ -100,59 +100,70 @@ public class Spelbord
         // Dit moet nog verbeterd worden. In een array enzo. Dit is om te testen.
         /*
          M:  Muur
-         X:  Doel
+         D:  Doel
          V:  Doel met Kist
+         K:  Vak met Kist 
+         Y:  Vak met Mannetje
          O:  Leeg Vak
-         K:  Leeg Vak met Kist 
          */
+        
         geefVakken();
-        String[][] spelbordString = new String[10][10];
+
+        String[][] spelbordString = new String[vakken.length][vakken[0].length];
+
         int x = 0;
-        int y = 0;
+        int y;
+
         for (Vak[] vakArray : vakken)
         {
             y = 0;
             for (Vak vak : vakArray)
             {
-                if (!vak.isToegankelijk())
+                if (!vak.isToegankelijk())          //Muur
                 {
-                    // Muur
                     spelbordString[x][y] = "M";
-                } else
+                }
+
+                //toegankelijk vak
+                else
                 {
-                    // Toegankelijk vak
-                    if (vak.isDoel())
+                    if (vak.isDoel())               //DOEL
                     {
-                        // Doel
-                        if (vak.bevatKist())
+                        if (vak.bevatKist())          // --> Doel met kist
                         {
-                           spelbordString[x][y] = "V";
-                        } else
-                        {
-                            spelbordString[x][y] = "X";
+                            spelbordString[x][y] = "V";
                         }
-                    } else
+                        else                          // --> Doel zonder kist
+                        {
+                            spelbordString[x][y] = "D";
+                        }
+                    }
+
+                    else if (vak.bevatMannetje())   //Mannetje
                     {
-                        // Leeg Vak
-                        if (vak.bevatKist())
-                        {
-                            spelbordString[x][y] = "K";
-                        } else
-                        {
-                            spelbordString[x][y] = "O";
-                        }
+                        spelbordString[x][y] = "Y";
+                    }
+
+                    else if (vak.bevatKist())       //Kist
+                    {
+                        spelbordString[x][y] = "K";
+                    }
+                    else                            //Leeg vak
+                    {
+                        spelbordString[x][y] = "-";
                     }
                 }
                 y++;
             }
             x++;
         }
+
         return spelbordString;
     }
 
     /**
      * Verkrijg de vakken
-     * 
+     *
      * @return Vak[][]
      */
     public Vak[][] getVakken()

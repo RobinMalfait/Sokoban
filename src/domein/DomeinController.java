@@ -110,7 +110,7 @@ public class DomeinController
         kiesSpel(id);
         
         this.huidigSpel.setSpelbord(1);
-        System.out.printf("%s", Arrays.deepToString(this.toonSpelbord())); // Om te testen
+        
     }
 
     /**

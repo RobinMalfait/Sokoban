@@ -6,6 +6,7 @@
 package persistentie;
 
 import domein.Kist;
+import domein.Mannetje;
 import domein.Vak;
 
 import java.sql.ResultSet;
@@ -59,15 +60,18 @@ public class VakMapper extends Mapper
                 case 0:                                     // Muur
                     vakken[posX][posY] = new Vak(posX, posY, false, false);
                     break;
-                case 1:                                     // Leeg Vak - Geen doel
+                case 1:                                     // Toegankelijk vak - Leeg vak
                     vakken[posX][posY] = new Vak(posX, posY, true, false);
                     break;
-                case 2:                                     // Leeg Vak - Met Doel
+                case 2:                                     // Toegankelijk vak - Met Doel
                     vakken[posX][posY] = new Vak(posX, posY, true, true);
                     break;       
-                case 3:                                     // Leeg vak - Met Kist
-                    vakken[posX][posY] = new Vak(posX, posY, true, true, new Kist());
-                    break;    
+                case 3:                                     // Toegankelijk vak - Met Kist
+                    vakken[posX][posY] = new Vak(posX, posY, true, false, new Kist());
+                    break;
+                case 4:                                     // Toegankelijk vak - Met Mannetje
+                    vakken[posX][posY] = new Vak(posX, posY, true, false, new Mannetje());
+                    break;
                 // Nu nog of er een kist/speler op staat.
             }
         }

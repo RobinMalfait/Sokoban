@@ -18,6 +18,7 @@ public class Vak
     private boolean toegankelijk;
     
     private Kist kist;
+    private Mannetje mannetje;
     
     /**
      * Maak een nieuw Vak-object aan
@@ -27,7 +28,7 @@ public class Vak
      * @param doel boolean
      * @param toegankelijk boolean
      */
-    public Vak(int posX, int posY, boolean doel, boolean toegankelijk)
+    public Vak(int posX, int posY, boolean toegankelijk, boolean doel)
     {
         this.posX = posX;
         this.posY = posY;
@@ -44,10 +45,25 @@ public class Vak
      * @param toegankelijk boolean
      * @param kist Kist 
      */
-    public Vak(int posX, int posY, boolean doel, boolean toegankelijk, Kist kist)
+    public Vak(int posX, int posY, boolean toegankelijk, boolean doel, Kist kist)
     {
-        this(posX, posY, doel, toegankelijk);
+        this(posX, posY, toegankelijk, doel);
         this.kist = kist;      
+    }
+    
+    /**
+     * Maak een nieuw Vak-object aan
+     * 
+     * @param posX int
+     * @param posY int
+     * @param doel boolean
+     * @param toegankelijk boolean
+     * @param mannetje Mannetje 
+     */
+    public Vak(int posX, int posY, boolean toegankelijk, boolean doel, Mannetje mannetje)
+    {
+        this(posX, posY, toegankelijk, doel);
+        this.mannetje = mannetje;      
     }
     
     /**
@@ -85,7 +101,7 @@ public class Vak
      * 
      * @param doel boolean
      */
-    public void setDoel(boolean doel)
+    private void setDoel(boolean doel)
     {
         this.doel = doel;
     }
@@ -105,7 +121,7 @@ public class Vak
      * 
      * @param toegankelijk boolean
      */
-    public void setToegankelijk(boolean toegankelijk)
+    private void setToegankelijk(boolean toegankelijk)
     {
         this.toegankelijk = toegankelijk;
     }
@@ -125,7 +141,7 @@ public class Vak
      * 
      * @param kist Kist
      */
-    public void setKist(Kist kist)
+    private void setKist(Kist kist)
     {
         this.kist = kist;
     }
@@ -138,6 +154,28 @@ public class Vak
     public boolean bevatKist()
     {
         if(this.kist == null)
+            return false;
+        return true;
+    }
+    
+    /**
+     * Stel een mannetje in
+     * 
+     * @param mannetje Mannetje
+     */
+    private void setMannetje(Mannetje mannetje)
+    {
+        this.mannetje = mannetje;
+    }
+    
+    /**
+     * Bevat het vak een mannetje?
+     * 
+     * @return boolean
+     */
+    public boolean bevatMannetje()
+    {
+        if(this.mannetje == null)
             return false;
         return true;
     }

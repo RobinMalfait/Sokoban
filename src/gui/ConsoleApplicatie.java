@@ -19,10 +19,19 @@ public class ConsoleApplicatie {
         lang.addLanguage(new FR());
         lang.addLanguage(new EN());
         
-        System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
+        System.out.printf("Geef je taal, keuze uit (%s): ", 
+                lang.getKeuzes());
+        
         lang.setLanguage(input.next());
         
-        System.out.printf("Wat wenst u te doen?%n1: "+ lang.get("sign.in") +"%n2: "+ lang.get("sign.up") +"%nMijn keuze: ");
+        System.out.printf("%s%n1: %s%n2: %s%n3: %s%n4: %s%n%s: ",
+                "Wat wenst u te doen?",
+                lang.get("sign.in"),
+                lang.get("sign.up"),
+                "test speel spel",
+                "stoppen",
+                "Mijn keuze");
+        
         keuze = input.nextInt();
         System.out.println();
         
@@ -36,6 +45,14 @@ public class ConsoleApplicatie {
             case 2: 
                 (new RegistreerApplicatie()).start(dc, input, lang); 
                 break;
+            case 3:
+                (new SpeelSpelSimpeleApplicatie()).start(dc, input, lang);
+                break;
+            case 4:
+                System.out.println("Gestopt.");
+                break;
+            default: 
+                System.err.println("Geen geldige keuze.");
         }            
     }
 }
