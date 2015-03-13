@@ -109,7 +109,7 @@ public class DomeinController
     {
         kiesSpel(id);
         
-        this.huidigSpel.setSpelbord(1);
+        this.huidigSpel.setSpelbord(2);
         
     }
 
