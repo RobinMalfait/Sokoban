@@ -54,15 +54,17 @@ class SpelRepository
     public String[][] geefSpellenString()
     {
         String[][] spellenString = new String[this.spellen.size()][];
-        
+
         int teller = 0;
         for(Spel spel: this.spellen)
         {
             spellenString[teller] = new String[2];
             spellenString[teller][0] = String.valueOf(spel.getId());
-            spellenString[teller++][1] = spel.getNaam();
-        }
+            spellenString[teller][1] = spel.getNaam();
             
+            teller++;
+        }
+
         return spellenString;
     }
 }
