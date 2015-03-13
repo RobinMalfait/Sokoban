@@ -27,7 +27,7 @@ public class SpeelSpelApplicatie
         
         for (String[] spelString : dc.geefSpellenString())
         {
-            System.out.printf("%2s%20s%n", spelString[0], spelString[1]);
+            System.out.printf("%4s%20s%n", spelString[0], spelString[1]);
         }
         
         System.out.printf("%nKies een spel: ");
