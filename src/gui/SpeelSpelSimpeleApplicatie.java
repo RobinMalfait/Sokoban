@@ -19,20 +19,54 @@ public class SpeelSpelSimpeleApplicatie
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
         dc.meldAan("SpeelSpelTest1", "SpeelSpelTest1");
-        
+
         System.out.printf("Welkom %s%n", dc.geefHuidigeSpeler()[0]);
         System.out.printf("U zult nu een spel spelen.%n%n");
-        
-        System.out.printf("Het spelbord wordt geladen:%n%n");
+
+        System.out.printf("Het spelbord wordt geladen:%n");
         dc.speelSpel(1);
-        
-        for(String[] vakArray : dc.toonSpelbord())
+
+        for (String[] vakArray : dc.toonSpelbord())
         {
-            for(String vak : vakArray)
+            for (String vak : vakArray)
             {
                 System.out.print(vak + " ");
             }
             System.out.println();
         }
-    }    
+        
+        int keuze;
+
+        do
+        {
+            System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n%s: ",
+                    "Verplaats het mannetje in een richting",
+                    "Omhoog",
+                    "Omlaag",
+                    "Links",
+                    "Rechts",
+                    "Stoppen",
+                    "Mijn keuze");
+
+            keuze = input.nextInt();
+            
+            if (keuze == 5)
+                break;
+            
+            dc.verplaatsSpeler(keuze);
+            
+            System.out.println();
+            for (String[] vakArray : dc.toonSpelbord())
+            {
+                for (String vak : vakArray)
+                {
+                    System.out.print(vak + " ");
+                }
+                System.out.println();
+            }
+        } while (!dc.isSpelbordVoltooid());
+
+        System.out.printf("%nSpel voltooid.%n");
+
+    }
 }

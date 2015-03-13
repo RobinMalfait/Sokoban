@@ -152,4 +152,22 @@ public class DomeinController
     {
         return huidigSpel.toonSpelbord();
     }
+    
+    public void verplaatsSpeler(int richting)
+    {
+        /*
+        richting
+        1: omhoog
+        2: omlaag
+        3: links
+        4: rechts
+        */
+        
+        huidigSpel.verplaatsSpeler(richting);
+    }
+    
+    public boolean isSpelbordVoltooid()
+    {
+        return huidigSpel.isSpelbordVoltooid();
+    }
 }

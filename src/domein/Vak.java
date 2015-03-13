@@ -141,7 +141,7 @@ public class Vak
      * 
      * @param kist Kist
      */
-    private void setKist(Kist kist)
+    public void setKist(Kist kist)
     {
         this.kist = kist;
     }
@@ -163,9 +163,14 @@ public class Vak
      * 
      * @param mannetje Mannetje
      */
-    private void setMannetje(Mannetje mannetje)
+    public void setMannetje(Mannetje mannetje)
     {
         this.mannetje = mannetje;
+    }
+
+    public Mannetje getMannetje()
+    {
+        return mannetje;
     }
     
     /**
@@ -179,6 +184,18 @@ public class Vak
             return false;
         return true;
     }
+    
+    public boolean isLeeg()
+    {
+        if(!toegankelijk || bevatKist())  //muur of kist;
+            return false;
+        return true;
+    }
+
+
+    
+    
+    
     
     
     

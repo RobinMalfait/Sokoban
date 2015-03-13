@@ -120,6 +120,16 @@ public class Spel
     {
         this.naam = naam;
     }
+
+    public void verplaatsSpeler(int richting)
+    {
+        huidigSpelbord.verplaatsSpeler(richting);
+    }
+
+    public boolean isSpelbordVoltooid()
+    {
+        return huidigSpelbord.isSpelbordVoltooid();
+    }
        
     
 }

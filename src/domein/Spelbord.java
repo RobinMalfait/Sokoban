@@ -102,12 +102,14 @@ public class Spelbord
          M:  Muur
          D:  Doel
          V:  Doel met Kist
+         J:  Doel met mannetje
          K:  Vak met Kist 
          Y:  Vak met Mannetje
-         O:  Leeg Vak
+         -:  Leeg Vak
          */
-        
-        geefVakken();
+
+        if(vakken == null)
+            geefVakken();
 
         String[][] spelbordString = new String[vakken.length][vakken[0].length];
 
@@ -129,11 +131,15 @@ public class Spelbord
                 {
                     if (vak.isDoel())               //DOEL
                     {
-                        if (vak.bevatKist())          // --> Doel met kist
+                        if (vak.bevatKist())           // --> Doel met kist
                         {
                             spelbordString[x][y] = "V";
                         }
-                        else                          // --> Doel zonder kist
+                        else if (vak.bevatMannetje())  // --> Doel met mannetje
+                        {
+                            spelbordString[x][y] = "J";
+                        }
+                        else                           // --> Doel zonder kist
                         {
                             spelbordString[x][y] = "D";
                         }
@@ -169,6 +175,92 @@ public class Spelbord
     public Vak[][] getVakken()
     {
         return vakken;
+    }
+
+    public void verplaatsSpeler(int richting)
+    {
+        Vak vakMetMannetje, aanliggendVak, tweedeAanliggendVak;
+        
+        vakMetMannetje = geefVakMetMannetje();
+        aanliggendVak = geefAanliggendVak(vakMetMannetje.getPosX(), vakMetMannetje.getPosY(), richting);
+
+        if (aanliggendVak.isLeeg())             //vak zonder kist of muur
+        {
+            aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
+            vakMetMannetje.setMannetje(null);
+        }
+        else if (aanliggendVak.bevatKist())     //vak met kist
+        {
+            tweedeAanliggendVak = geefAanliggendVak(aanliggendVak.getPosX(), aanliggendVak.getPosY(), richting);
+
+            if (tweedeAanliggendVak.isLeeg())   //kist is verplaatsbaar
+            {
+                tweedeAanliggendVak.setKist(aanliggendVak.getKist());
+                aanliggendVak.setKist(null);
+
+                aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
+                vakMetMannetje.setMannetje(null);
+            }
+        }
+    }
+
+    public Vak geefVakMetMannetje()
+    {
+        for (Vak[] vakArray : vakken)
+        {
+            for (Vak vak : vakArray)
+            {
+                if (vak.bevatMannetje() == true)
+                {
+                    return vak;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public Vak geefAanliggendVak(int posX, int posY, int richting)
+    {
+        if (richting < 1 || richting > 4)
+        {
+            throw new IllegalArgumentException("Richting moet tussen 0 en 3 liggen");
+        }
+
+        if (richting == 1)      //omhoog
+        {
+            posX -= 1;
+        }
+        else if (richting == 2) //omlaag
+        {
+            posX += 1;
+        }
+        else if (richting == 3) //links
+        {
+            posY -= 1;
+        }
+        else                    //rechts
+        {
+            posY += 1;
+        }
+
+        return vakken[posX][posY];
+    }
+    
+    public boolean isSpelbordVoltooid()
+    {
+        for (Vak[] vakArray : vakken)
+        {
+            for (Vak vak : vakArray)
+            {
+                if (vak.bevatKist() && !(vak.isDoel()))
+                {
+                    return false;
+                }
+            }
+        }
+        voltooid = true;
+        return true;
     }
 
 }
