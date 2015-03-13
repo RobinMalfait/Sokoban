@@ -57,11 +57,11 @@ public class VakMapper extends Mapper
             int posY = rs.getInt("posY");
             
             switch(type) {
-                case 0:                                     // Muur
-                    vakken[posX][posY] = new Vak(posX, posY, false, false);
-                    break;
-                case 1:                                     // Toegankelijk vak - Leeg vak
+                case 0:                                     // Toegankelijk vak - Leeg vak
                     vakken[posX][posY] = new Vak(posX, posY, true, false);
+                    break;
+                case 1:                                     // Muur
+                    vakken[posX][posY] = new Vak(posX, posY, false, false);
                     break;
                 case 2:                                     // Toegankelijk vak - Met Doel
                     vakken[posX][posY] = new Vak(posX, posY, true, true);
