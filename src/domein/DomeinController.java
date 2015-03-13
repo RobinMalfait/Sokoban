@@ -2,8 +2,6 @@ package domein;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
-import java.util.Arrays;
-import java.util.List;
 import security.BCrypt;
 
 public class DomeinController

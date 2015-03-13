@@ -1,4 +1,3 @@
-
 package domein;
 
 import java.util.ArrayList;
@@ -28,8 +27,7 @@ class SpelRepository
      */
     public List<Spel> geefSpellen()
     {
-        spellen = spelMapper.geefSpellen();
-        return spellen;
+        return spelMapper.geefSpellen();
     }
     
     /**

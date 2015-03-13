@@ -226,22 +226,12 @@ public class Spelbord
         {
             throw new IllegalArgumentException("Richting moet tussen 0 en 3 liggen");
         }
-
-        if (richting == 1)      //omhoog
-        {
-            posX -= 1;
-        }
-        else if (richting == 2) //omlaag
-        {
-            posX += 1;
-        }
-        else if (richting == 3) //links
-        {
-            posY -= 1;
-        }
-        else                    //rechts
-        {
-            posY += 1;
+        
+        switch (richting) {
+            case 1: posX -= 1; break; // omhoog
+            case 2: posX += 1; break; // omlaag
+            case 3: posY -= 1; break; // links
+            case 4: posY += 1; break; // rechts
         }
 
         return vakken[posX][posY];
