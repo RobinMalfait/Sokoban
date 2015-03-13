@@ -24,8 +24,9 @@ public class MeldAanApplicatie
         //controle inloggegevens
         dc.meldAan(gebruikersnaam, wachtwoord);
         
-        System.out.println(lang.get("user.logged.in"));
-        new speelSpelApplicatie().start(dc, input, lang); 
+        System.out.printf("%n%s%n%n",lang.get("user.logged.in"));
+        
+        new SpeelSpelApplicatie().start(dc, input, lang); 
         
         
     }

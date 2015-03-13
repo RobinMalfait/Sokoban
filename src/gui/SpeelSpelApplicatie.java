@@ -14,25 +14,26 @@ import languages.LanguageManager;
  *
  * @author Demian
  */
-public class speelSpelApplicatie
+public class SpeelSpelApplicatie
 {
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
 
-        System.out.printf("Welkom %s%n", dc.geefHuidigeSpeler()[0]);
-        System.out.printf("U zult nu een spel spelen.%n");
+        System.out.printf("Welkom %s%n", 
+                dc.geefHuidigeSpeler()[0]);
 
+        
         System.out.printf("%nKies een spel uit de lijst hieronder:%n");
-
+        
         for (String[] spelString : dc.geefSpellenString())
         {
-            System.out.printf("%10s%20s%n", spelString[0], spelString[1]);
+            System.out.printf("%2s%20s%n", spelString[0], spelString[1]);
         }
-
+        
         System.out.printf("%nKies een spel: ");
         int spelId = input.nextInt();
 
-        System.out.printf("Het spelbord wordt geladen:%n");
+        System.out.printf("%nHet spelbord wordt geladen:%n");
         dc.speelSpel(spelId);
 
         for (String[] vakArray : dc.toonSpelbord())
