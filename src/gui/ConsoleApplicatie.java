@@ -1,6 +1,7 @@
 package gui;
 
 import domein.DomeinController;
+import exceptions.TaalException;
 import java.util.Scanner;
 import languages.EN;
 import languages.FR;
@@ -19,10 +20,15 @@ public class ConsoleApplicatie {
         lang.addLanguage(new FR());
         lang.addLanguage(new EN());
         
-        System.out.printf("Geef je taal, keuze uit (%s): ", 
-                lang.getKeuzes());
-        
-        lang.setLanguage(input.next());
+        try 
+        {
+            System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
+            lang.setLanguage(input.next());
+        }
+        catch (TaalException e)
+        {
+            System.out.println(e.getMessage());
+        }
         
         System.out.printf("%s%n1: %s%n2: %s%n3: %s%n4: %s%n%s: ",
                 "Wat wenst u te doen?",
