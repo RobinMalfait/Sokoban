@@ -26,21 +26,7 @@ public class Spel
         this.id = id;
         this.naam = naam;
     }
-    
-    /**
-     * Stel het spelbord in
-     * 
-     * @param spelbordnummer int
-     */
-    public void setHuidigSpelbord(int spelbordnummer)
-    {
-        for(Spelbord spelbord: spelborden)
-        {
-            if(spelbord.getSpelbordId() == spelbordnummer)
-                this.huidigSpelbord = spelbord;
-        }
-    }
-    
+        
     /**
      * Toon het spelbord
      * 
@@ -121,6 +107,51 @@ public class Spel
     {
         return huidigSpelbord.isSpelbordVoltooid();
     }
-       
     
+    public String[][] geefSpelbordenString()
+    {
+        String[][] spelbordenString = new String[this.spelborden.size()][];
+
+        int teller = 0;
+        for(Spelbord spelbord: this.spelborden)
+        {
+            spelbordenString[teller] = new String[2];
+            spelbordenString[teller][0] = String.valueOf(spelbord.getSpelbordId());
+            spelbordenString[teller][1] = spelbord.getNaam();
+            
+            teller++;
+        }
+
+        return spelbordenString;        
+    }       
+    
+    public Spelbord bepaalVolgendSpelbord()
+    {
+        boolean deVolgendeIsDeNieuwe = false;
+        
+        for(Spelbord spelbord: spelborden)
+        {
+            if(this.huidigSpelbord == null) // Het eerste spelbord
+                return this.huidigSpelbord = spelbord;
+            
+            if(deVolgendeIsDeNieuwe)
+                return this.huidigSpelbord = spelbord;
+            
+            if(this.huidigSpelbord == spelbord)
+            {
+                deVolgendeIsDeNieuwe = true;
+            }
+        }
+        return null;        
+    }
+    
+    public boolean isEindeSpel()
+    {
+        for(Spelbord spelbord: spelborden)
+        {
+            if(!spelbord.isVoltooid())
+                return false;
+        }
+        return true;
+    }
 }

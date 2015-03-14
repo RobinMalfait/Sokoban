@@ -109,7 +109,7 @@ public class DomeinController
         kiesSpel(id);
         
         // Selecteer het eerste spelbord van het gekozen spel.
-        this.huidigSpel.setHuidigSpelbord(2);        
+        this.huidigSpel.bepaalVolgendSpelbord();
     }
 
     /**
@@ -130,6 +130,16 @@ public class DomeinController
     public String[][] geefSpellenString()
     {
         return spelRepository.geefSpellenString();
+    } 
+
+    /**
+     * Geef een lijst van spelborden in 2-dimensionele String vorm
+     * 
+     * @return String[][]
+     */
+    public String[][] geefSpelbordenString()
+    {
+        return huidigSpel.geefSpelbordenString();
     } 
     
     /**
@@ -168,5 +178,15 @@ public class DomeinController
     public boolean isSpelbordVoltooid()
     {
         return huidigSpel.isHuidigSpelbordVoltooid();
+    }
+    
+    public void bepaalVolgendSpelbord()
+    {
+        this.huidigSpel.bepaalVolgendSpelbord();
+    }
+    
+    public boolean isEindeSpel()
+    {
+        return this.huidigSpel.isEindeSpel();
     }
 }

@@ -30,7 +30,7 @@ public class SpelbordMapper extends Mapper
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE spel_id = ?", id);
+            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE spel_id = ? ORDER BY nummer ASC", id);
 
             List<Spelbord> spelbord = verkrijgSpelborden(rs);
 
@@ -89,7 +89,7 @@ public class SpelbordMapper extends Mapper
         {
             int id = rs.getInt("id");
             String naam = rs.getString("naam");
-
+                
             spelborden.add(new Spelbord(id, naam));
         }
 

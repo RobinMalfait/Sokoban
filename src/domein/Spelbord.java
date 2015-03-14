@@ -16,13 +16,13 @@ public class Spelbord
     /**
      * Maak een nieuw Spelbord object-aan
      *
-     * @param nummer int
+     * @param spelbordId int
      * @param naam String
      */
-    public Spelbord(int nummer, String naam)
+    public Spelbord(int spelbordId, String naam)
     {
         vakMapper = new VakMapper();
-        this.spelbordId = nummer;
+        this.spelbordId = spelbordId;
         this.naam = naam;
     }
 
@@ -252,5 +252,5 @@ public class Spelbord
         voltooid = true;
         return true;
     }
-
+    
 }
