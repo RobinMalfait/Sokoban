@@ -105,10 +105,11 @@ public class DomeinController
      */
     public void speelSpel(int id)
     {
+        // zoek het spelobject in de spelrepository 
         kiesSpel(id);
         
-        this.huidigSpel.setSpelbord(2);
-        
+        // Selecteer het eerste spelbord van het gekozen spel.
+        this.huidigSpel.setSpelbord(2);        
     }
 
     /**
