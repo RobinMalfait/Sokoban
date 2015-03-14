@@ -1,5 +1,6 @@
 package languages;
 
+import exceptions.TaalException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,20 +64,18 @@ public class LanguageManager
      * Stel de huidige taal in.
      * 
      * @param newLanguage String
-     * @return boolean
      */
-    public boolean setLanguage(String newLanguage)
+    public void setLanguage(String newLanguage)
     {
-        for (Language lang : languages)
+        for (Language lang : this.languages)
         {
             if (lang.getClass().getSimpleName().equals(newLanguage))
             {
                 this.language = lang;
-                return true;
             }
         }
-
-        return false;
+        if(this.language == null)
+            throw new TaalException("De taal die u invoerde werd niet teruggevonden.");
     }
 
     /**
@@ -85,7 +84,7 @@ public class LanguageManager
      * @return String
      */
     public String get(String key)
-    {
+    {       
         return this.language.get(key);
     }
 
