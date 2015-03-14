@@ -32,7 +32,7 @@ public class Spel
      * 
      * @param spelbordnummer int
      */
-    public void setSpelbord(int spelbordnummer)
+    public void setHuidigSpelbord(int spelbordnummer)
     {
         for(Spelbord spelbord: spelborden)
         {
@@ -61,15 +61,6 @@ public class Spel
         return huidigSpelbord;
     }
 
-    /**
-     * Stel het huidig spelbord in
-     * 
-     * @param spelbord Spelbord
-     */
-    public void setHuidigSpelbord(Spelbord spelbord)
-    {
-        this.huidigSpelbord = spelbord;
-    }
     
     /**
      * Verkrijg een lijst van spelborden
@@ -126,7 +117,7 @@ public class Spel
         huidigSpelbord.verplaatsSpeler(richting);
     }
 
-    public boolean isSpelbordVoltooid()
+    public boolean isHuidigSpelbordVoltooid()
     {
         return huidigSpelbord.isSpelbordVoltooid();
     }

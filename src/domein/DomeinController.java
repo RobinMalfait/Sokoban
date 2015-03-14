@@ -109,7 +109,7 @@ public class DomeinController
         kiesSpel(id);
         
         // Selecteer het eerste spelbord van het gekozen spel.
-        this.huidigSpel.setSpelbord(2);        
+        this.huidigSpel.setHuidigSpelbord(2);        
     }
 
     /**
@@ -167,6 +167,6 @@ public class DomeinController
     
     public boolean isSpelbordVoltooid()
     {
-        return huidigSpel.isSpelbordVoltooid();
+        return huidigSpel.isHuidigSpelbordVoltooid();
     }
 }
