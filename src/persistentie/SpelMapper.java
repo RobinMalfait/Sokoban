@@ -28,7 +28,7 @@ public class SpelMapper extends Mapper
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Spel");
+            ResultSet rs = selectQuery("SELECT * FROM Spel ORDER BY nummer ASC");
 
             List<Spel> spellen = verkrijgSpellen(rs);
 
