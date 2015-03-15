@@ -51,13 +51,14 @@ public class LanguageManager
     public String getKeuzes()
     {
         String output = "";
+        String delimeter = ", ";
 
         for (Language lang : languages)
         {
-            output += ", " + lang.getClass().getSimpleName();
+            output += delimeter + lang.getClass().getSimpleName();
         }
 
-        return output.substring(2);
+        return output.substring(delimeter.length());
     }
 
     /**
