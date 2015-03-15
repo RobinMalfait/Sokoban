@@ -118,7 +118,11 @@ public class Spel
         return huidigSpelbord.isSpelbordVoltooid();
     }
 
-    
+    /*
+     * Geeft een 2-dimensionele array van alle Spellen terug.
+     *
+     * @return String[][]
+     */
     public String[][] geefSpelbordenString()
     {
         String[][] spelbordenString = new String[this.spelborden.size()][];
@@ -136,6 +140,11 @@ public class Spel
         return spelbordenString;        
     }       
     
+    /**
+     * Bepaald het volgend spelbord van het huidig Spel
+     * 
+     * @return Spelbord
+     */    
     public Spelbord bepaalVolgendSpelbord()
     {
         boolean deVolgendeIsDeNieuwe = false;
@@ -156,6 +165,11 @@ public class Spel
         return null;        
     }
     
+    /*
+     * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
+     *
+     * @return boolean
+     */
     public boolean isEindeSpel()
     {
         for(Spelbord spelbord: spelborden)

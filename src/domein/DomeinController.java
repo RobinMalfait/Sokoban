@@ -199,7 +199,7 @@ public class DomeinController
     }
     
     /**
-     * Controleer of alle spelborden voltooid zijn.
+     * Controleer of alle spelborden voltooid zijn, is het spel voltooid 
      * 
      * @return boolean
      */
