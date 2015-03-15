@@ -98,15 +98,26 @@ public class Spel
         this.naam = naam;
     }
 
+    /**
+     * Verplaats de speler (en bijhorende items) volgens een richting
+     * 
+     * @param richting int
+     */
     public void verplaatsSpeler(int richting)
     {
         huidigSpelbord.verplaatsSpeler(richting);
     }
 
+    /**
+     * Controleer of het huidig spelbord van het spel voltooid is
+     * 
+     * @return boolean
+     */
     public boolean isHuidigSpelbordVoltooid()
     {
         return huidigSpelbord.isSpelbordVoltooid();
     }
+
     
     public String[][] geefSpelbordenString()
     {

@@ -161,7 +161,12 @@ public class DomeinController
     {
         return huidigSpel.toonSpelbord();
     }
-    
+
+    /**
+     * Verplaats de speler (en bijhorende items) volgens een richting
+     * 
+     * @param richting int
+     */
     public void verplaatsSpeler(int richting)
     {
         /*
@@ -174,17 +179,30 @@ public class DomeinController
         
         huidigSpel.verplaatsSpeler(richting);
     }
-    
+
+    /**
+     * Controleer of het huidig spelbord van het spel voltooid is
+     * 
+     * @return boolean
+     */
     public boolean isSpelbordVoltooid()
     {
         return huidigSpel.isHuidigSpelbordVoltooid();
     }
-    
+
+    /**
+     * Bepaald het volgend spelbord van het huidig Spel
+     */
     public void bepaalVolgendSpelbord()
     {
         this.huidigSpel.bepaalVolgendSpelbord();
     }
     
+    /**
+     * Controleer of alle spelborden voltooid zijn.
+     * 
+     * @return boolean
+     */
     public boolean isEindeSpel()
     {
         return this.huidigSpel.isEindeSpel();
