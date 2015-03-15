@@ -75,6 +75,7 @@ public class LanguageManager
                 this.language = lang;
             }
         }
+        
         if(this.language == null)
             throw new TaalException("De taal die u invoerde werd niet teruggevonden.");
     }
