@@ -1,6 +1,5 @@
-    package persistentie;
+package persistentie;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -86,18 +85,14 @@ abstract class Mapper extends Connectie
      */
     private void executeQuery(String query, Object... args) throws SQLException
     {
-        try(Connection conn = this.getConnection()) {
-            PreparedStatement qry = conn.prepareStatement(query);
-        
-            for (int i = 0; i < args.length; i++)
-            {
-                qry.setObject(i + 1, args[i]);
-            }
+        PreparedStatement qry = this.getConnection().prepareStatement(query);
 
-            qry.executeUpdate();
-        } catch (Exception e) {
-            
+        for (int i = 0; i < args.length; i++)
+        {
+            qry.setObject(i + 1, args[i]);
         }
+
+        qry.executeUpdate();
     }
 
 }

@@ -1,4 +1,3 @@
-
 package domein;
 
 import java.util.List;
@@ -13,6 +12,12 @@ public class Spel
     private int id;
     private String naam;
     
+    /**
+     * Maak een nieuw Spel-object aan
+     * 
+     * @param id int
+     * @param naam String
+     */
     public Spel(int id, String naam)
     {
         spelbordMapper = new SpelbordMapper();
@@ -21,55 +26,157 @@ public class Spel
         this.id = id;
         this.naam = naam;
     }
-    
-    public void setSpelbord(int spelbordnummer)
-    {
-        for(Spelbord spelbord: spelborden)
-        {
-            if(spelbord.getSpelbordId() == spelbordnummer)
-                this.huidigSpelbord = spelbord;
-        }
-    }
-    
-    public String toonSpelbord()
+        
+    /**
+     * Toon het spelbord
+     * 
+     * @return String[][]
+     */
+    public String[][] toonSpelbord()
     {
         return huidigSpelbord.toonSpelbord();
     }
 
+    /**
+     * Verkrijg het huidig spelbord
+     * 
+     * @return Spelbord
+     */
     public Spelbord getHuidigSpelbord()
     {
         return huidigSpelbord;
     }
 
-    public void setHuidigSpelbord(Spelbord spelbord)
-    {
-        this.huidigSpelbord = spelbord;
-    }
     
+    /**
+     * Verkrijg een lijst van spelborden
+     * 
+     * @return List&lt;Spelbord&gt;
+     */
     public List<Spelbord> geefSpelborden()
     {
         return null;
     }
 
+    /**
+     * Verkrijg de id
+     * 
+     * @return int
+     */
     public int getId()
     {
         return id;
     }
 
+    /**
+     * Stel de id in
+     * 
+     * @param id int
+     */
     public void setId(int id)
     {
         this.id = id;
     }
 
+    /**
+     * Verkrijg de naam
+     * 
+     * @return String
+     */
     public String getNaam()
     {
         return naam;
     }
 
+    /**
+     * Stel de naam in
+     * 
+     * @param naam String
+     */
     public void setNaam(String naam)
     {
         this.naam = naam;
     }
-       
+
+    /**
+     * Verplaats de speler (en bijhorende items) volgens een richting
+     * 
+     * @param richting int
+     */
+    public void verplaatsSpeler(int richting)
+    {
+        huidigSpelbord.verplaatsSpeler(richting);
+    }
+
+    /**
+     * Controleer of het huidig spelbord van het spel voltooid is
+     * 
+     * @return boolean
+     */
+    public boolean isHuidigSpelbordVoltooid()
+    {
+        return huidigSpelbord.isSpelbordVoltooid();
+    }
+
+    /*
+     * Geeft een 2-dimensionele array van alle Spellen terug.
+     *
+     * @return String[][]
+     */
+    public String[][] geefSpelbordenString()
+    {
+        String[][] spelbordenString = new String[this.spelborden.size()][];
+
+        int teller = 0;
+        for(Spelbord spelbord: this.spelborden)
+        {
+            spelbordenString[teller] = new String[2];
+            spelbordenString[teller][0] = String.valueOf(spelbord.getSpelbordId());
+            spelbordenString[teller][1] = spelbord.getNaam();
+            
+            teller++;
+        }
+
+        return spelbordenString;        
+    }       
     
+    /**
+     * Bepaald het volgend spelbord van het huidig Spel
+     * 
+     * @return Spelbord
+     */    
+    public Spelbord bepaalVolgendSpelbord()
+    {
+        boolean deVolgendeIsDeNieuwe = false;
+        
+        for(Spelbord spelbord: spelborden)
+        {
+            if(this.huidigSpelbord == null) // Het eerste spelbord
+                return this.huidigSpelbord = spelbord;
+            
+            if(deVolgendeIsDeNieuwe)
+                return this.huidigSpelbord = spelbord;
+            
+            if(this.huidigSpelbord == spelbord)
+            {
+                deVolgendeIsDeNieuwe = true;
+            }
+        }
+        return null;        
+    }
+    
+    /*
+     * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
+     *
+     * @return boolean
+     */
+    public boolean isEindeSpel()
+    {
+        for(Spelbord spelbord: spelborden)
+        {
+            if(!spelbord.isVoltooid())
+                return false;
+        }
+        return true;
+    }
 }

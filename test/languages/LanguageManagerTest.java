@@ -1,5 +1,6 @@
 package languages;
 
+import exceptions.TaalException;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -38,6 +39,15 @@ public class LanguageManagerTest
         this.languageManager.addLanguage(this.NL);
         
         assertEquals("EN, NL", this.languageManager.getKeuzes());
+    }
+    
+    @Test(expected=TaalException.class)
+    public void it_should_throw_an_exception()
+    {
+        this.languageManager.addLanguage(this.EN);
+        this.languageManager.addLanguage(this.NL);
+        
+        this.languageManager.setLanguage("FR");
     }
     
     @Test

@@ -19,11 +19,16 @@ import java.util.logging.Logger;
  */
 public class SpelMapper extends Mapper
 {
+    /**
+     * Geef een lijst van spellen
+     * 
+     * @return List&lt;Spel&gt;
+     */
     public List<Spel> geefSpellen()
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Spel");
+            ResultSet rs = selectQuery("SELECT * FROM Spel ORDER BY nummer ASC");
 
             List<Spel> spellen = verkrijgSpellen(rs);
 
@@ -38,6 +43,14 @@ public class SpelMapper extends Mapper
 
         return null;        
     }
+    
+    /**
+     * Verkrijg spellen
+     * 
+     * @param rs ResultSet
+     * @return List&lt;Spel&gt;
+     * @throws SQLException 
+     */
     private List<Spel> verkrijgSpellen(ResultSet rs) throws SQLException
     {
         List<Spel> spellen = new ArrayList<>();

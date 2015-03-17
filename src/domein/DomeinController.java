@@ -2,7 +2,6 @@ package domein;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
-import java.util.List;
 import security.BCrypt;
 
 public class DomeinController
@@ -99,37 +98,113 @@ public class DomeinController
         spelerRepository.voegToe(nieuweSpeler); 
     }
     
+    /**
+     * Speel een spel met bepaald id
+     * 
+     * @param id int
+     */
     public void speelSpel(int id)
     {
+        // zoek het spelobject in de spelrepository 
         kiesSpel(id);
         
-        this.huidigSpel.setSpelbord(1);
-        System.out.printf("%s", this.toonSpelbord());
+        // Selecteer het eerste spelbord van het gekozen spel.
+        this.huidigSpel.bepaalVolgendSpelbord();
     }
 
+    /**
+     * Kies een spel
+     * 
+     * @param spelnummer int
+     */
     public void kiesSpel(int spelnummer)
     {
         this.huidigSpel = spelRepository.zoekSpel(spelnummer);
     }
 
+    /**
+     * Geef een lijst van spellen in 2-dimensionele String vorm
+     * 
+     * @return String[][]
+     */
     public String[][] geefSpellenString()
     {
         return spelRepository.geefSpellenString();
     } 
+
+    /**
+     * Geef een lijst van spelborden in 2-dimensionele String vorm
+     * 
+     * @return String[][]
+     */
+    public String[][] geefSpelbordenString()
+    {
+        return huidigSpel.geefSpelbordenString();
+    } 
     
+    /**
+     * Stel het huidig spel in
+     * 
+     * @param spel Spel
+     */
     private void setHuidigSpel(Spel spel)
     {
         this.huidigSpel = spel;
     }
     
-    public String toonSpelbord()
+    /**
+     * Toon het spelbord
+     * 
+     * @return String[][]
+     */
+    public String[][] toonSpelbord()
     {
         return huidigSpel.toonSpelbord();
     }
+
+    /**
+     * Verplaats de speler (en bijhorende items) volgens een richting
+     * 
+     * @param richting int
+     */
+    public void verplaatsSpeler(int richting)
+    {
+        /*
+        richting
+        1: omhoog
+        2: omlaag
+        3: links
+        4: rechts
+        */
+        
+        huidigSpel.verplaatsSpeler(richting);
+    }
+
+    /**
+     * Controleer of het huidig spelbord van het spel voltooid is
+     * 
+     * @return boolean
+     */
+    public boolean isSpelbordVoltooid()
+    {
+        return huidigSpel.isHuidigSpelbordVoltooid();
+    }
+
+    /**
+     * Bepaald het volgend spelbord van het huidig Spel
+     */
+    public void bepaalVolgendSpelbord()
+    {
+        this.huidigSpel.bepaalVolgendSpelbord();
+    }
     
-   
-
-
-
-    
+    /**
+     * Controleer of alle spelborden voltooid zijn, is het spel voltooid 
+     * 
+     * @return boolean
+     */
+    public boolean isEindeSpel()
+    {
+        return this.huidigSpel.isEindeSpel();
+    }
 }

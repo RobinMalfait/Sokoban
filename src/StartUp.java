@@ -1,6 +1,7 @@
 import domein.DomeinController;
 import gui.ConsoleApplicatie;
 import java.util.Scanner;
+
 /**
  *
  * @author robin

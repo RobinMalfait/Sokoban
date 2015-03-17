@@ -12,7 +12,7 @@ public class SpelerRepository
     private final List<Speler> spelers;
 
     /**
-     * 
+     * Maak een nieuw spelerRepository-object aan
      */
     public SpelerRepository()
     {

@@ -1,5 +1,6 @@
 package languages;
 
+import exceptions.TaalException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class LanguageManager
 
     private final List<Language> languages;
 
+    /**
+     * Maak een nieuw LanguageManager-object aan
+     */
     public LanguageManager()
     {
         this.languages = new ArrayList<>();
@@ -47,33 +51,33 @@ public class LanguageManager
     public String getKeuzes()
     {
         String output = "";
+        String delimeter = ", ";
 
         for (Language lang : languages)
         {
-            output += ", " + lang.getClass().getSimpleName();
+            output += delimeter + lang.getClass().getSimpleName();
         }
 
-        return output.substring(2);
+        return output.substring(delimeter.length());
     }
 
     /**
      * Stel de huidige taal in.
      * 
      * @param newLanguage String
-     * @return boolean
      */
-    public boolean setLanguage(String newLanguage)
+    public void setLanguage(String newLanguage)
     {
-        for (Language lang : languages)
+        for (Language lang : this.languages)
         {
             if (lang.getClass().getSimpleName().equals(newLanguage))
             {
                 this.language = lang;
-                return true;
             }
         }
-
-        return false;
+        
+        if(this.language == null)
+            throw new TaalException("De taal die u invoerde werd niet teruggevonden.");
     }
 
     /**
@@ -82,7 +86,7 @@ public class LanguageManager
      * @return String
      */
     public String get(String key)
-    {
+    {       
         return this.language.get(key);
     }
 

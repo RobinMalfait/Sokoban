@@ -28,7 +28,7 @@ public class RegistreerApplicatie
         wachtwoord = input.nextLine().trim();
 
         System.out.print(lang.get("user.password.repeat") + "*: ");
-        wachtwoordBevestiging = input.nextLine().trim();
+        wachtwoordBevestiging = input.next().trim();
 
         //controle ingevoerde gegevens
         if (gebruikersnaam.isEmpty())

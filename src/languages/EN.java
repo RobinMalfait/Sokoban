@@ -6,6 +6,9 @@ package languages;
  */
 public class EN extends Language 
 {
+    /**
+     * Maak een nieuw EN-object aan
+     */
     public EN()
     {
         map("registration.new", "Registration for the new player:");
@@ -26,7 +29,15 @@ public class EN extends Language
         map("game.choose.list", "%Choose a game from the list underneath");
         map("game.choose", "Choose a game");
         map("game.playboard.load", "The playboard is loading");
-        
+        map("dude.move", "move the dude in a direction");
+        map("dude.up", "up");
+        map("dude.down", "down");
+        map("dude.left", "left");
+        map("dude.right", "right");
+        map("dude.stop", "stop");
+        map("dude.my.choise", "my choise");
+        map("game.complete", "Congradulations! you completed the game");
+        map("game.done","Game complete");
         
     }
 }
