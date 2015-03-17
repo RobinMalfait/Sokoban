@@ -37,11 +37,12 @@ public class ConsoleApplicatie
             }
         } while (invoerFout);
         
-        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n%n",
+        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
                 lang.get("list.choose"),
                 lang.get("sign.in"),
                 lang.get("sign.up"),
                 "Test speel spel (voorlopig)",
+                "Admin",
                 lang.get("app.quit"));
 
         invoerFout = true;
@@ -75,6 +76,9 @@ public class ConsoleApplicatie
                 (new SpeelSpelApplicatie()).snelStarten(dc, input, lang);
                 break;
             case 4:
+                (new AdminApplicatie()).start(dc, input, lang);
+                break;                
+            case 5:
                 System.out.println(lang.get("app.quited"));
                 break;
             default:
