@@ -20,9 +20,9 @@ public class SpeelSpelApplicatie
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
         // Welkombericht
-        System.out.printf(lang.get("game.welcome"));
+        System.out.print(lang.get("game.welcome"));
         System.out.printf("%s%n", dc.geefHuidigeSpeler()[0]);
-        System.out.printf(lang.get("game.choose.list"));
+        System.out.print(lang.get("game.choose.list"));
 
         // Overlopen van de Spellen
         for (String[] spelString : dc.geefSpellenString())
@@ -31,12 +31,12 @@ public class SpeelSpelApplicatie
         }
 
         // Keuze van de Spellen
-        System.out.printf(lang.get("game.choose"));
+        System.out.print(lang.get("game.choose"));
         int spelId = input.nextInt();
         dc.kiesSpel(spelId);
 
         // Het laden van het eerste Spelbord van het spel
-        System.out.printf(lang.get("game.playboard.load"));
+        System.out.print(lang.get("game.playboard.load"));
 
         do
         {
