@@ -103,23 +103,13 @@ public class DomeinController
      * 
      * @param id int
      */
-    public void speelSpel(int id)
+    public void kiesSpel(int id)
     {
         // zoek het spelobject in de spelrepository 
-        kiesSpel(id);
+        this.huidigSpel = spelRepository.zoekSpel(id);
         
         // Selecteer het eerste spelbord van het gekozen spel.
         this.huidigSpel.bepaalVolgendSpelbord();
-    }
-
-    /**
-     * Kies een spel
-     * 
-     * @param spelnummer int
-     */
-    public void kiesSpel(int spelnummer)
-    {
-        this.huidigSpel = spelRepository.zoekSpel(spelnummer);
     }
 
     /**
