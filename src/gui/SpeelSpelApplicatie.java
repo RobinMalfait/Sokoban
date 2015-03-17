@@ -53,14 +53,15 @@ public class SpeelSpelApplicatie
 
             do
             {
-                System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n%n%s: ");
-                System.out.printf(lang.get("dude.move"));
-                System.out.printf(lang.get("dude.up"));
-               System.out.printf(lang.get("dude.down"));
-                System.out.printf(lang.get("dude.left"));
-                 System.out.printf(lang.get("dude.right"));
-                 System.out.printf(lang.get("dude.stop"));
-                 System.out.printf(lang.get("dude.my.choise"));
+                System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n%n%s: ",
+                    lang.get("dude.move"),
+                    lang.get("dude.up"),
+                    lang.get("dude.down"),
+                    lang.get("dude.left"),
+                    lang.get("dude.right"),
+                    lang.get("dude.stop"),
+                    lang.get("dude.my.choise")
+                );
 
                 keuze = input.nextInt();
 
