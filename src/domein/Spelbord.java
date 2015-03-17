@@ -97,7 +97,6 @@ public class Spelbord
      */
     public String[][] toonSpelbord()
     {
-        // Dit moet nog verbeterd worden. In een array enzo. Dit is om te testen.
         /*
          M:  Muur
          D:  Doel
