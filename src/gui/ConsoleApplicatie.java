@@ -4,10 +4,7 @@ import domein.DomeinController;
 import exceptions.TaalException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import languages.EN;
-import languages.FR;
 import languages.LanguageManager;
-import languages.NL;
 
 public class ConsoleApplicatie
 {
@@ -16,13 +13,8 @@ public class ConsoleApplicatie
     {
         int keuze = 0;
         boolean invoerFout = true;
+        LanguageManager lang = dc.getLang();
         
-        LanguageManager lang = new LanguageManager();
-
-        lang.addLanguage(new NL());
-        lang.addLanguage(new FR());
-        lang.addLanguage(new EN());
-
         do
         {
             try
