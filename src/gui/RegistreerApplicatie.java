@@ -13,7 +13,7 @@ public class RegistreerApplicatie
         String[] huidigeSpeler;
 
         //ingeven van gegevens
-        System.out.println("Registratie van een nieuwe gebruiker: ");
+        System.out.println(lang.get("registration.new"));
 
         System.out.print(lang.get("user.firstname") + ": ");
         voornaam = input.nextLine().trim();
@@ -45,9 +45,12 @@ public class RegistreerApplicatie
         dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
         huidigeSpeler = dc.geefHuidigeSpeler();
 
-        System.out.printf("%nNieuwe speler toegevoegd: %nvoornaam: %s%nnaam: %s%ngebruikersnaam: %s%n", 
-                huidigeSpeler[0], 
-                huidigeSpeler[1], 
-                huidigeSpeler[2]);
+        System.out.printf(lang.get("new.player"));
+        System.out.printf(lang.get("user.firstname"));
+        System.out.printf("%s%n",huidigeSpeler[0]);
+        System.out.printf(lang.get("user.name"));
+        System.out.printf("%s%n",huidigeSpeler[1]);
+        System.out.printf(lang.get("user.username"));
+        System.out.printf("%s%n",huidigeSpeler[2]);
     }
 }

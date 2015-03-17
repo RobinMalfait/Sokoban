@@ -8,6 +8,7 @@ public class EN extends Language
 {
     public EN()
     {
+        map("registration.new", "Registration for the new player:");
         map("user.username",            "username");
         map("user.name",                "name");
         map("user.firstname",           "first name");
@@ -19,5 +20,13 @@ public class EN extends Language
         map("credentials.wrong",        "wrong credentials");
         map("sign.in",                  "sign in");
         map("sign.up",                  "sign up");
+        map("new.player", "New player added:");
+        map("game.welcome", "welcome");
+        map("game.play", "You will be playing a new game.");
+        map("game.choose.list", "%Choose a game from the list underneath");
+        map("game.choose", "Choose a game");
+        map("game.playboard.load", "The playboard is loading");
+        
+        
     }
 }

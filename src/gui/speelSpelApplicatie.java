@@ -18,21 +18,21 @@ public class speelSpelApplicatie
 {
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
+        System.out.printf(lang.get("game.welcome"));
+        System.out.printf("%s%n", dc.geefHuidigeSpeler()[0]);
+        System.out.printf("game.play");
         
-        System.out.printf("Welkom %s%n", dc.geefHuidigeSpeler()[0]);
-        System.out.printf("U zult nu een spel spelen.%n");
-        
-        System.out.printf("%nKies een spel uit de lijst hieronder:%n");
+        System.out.printf(lang.get("game.choose.list"));
         
         for(String[] spelString: dc.geefSpellenString())
         {
             System.out.printf("%10s%20s%n", spelString[0], spelString[1]);
         }
         
-        System.out.printf("%nKies een spel: ");
+        System.out.printf(lang.get("game.choose"));
         int spelId = input.nextInt();
         
-        System.out.printf("Het spelbord wordt geladen:%n");
+        System.out.printf(lang.get("game.playboard.load"));
         dc.speelSpel(spelId);
     }    
 }
