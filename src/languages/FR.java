@@ -26,7 +26,7 @@ public class FR extends Language
          map("new.player", "Nouveaux joueur ajouté");
         map("game.welcome", "Bienvenue");
         map("game.play", "Vous aller joué un nouveaux jeu");
-        map("game.choose.list", "%Choisissez un jeu dans la liste ci-dessous");
+        map("game.choose.list", "Choisissez un jeu dans la liste ci-dessous");
         map("game.choose", "Choisissez un jeu");
         map("game.playboard.load", "Le plateau de jeu est en cours de chargement");
          map("dude.move", "déplacer le mec dans une direction");

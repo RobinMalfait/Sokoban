@@ -26,7 +26,7 @@ public class NL extends Language
         map("new.player", "Nieuwe speler toegevoegd:");
         map("game.welcome", "welkom");
         map("game.play", "U zult een nieuw spel spelen.");
-        map("game.choose.list", "%kies een spel uit onderstaande lijst");
+        map("game.choose.list", "kies een spel uit onderstaande lijst");
         map("game.choose", "Kies een spel");
         map("game.playboard.load", "Het spelbord wordt geladen");
         map("dude.move", "Verplaats het mannetje in een richting");
