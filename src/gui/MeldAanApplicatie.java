@@ -40,7 +40,7 @@ public class MeldAanApplicatie
             }
             catch(WachtwoordException e)
             {
-                System.out.printf("%n%s%nProbeer opnieuw, op typ: stop%n%n", e.getMessage());
+                System.out.printf("%n%s%nProbeer opnieuw, of typ: stop%n%n", e.getMessage());
             }
         }
         while(invoerFout && !stop);

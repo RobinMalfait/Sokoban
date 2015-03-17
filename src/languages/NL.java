@@ -50,9 +50,5 @@ public class NL extends Language
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
         map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");
-        
-        
-        
-
     }
 }

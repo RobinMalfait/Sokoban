@@ -212,10 +212,14 @@ public class Speler
     @Override
     public String toString()
     {
-        return String.format("Speler(id: %d, gebruikersnaam: %s, voornaam: %s, naam: %s, %s)%n", 
+        return String.format("Speler(%s: %d, %s: %s, %s: %s, %s: %s, %s)%n", 
+                id,
                 this.id, 
+                lang.get("user.username"),
                 this.gebruikersnaam, 
+                lang.get("user.firstname"),
                 this.voornaam, 
+                lang.get("user.name"),
                 this.naam,
                 (admin ? "admin" : "geen admin"));
     }

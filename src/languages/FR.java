@@ -49,8 +49,7 @@ public class FR extends Language
         map("err.login",                "Le nom d'utilisateur ou le mot de passe est incorrect");
         map("err.passwordrepeat",       "Le mot de passe et la repitition de mot de passe ne correspondent pas");
         map("err.usernameDR",           "Le nom d'utilisateur doit être au moins 8 caractères");
-        map("err.passwordDR",           "Le mot de passe ne répond pas aux prescriptions");
-        
+        map("err.passwordDR",           "Le mot de passe ne répond pas aux prescriptions");   
     }
 }
 
