@@ -6,7 +6,7 @@ import persistentie.SpelbordMapper;
 public class Spel 
 {    
     private final SpelbordMapper spelbordMapper;
-    private final List<Spelbord> spelborden;
+    private List<Spelbord> spelborden;
     private Spelbord huidigSpelbord;
     
     private int id;
@@ -179,4 +179,23 @@ public class Spel
         }
         return true;
     }
+
+    public void setSpelborden(List<Spelbord> spelborden)
+    {
+        this.spelborden = spelborden;
+    }
+
+    public List<Spelbord> getSpelborden()
+    {
+        return spelborden;
+    }
+
+    public void setHuidigSpelbord(Spelbord huidigSpelbord)
+    {
+        this.huidigSpelbord = huidigSpelbord;
+    }
+    
+    
+    
+    
 }

@@ -43,7 +43,26 @@ public class SpelMapper extends Mapper
 
         return null;        
     }
-    
+
+    public Spel geefSpel(int id)
+    {
+        try
+        {
+            ResultSet rs = selectQuery("SELECT * FROM Spel WHERE id = ?", id);
+
+            List<Spel> spellen = verkrijgSpellen(rs);
+
+            if (!spellen.isEmpty())
+            {
+                return spellen.get(0);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;        
+    }
     /**
      * Verkrijg spellen
      * 
