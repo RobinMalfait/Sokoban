@@ -26,7 +26,7 @@ public class EN extends Language
         map("new.player", "New player added:");
         map("game.welcome", "welcome");
         map("game.play", "You will be playing a new game.");
-        map("game.choose.list", "%Choose a game from the list underneath");
+        map("game.choose.list", "Choose a game from the list underneath");
         map("game.choose", "Choose a game");
         map("game.playboard.load", "The playboard is loading");
         map("dude.move", "move the dude in a direction");
