@@ -33,7 +33,7 @@ public class SpeelSpelApplicatie
         // Keuze van de Spellen
         System.out.printf(lang.get("game.choose"));
         int spelId = input.nextInt();
-        dc.speelSpel(spelId);
+        dc.kiesSpel(spelId);
 
         // Het laden van het eerste Spelbord van het spel
         System.out.printf(lang.get("game.playboard.load"));
