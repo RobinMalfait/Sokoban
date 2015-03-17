@@ -67,4 +67,13 @@ class SpelRepository
 
         return spellenString;
     }
+    
+    public void voegSpelToe(String naam)
+    {
+        int id = this.spelMapper.voegSpelToe(naam);
+        if(id == 0)
+            throw new IllegalArgumentException("Het spel werd niet toegevoegd");
+        else
+            this.spellen.add(new Spel(id, naam));
+    }
 }

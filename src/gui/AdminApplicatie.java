@@ -18,6 +18,7 @@ public class AdminApplicatie
 {
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
+        
         System.out.printf("%s%n1: %s%n2: %s%n3: %s%n", "Wat wilt u doen?", "Een nieuw spel maken", "Een spelbord toevoegen aan een bestaand spel", "Stoppen");
         
         int keuze = 0;
@@ -36,6 +37,8 @@ public class AdminApplicatie
         switch(keuze)
         {
             case 1:
+                maakNieuwSpel(dc, input, lang);
+                break;
         }
     }
     
@@ -48,8 +51,11 @@ public class AdminApplicatie
         
         naam = input.next();
         
+        dc.voegSpelToe(naam);
         
-        
-        
+        for (String[] spelString : dc.geefSpellenString())
+        {
+            System.out.printf("%4s: %-20s%n", spelString[0], spelString[1]);
+        }
     }
 }

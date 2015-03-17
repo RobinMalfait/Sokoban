@@ -221,4 +221,9 @@ public class DomeinController
     {
         return this.huidigSpel.isEindeSpel();
     }
+    
+    public void voegSpelToe(String naam)
+    {
+        this.spelRepository.voegSpelToe(naam);
+    }
 }

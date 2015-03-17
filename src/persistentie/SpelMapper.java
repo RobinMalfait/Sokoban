@@ -84,4 +84,16 @@ public class SpelMapper extends Mapper
 
         return spellen;
     }
+    
+    public int voegSpelToe(String naam)
+    {
+        try {
+            return insertQuery("INSERT INTO Spel (naam) VALUES (?)", naam);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0; 
+    }            
 }
