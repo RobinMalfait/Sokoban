@@ -19,7 +19,9 @@ abstract public class Language
      */
     public String get(String key)
     {
-        return this.languages.get(key);
+        String value = this.languages.get(key);
+        
+        return value == null ? key : value;
     }
     
     /**

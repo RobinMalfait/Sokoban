@@ -115,7 +115,7 @@ public class LanguageTest
     }
     
     @Test
-    public void it_should_can_have_variables_in_1_side()
+    public void it_can_have_variables_in_1_side()
     {
         int x = 12;
         
@@ -127,6 +127,14 @@ public class LanguageTest
         String given2 = this.language.choice("partial_variables", 1);
         assertEquals("deel 1", given2);
         
+    }
+    
+    @Test
+    public void it_should_give_the_key_if_no_value_is_represent()
+    {
+        String given = this.language.get("test.jibberish");
+        
+        assertEquals("test.jibberish", given);
     }
     
     public class LanguageImpl extends Language

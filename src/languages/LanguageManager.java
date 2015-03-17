@@ -82,12 +82,35 @@ public class LanguageManager
 
     /**
      * Verkrijg de value voor een bepaalde key.
+     * 
      * @param key String
      * @return String
      */
     public String get(String key)
     {       
         return this.language.get(key);
+    }
+    
+    /**
+     * Verkrijg de value voor een bepaalde key en wijzig de varibelen.
+     * 
+     * @param key String
+     * @param replacements Object...
+     * @return String
+     */
+    public String get(String key, Object... replacements)
+    {
+        return this.language.get(key, replacements);
+    }
+    
+    public String choice(String key, int count)
+    {
+        return this.language.choice(key, count);
+    }
+    
+    public String choice(String key, int count, Object... replacements)
+    {
+        return this.language.choice(key, count, replacements);
     }
 
 }

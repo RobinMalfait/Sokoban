@@ -1,0 +1,20 @@
+Pane {
+    -fx-background-color: #FFF;
+}
+
+.btn {
+    -fx-background-image: url(../images/wood.jpg);
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+    -fx-font-size: 2em;
+    -fx-border-radius: 5px;
+    -fx-border: 5px solid white;
+}
+
+.btn:hover {
+    -fx-cursor: hand;
+}
+
+.playButton:hover {
+    -fx-cursor: hand;
+}
