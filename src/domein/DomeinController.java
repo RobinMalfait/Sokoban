@@ -57,6 +57,7 @@ public class DomeinController
             throw new WachtwoordException(lang.get("err.login"));
         
         this.setHuidigeSpeler(speler);
+        this.huidigeSpeler.setLang(lang);
 
     }
 
@@ -117,7 +118,8 @@ public class DomeinController
 
         Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
         setHuidigeSpeler(nieuweSpeler);
-        spelerRepository.voegToe(nieuweSpeler); 
+        huidigeSpeler.setLang(lang);
+        spelerRepository.voegToe(nieuweSpeler);    
     }
     
     /**
