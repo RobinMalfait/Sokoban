@@ -20,9 +20,12 @@ public class SpeelSpelApplicatie
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
         // Welkombericht
-        System.out.print(lang.get("game.welcome"));
-        System.out.printf("%s%n", dc.geefHuidigeSpeler()[0]);
-        System.out.print(lang.get("game.choose.list"));
+        System.out.printf("%s %s%n", 
+                lang.get("game.welcome"),
+                dc.geefHuidigeSpeler()[0]);
+        
+        System.out.printf("%n%s%n", 
+                lang.get("game.choose.list"));
 
         // Overlopen van de Spellen
         for (String[] spelString : dc.geefSpellenString())
@@ -31,12 +34,12 @@ public class SpeelSpelApplicatie
         }
 
         // Keuze van de Spellen
-        System.out.print(lang.get("game.choose"));
+        System.out.print(lang.get("game.choose") + ": ");
         int spelId = input.nextInt();
         dc.kiesSpel(spelId);
 
         // Het laden van het eerste Spelbord van het spel
-        System.out.print(lang.get("game.playboard.load"));
+        System.out.printf("%n%s%n", lang.get("game.board.loading"));
 
         do
         {
@@ -54,13 +57,13 @@ public class SpeelSpelApplicatie
             do
             {
                 System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n%n%s: ",
-                    lang.get("dude.move"),
-                    lang.get("dude.up"),
-                    lang.get("dude.down"),
-                    lang.get("dude.left"),
-                    lang.get("dude.right"),
-                    lang.get("dude.stop"),
-                    lang.get("dude.my.choise")
+                    lang.get("player.move"),
+                    lang.get("player.up"),
+                    lang.get("player.down"),
+                    lang.get("player.left"),
+                    lang.get("player.right"),
+                    lang.get("app.quit"),
+                    lang.get("list.choice")
                 );
 
                 keuze = input.nextInt();
@@ -86,12 +89,16 @@ public class SpeelSpelApplicatie
             if (keuze == 5)
                 break;
 
-            System.out.printf(lang.get("game.complete"));
+            System.out.printf("%n%s%n%n", lang.get("game.board.completed"));
+            
             dc.bepaalVolgendSpelbord();
 
         } while (!dc.isEindeSpel());
 
-        System.out.printf(lang.get("game.done"));
+        if(dc.isEindeSpel())
+            System.out.println(lang.get("game.completed"));
+        else
+            System.out.println(lang.get("app.quited"));
     }
 
     public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)

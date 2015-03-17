@@ -11,7 +11,7 @@ public class NL extends Language
      */
     public NL()
     {
-        map("registration.new",         "Registratie voor een nieuwe speler:");
+        map("registration.new",         "Registratie van een nieuwe speler");
         map("user.username",            "gebruikersnaam");
         map("user.name",                "naam");
         map("user.firstname",           "voornaam");
@@ -23,20 +23,22 @@ public class NL extends Language
         map("credentials.wrong",        "foute gegevens");
         map("sign.in",                  "aanmelden");
         map("sign.up",                  "registreren");
-        map("new.player",               "Nieuwe speler toegevoegd:");
+        map("user.added",               "Nieuwe speler toegevoegd");
         map("game.welcome",             "welkom");
-        map("game.play",                "U zult een nieuw spel spelen.");
-        map("game.choose.list",         "kies een spel uit onderstaande lijst");
+        map("game.play",                "U zult een nieuw spel spelen");
+        map("game.choose.list",         "Kies een spel uit onderstaande lijst");
         map("game.choose",              "Kies een spel");
-        map("game.playboard.load",      "Het spelbord wordt geladen");
-        map("dude.move",                "Verplaats het mannetje in een richting");
-        map("dude.up",                  "omhoog");
-        map("dude.down",                "omlaag");
-        map("dude.left",                "links");
-        map("dude.right",               "rechts");
-        map("dude.stop",                "stop");
-        map("dude.my.choise",           "mijn keuze");
-        map("game.complete",            "gefeliciteerd! je hebt het spel beïndigd.");
-        map("game.done",                "spel compleet");
+        map("game.board.loading",       "Het spelbord wordt geladen");
+        map("player.move",              "Verplaats het mannetje in een richting");
+        map("player.up",                "omhoog");
+        map("player.down",              "omlaag");
+        map("player.left",              "links");
+        map("player.right",             "rechts");
+        map("game.board.completed",     "Gefeliciteerd! Je hebt het spelbord voltooid");
+        map("game.completed",           "Je hebt het spel voltooid");
+        map("list.choice",              "mijn keuze");
+        map("list.choose",              "Wat wenst u te doen?");
+        map("app.quit",                 "stoppen");
+        map("app.quited",               "gestopt");
     }
 }

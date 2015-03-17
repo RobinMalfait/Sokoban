@@ -38,11 +38,11 @@ public class ConsoleApplicatie
         } while (invoerFout);
         
         System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n%n",
-                "Wat wenst u te doen?",
+                lang.get("list.choose"),
                 lang.get("sign.in"),
                 lang.get("sign.up"),
                 "Test speel spel (voorlopig)",
-                "Stoppen");
+                lang.get("app.quit"));
 
         invoerFout = true;
         do 
@@ -50,7 +50,7 @@ public class ConsoleApplicatie
             try 
             {
                 input.nextLine();
-                System.out.print("Mijn keuze: ");
+                System.out.print(lang.get("list.choice") + ": ");
                 keuze = input.nextInt();
                 invoerFout = false;
             }
@@ -75,7 +75,7 @@ public class ConsoleApplicatie
                 (new SpeelSpelApplicatie()).snelStarten(dc, input, lang);
                 break;
             case 4:
-                System.out.println("Gestopt.");
+                System.out.println(lang.get("app.quited"));
                 break;
             default:
                 System.err.println("Geen geldige keuze.");

@@ -13,7 +13,7 @@ public class RegistreerApplicatie
         String[] huidigeSpeler;
 
         //ingeven van gegevens
-        System.out.println(lang.get("registration.new"));
+        System.out.println(lang.get("registration.new") + ":");
 
         System.out.print(lang.get("user.firstname") + ": ");
         voornaam = input.nextLine().trim();
@@ -33,24 +33,25 @@ public class RegistreerApplicatie
         //controle ingevoerde gegevens
         if (gebruikersnaam.isEmpty())
         {
-            System.out.print(lang.get("fields.mandatory.username"));
+            System.out.println(lang.get("fields.mandatory.username"));
         }
 
          //|| wachtwoord.isEmpty() || wachtwoordBevestiging.isEmpty()
         if (!wachtwoord.equals(wachtwoordBevestiging))
         {
-            System.out.print(lang.get("passwords.compared"));
+            System.out.println(lang.get("passwords.compared"));
         }
 
         dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
         huidigeSpeler = dc.geefHuidigeSpeler();
 
-        System.out.printf(lang.get("new.player"));
-        System.out.printf(lang.get("user.firstname"));
-        System.out.printf("%s%n",huidigeSpeler[0]);
-        System.out.printf(lang.get("user.name"));
-        System.out.printf("%s%n",huidigeSpeler[1]);
-        System.out.printf(lang.get("user.username"));
-        System.out.printf("%s%n",huidigeSpeler[2]);
+        System.out.printf("%n%s: %n  %s: %s%n  %s: %s%n  %s: %s%n",
+                lang.get("user.added"),
+                lang.get("user.firstname"),
+                huidigeSpeler[0],
+                lang.get("user.name"),
+                huidigeSpeler[1],
+                lang.get("user.username"),
+                huidigeSpeler[2]);
     }
 }
