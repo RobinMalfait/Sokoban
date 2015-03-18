@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.GebruikersnaamException;
+import exceptions.SpelException;
 import exceptions.WachtwoordException;
 import languages.EN;
 import languages.FR;
@@ -132,8 +133,10 @@ public class DomeinController
         // zoek het spelobject in de spelrepository 
         this.huidigSpel = spelRepository.zoekSpel(id);
         
-        // Selecteer het eerste spelbord van het gekozen spel.
-        this.huidigSpel.bepaalVolgendSpelbord();
+        if(this.huidigSpel == null)
+            throw new SpelException("Er werd geen spel gevonden met nummer " + id);
+        else        
+            this.huidigSpel.bepaalVolgendSpelbord(); // Selecteer het eerste spelbord van het gekozen spel.
     }
 
     /**
@@ -225,5 +228,10 @@ public class DomeinController
     public void voegSpelToe(String naam)
     {
         this.spelRepository.voegSpelToe(naam);
+    }
+    
+    public void voegSpelbordToe(String naam, int vakken[][])
+    {
+        this.huidigSpel.voegSpelbordToe(naam, vakken);
     }
 }

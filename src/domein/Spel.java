@@ -34,6 +34,7 @@ public class Spel
      */
     public String[][] toonSpelbord()
     {
+        System.out.println(huidigSpelbord.getSpelbordId());
         return huidigSpelbord.toonSpelbord();
     }
 
@@ -195,7 +196,23 @@ public class Spel
         this.huidigSpelbord = huidigSpelbord;
     }
     
-    
+    public void voegSpelbordToe(String naam, int vakken[][])
+    {
+        int id = this.spelbordMapper.voegSpelbordToe(naam, this.id);
+        
+        // 0 is de standaardwaarde die geretourneerd wordt.
+        if(id == 0) 
+        {
+            throw new IllegalArgumentException("Het spelbord werd niet toegevoegd");
+        }
+        else 
+        {
+            Spelbord nieuwSpelbord = new Spelbord(id, naam);
+            this.spelborden.add(nieuwSpelbord);
+            
+            nieuwSpelbord.configureerSpelbord(vakken);
+        }        
+    }
     
     
 }

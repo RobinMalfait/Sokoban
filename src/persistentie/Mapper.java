@@ -93,8 +93,12 @@ abstract class Mapper extends Connectie
             qry.setObject(i + 1, args[i]);
         }
 
-        return qry.executeUpdate();
-
+        qry.executeUpdate();
+        ResultSet rs = qry.getGeneratedKeys();
+        if (rs.next()){
+            return rs.getInt(1);
+        }
+        return 0;
     }
 
 }

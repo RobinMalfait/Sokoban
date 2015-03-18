@@ -252,4 +252,8 @@ public class Spelbord
         return true;
     }
     
+    public void configureerSpelbord(int[][] vakken)
+    {
+        this.vakken = this.vakMapper.voegVakkenToe(vakken, spelbordId);
+    }
 }

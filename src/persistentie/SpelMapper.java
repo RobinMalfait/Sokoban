@@ -88,7 +88,7 @@ public class SpelMapper extends Mapper
     public int voegSpelToe(String naam)
     {
         try {
-            return insertQuery("INSERT INTO Spel (naam) VALUES (?)", naam);
+            return insertQuery("INSERT INTO Spel (naam, nummer) VALUES (?, 3)", naam);
         }
         catch (SQLException ex)
         {

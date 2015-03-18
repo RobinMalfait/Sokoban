@@ -69,11 +69,17 @@ class SpelRepository
     }
     
     public void voegSpelToe(String naam)
-    {
+    {       
         int id = this.spelMapper.voegSpelToe(naam);
-        if(id == 0)
+        
+        // 0 is de standaardwaarde die geretourneerd wordt.
+        if(id == 0) 
+        {
             throw new IllegalArgumentException("Het spel werd niet toegevoegd");
-        else
+        }
+        else 
+        {
             this.spellen.add(new Spel(id, naam));
+        }
     }
 }

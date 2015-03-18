@@ -95,4 +95,16 @@ public class SpelbordMapper extends Mapper
 
         return spelborden;
     }
+    
+    public int voegSpelbordToe(String naam, int spelId)
+    {
+        try {
+            return insertQuery("INSERT INTO Spelbord (naam, spel_id, nummer) VALUES (?, ?, 3)", naam, spelId);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0; 
+    }     
 }

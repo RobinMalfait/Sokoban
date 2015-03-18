@@ -20,61 +20,98 @@ import java.util.logging.Logger;
  */
 public class VakMapper extends Mapper
 {
+
     /**
      * Geef vakken op basis van spelbord nummer
-     * 
+     *
      * @param spelbordId int
      * @return Vak[][]
      */
     public Vak[][] geefVakken(int spelbordId)
     {
-        try 
+        try
         {
-             ResultSet rs = selectQuery("SELECT * FROM Vak WHERE spelbord_id = ? ORDER BY posX ASC, posY ASC", spelbordId);
-             return creerVakken(rs);
-        } 
-        catch (SQLException ex)
+            ResultSet rs = selectQuery("SELECT * FROM Vak WHERE spelbord_id = ? ORDER BY posX ASC, posY ASC", spelbordId);
+            return creerVakken(rs);
+        } catch (SQLException ex)
         {
             Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-    
+
     /**
      * Map database terug naar vakken
-     * 
+     *
      * @param rs ResultSet
      * @return Vak[][]
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public Vak[][] creerVakken(ResultSet rs) throws SQLException 
+    public Vak[][] creerVakken(ResultSet rs) throws SQLException
     {
         Vak[][] vakken = new Vak[10][10];
-        while(rs.next())
+        while (rs.next())
         {
             int type = rs.getInt("type");
             int posX = rs.getInt("posX");
             int posY = rs.getInt("posY");
-            
-            switch(type) {
-                case 0:                                     // Toegankelijk vak - Leeg vak
-                    vakken[posX][posY] = new Vak(posX, posY, true, false);
-                    break;
-                case 1:                                     // Muur
-                    vakken[posX][posY] = new Vak(posX, posY, false, false);
-                    break;
-                case 2:                                     // Toegankelijk vak - Met Doel
-                    vakken[posX][posY] = new Vak(posX, posY, true, true);
-                    break;       
-                case 3:                                     // Toegankelijk vak - Met Kist
-                    vakken[posX][posY] = new Vak(posX, posY, true, false, new Kist());
-                    break;
-                case 4:                                     // Toegankelijk vak - Met Mannetje
-                    vakken[posX][posY] = new Vak(posX, posY, true, false, new Mannetje());
-                    break;
-                // Nu nog of er een kist/speler op staat.
-            }
+
+            vakken[posX][posY] = maakVakObject(type, posX, posY);
         }
         return vakken;
+    }
+
+    public Vak[][] voegVakkenToe(int vakken[][], int spelbordId)
+    {
+        Vak[][] vakObjecten = new Vak[10][10];
+        
+        // Het maken van slechts 1 query.
+        String query = "INSERT INTO Vak (spelbord_id, type, posX, posY) VALUES ";
+
+        // Doordat we de array niet wijzigen, maar toch de index nodig hebben, 2 extra variabelen.
+        int x = 0, y = 0;
+
+        for (int vakArray[] : vakken)
+        {
+            for (int type : vakArray)
+            {
+                query += String.format("(%d, %d, %d, %d), ", spelbordId, type, x, y);
+                vakObjecten[x][y] = maakVakObject(type, x, y);
+                y++;
+            }
+            x++;
+            y = 0;
+        }
+        
+        // De query uitvoeren.
+        try {
+            insertQuery(query.substring(0, query.length() - 2));
+        } 
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        // De vakObjecten terugsturen
+        return vakObjecten;
+    }
+
+    private static Vak maakVakObject(int type, int posX, int posY)
+    {
+        switch (type)
+        {
+            case 0:                                     // Toegankelijk vak - Leeg vak
+                return new Vak(posX, posY, true, false);
+            case 1:                                     // Muur
+                return new Vak(posX, posY, false, false);
+            case 2:                                     // Toegankelijk vak - Met Doel
+                return new Vak(posX, posY, true, true);
+            case 3:                                     // Toegankelijk vak - Met Kist
+                return new Vak(posX, posY, true, false, new Kist());
+            case 4:                                     // Toegankelijk vak - Met Mannetje
+                return new Vak(posX, posY, true, false, new Mannetje());
+        }
+        
+        return null;
     }
 }
