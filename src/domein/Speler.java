@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.GebruikersnaamException;
+import languages.LanguageManager;
 
 public class Speler
 {
@@ -10,6 +11,7 @@ public class Speler
     private String gebruikersnaam;
     private String wachtwoord;
     private boolean admin;
+    private LanguageManager lang;
 
     /**
      * Maak een nieuw Speler object.
@@ -75,6 +77,11 @@ public class Speler
         this.setId(id);
     }
 
+    public void setLang(LanguageManager lang)
+    {
+        this.lang = lang;
+    }
+
     /**
      * Stel het id in.
      * 
@@ -113,7 +120,7 @@ public class Speler
     public void setGebruikersnaam(String gebruikersnaam)
     {
         if (gebruikersnaam.length() < 8)
-            throw new GebruikersnaamException("De gebruikersnaam moet minstens 8 karakters lang zijn.");
+            throw new GebruikersnaamException(lang.get("err.usernameDR"));
 
         this.gebruikersnaam = gebruikersnaam;
     }
@@ -205,10 +212,14 @@ public class Speler
     @Override
     public String toString()
     {
-        return String.format("Speler(id: %d, gebruikersnaam: %s, voornaam: %s, naam: %s, %s)%n", 
+        return String.format("Speler(%s: %d, %s: %s, %s: %s, %s: %s, %s)%n", 
+                id,
                 this.id, 
+                lang.get("user.username"),
                 this.gebruikersnaam, 
+                lang.get("user.firstname"),
                 this.voornaam, 
+                lang.get("user.name"),
                 this.naam,
                 (admin ? "admin" : "geen admin"));
     }

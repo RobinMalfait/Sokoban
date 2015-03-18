@@ -19,7 +19,6 @@ class SpelRepository
         spellen = this.geefSpellen();
     }
 
-    
     /**
      * Verkrijg een lijst van spellen
      * 
@@ -66,5 +65,25 @@ class SpelRepository
         }
 
         return spellenString;
+    }
+    
+    /**
+     * Voegt een spel toe
+     * 
+     * @param naam String
+     */
+    public void voegSpelToe(String naam)
+    {       
+        int id = this.spelMapper.voegSpelToe(naam);
+        
+        // 0 is de standaardwaarde die geretourneerd wordt.
+        if(id == 0) 
+        {
+            throw new IllegalArgumentException("Het spel werd niet toegevoegd");
+        }
+        else 
+        {
+            this.spellen.add(new Spel(id, naam));
+        }
     }
 }

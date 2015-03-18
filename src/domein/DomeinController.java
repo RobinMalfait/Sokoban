@@ -1,7 +1,12 @@
 package domein;
 
 import exceptions.GebruikersnaamException;
+import exceptions.SpelException;
 import exceptions.WachtwoordException;
+import languages.EN;
+import languages.FR;
+import languages.LanguageManager;
+import languages.NL;
 import security.BCrypt;
 
 public class DomeinController
@@ -11,6 +16,7 @@ public class DomeinController
     private final SpelRepository spelRepository;
     private Speler huidigeSpeler;
     private Spel huidigSpel;
+    private final LanguageManager lang;
  
     /**
      * Maak een DomeinController-object aan
@@ -19,6 +25,22 @@ public class DomeinController
     {
         spelerRepository = new SpelerRepository();
         spelRepository = new SpelRepository();
+        
+        this.lang = new LanguageManager();
+
+        lang.addLanguage(new NL());
+        lang.addLanguage(new FR());
+        lang.addLanguage(new EN());
+    }
+
+    /**
+     * Geef de LanguageManager terug
+     * 
+     * @return LanguageManager
+     */
+    public LanguageManager getLang()
+    {
+        return lang;
     }
 
     /**
@@ -32,9 +54,10 @@ public class DomeinController
         Speler speler = spelerRepository.zoekSpelerViaGebruikersnaamWachtwoord(gebruikersnaam, wachtwoord);
         
         if (speler == null)
-            throw new WachtwoordException("De aanmeldgegevens zijn niet correct.");
+            throw new WachtwoordException(lang.get("err.login"));
         
         this.setHuidigeSpeler(speler);
+        this.huidigeSpeler.setLang(lang);
 
     }
 
@@ -60,14 +83,14 @@ public class DomeinController
             return null;
         }
 
-        String[] spelerString = new String[3];
+        String[] spelerString = new String[4];
 
         spelerString[0] = huidigeSpeler.getVoornaam();
         spelerString[1] = huidigeSpeler.getNaam();
         spelerString[2] = huidigeSpeler.getGebruikersnaam();
-
+        spelerString[3] = String.valueOf(huidigeSpeler.isAdmin());
+        
         return spelerString;
-
     }
     
     /** 
@@ -82,20 +105,21 @@ public class DomeinController
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
         if ( !wachtwoord.equals(wachtwoordBevestiging))
-            throw new WachtwoordException("Het wachtwoord en de wachtwoordBevestiging komen niet overeen.");
+            throw new WachtwoordException(lang.get("err.passwordrepeat"));
         
         //controle DR Nieuwe Speler
         if(gebruikersnaam.length() < 8)
-            throw new GebruikersnaamException("De gebruikersnaam moet minstens 8 karakters lang zijn.");
+            throw new GebruikersnaamException(lang.get("err.usernameDR"));
         
         if(wachtwoord.length() < 8 || !wachtwoord.matches(".*[A-Z].*") || !wachtwoord.matches(".*[a-z].*") || !wachtwoord.matches(".*[0-9].*"))
-            throw new WachtwoordException("Het wachtwoord voldoet niet aan de eisen.");
+            throw new WachtwoordException(lang.get("err.passwordDR"));
 
         wachtwoord = BCrypt.hashpw(wachtwoord, BCrypt.gensalt(10));
 
         Speler nieuweSpeler = new Speler(naam, voornaam, gebruikersnaam, wachtwoord);
         setHuidigeSpeler(nieuweSpeler);
-        spelerRepository.voegToe(nieuweSpeler); 
+        huidigeSpeler.setLang(lang);
+        spelerRepository.voegToe(nieuweSpeler);    
     }
     
     /**
@@ -108,8 +132,10 @@ public class DomeinController
         // zoek het spelobject in de spelrepository 
         this.huidigSpel = spelRepository.zoekSpel(id);
         
-        // Selecteer het eerste spelbord van het gekozen spel.
-        this.huidigSpel.bepaalVolgendSpelbord();
+        if(this.huidigSpel == null)
+            throw new SpelException("Er werd geen spel gevonden met nummer " + id);
+        else        
+            this.huidigSpel.bepaalVolgendSpelbord(); // Selecteer het eerste spelbord van het gekozen spel.
     }
 
     /**
@@ -196,5 +222,31 @@ public class DomeinController
     public boolean isEindeSpel()
     {
         return this.huidigSpel.isEindeSpel();
+    }
+    
+    /**
+     * Voeg een spel toe aan de repository, en in de database.
+     */
+    public void voegSpelToe(String naam)
+    {
+        this.spelRepository.voegSpelToe(naam);
+    }
+    
+    /**
+     * Voeg een spelbord toe, met de nodige vakken aan een Spel en in de database.
+    */
+    public void voegSpelbordToe(String naam, int vakken[][])
+    {
+        this.huidigSpel.voegSpelbordToe(naam, vakken);
+    }
+    
+    /**
+     * Retourneet of de gebruiker admin is of niet
+     * 
+     * @return boolean
+     */
+    public boolean isAdmin()
+    {
+        return this.huidigeSpeler.isAdmin();
     }
 }

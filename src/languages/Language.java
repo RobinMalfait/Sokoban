@@ -10,6 +10,11 @@ import java.util.Map;
 abstract public class Language
 {
     protected final Map<String, String> languages = new HashMap<>();
+
+    public Language()
+    {
+        this.languages.put("horizontal.line", "--------------------------------------------");
+    }
     
     /**
      * Verkrijg de value voor een bepaalde key.

@@ -43,7 +43,26 @@ public class SpelMapper extends Mapper
 
         return null;        
     }
-    
+
+    public Spel geefSpel(int id)
+    {
+        try
+        {
+            ResultSet rs = selectQuery("SELECT * FROM Spel WHERE id = ?", id);
+
+            List<Spel> spellen = verkrijgSpellen(rs);
+
+            if (!spellen.isEmpty())
+            {
+                return spellen.get(0);
+            }
+        } catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;        
+    }
     /**
      * Verkrijg spellen
      * 
@@ -65,4 +84,16 @@ public class SpelMapper extends Mapper
 
         return spellen;
     }
+    
+    public int voegSpelToe(String naam)
+    {
+        try {
+            return insertQuery("INSERT INTO Spel (naam, nummer) VALUES (?, 3)", naam);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0; 
+    }            
 }

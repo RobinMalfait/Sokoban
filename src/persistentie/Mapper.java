@@ -3,6 +3,7 @@ package persistentie;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 abstract class Mapper extends Connectie
 {
@@ -46,10 +47,12 @@ abstract class Mapper extends Connectie
      * @param insertQuery String
      * @param args Object...
      * @throws SQLException SQLException
+     * 
+     * @return int;
      */
-    public void insertQuery(String insertQuery, Object... args) throws SQLException
+    public int insertQuery(String insertQuery, Object... args) throws SQLException
     {
-        this.executeQuery(insertQuery, args);
+        return this.executeQuery(insertQuery, args);
     }
     
     /**
@@ -83,9 +86,9 @@ abstract class Mapper extends Connectie
      * @param args Object...
      * @throws SQLException SQLException
      */
-    private void executeQuery(String query, Object... args) throws SQLException
+    private int executeQuery(String query, Object... args) throws SQLException
     {
-        PreparedStatement qry = this.getConnection().prepareStatement(query);
+        PreparedStatement qry = this.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
         for (int i = 0; i < args.length; i++)
         {
@@ -93,6 +96,11 @@ abstract class Mapper extends Connectie
         }
 
         qry.executeUpdate();
+        ResultSet rs = qry.getGeneratedKeys();
+        if (rs.next()){
+            return rs.getInt(1);
+        }
+        return 0;
     }
 
 }

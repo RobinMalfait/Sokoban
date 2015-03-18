@@ -4,10 +4,7 @@ import domein.DomeinController;
 import exceptions.TaalException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import languages.EN;
-import languages.FR;
 import languages.LanguageManager;
-import languages.NL;
 
 public class ConsoleApplicatie
 {
@@ -16,13 +13,8 @@ public class ConsoleApplicatie
     {
         int keuze = 0;
         boolean invoerFout = true;
+        LanguageManager lang = dc.getLang();
         
-        LanguageManager lang = new LanguageManager();
-
-        lang.addLanguage(new NL());
-        lang.addLanguage(new FR());
-        lang.addLanguage(new EN());
-
         do
         {
             try
@@ -37,12 +29,13 @@ public class ConsoleApplicatie
             }
         } while (invoerFout);
         
-        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n%n",
-                "Wat wenst u te doen?",
+        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
+                lang.get("list.choose"),
                 lang.get("sign.in"),
                 lang.get("sign.up"),
                 "Test speel spel (voorlopig)",
-                "Stoppen");
+                "Admin",
+                lang.get("app.quit"));
 
         invoerFout = true;
         do 
@@ -50,7 +43,7 @@ public class ConsoleApplicatie
             try 
             {
                 input.nextLine();
-                System.out.print("Mijn keuze: ");
+                System.out.print(lang.get("list.choice") + ": ");
                 keuze = input.nextInt();
                 invoerFout = false;
             }
@@ -75,7 +68,10 @@ public class ConsoleApplicatie
                 (new SpeelSpelApplicatie()).snelStarten(dc, input, lang);
                 break;
             case 4:
-                System.out.println("Gestopt.");
+                (new AdminApplicatie()).start(dc, input, lang);
+                break;                
+            case 5:
+                System.out.println(lang.get("app.quited"));
                 break;
             default:
                 System.err.println("Geen geldige keuze.");
