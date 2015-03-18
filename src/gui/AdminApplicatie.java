@@ -20,7 +20,16 @@ public class AdminApplicatie
     public static void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
         
-        System.out.printf("%s%n1: %s%n2: %s%n3: %s%n", "Wat wilt u doen?", "Een nieuw spel maken", "Een spelbord toevoegen aan een bestaand spel", "Stoppen");
+        System.out.printf("%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n6: %s%n7: %s%n8: %s%n", 
+                    "Wat wenst u te doen?", 
+                    "Een spel maken", 
+                    "Een spel wijzigen", 
+                    "Een spel verwijderen", 
+                    "Een spelbord toevoegen", 
+                    "Een spelbord wijzigen", 
+                    "Een spelbord verwijderen", 
+                    "Terug naar vorig menu",
+                    "Stoppen");
         
         int keuze = 0;
         
@@ -28,6 +37,7 @@ public class AdminApplicatie
         {
             System.out.printf("%n%s: ", lang.get("list.choice"));
             keuze = input.nextInt();
+            input.nextLine(); // buffer leegmaken
         }
         catch(InputMismatchException e)
         {
@@ -41,25 +51,37 @@ public class AdminApplicatie
                 maakNieuwSpel(dc, input, lang);
                 break;
             case 2:
-                maakNieuwSpelbord(dc, input, lang);
+                wijzigSpel(dc, input, lang);
                 break;                
         }
     }
     
     public static void maakNieuwSpel(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        System.out.println(lang.get("horizontal.line"));
+        System.out.printf("%n%s%n", lang.get("horizontal.line"));
         
         // Verbetering zou zijn om een naam met spaties toe te laten. Daarvoor input.nextLine() gebruiken..
         System.out.print("Geef een naam voor het nieuwe spel: ");
         String naam = input.next();
         
         dc.voegSpelToe(naam);
-        System.out.println("Het spel is succesvol toegevoegd.");
+        System.out.print("Het spel is succesvol toegevoegd.");
         
-        System.out.println(lang.get("horizontal.line"));
+        System.out.printf("%n%s%n%n", lang.get("horizontal.line"));
+        
+        input.nextLine(); // buffer leegmaken
         start(dc, input, lang);
     }
+    
+    public static void wijzigSpel(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        System.out.printf("%n%s%n", lang.get("horizontal.line"));
+        
+        System.out.printf("%s%n", toonSpellen(dc, lang));
+        
+        System.out.print("Geef het nummer van het spel dat je wilt wijzigen: ");
+        int spelnummer = input.nextInt();
+    }    
     
     public static void maakNieuwSpelbord(DomeinController dc, Scanner input, LanguageManager lang)
     {
@@ -119,5 +141,17 @@ public class AdminApplicatie
         // 4. Toevoegen
         dc.voegSpelbordToe(spelbordNaam, vakken);
         
+    }
+    
+    public static String toonSpellen(DomeinController dc, LanguageManager lang)
+    {
+        String output = "Overzicht van de spellen:";
+ 
+        for (String[] spelString : dc.geefSpellenString())
+        {
+            output += String.format("%n%4s: %-20s", spelString[0], spelString[1]);
+        }
+        
+        return output;
     }
 }
