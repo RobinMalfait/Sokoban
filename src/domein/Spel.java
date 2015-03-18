@@ -48,7 +48,6 @@ public class Spel
         return huidigSpelbord;
     }
 
-    
     /**
      * Verkrijg een lijst van spelborden
      * 
@@ -119,7 +118,7 @@ public class Spel
         return huidigSpelbord.isSpelbordVoltooid();
     }
 
-    /*
+    /**
      * Geeft een 2-dimensionele array van alle Spellen terug.
      *
      * @return String[][]
@@ -166,7 +165,7 @@ public class Spel
         return null;        
     }
     
-    /*
+    /**
      * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
      *
      * @return boolean
@@ -181,21 +180,41 @@ public class Spel
         return true;
     }
 
+    /**
+     * Stel de spelborden in
+     *
+     * @param spelborden List&lt;Spelbord&gt;
+     */
     public void setSpelborden(List<Spelbord> spelborden)
     {
         this.spelborden = spelborden;
     }
 
+    /**
+     * Geeft een lijst van spelborden terug
+     *
+     * @return List&lt;Spelbord&gt;
+     */
     public List<Spelbord> getSpelborden()
     {
         return spelborden;
     }
 
+    /**
+     * Setter om het huidig spelbord bij te houden
+     *
+     * @param huidigSpelbord Spelbord
+     */
     public void setHuidigSpelbord(Spelbord huidigSpelbord)
     {
         this.huidigSpelbord = huidigSpelbord;
     }
     
+    /**
+     * Voeg een spelbord toe, en daarna ook de vakken
+     * @param naam String
+     * @param vakken int[][]    
+     */
     public void voegSpelbordToe(String naam, int vakken[][])
     {
         int id = this.spelbordMapper.voegSpelbordToe(naam, this.id);
@@ -213,6 +232,4 @@ public class Spel
             nieuwSpelbord.configureerSpelbord(vakken);
         }        
     }
-    
-    
 }

@@ -19,7 +19,6 @@ class SpelRepository
         spellen = this.geefSpellen();
     }
 
-    
     /**
      * Verkrijg een lijst van spellen
      * 
@@ -68,6 +67,11 @@ class SpelRepository
         return spellenString;
     }
     
+    /**
+     * Voegt een spel toe
+     * 
+     * @param naam String
+     */
     public void voegSpelToe(String naam)
     {       
         int id = this.spelMapper.voegSpelToe(naam);

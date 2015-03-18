@@ -20,7 +20,6 @@ public class DomeinController
  
     /**
      * Maak een DomeinController-object aan
-     * @param lang
      */
     public DomeinController()
     {
@@ -225,11 +224,17 @@ public class DomeinController
         return this.huidigSpel.isEindeSpel();
     }
     
+    /**
+     * Voeg een spel toe aan de repository, en in de database.
+     */
     public void voegSpelToe(String naam)
     {
         this.spelRepository.voegSpelToe(naam);
     }
     
+    /**
+     * Voeg een spelbord toe, met de nodige vakken aan een Spel en in de database.
+    */
     public void voegSpelbordToe(String naam, int vakken[][])
     {
         this.huidigSpel.voegSpelbordToe(naam, vakken);

@@ -176,6 +176,11 @@ public class Spelbord
         return vakken;
     }
 
+    /**
+     * Verplaats de speler in een bepaalde richting
+     * 
+     * @param richting 
+     */
     public void verplaatsSpeler(int richting)
     {
         Vak vakMetMannetje, aanliggendVak, tweedeAanliggendVak;
@@ -203,6 +208,11 @@ public class Spelbord
         }
     }
 
+    /**
+     * Geeft het vak waar het mannetje op staat terug
+     * 
+     * @return Vak
+     */
     public Vak geefVakMetMannetje()
     {
         for (Vak[] vakArray : vakken)
@@ -219,6 +229,15 @@ public class Spelbord
         return null;
     }
 
+    /**
+     * Geef het aanliggend vak, rekening houdend met de richting
+     * 
+     * @param posX
+     * @param posY
+     * @param richting
+     * 
+     * @return Vak
+     */
     public Vak geefAanliggendVak(int posX, int posY, int richting)
     {
         if (richting < 1 || richting > 4)
@@ -236,6 +255,11 @@ public class Spelbord
         return vakken[posX][posY];
     }
     
+    /**
+     * Controleer of het spelbord voltooid is
+     * 
+     * @return boolean
+     */
     public boolean isSpelbordVoltooid()
     {
         for (Vak[] vakArray : vakken)
@@ -252,6 +276,11 @@ public class Spelbord
         return true;
     }
     
+    /**
+     * Stel de vakken van het spelbord in.
+     * 
+     * @param vakken 
+     */
     public void configureerSpelbord(int[][] vakken)
     {
         this.vakken = this.vakMapper.voegVakkenToe(vakken, spelbordId);
