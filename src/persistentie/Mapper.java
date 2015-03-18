@@ -47,6 +47,8 @@ abstract class Mapper extends Connectie
      * @param insertQuery String
      * @param args Object...
      * @throws SQLException SQLException
+     * 
+     * @return int;
      */
     public int insertQuery(String insertQuery, Object... args) throws SQLException
     {
