@@ -34,7 +34,6 @@ public class Spel
      */
     public String[][] toonSpelbord()
     {
-        System.out.println(huidigSpelbord.getSpelbordId());
         return huidigSpelbord.toonSpelbord();
     }
 

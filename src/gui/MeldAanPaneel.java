@@ -30,7 +30,7 @@ public class MeldAanPaneel extends BaseGui
         TextField username = (TextField) MeldAanPaneel.this.findByIdInPane(stage, "txtUsername");
         TextField password = (TextField) MeldAanPaneel.this.findByIdInPane(stage, "txtPassword");
         
-        username.requestFocus();
+        username.requestFocus(); // focus username
         
         this.findByIdInPane(stage, "signIn").setOnMouseClicked(new EventHandler<MouseEvent>()
         {

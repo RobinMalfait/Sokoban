@@ -1,5 +1,6 @@
 package gui;
 
+import static gui.BaseGui.DC;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -31,21 +32,23 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(KeyEvent event)
             {
-                if (event.getCode().equals(KeyCode.UP)) {
-                    BaseGui.DC.verplaatsSpeler(1);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                    
-                } else if (event.getCode().equals(KeyCode.DOWN)) {
-                    BaseGui.DC.verplaatsSpeler(2);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                    
-                } else if (event.getCode().equals(KeyCode.LEFT)) {
-                    BaseGui.DC.verplaatsSpeler(3);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                    
-                } else if (event.getCode().equals(KeyCode.RIGHT)) {
-                    BaseGui.DC.verplaatsSpeler(4);
-                    SpeelSpelPaneel.this.drawBoard(stage);
+                if ( ! DC.isEindeSpel()) {
+                    if (event.getCode().equals(KeyCode.UP)) {
+                        DC.verplaatsSpeler(1);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+
+                    } else if (event.getCode().equals(KeyCode.DOWN)) {
+                        DC.verplaatsSpeler(2);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+
+                    } else if (event.getCode().equals(KeyCode.LEFT)) {
+                        DC.verplaatsSpeler(3);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+
+                    } else if (event.getCode().equals(KeyCode.RIGHT)) {
+                        DC.verplaatsSpeler(4);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+                    }
                 }
             }
             
@@ -56,8 +59,10 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                DC.verplaatsSpeler(1);
-                SpeelSpelPaneel.this.drawBoard(stage);
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(1);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
         
@@ -66,8 +71,10 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                DC.verplaatsSpeler(2);
-                SpeelSpelPaneel.this.drawBoard(stage);
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(2);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
         
@@ -76,8 +83,10 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                DC.verplaatsSpeler(3);
-                SpeelSpelPaneel.this.drawBoard(stage);
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(3);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
         
@@ -86,8 +95,10 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                DC.verplaatsSpeler(4);
-                SpeelSpelPaneel.this.drawBoard(stage);
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(4);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
 
@@ -122,15 +133,15 @@ public class SpeelSpelPaneel extends BaseGui
         }
         
         if (DC.isSpelbordVoltooid()) {
-            spelbordComplete.setText(this.lang.get("game.complete"));
+            if (DC.isEindeSpel()) {
+                System.out.printf("%s", "Gewonnen!");
+            } else {
+                spelbordComplete.setText(this.lang.get("game.complete"));
             
-            DC.bepaalVolgendSpelbord();
-            
-            this.drawBoard(stage);
-        }
-        
-        if (DC.isEindeSpel()) {
-            
+                DC.bepaalVolgendSpelbord();
+
+                this.drawBoard(stage);
+            }
         }
     }
 

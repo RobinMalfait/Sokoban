@@ -155,7 +155,7 @@ public class Spelbord
                     }
                     else                            //Leeg vak
                     {
-                        spelbordString[x][y] = "-";
+                        spelbordString[x][y] = "_";
                     }
                 }
                 y++;
