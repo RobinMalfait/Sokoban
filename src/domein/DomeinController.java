@@ -83,14 +83,14 @@ public class DomeinController
             return null;
         }
 
-        String[] spelerString = new String[3];
+        String[] spelerString = new String[4];
 
         spelerString[0] = huidigeSpeler.getVoornaam();
         spelerString[1] = huidigeSpeler.getNaam();
         spelerString[2] = huidigeSpeler.getGebruikersnaam();
-
+        spelerString[3] = String.valueOf(huidigeSpeler.isAdmin());
+        
         return spelerString;
-
     }
     
     /** 
@@ -238,5 +238,15 @@ public class DomeinController
     public void voegSpelbordToe(String naam, int vakken[][])
     {
         this.huidigSpel.voegSpelbordToe(naam, vakken);
+    }
+    
+    /**
+     * Retourneet of de gebruiker admin is of niet
+     * 
+     * @return boolean
+     */
+    public boolean isAdmin()
+    {
+        return this.huidigeSpeler.isAdmin();
     }
 }

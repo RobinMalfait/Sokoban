@@ -11,11 +11,11 @@ public class NL extends Language
      */
     public NL()
     {
-        map("user.username",            "gebruikersnaam");
-        map("user.name",                "naam");
-        map("user.firstname",           "voornaam");
-        map("user.password",            "wachtwoord");
-        map("user.password.repeat",     "wachtwoordherhaling");
+        map("user.username",            "Gebruikersnaam");
+        map("user.name",                "Naam");
+        map("user.firstname",           "Voornaam");
+        map("user.password",            "Wachtwoord");
+        map("user.password.repeat",     "Wachtwoordherhaling");
         map("user.admin",               "administrator");
         map("user.added",               "Nieuwe speler toegevoegd");
         map("user.registration",        "Registratie van een nieuwe speler");
@@ -40,13 +40,13 @@ public class NL extends Language
         map("player.left",              "links");
         map("player.right",             "rechts");
         
-        map("list.choice",              "mijn keuze");
+        map("list.choice",              "Mijn keuze");
         map("list.choose",              "Wat wenst u te doen?");
         
         map("app.quit",                 "stoppen");
         map("app.quited",               "gestopt");
         
-        map("err.login",                "De gebruikersnaam of het wachtwoord is incorrect");
+        map("err.login",                "De gebruikersnaam of het wachtwoord is incorrect.");
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
         map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");

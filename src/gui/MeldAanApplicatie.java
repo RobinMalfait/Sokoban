@@ -15,7 +15,7 @@ public class MeldAanApplicatie
     {   
         boolean invoerFout = true;
         boolean stop = false;
-        String gebruikersnaam, wachtwoord;
+        String gebruikersnaam = "", wachtwoord;
         
         //controle inloggegevens
         do 
@@ -23,7 +23,7 @@ public class MeldAanApplicatie
             try 
             {
                 //inloggegevens
-                System.out.print(lang.get("user.username") + "*: ");
+                System.out.print(lang.get("user.username") + ": ");
                 gebruikersnaam = input.next().trim();
 
                 if(gebruikersnaam.equals("stop"))
@@ -31,7 +31,7 @@ public class MeldAanApplicatie
                 else
                 {
                     // Gebruikersnaam is niet gelijk aan "stop", dus we gaan verder.
-                    System.out.print(lang.get("user.password") + "*: ");
+                    System.out.print(lang.get("user.password") + ": ");
                     wachtwoord = input.next().trim();
                     
                     dc.meldAan(gebruikersnaam, wachtwoord);
@@ -46,9 +46,40 @@ public class MeldAanApplicatie
         while(invoerFout && !stop);
         
         if(!stop) {
-            System.out.printf("%n%s%n%n",lang.get("user.logged.in"));
-            new SpeelSpelApplicatie().start(dc, input, lang);           
+            // De gebruiker is succesvol ingelogd.
+            System.out.printf("%nWelkom %s, u hebt zich succesvol ingelogd.%n%n", gebruikersnaam);
+            
+            toonMenu(dc, input, lang); 
+        } 
+    }
+    
+    public static void toonMenu(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        // De mogelijke keuzes weergeven
+        System.out.printf("%s%n1: %s%n2: %s%n%n", "Wat wenst u te doen?", "Een spel spelen", "Stoppen");
+        if(dc.isAdmin())
+        {
+            System.out.printf("3: %s%n4: %s%n%n", "Configureer nieuw spel", "Wijzig een spel");
         }
- 
+        
+        // Keuze maken
+        System.out.print("Wat wenst u te doen? ");
+        int keuze = input.nextInt();
+        
+        switch(keuze)
+        {
+            case 1:
+                new SpeelSpelApplicatie().start(dc, input, lang);
+                break;
+            case 2:
+                System.out.println("Gestopt");
+                break;                
+            case 3:
+                new AdminApplicatie().start(dc, input, lang);
+                break;
+            case 4:
+                new AdminApplicatie().start(dc, input, lang);
+                break;           
+        }
     }
 }
