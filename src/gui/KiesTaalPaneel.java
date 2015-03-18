@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import languages.LanguageManager;
@@ -22,19 +23,31 @@ public class KiesTaalPaneel extends BaseGui
         
         this.show(stage, "#KiesTaalPaneel");
         
-        stage.getScene().lookup("#langNL").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "langNL").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            this.gaVerder("NL");
+            @Override
+            public void handle(MouseEvent event)
+            {
+                KiesTaalPaneel.this.gaVerder("NL");
+            }
         });
         
-        stage.getScene().lookup("#langEN").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "langEN").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            this.gaVerder("EN");
+            @Override
+            public void handle(MouseEvent event)
+            {
+                KiesTaalPaneel.this.gaVerder("EN");
+            }
         });
         
-        stage.getScene().lookup("#langFR").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "langFR").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            this.gaVerder("FR");
+            @Override
+            public void handle(MouseEvent event)
+            {
+                KiesTaalPaneel.this.gaVerder("FR");
+            }
         });
     }
     
@@ -42,6 +55,6 @@ public class KiesTaalPaneel extends BaseGui
     {
         this.languageManager.setLanguage(language);
         
-        new MenuKeuzePaneel(this.stage, this.languageManager);
+        MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(this.stage, this.languageManager);
     }
 }

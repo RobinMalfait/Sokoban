@@ -4,17 +4,54 @@ Pane {
 
 .btn {
     -fx-background-image: url(../images/wood.jpg);
-    -fx-text-fill: whitesmoke;
+    -fx-text-fill: #ccc;
     -fx-font-weight: bold;
     -fx-font-size: 2em;
-    -fx-border-radius: 5px;
-    -fx-border: 5px solid white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
 }
 
 .btn:hover {
     -fx-cursor: hand;
+    -fx-text-fill: rgb(156, 122, 88);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
 }
 
 .playButton:hover {
     -fx-cursor: hand;
+}
+
+.label-error {
+    -fx-text-fill: salmon;
+}
+
+.btn-space {
+    -fx-padding: 15;
+}
+    
+.M {
+    -fx-background-image: url(../images/bord/M.png); 
+}
+
+.V {
+    -fx-background-image: url(../images/bord/V.png); 
+}
+
+.J {
+    -fx-background-image: url(../images/bord/J.png); 
+}
+
+.D {
+    -fx-background-image: url(../images/bord/D.png); 
+}
+
+.K {
+    -fx-background-image: url(../images/bord/K.png); 
+}
+
+.Y {
+    -fx-background-image: url(../images/bord/Y.png); 
+}
+
+._ {
+    -fx-background-image: url(../images/bord/_.png); 
 }

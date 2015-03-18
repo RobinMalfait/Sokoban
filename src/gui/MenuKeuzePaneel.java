@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,19 +18,23 @@ public class MenuKeuzePaneel extends BaseGui
         
         this.show(stage, "#MenuKeuzePaneel");
         
-        Button signIn = (Button) stage.getScene().lookup("#signIn");
+        Button signIn = (Button) this.findByIdInPane(stage, "signIn");
         signIn.setText(languageManager.get("sign.in").toUpperCase());
         
-        signIn.setOnMouseClicked((MouseEvent event) ->
-        {
-            new MeldAanPaneel(stage, languageManager);
-        });
-        
-        Button signUp = (Button) stage.getScene().lookup("#signUp");
+        Button signUp = (Button) this.findByIdInPane(stage, "signUp");
         signUp.setText(languageManager.get("sign.up").toUpperCase());
         
-        Button stop = (Button) stage.getScene().lookup("#stop");
-        stop.setText(languageManager.get("stop").toUpperCase());
+        Button stop = (Button) this.findByIdInPane(stage, "stop");
+        stop.setText(languageManager.get("app.quit").toUpperCase());
+        
+        signIn.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                MeldAanPaneel meldAanPaneel = new MeldAanPaneel(stage, languageManager);
+            }
+        });
         
     }
 }

@@ -11,14 +11,12 @@ import languages.LanguageManager;
  * @author robin
  */
 public class StartUpGui extends BaseGui
-{
-    private final DomeinController domeinController;
-    
+{ 
     private final LanguageManager languageManager;
 
     public StartUpGui(DomeinController dc, LanguageManager lm)
     {
-        this.domeinController = dc;
+        BaseGui.DC = dc;
         this.languageManager = lm;
         
         this.width = 800;
@@ -29,12 +27,12 @@ public class StartUpGui extends BaseGui
     {
         this.loadScene(stage, "Sokoban.fxml");
         
-        SpeelSpelPaneel speelSpelPaneel = this.showIndexPage(stage);
+        MainPaneel speelSpelPaneel = this.showIndexPage(stage);
     }
 
-    private SpeelSpelPaneel showIndexPage(Stage stage)
+    private MainPaneel showIndexPage(Stage stage)
     {
-        return new SpeelSpelPaneel(stage, this.languageManager);
+        return new MainPaneel(stage, this.languageManager);
     }
     
     
