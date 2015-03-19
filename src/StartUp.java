@@ -1,5 +1,5 @@
 import domein.DomeinController;
-import gui.StartUpGui;
+import gui.javaFx.StartUpGui;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import languages.EN;

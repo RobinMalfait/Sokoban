@@ -1,4 +1,4 @@
-package gui;
+package gui.javaFx;
 
 import domein.DomeinController;
 import java.io.IOException;

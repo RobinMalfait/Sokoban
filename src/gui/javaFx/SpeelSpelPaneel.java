@@ -1,6 +1,6 @@
-package gui;
+package gui.javaFx;
 
-import static gui.BaseGui.DC;
+import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;

@@ -1,4 +1,4 @@
-package gui;
+package gui.javaFx;
 
 import exceptions.WachtwoordException;
 import javafx.application.Platform;
