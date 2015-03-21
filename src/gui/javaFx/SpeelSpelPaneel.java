@@ -49,51 +49,35 @@ public class SpeelSpelPaneel extends BaseGui
             }
         });
                 
-        this.findByIdInPane(stage, "up").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane(stage, "up").setOnMouseClicked((MouseEvent event) ->
         {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                if ( ! DC.isEindeSpel()) {
-                    DC.verplaatsSpeler(1);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                }
+            if ( ! DC.isEindeSpel()) {
+                DC.verplaatsSpeler(1);
+                SpeelSpelPaneel.this.drawBoard(stage);
             }
         });
         
-        this.findByIdInPane(stage, "down").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane(stage, "down").setOnMouseClicked((MouseEvent event) ->
         {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                if ( ! DC.isEindeSpel()) {
-                    DC.verplaatsSpeler(2);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                }
+            if ( ! DC.isEindeSpel()) {
+                DC.verplaatsSpeler(2);
+                SpeelSpelPaneel.this.drawBoard(stage);
             }
         });
         
-        this.findByIdInPane(stage, "left").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane(stage, "left").setOnMouseClicked((MouseEvent event) ->
         {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                if ( ! DC.isEindeSpel()) {
-                    DC.verplaatsSpeler(3);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                }
+            if ( ! DC.isEindeSpel()) {
+                DC.verplaatsSpeler(3);
+                SpeelSpelPaneel.this.drawBoard(stage);
             }
         });
         
-        this.findByIdInPane(stage, "right").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane(stage, "right").setOnMouseClicked((MouseEvent event) ->
         {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                if ( ! DC.isEindeSpel()) {
-                    DC.verplaatsSpeler(4);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                }
+            if ( ! DC.isEindeSpel()) {
+                DC.verplaatsSpeler(4);
+                SpeelSpelPaneel.this.drawBoard(stage);
             }
         });
 
