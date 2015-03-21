@@ -27,31 +27,26 @@ public class SpeelSpelPaneel extends BaseGui
 
         this.show(stage, "#SpeelSpelPaneel");
         
-        stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>()
+        stage.getScene().setOnKeyPressed((KeyEvent event) ->
         {
-            @Override
-            public void handle(KeyEvent event)
-            {
-                if ( ! DC.isEindeSpel()) {
-                    if (event.getCode().equals(KeyCode.UP)) {
-                        DC.verplaatsSpeler(1);
-                        SpeelSpelPaneel.this.drawBoard(stage);
-
-                    } else if (event.getCode().equals(KeyCode.DOWN)) {
-                        DC.verplaatsSpeler(2);
-                        SpeelSpelPaneel.this.drawBoard(stage);
-
-                    } else if (event.getCode().equals(KeyCode.LEFT)) {
-                        DC.verplaatsSpeler(3);
-                        SpeelSpelPaneel.this.drawBoard(stage);
-
-                    } else if (event.getCode().equals(KeyCode.RIGHT)) {
-                        DC.verplaatsSpeler(4);
-                        SpeelSpelPaneel.this.drawBoard(stage);
-                    }
+            if ( ! DC.isEindeSpel()) {
+                if (event.getCode().equals(KeyCode.UP)) {
+                    DC.verplaatsSpeler(1);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                    
+                } else if (event.getCode().equals(KeyCode.DOWN)) {
+                    DC.verplaatsSpeler(2);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                    
+                } else if (event.getCode().equals(KeyCode.LEFT)) {
+                    DC.verplaatsSpeler(3);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                    
+                } else if (event.getCode().equals(KeyCode.RIGHT)) {
+                    DC.verplaatsSpeler(4);
+                    SpeelSpelPaneel.this.drawBoard(stage);
                 }
             }
-            
         });
                 
         this.findByIdInPane(stage, "up").setOnMouseClicked(new EventHandler<MouseEvent>()
