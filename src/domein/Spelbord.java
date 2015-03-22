@@ -186,6 +186,8 @@ public class Spelbord
         {
             aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
             vakMetMannetje.setMannetje(null);
+            
+            verplaatsingen++;
         }
         else if (aanliggendVak.bevatKist())     //vak met kist
         {
@@ -198,6 +200,8 @@ public class Spelbord
 
                 aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
                 vakMetMannetje.setMannetje(null);
+                
+                verplaatsingen++;
             }
         }
     }
