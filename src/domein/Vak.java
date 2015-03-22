@@ -20,6 +20,7 @@ public class Vak
     private Kist kist;
     private Mannetje mannetje;
     
+    //CONSTRUCTOREN
     /**
      * Maak een nieuw Vak-object aan
      * 
@@ -66,6 +67,7 @@ public class Vak
         this.mannetje = mannetje;      
     }
     
+    //GETTERS
     /**
      * Verkrijg de X positie
      * 
@@ -97,16 +99,6 @@ public class Vak
     }
 
     /**
-     * Stel doel in
-     * 
-     * @param doel boolean
-     */
-    private void setDoel(boolean doel)
-    {
-        this.doel = doel;
-    }
-
-    /**
      * Is het vak toegankelijk of niet
      * 
      * @return boolean
@@ -114,16 +106,6 @@ public class Vak
     public boolean isToegankelijk()
     {
         return toegankelijk;
-    }
-
-    /**
-     * Maak het vak toegankelijk of niet
-     * 
-     * @param toegankelijk boolean
-     */
-    private void setToegankelijk(boolean toegankelijk)
-    {
-        this.toegankelijk = toegankelijk;
     }
 
     /**
@@ -136,6 +118,12 @@ public class Vak
         return kist;
     }
 
+    public Mannetje getMannetje()
+    {
+        return mannetje;
+    }
+    
+    //SETTERS
     /**
      * Stel een kist in 
      * 
@@ -147,6 +135,17 @@ public class Vak
     }
     
     /**
+     * Stel een mannetje in
+     * 
+     * @param mannetje Mannetje
+     */
+    public void setMannetje(Mannetje mannetje)
+    {
+        this.mannetje = mannetje;
+    }
+    
+    //ACTIES
+    /**
      * Bevat het vak een kist?
      * 
      * @return boolean
@@ -156,21 +155,6 @@ public class Vak
         if(this.kist == null)
             return false;
         return true;
-    }
-    
-    /**
-     * Stel een mannetje in
-     * 
-     * @param mannetje Mannetje
-     */
-    public void setMannetje(Mannetje mannetje)
-    {
-        this.mannetje = mannetje;
-    }
-
-    public Mannetje getMannetje()
-    {
-        return mannetje;
     }
     
     /**
@@ -185,18 +169,15 @@ public class Vak
         return true;
     }
     
+    /**
+     * Is het vak leeg?
+     * 
+     * @return boolean
+     */
     public boolean isLeeg()
     {
         if(!toegankelijk || bevatKist())  //muur of kist;
             return false;
         return true;
-    }
-
-
-    
-    
-    
-    
-    
-    
+    } 
 }

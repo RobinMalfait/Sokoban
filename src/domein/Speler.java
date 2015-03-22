@@ -13,6 +13,7 @@ public class Speler
     private boolean admin;
     private LanguageManager lang;
 
+    //CONSTRUCTOREN
     /**
      * Maak een nieuw Speler object.
      *
@@ -76,12 +77,68 @@ public class Speler
 
         this.setId(id);
     }
-
-    public void setLang(LanguageManager lang)
+    
+    //GETTERS
+    /**
+     * Verkrijg het id van de speler.
+     * 
+     * @return int
+     */
+    public int getId()
     {
-        this.lang = lang;
+        return id;
     }
 
+    /**
+     * Verkrijg de naam van de speler.
+     * 
+     * @return String
+     */
+    public String getNaam()
+    {
+        return naam;
+    }
+
+    /**
+     * Verkrijg de voornaam van de speler.
+     * 
+     * @return String
+     */
+    public String getVoornaam()
+    {
+        return voornaam;
+    }
+
+    /**
+     * Verkrijg de gebruikersnaam van de speler.
+     * 
+     * @return String
+     */
+    public String getGebruikersnaam()
+    {
+        return gebruikersnaam;
+    }
+
+    /**
+     * Verkrijg het wachtwoord van de speler.
+     * 
+     * @return String
+     */
+    public String getWachtwoord()
+    {
+        return wachtwoord;
+    }
+
+    /**
+     * 
+     * @return boolean
+     */
+    public boolean isAdmin()
+    {
+        return admin;
+    }
+
+    //SETTERS
     /**
      * Stel het id in.
      * 
@@ -144,66 +201,12 @@ public class Speler
         this.admin = admin;
     }
     
-
-    /**
-     * Verkrijg het id van de speler.
-     * 
-     * @return int
-     */
-    public int getId()
+    public void setLang(LanguageManager lang)
     {
-        return id;
+        this.lang = lang;
     }
-
-    /**
-     * Verkrijg de naam van de speler.
-     * 
-     * @return String
-     */
-    public String getNaam()
-    {
-        return naam;
-    }
-
-    /**
-     * Verkrijg de voornaam van de speler.
-     * 
-     * @return String
-     */
-    public String getVoornaam()
-    {
-        return voornaam;
-    }
-
-    /**
-     * Verkrijg de gebruikersnaam van de speler.
-     * 
-     * @return String
-     */
-    public String getGebruikersnaam()
-    {
-        return gebruikersnaam;
-    }
-
-    /**
-     * Verkrijg het wachtwoord van de speler.
-     * 
-     * @return String
-     */
-    public String getWachtwoord()
-    {
-        return wachtwoord;
-    }
-
-    /**
-     * 
-     * @return boolean
-     */
-    public boolean isAdmin()
-    {
-        return admin;
-    }
-
+    
+    //ACTIES
     /**
      * Transformeer het speler object naar een String.
      * 
@@ -223,5 +226,4 @@ public class Speler
                 this.naam,
                 (admin ? "admin" : "geen admin"));
     }
-
 }

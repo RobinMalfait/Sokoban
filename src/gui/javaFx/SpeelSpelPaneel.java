@@ -111,7 +111,7 @@ public class SpeelSpelPaneel extends BaseGui
             y++;
         }
             
-        if (DC.isSpelbordVoltooid()) {
+        if (DC.isEindeHuidigSpelbord()) {
             if (DC.isEindeSpel()) {
                 
                 grid.getChildren().clear();

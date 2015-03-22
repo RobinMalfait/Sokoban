@@ -83,7 +83,7 @@ public class SpeelSpelApplicatie
                     System.out.println();
                 }
 
-            } while (!dc.isSpelbordVoltooid());
+            } while (!dc.isEindeHuidigSpelbord());
 
             // Als men hier komt is het Spelbord voltooid , oftewel wil de gebruiker stoppen.
             if (keuze == 5)
