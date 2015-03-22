@@ -238,6 +238,8 @@ public class DomeinController
 
     /**
      * Voeg een spel toe aan de repository, en in de database.
+     * 
+     * @param naam String
      */
     public void voegSpelToe(String naam)
     {
@@ -247,6 +249,9 @@ public class DomeinController
     /**
      * Voeg een spelbord toe, met de nodige vakken aan een Spel en in de
      * database.
+     * 
+     * @param naam String
+     * @param vakken int[][]
      */
     public void voegSpelbordToe(String naam, int vakken[][])
     {

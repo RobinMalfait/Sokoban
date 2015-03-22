@@ -258,7 +258,7 @@ public class Spelbord
      * 
      * @return boolean
      */
-    public boolean isSpelbordVoltooid()
+    public boolean isEindeSpelbord()
     {
         for (Vak[] vakArray : vakken)
         {
@@ -270,8 +270,8 @@ public class Spelbord
                 }
             }
         }
-        voltooid = true;
-        return true;
+        this.voltooid = true;
+        return this.voltooid;
     }
     
     /**

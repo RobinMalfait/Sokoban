@@ -201,7 +201,7 @@ public class Spel
      */
     public boolean isEindeHuidigSpelbord()
     {
-        return huidigSpelbord.isSpelbordVoltooid();
+        return huidigSpelbord.isEindeSpelbord();
     }
     
     /**
