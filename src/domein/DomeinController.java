@@ -213,9 +213,9 @@ public class DomeinController
      *
      * @return boolean
      */
-    public boolean isEindeHuidigSpelbord()
+    public boolean isEindeSpelbord()
     {
-        return huidigSpel.isEindeHuidigSpelbord();
+        return huidigSpel.isEindeSpelbord();
     }
 
     /**

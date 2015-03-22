@@ -199,7 +199,7 @@ public class Spel
      * 
      * @return boolean
      */
-    public boolean isEindeHuidigSpelbord()
+    public boolean isEindeSpelbord()
     {
         return huidigSpelbord.isEindeSpelbord();
     }
