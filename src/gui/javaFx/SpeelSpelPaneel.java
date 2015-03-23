@@ -27,7 +27,7 @@ public class SpeelSpelPaneel extends BaseGui
 
         this.show(stage, "#SpeelSpelPaneel");
         
-        stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>()
+        stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
         {
             @Override
             public void handle(KeyEvent event)
@@ -36,7 +36,6 @@ public class SpeelSpelPaneel extends BaseGui
                     if (event.getCode().equals(KeyCode.UP)) {
                         DC.verplaatsSpeler(1);
                         SpeelSpelPaneel.this.drawBoard(stage);
-                        
                     } else if (event.getCode().equals(KeyCode.DOWN)) {
                         DC.verplaatsSpeler(2);
                         SpeelSpelPaneel.this.drawBoard(stage);
