@@ -11,7 +11,6 @@ public class FR extends Language
      */
     public FR()
     {
-        
         map("user.username",            "nom d'utilisateur");
         map("user.name",                "nom");
         map("user.firstname",           "prénom");
@@ -52,5 +51,3 @@ public class FR extends Language
         map("err.passwordDR",           "Le mot de passe ne répond pas aux prescriptions");   
     }
 }
-
-

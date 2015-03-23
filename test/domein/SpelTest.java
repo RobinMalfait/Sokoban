@@ -104,8 +104,8 @@ public class SpelTest
     @Test 
     public void isHuidigSpelbordVoltooid_nee()
     {
-        spelborden.get(0).maakVoltooid();
-        spelborden.get(1).maakVoltooid();
+        spelborden.get(0).setVoltooid(true);
+        spelborden.get(1).setVoltooid(true);
          
         assertEquals(spel.isEindeSpel(), false);        
     }
@@ -113,9 +113,9 @@ public class SpelTest
     @Test 
     public void isHuidigSpelbordVoltooid_ja()
     {
-        spelborden.get(0).maakVoltooid();
-        spelborden.get(1).maakVoltooid();
-        spelborden.get(2).maakVoltooid();        
+        spelborden.get(0).setVoltooid(true);
+        spelborden.get(1).setVoltooid(true);
+        spelborden.get(2).setVoltooid(true);
         
         assertEquals(spel.isEindeSpel(), true);        
     }

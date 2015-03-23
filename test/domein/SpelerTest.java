@@ -6,6 +6,8 @@
 package domein;
 
 import exceptions.GebruikersnaamException;
+import languages.LanguageManager;
+import languages.NL;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +23,12 @@ public class SpelerTest
     @Before
     public void setUp()
     {
-       speler = new Speler(1, "Dekoninck", "Demian", "DemianDekoninck", "Demian123456", true);
+        LanguageManager lang = new LanguageManager();
+        lang.addLanguage(new NL());
+        lang.setLanguage("NL");
+        
+        speler = new Speler(1, "Dekoninck", "Demian", "DemianDekoninck", "Demian123456", true);
+        speler.setLang(lang);
     }
     
     @Test
@@ -70,12 +77,12 @@ public class SpelerTest
     @Test
     public void toString_Legal_String()
     {
-        assertEquals(String.format("Speler(id: %d, gebruikersnaam: %s, voornaam: %s, naam: %s, %s)%n", 
-                speler.getId(), 
-                speler.getGebruikersnaam(), 
-                speler.getVoornaam(), 
-                speler.getNaam(),
-                (speler.isAdmin() ? "admin" : "geen admin"))
-                , speler.toString());
+        assertEquals(String.format("Speler(id: %d, Gebruikersnaam: %s, Voornaam: %s, Naam: %s, %s)%n", 
+            speler.getId(), 
+            speler.getGebruikersnaam(), 
+            speler.getVoornaam(), 
+            speler.getNaam(),
+            (speler.isAdmin() ? "admin" : "geen admin"))
+        , speler.toString());
     }
 }

@@ -20,64 +20,86 @@ public class SpeelSpelPaneel extends BaseGui
 
     private final LanguageManager lang;
     
-    public SpeelSpelPaneel(Stage stage, LanguageManager languageManager)
+    public SpeelSpelPaneel(Stage stage)
     {
-        this.lang = languageManager;
+        this.lang = DC.getLanguageManager();
+        
         stage.setTitle("");
 
         this.show(stage, "#SpeelSpelPaneel");
         
-        stage.getScene().setOnKeyPressed((KeyEvent event) ->
+        stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
         {
-            if ( ! DC.isEindeSpel()) {
-                if (event.getCode().equals(KeyCode.UP)) {
-                    DC.verplaatsSpeler(1);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                    
-                } else if (event.getCode().equals(KeyCode.DOWN)) {
-                    DC.verplaatsSpeler(2);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                    
-                } else if (event.getCode().equals(KeyCode.LEFT)) {
-                    DC.verplaatsSpeler(3);
-                    SpeelSpelPaneel.this.drawBoard(stage);
-                    
-                } else if (event.getCode().equals(KeyCode.RIGHT)) {
-                    DC.verplaatsSpeler(4);
-                    SpeelSpelPaneel.this.drawBoard(stage);
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if ( ! DC.isEindeSpel()) {
+                    if (event.getCode().equals(KeyCode.UP)) {
+                        DC.verplaatsSpeler(1);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+                    } else if (event.getCode().equals(KeyCode.DOWN)) {
+                        DC.verplaatsSpeler(2);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+                        
+                    } else if (event.getCode().equals(KeyCode.LEFT)) {
+                        DC.verplaatsSpeler(3);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+                        
+                    } else if (event.getCode().equals(KeyCode.RIGHT)) {
+                        DC.verplaatsSpeler(4);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+                    }
                 }
             }
         });
                 
-        this.findByIdInPane(stage, "up").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "up").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            if ( ! DC.isEindeSpel()) {
-                DC.verplaatsSpeler(1);
-                SpeelSpelPaneel.this.drawBoard(stage);
+            @Override
+            public void handle(MouseEvent event)
+            {
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(1);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
         
-        this.findByIdInPane(stage, "down").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "down").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            if ( ! DC.isEindeSpel()) {
-                DC.verplaatsSpeler(2);
-                SpeelSpelPaneel.this.drawBoard(stage);
+            @Override
+            public void handle(MouseEvent event)
+            {
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(2);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
         
-        this.findByIdInPane(stage, "left").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "left").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            if ( ! DC.isEindeSpel()) {
-                DC.verplaatsSpeler(3);
-                SpeelSpelPaneel.this.drawBoard(stage);
+
+            @Override
+            public void handle(MouseEvent event)
+            {
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(3);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
         
-        this.findByIdInPane(stage, "right").setOnMouseClicked((MouseEvent event) ->
+        this.findByIdInPane(stage, "right").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
-            if ( ! DC.isEindeSpel()) {
-                DC.verplaatsSpeler(4);
-                SpeelSpelPaneel.this.drawBoard(stage);
+
+            @Override
+            public void handle(MouseEvent event)
+            {
+                if ( ! DC.isEindeSpel()) {
+                    DC.verplaatsSpeler(4);
+                    SpeelSpelPaneel.this.drawBoard(stage);
+                }
             }
         });
 
@@ -111,7 +133,7 @@ public class SpeelSpelPaneel extends BaseGui
             y++;
         }
             
-        if (DC.isSpelbordVoltooid()) {
+        if (DC.isEindeSpelbord()) {
             if (DC.isEindeSpel()) {
                 
                 grid.getChildren().clear();
