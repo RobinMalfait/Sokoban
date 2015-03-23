@@ -37,6 +37,15 @@ public class MenuKeuzePaneel extends BaseGui
             }
         });
         
+        signUp.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                RegistreerPaneel registreerPaneel = new RegistreerPaneel(stage, languageManager);
+            }
+        });
+        
         stop.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override

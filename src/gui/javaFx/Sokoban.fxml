@@ -13,64 +13,6 @@
    <children>
       <StackPane>
          <children>
-            <Pane id="MeldAanPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Label id="MeldAanPaneel_lblUsername" layoutX="174.0" layoutY="247.0" text="Gebruikersnaam:" />
-                  <TextField id="MeldAanPaneel_txtUsername" layoutX="174.0" layoutY="263.0" prefHeight="26.0" prefWidth="452.0" />
-                  <Label id="MeldAanPaneel_lblPassword" layoutX="174.0" layoutY="315.0" text="Wachtwoord:" />
-                  <PasswordField id="MeldAanPaneel_txtPassword" layoutX="174.0" layoutY="331.0" prefHeight="26.0" prefWidth="452.0" />
-                  <Button id="MeldAanPaneel_signIn" layoutX="285.0" layoutY="398.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="230.0" styleClass="btn" text="Meld Aan" />
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="MeldAanPaneel_stop" layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="btn" text="Stop" />
-                  <Label id="MeldAanPaneel_lblError" layoutX="174.0" layoutY="364.0" styleClass="label-error" text="Error." visible="false" />
-               </children>
-            </Pane>
-            <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="MenuKeuzePaneel_signIn" layoutX="275.0" layoutY="236.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="AANMELDEN" />
-                  <Button id="MenuKeuzePaneel_signUp" layoutX="275.0" layoutY="322.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="REGISTREREN" />
-                  <Button id="MenuKeuzePaneel_stop" layoutX="275.0" layoutY="406.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="STOPPEN" />
-               </children>
-            </Pane>
-            <Pane id="KiesTaalPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="KiesTaalPaneel_langEN" layoutX="333.0" layoutY="285.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="134.0" styleClass="btn" text="EN" />
-                  <Button id="KiesTaalPaneel_langFR" layoutX="497.0" layoutY="285.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="134.0" styleClass="btn" text="FR" />
-                  <Button id="KiesTaalPaneel_langNL" layoutX="169.0" layoutY="285.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="134.0" styleClass="btn" text="NL" />
-               </children>
-            </Pane>
-            <Pane id="MainPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView id="MainPaneel_playButton" fx:id="PlayButton" layoutX="327.0" layoutY="300.0" styleClass="playButton">
-                     <image>
-                        <Image url="@../images/button.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
             <Pane id="KiesSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
@@ -147,6 +89,87 @@
                      </children>
                   </GridPane>
                   <Label id="SpeelSpelPaneel_lblSpelbordComplete" layoutX="521.0" layoutY="56.0" text="lblSpelbordComplete" />
+               </children>
+            </Pane>
+            <Pane id="MeldAanPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Label id="MeldAanPaneel_lblUsername" layoutX="174.0" layoutY="247.0" text="Gebruikersnaam:" />
+                  <TextField id="MeldAanPaneel_txtUsername" layoutX="174.0" layoutY="263.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Label id="MeldAanPaneel_lblPassword" layoutX="174.0" layoutY="315.0" text="Wachtwoord:" />
+                  <PasswordField id="MeldAanPaneel_txtPassword" layoutX="174.0" layoutY="331.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Button id="MeldAanPaneel_signIn" layoutX="285.0" layoutY="398.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="230.0" styleClass="btn" text="Meld Aan" />
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="MeldAanPaneel_stop" layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="btn" text="Stop" />
+                  <Label id="MeldAanPaneel_lblError" layoutX="174.0" layoutY="364.0" styleClass="label-error" text="Error." visible="false" />
+               </children>
+            </Pane>
+            <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="MenuKeuzePaneel_signIn" layoutX="275.0" layoutY="236.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="AANMELDEN" />
+                  <Button id="MenuKeuzePaneel_signUp" layoutX="275.0" layoutY="322.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="REGISTREREN" />
+                  <Button id="MenuKeuzePaneel_stop" layoutX="275.0" layoutY="406.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="STOPPEN" />
+               </children>
+            </Pane>
+            <Pane id="KiesTaalPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="KiesTaalPaneel_langEN" layoutX="333.0" layoutY="285.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="134.0" styleClass="btn" text="EN" />
+                  <Button id="KiesTaalPaneel_langFR" layoutX="497.0" layoutY="285.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="134.0" styleClass="btn" text="FR" />
+                  <Button id="KiesTaalPaneel_langNL" layoutX="169.0" layoutY="285.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="134.0" styleClass="btn" text="NL" />
+               </children>
+            </Pane>
+            <Pane id="MainPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView id="MainPaneel_playButton" fx:id="PlayButton" layoutX="311.0" layoutY="300.0" styleClass="playButton">
+                     <image>
+                        <Image url="@../images/button.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="RegistreerPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Label id="RegistreerPaneel_lblFirstName" layoutX="174.0" layoutY="189.0" text="Voornaam:" />
+                  <TextField id="RegistreerPaneel_txtFirstName" layoutX="174.0" layoutY="205.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Label id="RegistreerPaneel_lblLastName" layoutX="176.0" layoutY="241.0" text="Achternaam:" />
+                  <TextField id="RegistreerPaneel_txtLastName" layoutX="174.0" layoutY="257.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Label id="RegistreerPaneel_lblUsername" layoutX="174.0" layoutY="293.0" text="Gebruikersnaam:" />
+                  <TextField id="RegistreerPaneel_txtUsername" layoutX="174.0" layoutY="309.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Label id="RegistreerPaneel_lblPassword" layoutX="174.0" layoutY="344.0" text="Wachtwoord:" />
+                  <PasswordField id="RegistreerPaneel_txtPassword" layoutX="174.0" layoutY="360.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Label id="RegistreerPaneel_lblPasswordRepeat" layoutX="174.0" layoutY="396.0" text="Wachtwoord Herhalen:" />
+                  <PasswordField id="RegistreerPaneel_txtPasswordRepeat" layoutX="174.0" layoutY="412.0" prefHeight="26.0" prefWidth="452.0" />
+                  <Button id="RegistreerPaneel_signUpBtn" layoutX="285.0" layoutY="475.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="230.0" styleClass="btn" text="Registreer" />
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="RegistreerPaneel_stop" layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="btn" text="Stop" />
+                  <Label id="RegistreerPaneel_lblError" layoutX="174.0" layoutY="446.0" prefHeight="16.0" prefWidth="92.0" styleClass="label-error" text="Error." visible="false" />
                </children>
             </Pane>
          </children>

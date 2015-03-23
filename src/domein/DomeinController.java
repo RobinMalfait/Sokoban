@@ -106,7 +106,7 @@ public class DomeinController
      */
     public void registreer(String naam, String voornaam, String gebruikersnaam, String wachtwoord, String wachtwoordBevestiging)
     {
-        if (!wachtwoord.equals(wachtwoordBevestiging))
+        if ( ! wachtwoord.equals(wachtwoordBevestiging))
         {
             throw new WachtwoordException(lang.get("err.passwordrepeat"));
         }
