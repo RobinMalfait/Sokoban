@@ -16,8 +16,10 @@ import languages.LanguageManager;
  */
 public class KiesSpelPaneel extends BaseGui
 {
-    public KiesSpelPaneel(Stage stage, LanguageManager lang)
+    public KiesSpelPaneel(Stage stage)
     {
+        LanguageManager lang = DC.getLanguageManager();
+        
         String speler[] = DC.geefHuidigeSpeler();
         
         String name = speler[0] + " " + speler[1];
@@ -52,7 +54,7 @@ public class KiesSpelPaneel extends BaseGui
                 {
                     DC.kiesSpel(Integer.parseInt(spel[0]));
                     
-                    SpeelSpelPaneel speelSpelPaneel = new SpeelSpelPaneel(stage, lang);
+                    SpeelSpelPaneel speelSpelPaneel = new SpeelSpelPaneel(stage);
                 }
             });
            

@@ -24,8 +24,7 @@ public class NL extends Language
         map("credentials.wrong",        "foute gegevens");
         map("sign.in",                  "aanmelden");
         map("sign.up",                  "registreren");
-        
-        
+              
         map("game.welcome",             "welkom");
         map("game.play",                "U zult een nieuw spel spelen");
         map("game.choose.list",         "Kies een spel uit onderstaande lijst");

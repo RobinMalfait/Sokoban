@@ -11,13 +11,11 @@ import languages.LanguageManager;
  * @author robin
  */
 public class StartUpGui extends BaseGui
-{ 
-    private final LanguageManager languageManager;
+{
 
-    public StartUpGui(DomeinController dc, LanguageManager lm)
+    public StartUpGui(DomeinController dc)
     {
         BaseGui.DC = dc;
-        this.languageManager = lm;
         
         this.width = 800;
         this.height = 600;
@@ -32,7 +30,7 @@ public class StartUpGui extends BaseGui
 
     private MainPaneel showIndexPage(Stage stage)
     {
-        return new MainPaneel(stage, this.languageManager);
+        return new MainPaneel(stage);
     }
     
     

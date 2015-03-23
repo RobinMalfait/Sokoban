@@ -20,9 +20,10 @@ public class SpeelSpelPaneel extends BaseGui
 
     private final LanguageManager lang;
     
-    public SpeelSpelPaneel(Stage stage, LanguageManager languageManager)
+    public SpeelSpelPaneel(Stage stage)
     {
-        this.lang = languageManager;
+        this.lang = DC.getLanguageManager();
+        
         stage.setTitle("");
 
         this.show(stage, "#SpeelSpelPaneel");

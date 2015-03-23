@@ -13,27 +13,29 @@ import languages.LanguageManager;
  */
 public class MenuKeuzePaneel extends BaseGui
 {
-    public MenuKeuzePaneel(Stage stage, LanguageManager languageManager)
+    public MenuKeuzePaneel(Stage stage)
     {
         stage.setTitle("Sokoban!");
         
         this.show(stage, "#MenuKeuzePaneel");
         
+        LanguageManager lang = DC.getLanguageManager();
+        
         Button signIn = (Button) this.findByIdInPane(stage, "signIn");
-        signIn.setText(languageManager.get("sign.in").toUpperCase());
+        signIn.setText(lang.get("sign.in").toUpperCase());
         
         Button signUp = (Button) this.findByIdInPane(stage, "signUp");
-        signUp.setText(languageManager.get("sign.up").toUpperCase());
+        signUp.setText(lang.get("sign.up").toUpperCase());
         
         Button stop = (Button) this.findByIdInPane(stage, "stop");
-        stop.setText(languageManager.get("app.quit").toUpperCase());
+        stop.setText(lang.get("app.quit").toUpperCase());
         
         signIn.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MeldAanPaneel meldAanPaneel = new MeldAanPaneel(stage, languageManager);
+                MeldAanPaneel meldAanPaneel = new MeldAanPaneel(stage);
             }
         });
         
@@ -42,7 +44,7 @@ public class MenuKeuzePaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                RegistreerPaneel registreerPaneel = new RegistreerPaneel(stage, languageManager);
+                RegistreerPaneel registreerPaneel = new RegistreerPaneel(stage);
             }
         });
         

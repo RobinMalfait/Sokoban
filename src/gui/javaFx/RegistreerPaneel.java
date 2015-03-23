@@ -17,8 +17,10 @@ import languages.LanguageManager;
  */
 public class RegistreerPaneel extends BaseGui
 {
-    public RegistreerPaneel(Stage stage, LanguageManager lang)
+    public RegistreerPaneel(Stage stage)
     {
+        LanguageManager lang = DC.getLanguageManager();
+                
         stage.setTitle(lang.get("sign.up"));
         
         this.show(stage, "#RegistreerPaneel");
@@ -38,17 +40,18 @@ public class RegistreerPaneel extends BaseGui
         Label lblPasswordRepeat = (Label) this.findByIdInPane(stage, "lblPasswordRepeat");
         lblPasswordRepeat.setText(lang.get("user.password.repeat") + ":");
         
-        TextField firstName = (TextField) RegistreerPaneel.this.findByIdInPane(stage, "txtFirstName");
-        TextField lastName = (TextField) RegistreerPaneel.this.findByIdInPane(stage, "txtLastName");
-        TextField username = (TextField) RegistreerPaneel.this.findByIdInPane(stage, "txtUsername");
-        TextField password = (TextField) RegistreerPaneel.this.findByIdInPane(stage, "txtPassword");
-        TextField passwordRepeat = (TextField) RegistreerPaneel.this.findByIdInPane(stage, "txtPasswordRepeat");
+        TextField firstName = (TextField) this.findByIdInPane(stage, "txtFirstName");
+        TextField lastName = (TextField) this.findByIdInPane(stage, "txtLastName");
+        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
+        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
+        TextField passwordRepeat = (TextField) this.findByIdInPane(stage, "txtPasswordRepeat");
         
-        Button registreer = (Button) RegistreerPaneel.this.findByIdInPane(stage, "signUpBtn");
+        Button signUp = (Button) this.findByIdInPane(stage, "signUpBtn");
+        signUp.setText(lang.get("sign.up"));
         
         firstName.requestFocus(); // focus first name
         
-        registreer.setOnMouseClicked(new EventHandler<MouseEvent>()
+        signUp.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -62,7 +65,7 @@ public class RegistreerPaneel extends BaseGui
                             
                     DC.registreer(sLastName, sFirstName, sUsername, sPassword, sPasswordRepeat);
                     
-                    KiesSpelPaneel kiesSpelPaneel = new KiesSpelPaneel(stage, lang);
+                    KiesSpelPaneel kiesSpelPaneel = new KiesSpelPaneel(stage);
                     
                 } catch (GebruikersnaamException | WachtwoordException e) {
                     Label lblError = (Label) RegistreerPaneel.this.findByIdInPane(stage, "lblError");

@@ -3,10 +3,7 @@ package domein;
 import exceptions.GebruikersnaamException;
 import exceptions.SpelException;
 import exceptions.WachtwoordException;
-import languages.EN;
-import languages.FR;
 import languages.LanguageManager;
-import languages.NL;
 import security.BCrypt;
 
 public class DomeinController
@@ -21,16 +18,11 @@ public class DomeinController
     /**
      * Maak een DomeinController-object aan
      */
-    public DomeinController()
+    public DomeinController(LanguageManager lang)
     {
         spelerRepository = new SpelerRepository();
         spelRepository = new SpelRepository();
-
-        this.lang = new LanguageManager();
-
-        lang.addLanguage(new NL());
-        lang.addLanguage(new FR());
-        lang.addLanguage(new EN());
+        this.lang = lang;
     }
 
     /**
@@ -266,5 +258,13 @@ public class DomeinController
     public boolean isAdmin()
     {
         return this.huidigeSpeler.isAdmin();
+    }
+
+    public LanguageManager getLanguageManager() {
+        return this.lang;
+    }
+
+    public void setLanguage(String language) {
+        this.lang.setLanguage(language);
     }
 }

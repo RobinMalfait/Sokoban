@@ -169,7 +169,7 @@
                      </image>
                   </ImageView>
                   <Button id="RegistreerPaneel_stop" layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="btn" text="Stop" />
-                  <Label id="RegistreerPaneel_lblError" layoutX="174.0" layoutY="446.0" prefHeight="16.0" prefWidth="92.0" styleClass="label-error" text="Error." visible="false" />
+                  <Label id="RegistreerPaneel_lblError" layoutX="174.0" layoutY="446.0" styleClass="label-error" text="Error." visible="false" />
                </children>
             </Pane>
          </children>
