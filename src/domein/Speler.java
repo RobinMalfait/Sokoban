@@ -216,7 +216,7 @@ public class Speler
     public String toString()
     {
         return String.format("Speler(%s: %d, %s: %s, %s: %s, %s: %s, %s)%n", 
-                id,
+                "id",
                 this.id, 
                 lang.get("user.username"),
                 this.gebruikersnaam, 
