@@ -13,12 +13,19 @@ public class Spel
     private String naam;
     
     //CONSTRUCTOREN
+ 
+    public Spel(String naam)
+    {
+        spelbordMapper = new SpelbordMapper();
+        this.naam = naam;
+    }
+    
     /**
      * Maak een nieuw Spel-object aan
      * 
      * @param id int
      * @param naam String
-     */
+     */   
     public Spel(int id, String naam)
     {
         spelbordMapper = new SpelbordMapper();
