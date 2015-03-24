@@ -274,4 +274,9 @@ public class DomeinController
     {
         this.huidigSpel.resetSpelbord();
     }
+    
+    public int geefAantalVerplaatsingen()
+    {
+        return this.huidigSpel.geefAantalVerplaatsingen();
+    }
 }

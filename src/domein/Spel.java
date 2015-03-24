@@ -225,8 +225,13 @@ public class Spel
              
     }
 
-    void resetSpelbord()
+    public void resetSpelbord()
     {
         huidigSpelbord.resetSpelbord();
+    }
+
+    public int geefAantalVerplaatsingen()
+    {
+        return this.huidigSpelbord.getVerplaatsingen();
     }
 }
