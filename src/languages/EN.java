@@ -25,6 +25,15 @@ public class EN extends Language
         map("sign.in",                  "sign in");
         map("sign.up",                  "sign up");
         
+        map("sign.succes",              "You are succesfully logged in!");
+        map("sign.retry",               "Retry or typ: Stop.");
+        map("sign.choise",              "What are you willing to do?");
+        map("sign.play",                "Play a game");
+        map("sign.quit",                "Quit.");
+        map("sign.game.conf",           "Configurate a new game");
+        map("sign.game.modify",         "Modify an existing game");
+        map("sign.quitted",             "Quitted");
+        
         map("game.welcome",             "welcome");
         map("game.play",                "You're going to play a new game");
         map("game.choose.list",         "Choose a game from the list below");
@@ -49,5 +58,7 @@ public class EN extends Language
         map("err.passwordrepeat",       "The password and the password confirmation do not match");
         map("err.usernameDR",           "The username must be at least 8 characters long");
         map("err.passwordDR",           "The password does not cope with the requirements");
+        map("err.integer",              "There was an integer expected.");
+        map("err.nonvalid",             "Non valid choise.");
     }
 }
