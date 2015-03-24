@@ -35,7 +35,7 @@ public class MeldAanPaneel extends BaseGui
         TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
         
         Button signIn = (Button) this.findByIdInPane(stage, "signIn");    
-        signIn.setText(lang.get("sign.in"));
+        signIn.setText(lang.get("sign.in").toUpperCase());
         
         username.requestFocus(); // focus username
         

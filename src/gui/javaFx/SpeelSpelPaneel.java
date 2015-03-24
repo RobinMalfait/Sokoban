@@ -2,8 +2,10 @@ package gui.javaFx;
 
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -30,12 +32,27 @@ public class SpeelSpelPaneel extends BaseGui
         this.show(stage, "#SpeelSpelPaneel");
         
         Button overlayButton = (Button) this.findByIdInPane(stage, "overlay_next");
+        Button retry = (Button) this.findByIdInPane(stage, "retry");
         
-        overlayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+        retry.setTooltip(new Tooltip(lang.get("game.board.retry").toUpperCase()));
+        
+        overlayButton.setText(lang.get("game.board.next").toUpperCase());
+        
+        overlayButton.setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
             @Override
             public void handle(MouseEvent event)
             {
+                SpeelSpelPaneel.this.drawBoard(stage);
+            }
+        });
+        
+        retry.setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                DC.resetSpelbord();
                 SpeelSpelPaneel.this.drawBoard(stage);
             }
         });
