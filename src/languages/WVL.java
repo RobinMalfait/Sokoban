@@ -25,6 +25,19 @@ public class WVL extends Language
         map("sign.in",                  "Inlogn");
         map("sign.up",                  "Inskrivn");
         
+        map("sign.succes",              "You are successfully logged in!");
+        map("sign.retry",               "Retry or typ: Stop.");
+        map("sign.choise",              "What are you willing to do?");
+        map("sign.play",                "Play a game");
+        map("sign.quit",                "Quit.");
+        map("sign.game.conf",           "Configurate a new game");
+        map("sign.game.modify",         "Modify an existing game");
+        map("sign.quitted",             "Quitted");
+        
+        map("register.fill.in",         "Fill in the next data to sign in:");
+        map("register.retry",           "Retry");
+        map("register.succes",          "You are successfully signed up.");
+        
         map("game.welcome",             "Welgekoomn");
         map("game.play",                "Ge goa een nieuw spelleke speeln");
         map("game.choose.list",         "Kiest een spelleke van onderstoande liste");
@@ -49,5 +62,7 @@ public class WVL extends Language
         map("err.passwordrepeat",       "Jen wagtwoord kom nie overjin me jen wagtwoord bevestiginge");
         map("err.usernameDR",           "Jen gebrukersnoame moe mistns 8 tjikns lank zin");
         map("err.passwordDR",           "Jen wagtwoord voldoe nie an de eisn");
+        map("err.integer",              "There was an integer expected.");
+        map("err.nonvalid",             "Non valid choise.");
     }
 }

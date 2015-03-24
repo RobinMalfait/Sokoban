@@ -24,6 +24,19 @@ public class NL extends Language
         map("credentials.wrong",        "foute gegevens");
         map("sign.in",                  "aanmelden");
         map("sign.up",                  "registreren");
+        
+        map("sign.succes",              "You are successfully logged in!");
+        map("sign.retry",               "Retry or typ: Stop.");
+        map("sign.choise",              "What are you willing to do?");
+        map("sign.play",                "Play a game");
+        map("sign.quit",                "Quit.");
+        map("sign.game.conf",           "Configurate a new game");
+        map("sign.game.modify",         "Modify an existing game");
+        map("sign.quitted",             "Quitted");
+        
+        map("register.fill.in",         "Fill in the next data to sign in:");
+        map("register.retry",           "Retry");
+        map("register.succes",          "You are successfully signed up.");
               
         map("game.welcome",             "welkom");
         map("game.play",                "U zult een nieuw spel spelen");
@@ -49,5 +62,7 @@ public class NL extends Language
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
         map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");
+        map("err.integer",              "There was an integer expected.");
+        map("err.nonvalid",             "Non valid choise.");
     }
 }
