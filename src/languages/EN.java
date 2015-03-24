@@ -25,7 +25,7 @@ public class EN extends Language
         map("sign.in",                  "sign in");
         map("sign.up",                  "sign up");
         
-        map("sign.succes",              "You are succesfully logged in!");
+        map("sign.succes",              "You are successfully logged in!");
         map("sign.retry",               "Retry or typ: Stop.");
         map("sign.choise",              "What are you willing to do?");
         map("sign.play",                "Play a game");
@@ -33,6 +33,10 @@ public class EN extends Language
         map("sign.game.conf",           "Configurate a new game");
         map("sign.game.modify",         "Modify an existing game");
         map("sign.quitted",             "Quitted");
+        
+        map("register.fill.in",         "Fill in the next data to sign in:");
+        map("register.retry",           "Retry");
+        map("register.succes",          "You are successfully signed up.");
         
         map("game.welcome",             "welcome");
         map("game.play",                "You're going to play a new game");
