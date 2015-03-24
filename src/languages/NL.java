@@ -67,5 +67,7 @@ public class NL extends Language
         map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");
         map("err.integer",              "Er werd een geheel getal verwacht.");
         map("err.nonvalid",             "Niet geldige keuze.");
+        map("err.input",                "De keuze moet tussen :min en :max liggen.");
+        map("err.NaN",                  "U gaf geen nummer in.");
     }
 }

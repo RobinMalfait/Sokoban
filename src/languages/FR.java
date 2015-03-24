@@ -67,5 +67,7 @@ public class FR extends Language
         map("err.passwordDR",           "Le mot de passe ne répond pas aux prescriptions");
         map("err.integer",              "Il y avait un nombre entier attendue.");
         map("err.nonvalid",             "Choix non valide.");
+        map("err.input",                "Le choix doit se situer entre :min et :max.");
+        map("err.NaN",                  "Vous n'avez pas entrer un nombre.");
     }
 }

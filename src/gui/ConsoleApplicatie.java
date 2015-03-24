@@ -37,21 +37,7 @@ public class ConsoleApplicatie
                 "Admin",
                 lang.get("app.quit"));
 
-        invoerFout = true;
-        do 
-        {
-            try 
-            {
-                input.nextLine();
-                System.out.print(lang.get("list.choice") + ": ");
-                keuze = input.nextInt();
-                invoerFout = false;
-            }
-            catch(InputMismatchException e)
-            {
-                System.out.println(lang.get("err.integer"));
-            }
-        } while(invoerFout);
+        keuze = invoerControle(1, 5, input, lang);
         
         System.out.println(); // Een extra enter voor de volgende output
         input.nextLine(); // Buffer leegmaken
@@ -76,5 +62,41 @@ public class ConsoleApplicatie
             default:
                 System.err.println(lang.get("err.nonvalid"));
         }
+    }
+    
+    private int invoerControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
+    {
+        int keuze = 0;
+        boolean fouteInvoer = true;
+        do
+        {
+            try
+            {                
+                System.out.printf("%s: ", lang.get("list.choice"));
+                keuze = input.nextInt();
+
+                if (keuze < ondergrens || keuze > bovengrens)
+                {
+                    throw new IllegalArgumentException(lang.get("err.input", 
+                        "min", ondergrens, 
+                        "max", bovengrens));
+                }
+                
+                fouteInvoer = false;
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.err.println(e.getMessage());
+                input.nextLine();
+            }
+            catch (InputMismatchException e)
+            {
+                System.err.println(lang.get("err.NaN"));
+                input.nextLine();
+            }
+
+        } while (fouteInvoer);
+                
+        return keuze;
     }
 }

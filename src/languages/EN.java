@@ -67,5 +67,7 @@ public class EN extends Language
         map("err.passwordDR",           "The password does not cope with the requirements");
         map("err.integer",              "There was an integer expected.");
         map("err.nonvalid",             "Non valid choice.");
+        map("err.input",                "The choice should be between :min and :max.");
+        map("err.NaN",                  "You didn't enter a number.");
     }
 }
