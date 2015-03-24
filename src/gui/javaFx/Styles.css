@@ -3,11 +3,13 @@ Pane {
 }
 
 .btn {
+    -fx-background-color: transparent;
     -fx-background-image: url(../images/wood.jpg);
     -fx-text-fill: #ccc;
     -fx-font-weight: bold;
     -fx-font-size: 2em;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 5, 0, 0, 0);
+    position: relative;
 }
 
 .btn:hover {
@@ -29,11 +31,16 @@ Pane {
 }
 
 .btn-block {
-    width: 150;
-    height: 100;
-    
     -fx-pref-width: 150;
     -fx-pref-height: 100;
+}
+
+.btn-retry {
+    -fx-background-image: url(../images/wood.jpg), url(../images/retry.png);
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-pref-width: 75;
+    -fx-pref-height: 75;
 }
 
 .overlay {

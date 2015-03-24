@@ -284,4 +284,8 @@ public class DomeinController
     {
         this.huidigSpel.slaOp();
     }
+    public int geefAantalVerplaatsingen()
+    {
+        return this.huidigSpel.geefAantalVerplaatsingen();
+    }
 }

@@ -178,9 +178,16 @@
                      </children>
                   </GridPane>
                   <Label id="SpeelSpelPaneel_lblSpelbordComplete" layoutX="521.0" layoutY="56.0" text="lblSpelbordComplete" />
+                  <Button id="SpeelSpelPaneel_retry" layoutX="622.0" layoutY="349.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-space" />
+                        <String fx:value="btn-retry" />
+                     </styleClass>
+                  </Button>
                   <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay">
                      <children>
-                        <Button id="SpeelSpelPaneel_overlay_next" alignment="CENTER" contentDisplay="CENTER" layoutX="312.0" layoutY="270.0" mnemonicParsing="false" text="VOLGENDE" textAlignment="CENTER">
+                        <Button id="SpeelSpelPaneel_overlay_next" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" prefWidth="400.0" text="VOLGENDE SPELBORD" textAlignment="CENTER">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-space" />

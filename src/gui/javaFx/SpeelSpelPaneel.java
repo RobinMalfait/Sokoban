@@ -2,8 +2,11 @@ package gui.javaFx;
 
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -21,6 +24,10 @@ public class SpeelSpelPaneel extends BaseGui
 
     private final LanguageManager lang;
     
+    private final GridPane board;
+    private final Label boardComplete;
+    private final Pane overlay;
+    
     public SpeelSpelPaneel(Stage stage)
     {
         this.lang = DC.getLanguageManager();
@@ -30,12 +37,31 @@ public class SpeelSpelPaneel extends BaseGui
         this.show(stage, "#SpeelSpelPaneel");
         
         Button overlayButton = (Button) this.findByIdInPane(stage, "overlay_next");
+        Button retry = (Button) this.findByIdInPane(stage, "retry");
         
-        overlayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+        this.board = (GridPane) this.findByIdInPane(stage, "grid");
+        this.boardComplete = (Label) this.findByIdInPane(stage, "lblSpelbordComplete");
+        this.overlay = (Pane) this.findByIdInPane(stage, "overlay");
+        
+        retry.setTooltip(new Tooltip(lang.get("game.board.retry").toUpperCase()));
+        
+        overlayButton.setText(lang.get("game.board.next").toUpperCase());     
+        
+        overlayButton.setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
             @Override
             public void handle(MouseEvent event)
             {
+                SpeelSpelPaneel.this.drawBoard(stage);
+            }
+        });
+        
+        retry.setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                DC.resetSpelbord();
                 SpeelSpelPaneel.this.drawBoard(stage);
             }
         });
@@ -122,12 +148,9 @@ public class SpeelSpelPaneel extends BaseGui
 
     private void drawBoard(Stage stage)
     {
-        GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
-        Label spelbordComplete = (Label) this.findByIdInPane(stage, "lblSpelbordComplete");
-        Pane overlay = (Pane) this.findByIdInPane(stage, "overlay");
-        overlay.setVisible(false);
+        this.overlay.setVisible(false);
                 
-        spelbordComplete.setText("");
+        this.boardComplete.setText("");
                 
         int x = 0;
         int y = 0;
@@ -140,7 +163,7 @@ public class SpeelSpelPaneel extends BaseGui
                 item.getStyleClass().add(type);
                 item.setPrefSize(50, 50);
 
-                grid.add(item, x, y);
+                this.board.add(item, x, y);
 
                 x++;
             }
@@ -152,13 +175,13 @@ public class SpeelSpelPaneel extends BaseGui
         if (DC.isEindeSpelbord()) {
             if (DC.isEindeSpel()) {
                 
-                grid.getChildren().clear();
+                this.board.getChildren().clear();
                 
-                grid.getStyleClass().add("win");
+                this.board.getStyleClass().add("win");
             } else {
-                spelbordComplete.setText(this.lang.get("game.complete"));
+                this.boardComplete.setText(this.lang.get("game.complete"));
                 
-                overlay.setVisible(true);
+                this.overlay.setVisible(true);
                 
                 DC.bepaalVolgendSpelbord();
             }

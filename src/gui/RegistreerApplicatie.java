@@ -16,7 +16,7 @@ public class RegistreerApplicatie
         String naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging;
 
         //ingeven van gegevens
-        System.out.println("Vul volgende gegevens in om u te registreren:");
+        System.out.println(lang.get("register.fill.in"));
         
         do
         {
@@ -42,12 +42,12 @@ public class RegistreerApplicatie
             } 
             catch (WachtwoordException | GebruikersnaamException e)
             {
-                System.out.printf("%n%s%nProbeer opnieuw%n%n", e.getMessage());
+                System.out.printf("%n%s%n%s%n%n", e.getMessage(), lang.get("register.retry"));
             }
         } while (invoerFout);
         
         // Geregistreerd
-        System.out.printf("%nU bent succesvol geregisteerd!");
+        System.out.printf("%n%s",lang.get("register.succes"));
         new MeldAanApplicatie().toonMenu(dc, input, lang);
 
     }
