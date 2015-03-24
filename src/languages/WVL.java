@@ -46,6 +46,7 @@ public class WVL extends Language
         map("game.board.retry",         "Kèreki wére!");
         map("game.board.completed",     "Felicitajes! Jet et spelbord utgespeeld");
         map("game.board.next",          "noaste spelbord");
+        map("game.board.moves",         "verplatsingn");
         map("game.completed",           "Get spel utgespeeld");
         
         map("player.move",              "Beweegt jen peetje in een rigtinge");
