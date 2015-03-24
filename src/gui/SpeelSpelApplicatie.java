@@ -6,7 +6,9 @@
 package gui;
 
 import domein.DomeinController;
+import exceptions.SpelException;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import languages.LanguageManager;
 
@@ -19,6 +21,8 @@ public class SpeelSpelApplicatie
 
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
+        boolean invoerFout = true;
+        
         // Welkombericht
         System.out.printf("%s %s%n", 
                 lang.get("game.welcome"),
@@ -35,14 +39,28 @@ public class SpeelSpelApplicatie
 
         // Keuze van de Spellen
         System.out.print(lang.get("game.choose") + ": ");
-        int spelId = input.nextInt();
-        dc.kiesSpel(spelId);
-
+        
+        do 
+        {
+            try 
+            {
+                int spelId = input.nextInt();
+                dc.kiesSpel(spelId);
+                invoerFout = false;
+            }
+            catch(SpelException se)
+            {
+                System.out.println(se.getMessage());
+            }
+        }
+        while(invoerFout);
+        
         // Het laden van het eerste Spelbord van het spel
         System.out.printf("%n%s%n", lang.get("game.board.loading"));
 
         do
         {
+            invoerFout = true;
             for (String[] vakArray : dc.toonSpelbord())
             {
                 for (String vak : vakArray)
@@ -52,26 +70,49 @@ public class SpeelSpelApplicatie
                 System.out.println();
             }
 
-            int keuze;
+            int keuze = 0;
 
             do
             {
-                System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n%n%s: ",
+                System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n",
                     lang.get("player.move"),
                     lang.get("player.up"),
                     lang.get("player.down"),
                     lang.get("player.left"),
                     lang.get("player.right"),
-                    lang.get("app.quit"),
-                    lang.get("list.choice")
+                    lang.get("app.quit")
                 );
 
-                keuze = input.nextInt();
-
+                
+                
+                do 
+                {
+                    System.out.printf("%n%s: ", lang.get("list.choice"));
+                    try 
+                    {
+                        
+                        input.nextLine();
+                        keuze = input.nextInt();
+                                                
+                        if (keuze == 5)
+                            break;        
+                        
+                        dc.verplaatsSpeler(keuze);
+                        invoerFout = false;
+                    }
+                    catch(SpelException se)
+                    {
+                        System.out.println(se.getMessage());
+                    }
+                    catch(InputMismatchException e)
+                    {
+                        System.out.println("U gaf geen nummer in. Probeer opnieuw");
+                    }
+                }
+                while(invoerFout);
+                
                 if (keuze == 5)
                     break;
-
-                dc.verplaatsSpeler(keuze);
 
                 System.out.println();
                 for (String[] vakArray : dc.toonSpelbord())
