@@ -31,6 +31,7 @@ public class FR extends Language
         map("game.choose",              "Choisissez un jeu");
         map("game.board.loading",       "Le tableau est en train de charger");
         map("game.board.completed",     "Félicitations! Vous avez completé le tableau");
+        map("game.board.next",          "tableau suivant");
         map("game.completed",           "Vous avez completé le jeu");
         
         map("player.move",              "Déplacer le mec dans une direction");

@@ -31,6 +31,7 @@ public class EN extends Language
         map("game.choose",              "Choose a game");
         map("game.board.loading",       "The gameboard is loading");
         map("game.board.completed",     "Congratulations! You've completed the gameboard");
+        map("game.board.next",          "next gameboard");
         map("game.completed",           "You've completed the game");
         
         map("player.move",              "Move the dude in a direction");

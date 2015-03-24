@@ -61,6 +61,12 @@ public class SpeelSpelApplicatie
         do
         {
             invoerFout = true;
+            
+            System.out.printf("%s: %d%n",
+                        "Aantal verplaatsingen",
+                        dc.geefAantalVerplaatsingen()
+            );
+            
             for (String[] vakArray : dc.toonSpelbord())
             {
                 for (String vak : vakArray)
@@ -118,7 +124,11 @@ public class SpeelSpelApplicatie
                 else             
                     dc.verplaatsSpeler(keuze);
 
-                System.out.println();
+                System.out.printf("%n%s: %d%n",
+                        "Aantal verplaatsingen",
+                        dc.geefAantalVerplaatsingen()
+                );
+                
                 for (String[] vakArray : dc.toonSpelbord())
                 {
                     for (String vak : vakArray)
@@ -137,6 +147,11 @@ public class SpeelSpelApplicatie
             System.out.printf("%n%s%n%n", lang.get("game.board.completed"));
             
             dc.bepaalVolgendSpelbord();
+            
+            System.out.printf("%s%n 1: %s%n 2: %s%n%s: ",
+                    lang.get("list.choose"),
+                    lang.get("game.board.next"),
+                    lang.get("app.quit"));
 
         } while (!dc.isEindeSpel());
 
