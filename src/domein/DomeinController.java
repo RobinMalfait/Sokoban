@@ -235,7 +235,7 @@ public class DomeinController
      */
     public void voegSpelToe(String naam)
     {
-        this.spelRepository.voegSpelToe(naam);
+        this.huidigSpel = this.spelRepository.voegSpelToe(naam);      
     }
 
     /**
@@ -245,9 +245,9 @@ public class DomeinController
      * @param naam String
      * @param vakken int[][]
      */
-    public void voegSpelbordToe(String naam, int vakken[][])
+    public void voegSpelbordToe(String naam)
     {
-        this.huidigSpel.voegSpelbordToe(naam, vakken);
+        this.huidigSpel.voegSpelbordToe(naam);
     }
 
     /**

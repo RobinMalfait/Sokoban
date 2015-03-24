@@ -6,7 +6,7 @@ import persistentie.VakMapper;
 public class Spelbord
 {
 
-    private final int spelbordId;       // Hebben we nodig om data uit de database te halen
+    private int spelbordId;       // Hebben we nodig om data uit de database te halen
     private final String naam;          // Naam van het Spelbord
     private boolean voltooid = false;   // Al dan niet voltooid
     private int verplaatsingen = 0;     // Het aantal verplatsingen
@@ -28,6 +28,17 @@ public class Spelbord
         this.naam = naam;
     }
     
+    public Spelbord(String naam)
+    {
+        vakMapper = new VakMapper();
+        this.naam = naam;
+        
+        vakken = new Vak[10][10];
+        for(int x = 0; x < 10; x++)
+            for(int y = 0; y < 10; y++)
+                vakken[x][y] = new Vak(x, y, true, false);
+        
+    }    
     //GETTERS
     
     /**

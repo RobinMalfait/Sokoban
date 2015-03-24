@@ -216,21 +216,12 @@ public class Spel
      * @param naam String
      * @param vakken int[][]    
      */
-    public void voegSpelbordToe(String naam, int vakken[][])
+    public void voegSpelbordToe(String naam)
     {
-        int id = this.spelbordMapper.voegSpelbordToe(naam, this.id);
+        Spelbord nieuwSpelbord = new Spelbord(naam);
         
-        // 0 is de standaardwaarde die geretourneerd wordt.
-        if(id == 0) 
-        {
-            throw new IllegalArgumentException("Het spelbord werd niet toegevoegd");
-        }
-        else 
-        {
-            Spelbord nieuwSpelbord = new Spelbord(id, naam);
-            this.spelborden.add(nieuwSpelbord);
-            
-            nieuwSpelbord.configureerSpelbord(vakken);
-        }        
+        this.huidigSpelbord = nieuwSpelbord;
+        this.spelborden.add(nieuwSpelbord);  
+             
     }
 }

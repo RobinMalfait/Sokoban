@@ -72,18 +72,21 @@ class SpelRepository
      * 
      * @param naam String
      */
-    public void voegSpelToe(String naam)
+    public Spel voegSpelToe(String naam)
     {       
-        int id = this.spelMapper.voegSpelToe(naam);
-        
-        // 0 is de standaardwaarde die geretourneerd wordt.
-        if(id == 0) 
+        for(Spel spel: spellen)
         {
-            throw new IllegalArgumentException("Het spel werd niet toegevoegd");
+            if(spel.getNaam().equals(naam))
+            {
+                throw new IllegalArgumentException("De naam van het nieuwe spel bestond al.");
+            }
+            else 
+            {
+                Spel nieuwSpel = new Spel(naam);
+                this.spellen.add(nieuwSpel);
+                return nieuwSpel;
+            }                
         }
-        else 
-        {
-            this.spellen.add(new Spel(id, naam));
-        }
+        return null;
     }
 }
