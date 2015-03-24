@@ -5,6 +5,7 @@ import languages.EN;
 import languages.FR;
 import languages.LanguageManager;
 import languages.NL;
+import languages.WVL;
 
 /**
  *
@@ -19,6 +20,7 @@ public class StartUpConsole
         lang.addLanguage(new NL());
         lang.addLanguage(new FR());
         lang.addLanguage(new EN());
+        lang.addLanguage(new WVL());
         
          (new ConsoleApplicatie()).start(
             new DomeinController(lang), 
