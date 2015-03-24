@@ -26,7 +26,7 @@ public class MeldAanApplicatie
                 System.out.print(lang.get("user.username") + ": ");
                 gebruikersnaam = input.next().trim();
 
-                if(gebruikersnaam.equals("stop"))
+                if(gebruikersnaam.equals(lang.get("sign.quit")))
                     stop = true;
                 else
                 {
@@ -40,14 +40,14 @@ public class MeldAanApplicatie
             }
             catch(WachtwoordException e)
             {
-                System.out.printf("%n%s%nProbeer opnieuw, of typ: stop%n%n", e.getMessage());
+                System.out.printf("%n%s%n%s%n%n", e.getMessage(), lang.get("sign.retry"));
             }
         }
         while(invoerFout && !stop);
         
         if(!stop) {
             // De gebruiker is succesvol ingelogd.
-            System.out.printf("%nWelkom %s, u hebt zich succesvol ingelogd.%n%n", gebruikersnaam);
+            System.out.printf("%n%s %s, %s%n%n",lang.get("game.welcome"), gebruikersnaam,lang.get("sign.succes"));
             
             toonMenu(dc, input, lang); 
         } 
@@ -56,14 +56,14 @@ public class MeldAanApplicatie
     public static void toonMenu(DomeinController dc, Scanner input, LanguageManager lang)
     {
         // De mogelijke keuzes weergeven
-        System.out.printf("%s%n1: %s%n2: %s%n%n", "Wat wenst u te doen?", "Een spel spelen", "Stoppen");
+        System.out.printf("%s%n1: %s%n2: %s%n%n", lang.get("sign.choise"), lang.get("sign.play"), lang.get("sign.quit"));
         if(dc.isAdmin())
         {
-            System.out.printf("3: %s%n4: %s%n%n", "Configureer nieuw spel", "Wijzig een spel");
+            System.out.printf("3: %s%n4: %s%n%n", lang.get("sign.game.conf"), lang.get("sign.game.modify"));
         }
         
         // Keuze maken
-        System.out.print("Wat wenst u te doen? ");
+        System.out.print(lang.get("sign.choise"));
         int keuze = input.nextInt();
         
         switch(keuze)
@@ -72,7 +72,7 @@ public class MeldAanApplicatie
                 new SpeelSpelApplicatie().start(dc, input, lang);
                 break;
             case 2:
-                System.out.println("Gestopt");
+                System.out.println(lang.get("sign.quitted"));
                 break;                
             case 3:
                 new AdminApplicatie().start(dc, input, lang);
