@@ -27,6 +27,14 @@ Pane {
 .btn-space {
     -fx-padding: 15;
 }
+
+.btn-block {
+    width: 150;
+    height: 100;
+    
+    -fx-pref-width: 150;
+    -fx-pref-height: 100;
+}
     
 .M {
     -fx-background-image: url(../images/bord/M.png); 
