@@ -239,6 +239,7 @@ public class Spel
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpelbord.getVerplaatsingen();
+    }
     
     public void voerVakIn(String coordinaat, String naam)
     {
