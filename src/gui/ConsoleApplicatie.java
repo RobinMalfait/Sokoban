@@ -25,7 +25,7 @@ public class ConsoleApplicatie
             } 
             catch (TaalException e)
             {
-                System.out.println(e.getMessage());
+                System.err.println(e.getMessage());
             }
         } while (invoerFout);
         
