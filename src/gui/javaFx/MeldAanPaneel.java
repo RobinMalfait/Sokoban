@@ -1,7 +1,6 @@
 package gui.javaFx;
 
 import exceptions.WachtwoordException;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,12 +17,25 @@ public class MeldAanPaneel extends BaseGui
 {
     public MeldAanPaneel(Stage stage)
     {
-        
+        this.init(stage);
+    }
+    
+    private void init(Stage stage)
+    {
         LanguageManager lang = DC.getLanguageManager();
         
         stage.setTitle(lang.get("sign.in"));
         
         this.show(stage, "#MeldAanPaneel");
+        
+        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(stage);
+            }
+        });
         
         Label lblUsername = (Label) this.findByIdInPane(stage, "lblUsername");
         lblUsername.setText(lang.get("user.username") + ":");
@@ -57,16 +69,6 @@ public class MeldAanPaneel extends BaseGui
                     username.requestFocus();
                 }
                 
-            }
-        });
-        
-        this.findByIdInPane(stage, "stop").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                Platform.exit();
-                System.exit(0);
             }
         });
     }
