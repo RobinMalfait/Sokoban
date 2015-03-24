@@ -30,7 +30,7 @@ public class EN extends Language
         map("sign.choise",              "What are you willing to do?");
         map("sign.play",                "Play a game");
         map("sign.quit",                "Quit.");
-        map("sign.game.conf",           "Configurate a new game");
+        map("sign.game.conf",           "Configure a new game");
         map("sign.game.modify",         "Modify an existing game");
         map("sign.quitted",             "Quitted");
         
@@ -43,6 +43,7 @@ public class EN extends Language
         map("game.choose.list",         "Choose a game from the list below");
         map("game.choose",              "Choose a game");
         map("game.board.loading",       "The gameboard is loading");
+        map("game.board.retry",         "Retry");
         map("game.board.completed",     "Congratulations! You've completed the gameboard");
         map("game.completed",           "You've completed the game");
         
@@ -63,6 +64,6 @@ public class EN extends Language
         map("err.usernameDR",           "The username must be at least 8 characters long");
         map("err.passwordDR",           "The password does not cope with the requirements");
         map("err.integer",              "There was an integer expected.");
-        map("err.nonvalid",             "Non valid choise.");
+        map("err.nonvalid",             "Non valid choice.");
     }
 }

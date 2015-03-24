@@ -25,24 +25,25 @@ public class NL extends Language
         map("sign.in",                  "aanmelden");
         map("sign.up",                  "registreren");
         
-        map("sign.succes",              "You are successfully logged in!");
-        map("sign.retry",               "Retry or typ: Stop.");
-        map("sign.choise",              "What are you willing to do?");
-        map("sign.play",                "Play a game");
-        map("sign.quit",                "Quit.");
-        map("sign.game.conf",           "Configurate a new game");
-        map("sign.game.modify",         "Modify an existing game");
-        map("sign.quitted",             "Quitted");
+        map("sign.succes",              "Je bent succesvol ingelogd");
+        map("sign.retry",               "Opnieuw proberen of typ: Stop.");
+        map("sign.choise",              "Wat wil je doen?");
+        map("sign.play",                "Speel een spel.");
+        map("sign.quit",                "Stop.");
+        map("sign.game.conf",           "Configureer een nieuw spel");
+        map("sign.game.modify",         "Pas een bestaand spel aan");
+        map("sign.quitted",             "Gestopt");
         
-        map("register.fill.in",         "Fill in the next data to sign in:");
-        map("register.retry",           "Retry");
-        map("register.succes",          "You are successfully signed up.");
+        map("register.fill.in",         "Vul onderstaande data in om je te registeren:");
+        map("register.retry",           "Opnieuw proberen");
+        map("register.succes",          "Je bent succesvol geregistreerd.");
               
-        map("game.welcome",             "welkom");
+        map("game.welcome",             "Welkom");
         map("game.play",                "U zult een nieuw spel spelen");
         map("game.choose.list",         "Kies een spel uit onderstaande lijst");
         map("game.choose",              "Kies een spel");
         map("game.board.loading",       "Het spelbord wordt geladen");
+        map("game.board.retry",         "Opnieuw");
         map("game.board.completed",     "Gefeliciteerd! Je hebt het spelbord voltooid");
         map("game.completed",           "Je hebt het spel voltooid");
         
@@ -62,7 +63,7 @@ public class NL extends Language
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
         map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");
-        map("err.integer",              "There was an integer expected.");
-        map("err.nonvalid",             "Non valid choise.");
+        map("err.integer",              "Er werd een geheel getal verwacht.");
+        map("err.nonvalid",             "Niet geldige keuze.");
     }
 }
