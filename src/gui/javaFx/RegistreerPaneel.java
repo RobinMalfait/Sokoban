@@ -47,7 +47,7 @@ public class RegistreerPaneel extends BaseGui
         TextField passwordRepeat = (TextField) this.findByIdInPane(stage, "txtPasswordRepeat");
         
         Button signUp = (Button) this.findByIdInPane(stage, "signUpBtn");
-        signUp.setText(lang.get("sign.up"));
+        signUp.setText(lang.get("sign.up").toUpperCase());
         
         firstName.requestFocus(); // focus first name
         
