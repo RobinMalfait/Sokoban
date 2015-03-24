@@ -74,12 +74,13 @@ public class SpeelSpelApplicatie
 
             do
             {
-                System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n",
+                System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n 6: %s%n",
                     lang.get("player.move"),
                     lang.get("player.up"),
                     lang.get("player.down"),
                     lang.get("player.left"),
                     lang.get("player.right"),
+                    "reset spelbord",
                     lang.get("app.quit")
                 );
 
@@ -92,27 +93,30 @@ public class SpeelSpelApplicatie
                     {
                         
                         input.nextLine();
-                        keuze = input.nextInt();
-                                                
-                        if (keuze == 5)
-                            break;        
+                        keuze = input.nextInt();  
                         
-                        dc.verplaatsSpeler(keuze);
-                        invoerFout = false;
+                        if (keuze < 1 || keuze > 6)
+                            throw new IllegalArgumentException("De keuze moet tussen 1 en 6 liggen");
                     }
-                    catch(SpelException se)
+                    catch(IllegalArgumentException | SpelException e)
                     {
-                        System.out.println(se.getMessage());
+                        System.out.println(e.getMessage());
                     }
                     catch(InputMismatchException e)
                     {
                         System.out.println("U gaf geen nummer in. Probeer opnieuw");
                     }
-                }
-                while(invoerFout);
+                    
+                    invoerFout = false;
+                    
+                } while(invoerFout);
                 
-                if (keuze == 5)
-                    break;
+                if (keuze == 6)
+                    break;       
+                else if (keuze == 5)
+                    dc.resetSpelbord();
+                else             
+                    dc.verplaatsSpeler(keuze);
 
                 System.out.println();
                 for (String[] vakArray : dc.toonSpelbord())
@@ -127,7 +131,7 @@ public class SpeelSpelApplicatie
             } while (!dc.isEindeSpelbord());
 
             // Als men hier komt is het Spelbord voltooid , oftewel wil de gebruiker stoppen.
-            if (keuze == 5)
+            if (keuze == 6)
                 break;
 
             System.out.printf("%n%s%n%n", lang.get("game.board.completed"));

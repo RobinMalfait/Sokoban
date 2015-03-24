@@ -233,4 +233,9 @@ public class Spel
             nieuwSpelbord.configureerSpelbord(vakken);
         }        
     }
+
+    void resetSpelbord()
+    {
+        huidigSpelbord.resetSpelbord();
+    }
 }
