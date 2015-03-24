@@ -224,4 +224,9 @@ public class Spel
         this.spelborden.add(nieuwSpelbord);  
              
     }
+
+    void resetSpelbord()
+    {
+        huidigSpelbord.resetSpelbord();
+    }
 }

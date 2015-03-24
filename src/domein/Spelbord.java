@@ -91,7 +91,7 @@ public class Spelbord
         return vakken;
     }
 
-    //SETTERS
+    //SETTERS 
     public void setVoltooid(boolean voltooid)  //Nodig voor testklasse SpelTest
     {
         this.voltooid = voltooid;
@@ -294,5 +294,11 @@ public class Spelbord
     public void configureerSpelbord(int[][] vakken)
     {
         this.vakken = this.vakMapper.voegVakkenToe(vakken, spelbordId);
+    }
+
+    void resetSpelbord()
+    {
+        this.geefVakken();
+        this.verplaatsingen = 0;
     }
 }

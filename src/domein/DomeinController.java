@@ -4,6 +4,7 @@ import exceptions.GebruikersnaamException;
 import exceptions.SpelException;
 import exceptions.WachtwoordException;
 import languages.LanguageManager;
+import persistentie.VakMapper;
 import security.BCrypt;
 
 public class DomeinController
@@ -14,6 +15,7 @@ public class DomeinController
     private Speler huidigeSpeler;
     private Spel huidigSpel;
     private final LanguageManager lang;
+    private final VakMapper vakMapper = new VakMapper();
 
     /**
      * Maak een DomeinController-object aan
@@ -266,5 +268,10 @@ public class DomeinController
 
     public void setLanguage(String language) {
         this.lang.setLanguage(language);
+    }
+    
+    public void resetSpelbord() 
+    {
+        this.huidigSpel.resetSpelbord();
     }
 }
