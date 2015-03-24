@@ -35,6 +35,11 @@ Pane {
     -fx-pref-width: 150;
     -fx-pref-height: 100;
 }
+
+.overlay {
+    -fx-background-color: transparent;
+    -fx-background-image: url(../images/bord/overlay.png);
+}
     
 .M {
     -fx-background-image: url(../images/bord/M.png); 

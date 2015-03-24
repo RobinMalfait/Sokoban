@@ -2,6 +2,7 @@ package gui.javaFx;
 
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -28,6 +29,17 @@ public class SpeelSpelPaneel extends BaseGui
 
         this.show(stage, "#SpeelSpelPaneel");
         
+        Button overlayButton = (Button) this.findByIdInPane(stage, "overlay_next");
+        
+        overlayButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event)
+            {
+                SpeelSpelPaneel.this.drawBoard(stage);
+            }
+        });
+        
         stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
         {
             @Override
@@ -47,6 +59,8 @@ public class SpeelSpelPaneel extends BaseGui
                         
                     } else if (event.getCode().equals(KeyCode.RIGHT)) {
                         DC.verplaatsSpeler(4);
+                        SpeelSpelPaneel.this.drawBoard(stage);
+                    } else if (event.getCode().equals(KeyCode.ENTER)) {
                         SpeelSpelPaneel.this.drawBoard(stage);
                     }
                 }
@@ -110,7 +124,9 @@ public class SpeelSpelPaneel extends BaseGui
     {
         GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
         Label spelbordComplete = (Label) this.findByIdInPane(stage, "lblSpelbordComplete");
-        
+        Pane overlay = (Pane) this.findByIdInPane(stage, "overlay");
+        overlay.setVisible(false);
+                
         spelbordComplete.setText("");
                 
         int x = 0;
@@ -141,10 +157,10 @@ public class SpeelSpelPaneel extends BaseGui
                 grid.getStyleClass().add("win");
             } else {
                 spelbordComplete.setText(this.lang.get("game.complete"));
-            
+                
+                overlay.setVisible(true);
+                
                 DC.bepaalVolgendSpelbord();
-
-                this.drawBoard(stage);
             }
         }
     }
