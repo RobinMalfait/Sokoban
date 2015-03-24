@@ -113,4 +113,18 @@ public class LanguageManager
         return this.language.choice(key, count, replacements);
     }
 
+    public String[] getLanguages()
+    {
+        String languageChoices[] = new String[this.languages.size()];
+        
+        int x = 0;
+        for (Language lang : this.languages)
+        {
+            languageChoices[x] = lang.getClass().getSimpleName();
+            x++;
+        }
+        
+        return languageChoices;
+    }
+
 }

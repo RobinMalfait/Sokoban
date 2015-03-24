@@ -1,7 +1,12 @@
 package gui.javaFx;
 
+import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import languages.LanguageManager;
 
@@ -21,32 +26,46 @@ public class KiesTaalPaneel extends BaseGui
         
         this.show(stage, "#KiesTaalPaneel");
         
-        this.findByIdInPane(stage, "langNL").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                KiesTaalPaneel.this.gaVerder("NL");
-            }
-        });
+        GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
+                
+        LanguageManager lang = DC.getLanguageManager();
         
-        this.findByIdInPane(stage, "langEN").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                KiesTaalPaneel.this.gaVerder("EN");
-            }
-        });
+        int x = 0;
+        int y = 0;
         
-        this.findByIdInPane(stage, "langFR").setOnMouseClicked(new EventHandler<MouseEvent>()
+        grid.setAlignment(Pos.CENTER);
+        
+        for (String language : lang.getLanguages()) 
         {
-            @Override
-            public void handle(MouseEvent event)
+            Button spelButton = new Button();
+            spelButton.setText(language);
+            spelButton.getStyleClass().add("btn");
+            spelButton.getStyleClass().add("btn-space");
+            spelButton.getStyleClass().add("btn-block");
+            spelButton.setAlignment(Pos.CENTER);
+            
+            spelButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event)
+                {
+                    KiesTaalPaneel.this.gaVerder(language);
+                }
+            });
+           
+            GridPane.setHalignment(spelButton, HPos.CENTER);
+            
+            grid.add(spelButton, x, y);
+            
+            x++;
+            
+            if (x > 2) // Aantal kolommen - 1
             {
-                KiesTaalPaneel.this.gaVerder("FR");
+                x = 0;
+                y++;
             }
-        });
+        }
+        
     }
     
     public void gaVerder(String language)
