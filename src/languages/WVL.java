@@ -67,5 +67,7 @@ public class WVL extends Language
         map("err.passwordDR",           "Jen wagtwoord voldoe nie an de eisn");
         map("err.integer",              "Ze verwagtn een geheel getal.");
         map("err.nonvalid",             "Gin geldige keuze.");
+        map("err.input",                "Jen keuze moe tusn :min en :max lign.");
+        map("err.NaN",                  "Da wos gin ciffer.");
     }
 }
