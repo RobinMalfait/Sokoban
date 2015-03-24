@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.SpelException;
+import persistentie.SpelbordMapper;
 import persistentie.VakMapper;
 
 public class Spelbord
@@ -12,6 +13,7 @@ public class Spelbord
     private int verplaatsingen = 0;     // Het aantal verplatsingen
 
     private final VakMapper vakMapper;  // Mapper om de vakken/items uit de database op te halen
+    private final SpelbordMapper spelbordMapper;  // Mapper om de vakken/items uit de database op te halen
     private Vak[][] vakken;             // Een lijst van Vakken om de vakken/items bij te houden.
 
     //CONSTRUCTOREN
@@ -24,6 +26,8 @@ public class Spelbord
     public Spelbord(int spelbordId, String naam)
     {
         vakMapper = new VakMapper();
+        spelbordMapper = new SpelbordMapper();
+        
         this.spelbordId = spelbordId;
         this.naam = naam;
     }
@@ -31,6 +35,8 @@ public class Spelbord
     public Spelbord(String naam)
     {
         vakMapper = new VakMapper();
+        spelbordMapper = new SpelbordMapper();
+        
         this.naam = naam;
         
         vakken = new Vak[10][10];
@@ -286,19 +292,64 @@ public class Spelbord
         return this.voltooid;
     }
     
-    /**
-     * Stel de vakken van het spelbord in.
-     * 
-     * @param vakken 
-     */
-    public void configureerSpelbord(int[][] vakken)
-    {
-        this.vakken = this.vakMapper.voegVakkenToe(vakken, spelbordId);
-    }
-
-    void resetSpelbord()
+    public void resetSpelbord()
     {
         this.geefVakken();
         this.verplaatsingen = 0;
+    }
+    
+    public void voerVakIn(String coordinaat, String keuze)
+    {
+        coordinaat = coordinaat.trim();
+        String[] xy = coordinaat.split(",");
+        
+        int x = Integer.valueOf(xy[0]);
+        int y = Integer.valueOf(xy[1]);
+        
+        if(xy.length == 2)
+        {
+            switch (keuze.toUpperCase())
+            {
+                case "_":                                     // Toegankelijk vak - Leeg vak
+                    vakken[x][y].setKist(null);
+                    vakken[x][y].setMannetje(null);
+                    vakken[x][y].setToegankelijk(true);
+                    vakken[x][y].setDoel(false);
+                case "M":                                     // Muur
+                    vakken[x][y].setKist(null);
+                    vakken[x][y].setMannetje(null);
+                    vakken[x][y].setToegankelijk(false);
+                    vakken[x][y].setDoel(false);
+                case "D":                                     // Toegankelijk vak - Met Doel
+                    vakken[x][y].setKist(null);
+                    vakken[x][y].setMannetje(null);
+                    vakken[x][y].setToegankelijk(true);
+                    vakken[x][y].setDoel(true);
+                case "K":                                     // Toegankelijk vak - Met Kist
+                    vakken[x][y].setKist(new Kist());
+                    vakken[x][y].setMannetje(null);
+                    vakken[x][y].setToegankelijk(true);
+                    vakken[x][y].setDoel(false);
+                case "Y":                                     // Toegankelijk vak - Met Mannetje
+                    vakken[x][y].setKist(null);
+                    vakken[x][y].setMannetje(new Mannetje());
+                    vakken[x][y].setToegankelijk(true);
+                    vakken[x][y].setDoel(false);
+            }            
+        }        
+    }  
+    
+    public void slaOp(int spelId)
+    {
+        this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
+       
+        if(this.spelbordId == 0)
+        {
+            throw new IllegalArgumentException("Spel werd niet opgeslaan.");
+        }
+        else 
+        {
+            vakMapper.voegVakkenToe(vakken, this.spelbordId);
+        }
     }
 }

@@ -16,9 +16,18 @@ import languages.LanguageManager;
  */
 public class KiesSpelPaneel extends BaseGui
 {
+    private LanguageManager lang;
+    
     public KiesSpelPaneel(Stage stage)
     {
-        LanguageManager lang = DC.getLanguageManager();
+        this.init(stage);
+        
+        this.drawSpelBoard(stage);
+    }
+    
+    private void init(Stage stage)
+    {
+        this.lang = DC.getLanguageManager();
         
         String speler[] = DC.geefHuidigeSpeler();
         
@@ -28,7 +37,19 @@ public class KiesSpelPaneel extends BaseGui
         
         this.show(stage, "#KiesSpelPaneel");
         
-        ((Label) this.findByIdInPane(stage, "kiesSpel")).setText(lang.get("game.choose.list") + ":");
+        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                MeldAanPaneel meldAanPaneel = new MeldAanPaneel(stage);
+            }
+        });
+    }
+    
+    private void drawSpelBoard(Stage stage)
+    {
+        ((Label) this.findByIdInPane(stage, "kiesSpel")).setText(this.lang.get("game.choose.list") + ":");
         
         GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
                 
@@ -70,6 +91,5 @@ public class KiesSpelPaneel extends BaseGui
                 y++;
             }
         }
-        
     }
 }

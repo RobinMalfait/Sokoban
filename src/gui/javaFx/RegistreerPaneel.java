@@ -2,7 +2,6 @@ package gui.javaFx;
 
 import exceptions.GebruikersnaamException;
 import exceptions.WachtwoordException;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,14 +15,28 @@ import languages.LanguageManager;
  * @author robin
  */
 public class RegistreerPaneel extends BaseGui
-{
+{ 
     public RegistreerPaneel(Stage stage)
     {
+        this.init(stage);
+    }
+    
+    private void init(Stage stage)
+    {
         LanguageManager lang = DC.getLanguageManager();
-                
+        
         stage.setTitle(lang.get("sign.up"));
         
         this.show(stage, "#RegistreerPaneel");
+        
+        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(stage);
+            }
+        });
         
         Label lblFirstName = (Label) this.findByIdInPane(stage, "lblFirstName");
         lblFirstName.setText(lang.get("user.firstname") + ":");
@@ -75,16 +88,6 @@ public class RegistreerPaneel extends BaseGui
                     firstName.requestFocus();
                 }
                 
-            }
-        });
-        
-        this.findByIdInPane(stage, "stop").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                Platform.exit();
-                System.exit(0);
             }
         });
     }

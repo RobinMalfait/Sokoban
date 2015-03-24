@@ -16,9 +16,23 @@ import languages.LanguageManager;
  */
 public class KiesTaalPaneel extends BaseGui
 {
-    private final Stage stage;
+    private Stage stage;
     
     public KiesTaalPaneel(Stage stage)
+    {
+        this.init(stage);
+        
+        this.drawLanguagesBoard(stage);        
+    }
+    
+    private void gaVerder(String language)
+    {
+        DC.setLanguage(language);
+        
+        MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(this.stage);
+    }
+    
+    private void init(Stage stage)
     {
         this.stage = stage;
         
@@ -26,6 +40,18 @@ public class KiesTaalPaneel extends BaseGui
         
         this.show(stage, "#KiesTaalPaneel");
         
+        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                MainPaneel mainPaneel = new MainPaneel(stage);
+            }
+        });
+    }
+    
+    private void drawLanguagesBoard(Stage stage)
+    {
         GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
                 
         LanguageManager lang = DC.getLanguageManager();
@@ -65,13 +91,5 @@ public class KiesTaalPaneel extends BaseGui
                 y++;
             }
         }
-        
-    }
-    
-    public void gaVerder(String language)
-    {
-        DC.setLanguage(language);
-        
-        MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(this.stage);
     }
 }

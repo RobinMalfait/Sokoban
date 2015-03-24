@@ -15,6 +15,7 @@
          <children>
             <Pane id="MeldAanPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
+                  <Button id="MeldAanPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
                   <Label id="MeldAanPaneel_lblUsername" layoutX="174.0" layoutY="247.0" text="Gebruikersnaam:" />
                   <TextField id="MeldAanPaneel_txtUsername" layoutX="174.0" layoutY="263.0" prefHeight="26.0" prefWidth="452.0" />
                   <Label id="MeldAanPaneel_lblPassword" layoutX="174.0" layoutY="315.0" text="Wachtwoord:" />
@@ -26,12 +27,12 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Button id="MeldAanPaneel_stop" layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="btn" text="Stop" />
                   <Label id="MeldAanPaneel_lblError" layoutX="174.0" layoutY="364.0" styleClass="label-error" text="Error." visible="false" />
                </children>
             </Pane>
             <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
+                  <Button id="MenuKeuzePaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
                      <image>
@@ -45,6 +46,7 @@
             </Pane>
             <Pane id="KiesTaalPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
+                  <Button id="KiesTaalPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
                      <image>
@@ -81,6 +83,7 @@
             </Pane>
             <Pane id="RegistreerPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
+                  <Button id="RegistreerPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
                   <Label id="RegistreerPaneel_lblFirstName" layoutX="174.0" layoutY="189.0" text="Voornaam:" />
                   <TextField id="RegistreerPaneel_txtFirstName" layoutX="174.0" layoutY="205.0" prefHeight="26.0" prefWidth="452.0" />
                   <Label id="RegistreerPaneel_lblLastName" layoutX="176.0" layoutY="241.0" text="Achternaam:" />
@@ -98,12 +101,12 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <Button id="RegistreerPaneel_stop" layoutX="14.0" layoutY="533.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="115.0" styleClass="btn" text="Stop" />
                   <Label id="RegistreerPaneel_lblError" layoutX="174.0" layoutY="446.0" styleClass="label-error" text="Error." visible="false" />
                </children>
             </Pane>
             <Pane id="KiesSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
+                  <Button id="KiesSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
                      <image>
@@ -128,6 +131,7 @@
             </Pane>
             <Pane id="SpeelSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
+                  <Button id="SpeelSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView fitHeight="64.0" fitWidth="179.0" layoutX="14.0" layoutY="8.0" preserveRatio="true">
                      <image>
@@ -185,7 +189,7 @@
                         <String fx:value="btn-retry" />
                      </styleClass>
                   </Button>
-                  <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay">
+                  <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay" visible="false">
                      <children>
                         <Button id="SpeelSpelPaneel_overlay_next" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" prefWidth="400.0" text="VOLGENDE SPELBORD" textAlignment="CENTER">
                            <styleClass>

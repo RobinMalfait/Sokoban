@@ -180,4 +180,39 @@ public class Vak
             return false;
         return true;
     } 
+
+    public void setDoel(boolean doel)
+    {
+        this.doel = doel;
+    }
+
+    public void setToegankelijk(boolean toegankelijk)
+    {
+        this.toegankelijk = toegankelijk;
+    }
+    
+    public int bepaalDatabaseType()
+    {
+        if(toegankelijk)
+        {
+            if(mannetje != null)
+            {
+                return 4;
+            }
+            if(kist != null)
+            {
+                return 3;
+            }
+            if(doel)
+            {
+                return 2;
+            }
+            return 0;
+        }
+        else 
+        {
+            return 1;
+        }
+    }
+    
 }

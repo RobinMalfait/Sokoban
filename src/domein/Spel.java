@@ -1,11 +1,15 @@
 package domein;
 
+import java.util.ArrayList;
 import java.util.List;
+import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
 public class Spel 
 {    
     private final SpelbordMapper spelbordMapper;
+    private final SpelMapper spelMapper;
+    
     private List<Spelbord> spelborden;
     private Spelbord huidigSpelbord;
     
@@ -17,6 +21,9 @@ public class Spel
     public Spel(String naam)
     {
         spelbordMapper = new SpelbordMapper();
+        spelMapper = new SpelMapper();
+        
+        spelborden = new ArrayList<>();
         this.naam = naam;
     }
     
@@ -31,6 +38,7 @@ public class Spel
         spelbordMapper = new SpelbordMapper();
         spelborden = spelbordMapper.geefSpelborden(id);
         
+        spelMapper = new SpelMapper();
         this.id = id;
         this.naam = naam;
     }
@@ -213,16 +221,14 @@ public class Spel
     
     /**
      * Voeg een spelbord toe, en daarna ook de vakken
-     * @param naam String
-     * @param vakken int[][]    
+     * @param naam String    
      */
     public void voegSpelbordToe(String naam)
     {
         Spelbord nieuwSpelbord = new Spelbord(naam);
         
         this.huidigSpelbord = nieuwSpelbord;
-        this.spelborden.add(nieuwSpelbord);  
-             
+        this.spelborden.add(nieuwSpelbord);               
     }
 
     public void resetSpelbord()
@@ -233,5 +239,24 @@ public class Spel
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpelbord.getVerplaatsingen();
+    }
+    
+    public void voerVakIn(String coordinaat, String naam)
+    {
+        this.huidigSpelbord.voerVakIn(coordinaat, naam);
+    }    
+    
+    public void slaOp()
+    {
+        this.id = this.spelMapper.voegSpelToe(naam);
+        
+        if(id == 0) 
+        {
+            throw new IllegalArgumentException("Spel werd niet opgeslaan.");
+        }
+        else {
+            for(Spelbord spelbord: spelborden)
+                spelbord.slaOp(this.id);
+        }
     }
 }
