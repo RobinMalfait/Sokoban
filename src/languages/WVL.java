@@ -36,8 +36,8 @@ public class WVL extends Language
         map("player.move",              "Beweegt jen peetje in een rigtinge");
         map("player.up",                "Noa boovn");
         map("player.down",              "Noa beneedn");
-        map("player.left",              "Links");
-        map("player.right",             "Reks");
+        map("player.left",              "Noa links");
+        map("player.right",             "Noa reks");
         
         map("list.choice",              "Men keuze");
         map("list.choose",              "Wuk wildje doene?");
