@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.SpelException;
 import persistentie.VakMapper;
 
 public class Spelbord
@@ -240,7 +241,7 @@ public class Spelbord
     {
         if (richting < 1 || richting > 4)
         {
-            throw new IllegalArgumentException("Richting moet tussen 0 en 3 liggen");
+            throw new SpelException("De richting die je opgaf klopt niet.");
         }
         
         switch (richting) {
