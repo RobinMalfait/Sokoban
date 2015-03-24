@@ -12,7 +12,7 @@ import languages.LanguageManager;
 public class MainPaneel extends BaseGui
 {
 
-    public MainPaneel(Stage stage, LanguageManager languageManager)
+    public MainPaneel(Stage stage)
     {
         stage.setTitle("Welcome!");
         
@@ -23,7 +23,7 @@ public class MainPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                KiesTaalPaneel kiesTaalPaneel = new KiesTaalPaneel(stage, languageManager);
+                KiesTaalPaneel kiesTaalPaneel = new KiesTaalPaneel(stage);
             }
         });
     }

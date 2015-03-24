@@ -10,6 +10,8 @@ import exceptions.WachtwoordException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import languages.LanguageManager;
+import languages.NL;
 import org.junit.After;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
@@ -32,7 +34,11 @@ public class DomeinControllerTest
     @Before
     public void setUp()
     {
-        this.dc = new DomeinController();
+        LanguageManager lang = new LanguageManager();
+        lang.addLanguage(new NL());
+        
+        this.dc = new DomeinController(lang);
+        this.dc.setLanguage("NL");
         this.mp = new SpelerMapper();
         
         speler = new Speler("TestSpeler", "TestSpeler", "TestSpeler", BCrypt.hashpw("TestSpeler", BCrypt.gensalt(10)));
@@ -103,10 +109,11 @@ public class DomeinControllerTest
     {
         this.dc.meldAan(speler.getGebruikersnaam(), "TestSpeler");
          
-        String[] spelerData = new String[3];
+        String[] spelerData = new String[4];
         spelerData[0] = speler.getNaam();
         spelerData[1] = speler.getVoornaam();
         spelerData[2] = speler.getGebruikersnaam();
+        spelerData[3] = String.valueOf(speler.isAdmin());
  
         Assert.assertArrayEquals(spelerData, this.dc.geefHuidigeSpeler());
     }

@@ -12,6 +12,7 @@ public class Spel
     private int id;
     private String naam;
     
+    //CONSTRUCTOREN
     /**
      * Maak een nieuw Spel-object aan
      * 
@@ -26,7 +27,91 @@ public class Spel
         this.id = id;
         this.naam = naam;
     }
-        
+    
+    //GETTERS
+    /**
+     * Verkrijg de id
+     * 
+     * @return int
+     */
+    public int getId()
+    {
+        return id;
+    }
+    
+    /**
+     * Verkrijg de naam
+     * 
+     * @return String
+     */
+    public String getNaam()
+    {
+        return naam;
+    }
+    
+    /**
+     * Verkrijg het huidig spelbord
+     * 
+     * @return Spelbord
+     */
+    public Spelbord getHuidigSpelbord()
+    {
+        return huidigSpelbord;
+    }
+    
+    /**
+     * Geeft een lijst van spelborden terug
+     *
+     * @return List&lt;Spelbord&gt;
+     */
+    public List<Spelbord> getSpelborden()
+    {
+        return spelborden;
+    }
+    
+    
+    //SETTERS  
+    /**
+     * Stel de id in
+     * 
+     * @param id int
+     */
+    private void setId(int id)
+    {
+        this.id = id;
+    }
+    
+    /**
+     * Stel de naam in
+     * 
+     * @param naam String
+     */
+    private void setNaam(String naam)
+    {
+        this.naam = naam;
+    }
+    
+    /**
+     * Setter om het huidig spelbord bij te houden
+     *
+     * @param huidigSpelbord Spelbord
+     */
+    public void setHuidigSpelbord(Spelbord huidigSpelbord)
+    {
+        this.huidigSpelbord = huidigSpelbord;
+    }
+    
+    /**
+     * Stel de spelborden in
+     *
+     * @param spelborden List&lt;Spelbord&gt;
+     */
+    public void setSpelborden(List<Spelbord> spelborden)
+    {
+        this.spelborden = spelborden;
+    }
+    
+    //ACTIES   
     /**
      * Toon het spelbord
      * 
@@ -38,66 +123,6 @@ public class Spel
     }
 
     /**
-     * Verkrijg het huidig spelbord
-     * 
-     * @return Spelbord
-     */
-    public Spelbord getHuidigSpelbord()
-    {
-        return huidigSpelbord;
-    }
-
-    /**
-     * Verkrijg een lijst van spelborden
-     * 
-     * @return List&lt;Spelbord&gt;
-     */
-    public List<Spelbord> geefSpelborden()
-    {
-        return null;
-    }
-
-    /**
-     * Verkrijg de id
-     * 
-     * @return int
-     */
-    public int getId()
-    {
-        return id;
-    }
-
-    /**
-     * Stel de id in
-     * 
-     * @param id int
-     */
-    public void setId(int id)
-    {
-        this.id = id;
-    }
-
-    /**
-     * Verkrijg de naam
-     * 
-     * @return String
-     */
-    public String getNaam()
-    {
-        return naam;
-    }
-
-    /**
-     * Stel de naam in
-     * 
-     * @param naam String
-     */
-    public void setNaam(String naam)
-    {
-        this.naam = naam;
-    }
-
-    /**
      * Verplaats de speler (en bijhorende items) volgens een richting
      * 
      * @param richting int
@@ -105,16 +130,6 @@ public class Spel
     public void verplaatsSpeler(int richting)
     {
         huidigSpelbord.verplaatsSpeler(richting);
-    }
-
-    /**
-     * Controleer of het huidig spelbord van het spel voltooid is
-     * 
-     * @return boolean
-     */
-    public boolean isHuidigSpelbordVoltooid()
-    {
-        return huidigSpelbord.isSpelbordVoltooid();
     }
 
     /**
@@ -178,35 +193,15 @@ public class Spel
         }
         return true;
     }
-
+    
     /**
-     * Stel de spelborden in
-     *
-     * @param spelborden List&lt;Spelbord&gt;
+     * Controleer of het huidig spelbord van het spel voltooid is
+     * 
+     * @return boolean
      */
-    public void setSpelborden(List<Spelbord> spelborden)
+    public boolean isEindeSpelbord()
     {
-        this.spelborden = spelborden;
-    }
-
-    /**
-     * Geeft een lijst van spelborden terug
-     *
-     * @return List&lt;Spelbord&gt;
-     */
-    public List<Spelbord> getSpelborden()
-    {
-        return spelborden;
-    }
-
-    /**
-     * Setter om het huidig spelbord bij te houden
-     *
-     * @param huidigSpelbord Spelbord
-     */
-    public void setHuidigSpelbord(Spelbord huidigSpelbord)
-    {
-        this.huidigSpelbord = huidigSpelbord;
+        return huidigSpelbord.isEindeSpelbord();
     }
     
     /**

@@ -55,3 +55,7 @@ Pane {
 ._ {
     -fx-background-image: url(../images/bord/_.png); 
 }
+
+.win {
+    -fx-background-image: url(../images/bord/WIN.png);
+}

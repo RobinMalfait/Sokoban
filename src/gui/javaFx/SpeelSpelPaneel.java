@@ -20,14 +20,15 @@ public class SpeelSpelPaneel extends BaseGui
 
     private final LanguageManager lang;
     
-    public SpeelSpelPaneel(Stage stage, LanguageManager languageManager)
+    public SpeelSpelPaneel(Stage stage)
     {
-        this.lang = languageManager;
+        this.lang = DC.getLanguageManager();
+        
         stage.setTitle("");
 
         this.show(stage, "#SpeelSpelPaneel");
         
-        stage.getScene().setOnKeyPressed(new EventHandler<KeyEvent>()
+        stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
         {
             @Override
             public void handle(KeyEvent event)
@@ -36,22 +37,20 @@ public class SpeelSpelPaneel extends BaseGui
                     if (event.getCode().equals(KeyCode.UP)) {
                         DC.verplaatsSpeler(1);
                         SpeelSpelPaneel.this.drawBoard(stage);
-
                     } else if (event.getCode().equals(KeyCode.DOWN)) {
                         DC.verplaatsSpeler(2);
                         SpeelSpelPaneel.this.drawBoard(stage);
-
+                        
                     } else if (event.getCode().equals(KeyCode.LEFT)) {
                         DC.verplaatsSpeler(3);
                         SpeelSpelPaneel.this.drawBoard(stage);
-
+                        
                     } else if (event.getCode().equals(KeyCode.RIGHT)) {
                         DC.verplaatsSpeler(4);
                         SpeelSpelPaneel.this.drawBoard(stage);
                     }
                 }
             }
-            
         });
                 
         this.findByIdInPane(stage, "up").setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -80,6 +79,7 @@ public class SpeelSpelPaneel extends BaseGui
         
         this.findByIdInPane(stage, "left").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
+
             @Override
             public void handle(MouseEvent event)
             {
@@ -92,6 +92,7 @@ public class SpeelSpelPaneel extends BaseGui
         
         this.findByIdInPane(stage, "right").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
+
             @Override
             public void handle(MouseEvent event)
             {
@@ -132,60 +133,12 @@ public class SpeelSpelPaneel extends BaseGui
             y++;
         }
             
-        if (DC.isSpelbordVoltooid()) {
+        if (DC.isEindeSpelbord()) {
             if (DC.isEindeSpel()) {
-                for (int i = 0; i < 10; i++)
-                {
-                    for (int j = 0; j < 10; j++)
-                    {
-                        Pane item = new Pane();
-                        item.getStyleClass().add("_");
-                        item.setPrefSize(50, 50);
-
-                        grid.add(item, i, j);
-                    }
-                }
                 
-                int itemsWin[][] = new int[12][2];
+                grid.getChildren().clear();
                 
-                itemsWin[0][0] = 2;
-                itemsWin[0][1] = 2;
-                itemsWin[1][0] = 2;
-                itemsWin[1][1] = 3;
-                itemsWin[2][0] = 2;
-                itemsWin[2][1] = 4;
-                itemsWin[3][0] = 2;
-                itemsWin[3][1] = 5;
-                
-                itemsWin[4][0] = 7;
-                itemsWin[4][1] = 2;
-                itemsWin[5][0] = 7;
-                itemsWin[5][1] = 3;
-                itemsWin[6][0] = 7;
-                itemsWin[6][1] = 4;
-                itemsWin[7][0] = 7;
-                itemsWin[7][1] = 5;
-                
-                itemsWin[8][0] = 3;
-                itemsWin[8][1] = 6;
-                
-                itemsWin[9][0] = 6;
-                itemsWin[9][1] = 6;
-                
-                itemsWin[10][0] = 4;
-                itemsWin[10][1] = 5;
-                
-                itemsWin[11][0] = 5;
-                itemsWin[11][1] = 5;
-                
-                for (int item[] : itemsWin)
-                {
-                    Pane win = new Pane();
-                    win.getStyleClass().add("M"); // Muur
-                    win.setPrefSize(50, 50);
-                    
-                    grid.add(win, item[0], item[1]);
-                }
+                grid.getStyleClass().add("win");
             } else {
                 spelbordComplete.setText(this.lang.get("game.complete"));
             

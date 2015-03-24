@@ -61,7 +61,6 @@ public class SpelerRepository
      * @param gebruikersnaam String
      * @return boolean
      */
-
     private boolean bestaatSpeler(String gebruikersnaam)
     {
         return spelerMapper.geefSpeler(gebruikersnaam) != null;

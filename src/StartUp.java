@@ -34,8 +34,7 @@ public class StartUp extends Application
         lang.addLanguage(new EN());
         
         (new StartUpGui(
-            new DomeinController(),
-            lang
+            new DomeinController(lang)
         )).start(stage);
     }
 }

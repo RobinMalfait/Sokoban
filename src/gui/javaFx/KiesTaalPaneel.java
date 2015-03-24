@@ -11,12 +11,10 @@ import languages.LanguageManager;
  */
 public class KiesTaalPaneel extends BaseGui
 {
-    private final LanguageManager languageManager;
     private final Stage stage;
     
-    public KiesTaalPaneel(Stage stage, LanguageManager languageManager)
+    public KiesTaalPaneel(Stage stage)
     {
-        this.languageManager = languageManager;
         this.stage = stage;
         
         stage.setTitle("Kies uw taal!");
@@ -53,8 +51,8 @@ public class KiesTaalPaneel extends BaseGui
     
     public void gaVerder(String language)
     {
-        this.languageManager.setLanguage(language);
+        DC.setLanguage(language);
         
-        MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(this.stage, this.languageManager);
+        MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(this.stage);
     }
 }

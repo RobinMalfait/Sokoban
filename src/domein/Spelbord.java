@@ -13,6 +13,7 @@ public class Spelbord
     private final VakMapper vakMapper;  // Mapper om de vakken/items uit de database op te halen
     private Vak[][] vakken;             // Een lijst van Vakken om de vakken/items bij te houden.
 
+    //CONSTRUCTOREN
     /**
      * Maak een nieuw Spelbord object-aan
      *
@@ -25,7 +26,29 @@ public class Spelbord
         this.spelbordId = spelbordId;
         this.naam = naam;
     }
-
+    
+    //GETTERS
+    
+    /**
+     * Verkrijg het spelbord id nummer
+     *
+     * @return int
+     */
+    public int getSpelbordId()
+    {
+        return spelbordId;
+    }
+    
+    /**
+     * Verkrijg de naam
+     *
+     * @return String
+     */
+    public String getNaam()
+    {
+        return naam;
+    }
+    
     /**
      * Is het spelbord voltooid of niet?
      *
@@ -45,43 +68,24 @@ public class Spelbord
     {
         return verplaatsingen;
     }
-
+    
     /**
-     * Verkrijg de naam
+     * Verkrijg de vakken
      *
-     * @return String
+     * @return Vak[][]
      */
-    public String getNaam()
+    public Vak[][] getVakken()
     {
-        return naam;
+        return vakken;
     }
 
-    /**
-     * Verkrijg het spelbord id nummer
-     *
-     * @return int
-     */
-    public int getSpelbordId()
+    //SETTERS
+    public void setVoltooid(boolean voltooid)  //Nodig voor testklasse SpelTest
     {
-        return spelbordId;
+        this.voltooid = voltooid;
     }
-
-    /**
-     * Verhoog het aantal verplaatsingen met 1
-     */
-    public void verhoogVerplaatsingen()
-    {
-        verplaatsingen++;
-    }
-
-    /**
-     * Voltooi een spelbord
-     */
-    public void maakVoltooid()
-    {
-        voltooid = true;
-    }
-
+    
+    //ACTIES
     /**
      * Stel de vakken in voor het spelbord
      */
@@ -89,7 +93,7 @@ public class Spelbord
     {
         vakken = vakMapper.geefVakken(spelbordId);
     }
-
+    
     /**
      * Toon het spelbord
      *
@@ -165,17 +169,7 @@ public class Spelbord
 
         return spelbordString;
     }
-
-    /**
-     * Verkrijg de vakken
-     *
-     * @return Vak[][]
-     */
-    public Vak[][] getVakken()
-    {
-        return vakken;
-    }
-
+    
     /**
      * Verplaats de speler in een bepaalde richting
      * 
@@ -192,6 +186,8 @@ public class Spelbord
         {
             aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
             vakMetMannetje.setMannetje(null);
+            
+            verplaatsingen++;
         }
         else if (aanliggendVak.bevatKist())     //vak met kist
         {
@@ -204,6 +200,8 @@ public class Spelbord
 
                 aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
                 vakMetMannetje.setMannetje(null);
+                
+                verplaatsingen++;
             }
         }
     }
@@ -213,7 +211,7 @@ public class Spelbord
      * 
      * @return Vak
      */
-    public Vak geefVakMetMannetje()
+    private Vak geefVakMetMannetje()
     {
         for (Vak[] vakArray : vakken)
         {
@@ -238,7 +236,7 @@ public class Spelbord
      * 
      * @return Vak
      */
-    public Vak geefAanliggendVak(int posX, int posY, int richting)
+    private Vak geefAanliggendVak(int posX, int posY, int richting)
     {
         if (richting < 1 || richting > 4)
         {
@@ -260,7 +258,7 @@ public class Spelbord
      * 
      * @return boolean
      */
-    public boolean isSpelbordVoltooid()
+    public boolean isEindeSpelbord()
     {
         for (Vak[] vakArray : vakken)
         {
@@ -272,8 +270,8 @@ public class Spelbord
                 }
             }
         }
-        voltooid = true;
-        return true;
+        this.voltooid = true;
+        return this.voltooid;
     }
     
     /**
