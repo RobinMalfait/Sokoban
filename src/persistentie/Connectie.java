@@ -10,7 +10,7 @@ abstract class Connectie
     /**
      * Database Name
      */
-    private static final String DB_NAME = "demian_sokoban";
+    private static final String DB_NAME = "demian_sokoban_spel";
 
     /**
      * Database Username
