@@ -49,7 +49,7 @@ public class ConsoleApplicatie
             }
             catch(InputMismatchException e)
             {
-                System.out.println("Er werd een geheel getal verwacht.");
+                System.out.println(lang.get("err.integer"));
             }
         } while(invoerFout);
         
@@ -74,7 +74,7 @@ public class ConsoleApplicatie
                 System.out.println(lang.get("app.quited"));
                 break;
             default:
-                System.err.println("Geen geldige keuze.");
+                System.err.println(lang.get("err.nonvalid"));
         }
     }
 }
