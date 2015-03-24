@@ -46,6 +46,7 @@ public class FR extends Language
         map("game.board.retry",         "Refaire");
         map("game.board.completed",     "Félicitations! Vous avez completé le tableau");
         map("game.board.next",          "tableau suivant");
+        map("game.board.moves",         "movements");
         map("game.completed",           "Vous avez completé le jeu");
         
         map("player.move",              "Déplacer le mec dans une direction");

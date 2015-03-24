@@ -61,26 +61,18 @@ public class VakMapper extends Mapper
         return vakken;
     }
 
-    public Vak[][] voegVakkenToe(int vakken[][], int spelbordId)
+    public void voegVakkenToe(Vak vakken[][], int spelbordId)
     {
-        Vak[][] vakObjecten = new Vak[10][10];
-        
         // Het maken van slechts 1 query.
         String query = "INSERT INTO Vak (spelbord_id, type, posX, posY) VALUES ";
 
         // Doordat we de array niet wijzigen, maar toch de index nodig hebben, 2 extra variabelen.
-        int x = 0, y = 0;
-
-        for (int vakArray[] : vakken)
+        for (Vak vakArray[] : vakken)
         {
-            for (int type : vakArray)
+            for (Vak vak: vakArray)
             {
-                query += String.format("(%d, %d, %d, %d), ", spelbordId, type, x, y);
-                vakObjecten[x][y] = maakVakObject(type, x, y);
-                y++;
+                query += String.format("(%d, %d, %d, %d), ", spelbordId, vak.bepaalDatabaseType(), vak.getPosX(), vak.getPosY());
             }
-            x++;
-            y = 0;
         }
         
         // De query uitvoeren.
@@ -92,8 +84,6 @@ public class VakMapper extends Mapper
             Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        // De vakObjecten terugsturen
-        return vakObjecten;
     }
 
     private static Vak maakVakObject(int type, int posX, int posY)

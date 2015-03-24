@@ -275,6 +275,15 @@ public class DomeinController
         this.huidigSpel.resetSpelbord();
     }
     
+    public void voerVakIn(String coordinaat, String naam)
+    {
+        this.huidigSpel.voerVakIn(coordinaat, naam);
+    }
+    
+    public void slaHuidigSpelOp()
+    {
+        this.huidigSpel.slaOp();
+    }
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpel.geefAantalVerplaatsingen();
