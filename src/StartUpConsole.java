@@ -1,5 +1,6 @@
 import domein.DomeinController;
 import gui.ConsoleApplicatie;
+import gui.TaalkeuzeApplicatie;
 import java.util.Scanner;
 import languages.EN;
 import languages.FR;
@@ -22,7 +23,7 @@ public class StartUpConsole
         lang.addLanguage(new EN());
         lang.addLanguage(new WVL());
         
-         (new ConsoleApplicatie()).start(
+         (new TaalkeuzeApplicatie()).start(
             new DomeinController(lang), 
             new Scanner(System.in)
         );

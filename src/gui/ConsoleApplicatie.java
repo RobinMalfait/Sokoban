@@ -9,35 +9,20 @@ import languages.LanguageManager;
 public class ConsoleApplicatie
 {
 
-    public void start(DomeinController dc, Scanner input)
+    public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        int keuze = 0;
-        boolean invoerFout = true;
-        LanguageManager lang = dc.getLang();
+        int keuze;
         
-        do
-        {
-            try
-            {
-                System.out.printf("Geef je taal, keuze uit (%s): ", lang.getKeuzes());
-                lang.setLanguage(input.next().toUpperCase());
-                invoerFout = false;
-            } 
-            catch (TaalException e)
-            {
-                System.err.println(e.getMessage());
-            }
-        } while (invoerFout);
-        
-        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
+        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n6: %s%n%n",
                 lang.get("list.choose"),
                 lang.get("sign.in"),
                 lang.get("sign.up"),
                 "Test speel spel (voorlopig)",
                 "Admin",
+                "Admin2",
                 lang.get("app.quit"));
 
-        keuze = invoerControle(1, 5, input, lang);
+        keuze = invoerMetControle(1, 6, input, lang);
         
         System.out.println(); // Een extra enter voor de volgende output
         input.nextLine(); // Buffer leegmaken
@@ -55,8 +40,11 @@ public class ConsoleApplicatie
                 break;
             case 4:
                 (new AdminApplicatie()).start(dc, input, lang);
-                break;                
+                break;
             case 5:
+                (new AdminApplicatie2()).start(dc, input, lang);
+                break; 
+            case 6:
                 System.out.println(lang.get("app.quited"));
                 break;
             default:
@@ -64,7 +52,7 @@ public class ConsoleApplicatie
         }
     }
     
-    private int invoerControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
+    private int invoerMetControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
     {
         int keuze = 0;
         boolean fouteInvoer = true;
