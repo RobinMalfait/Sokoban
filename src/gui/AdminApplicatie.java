@@ -32,7 +32,8 @@ public class AdminApplicatie
             System.out.printf("%n%s: ", lang.get("list.choice"));
             keuze = input.nextInt();
             input.nextLine(); // buffer leegmaken
-        } catch (InputMismatchException e)
+        } 
+        catch (InputMismatchException e)
         {
             System.out.println("Er werd een geheel getal verwacht.");
         }

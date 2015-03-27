@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.SpelException;
+import exceptions.SpelbordException;
 import persistentie.SpelbordMapper;
 import persistentie.VakMapper;
 
@@ -341,15 +342,44 @@ public class Spelbord
     
     public void slaOp(int spelId)
     {
-        this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
-       
-        if(this.spelbordId == 0)
+        if (controleerSpelbord())
         {
-            throw new IllegalArgumentException("Spel werd niet opgeslaan.");
+            this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
+
+            if (this.spelbordId == 0)
+            {
+                throw new SpelbordException("Spel werd niet opgeslaan.");
+            }
+            else
+            {
+                vakMapper.voegVakkenToe(vakken, this.spelbordId);
+            }
         }
-        else 
+    }
+    
+    private boolean controleerSpelbord()
+    {
+        int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
+        
+        for (Vak[] vakArray : vakken)
         {
-            vakMapper.voegVakkenToe(vakken, this.spelbordId);
+            for (Vak vak : vakArray)
+            {
+                if (vak.isDoel())
+                    aantalDoelen++;
+                else if (vak.bevatKist())
+                    aantalKisten++;
+                else if (vak.bevatMannetje())
+                    aantalMannetjes++;
+            }
         }
+        
+        if (aantalMannetjes != 1)
+            throw new SpelbordException("Er " + (aantalMannetjes == 0 ? "moet" : "mag slechts") + " één mannetje op het spelbord staan. Het spelbord bevat nu " + aantalMannetjes + " mannetjes");
+
+        if (aantalDoelen == 0 || aantalDoelen != aantalKisten )
+            throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
+        
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.SpelException;
 import java.util.ArrayList;
 import java.util.List;
 import persistentie.SpelMapper;
@@ -252,9 +253,10 @@ public class Spel
         
         if(id == 0) 
         {
-            throw new IllegalArgumentException("Spel werd niet opgeslaan.");
+            throw new SpelException("Spel werd niet opgeslaan.");
         }
-        else {
+        else 
+        {
             for(Spelbord spelbord: spelborden)
                 spelbord.slaOp(this.id);
         }
