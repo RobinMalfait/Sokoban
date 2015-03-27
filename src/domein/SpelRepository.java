@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.SpelException;
 import java.util.ArrayList;
 import java.util.List;
 import persistentie.SpelMapper;
@@ -78,7 +79,7 @@ class SpelRepository
         {
             if(spel.getNaam().equals(naam))
             {
-                throw new IllegalArgumentException("De naam van het nieuwe spel bestond al.");
+                throw new SpelException("De naam van het nieuwe spel bestond al.");
             }
             else 
             {

@@ -175,6 +175,26 @@ public class DomeinController
     }
 
     /**
+     * Verkrijg de naam van het huidige spel.
+     * 
+     * @return String
+     */
+    public String geefNaamHuidigSpel()
+    {
+        return huidigSpel.getNaam();
+    }
+    
+    /**
+     * Verkrijg de naam van het huidige spelbord.
+     * 
+     * @return String
+     */
+    public String geefNaamHuidigSpelbord()
+    {
+        return huidigSpel.getHuidigSpelbord().getNaam();
+    }
+
+    /**
      * Toon het spelbord
      *
      * @return String[][]

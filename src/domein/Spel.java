@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.SpelException;
+import exceptions.SpelbordException;
 import java.util.ArrayList;
 import java.util.List;
 import persistentie.SpelMapper;
@@ -226,6 +227,12 @@ public class Spel
      */
     public void voegSpelbordToe(String naam)
     {
+        for (Spelbord spelbord : spelborden)
+        {
+            if (spelbord.getNaam().equals(naam))
+                throw new SpelbordException("Er bestaat al een spelbord met deze naam.");
+        }
+                
         Spelbord nieuwSpelbord = new Spelbord(naam);
         
         this.huidigSpelbord = nieuwSpelbord;
