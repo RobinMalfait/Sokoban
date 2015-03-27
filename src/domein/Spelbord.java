@@ -307,6 +307,10 @@ public class Spelbord
         int x = Integer.valueOf(xy[0]);
         int y = Integer.valueOf(xy[1]);
         
+        if (x < 0 || x > (vakken.length - 1) || y < 0 || y > (vakken[1].length - 1) )
+            throw new SpelbordException("Het coördinaat ligt buiten het bereik van het spelbord.");
+            
+        
         if(xy.length == 2)
         {
             switch (keuze.toUpperCase())
@@ -316,26 +320,34 @@ public class Spelbord
                     vakken[x][y].setMannetje(null);
                     vakken[x][y].setToegankelijk(true);
                     vakken[x][y].setDoel(false);
+                    break;
                 case "M":                                     // Muur
                     vakken[x][y].setKist(null);
                     vakken[x][y].setMannetje(null);
                     vakken[x][y].setToegankelijk(false);
                     vakken[x][y].setDoel(false);
+                    break;
                 case "D":                                     // Toegankelijk vak - Met Doel
                     vakken[x][y].setKist(null);
                     vakken[x][y].setMannetje(null);
                     vakken[x][y].setToegankelijk(true);
                     vakken[x][y].setDoel(true);
+                    break;
                 case "K":                                     // Toegankelijk vak - Met Kist
                     vakken[x][y].setKist(new Kist());
                     vakken[x][y].setMannetje(null);
                     vakken[x][y].setToegankelijk(true);
                     vakken[x][y].setDoel(false);
+                    break;
                 case "Y":                                     // Toegankelijk vak - Met Mannetje
                     vakken[x][y].setKist(null);
                     vakken[x][y].setMannetje(new Mannetje());
                     vakken[x][y].setToegankelijk(true);
                     vakken[x][y].setDoel(false);
+                    break;
+                default:                                      // niet in lijst
+                    throw new SpelbordException("Ongeldig type.");
+                    
             }            
         }        
     }  

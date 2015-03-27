@@ -13,16 +13,15 @@ public class ConsoleApplicatie
     {
         int keuze;
         
-        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n6: %s%n%n",
+        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
                 lang.get("list.choose"),
                 lang.get("sign.in"),
                 lang.get("sign.up"),
                 "Test speel spel (voorlopig)",
                 "Admin",
-                "Admin2",
                 lang.get("app.quit"));
 
-        keuze = invoerMetControle(1, 6, input, lang);
+        keuze = invoerMetControle(1, 5, input, lang);
         
         System.out.println(); // Een extra enter voor de volgende output
         input.nextLine(); // Buffer leegmaken
@@ -39,12 +38,9 @@ public class ConsoleApplicatie
                 (new SpeelSpelApplicatie()).snelStarten(dc, input, lang);
                 break;
             case 4:
-                (new AdminApplicatie()).start(dc, input, lang);
+                (new AdminApplicatie()).snelStarten(dc, input, lang);
                 break;
             case 5:
-                (new AdminApplicatie2()).start(dc, input, lang);
-                break; 
-            case 6:
                 System.out.println(lang.get("app.quited"));
                 break;
             default:

@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import domein.DomeinController;
 import exceptions.SpelException;
+import exceptions.SpelbordException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import languages.LanguageManager;
@@ -21,63 +17,108 @@ public class AdminApplicatie
     public static void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
 
-        System.out.printf("%s%n1: %s%n",
-                "Wat wenst u te doen?",
-                "Een nieuwe spel configureren");
-
-        int keuze = 0;
-
-        try
+        if (!dc.isAdmin())
         {
-            System.out.printf("%n%s: ", lang.get("list.choice"));
-            keuze = input.nextInt();
-            input.nextLine(); // buffer leegmaken
-        } 
-        catch (InputMismatchException e)
-        {
-            System.out.println("Er werd een geheel getal verwacht.");
+            System.out.println("U bent geen admin.");
+            (new ConsoleApplicatie()).start(dc, input, lang);
         }
-
-        // Keuze bepalen
-        switch (keuze)
+        else
         {
-            case 1:
-                maakNieuwSpel(dc, input, lang);
-                break;
+
+            int keuze;
+
+            System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n%n",
+                    lang.get("list.choose"),
+                    "Een nieuw spel aanmaken",
+                    "Hoofdmenu",
+                    lang.get("app.quit"));
+
+            keuze = invoerMetControle(1, 3, input, lang);
+
+            System.out.println(); // Een extra enter voor de volgende output
+            input.nextLine(); // Buffer leegmaken
+
+            switch (keuze)
+            {
+                case 1:
+                    maakNieuwSpel(dc, input, lang);
+                    break;
+                case 2:
+                    (new ConsoleApplicatie()).start(dc, input, lang);
+                    break;
+                case 3:
+                    System.out.println(lang.get("app.quited"));
+                    break;
+                default:
+                    System.err.println(lang.get("err.nonvalid"));
+            }
         }
     }
 
     public static void maakNieuwSpel(DomeinController dc, Scanner input, LanguageManager lang)
     {
+        String naam;
+        boolean spelBestaat = true;
+        
         System.out.printf("%n%s%n", lang.get("horizontal.line"));
 
-        // Verbetering zou zijn om een naam met spaties toe te laten. Daarvoor input.nextLine() gebruiken..
-        System.out.print("Geef een naam voor het nieuwe spel: ");
-        String naam = input.next();
+        System.out.printf("Configuratie van een nieuw spel: %n%n");
+        
+        do
+        {
+            System.out.print("Geef een naam voor het nieuwe spel: ");
+            naam = input.nextLine().trim();
 
-        dc.voegSpelToe(naam); // Een object van klasse Spel is aangemaakt, niet opgeslaan in de database.
-        System.out.println("Een spel werd aangemaakt, u zult nu een spelbord toevoegen.");
-
+            try
+            {
+                dc.voegSpelToe(naam);
+                System.out.printf("Het spel %s werd aangemaakt, u zult nu een spelbord toevoegen.%n%n",
+                        dc.geefNaamHuidigSpel());
+                
+                spelBestaat = false;
+            }
+            catch (SpelException e)
+            {
+                System.out.println(e.getMessage() + " Probeer een andere naam.");
+            }
+ 
+        } while (spelBestaat);
+        
+        
+        // TE IMPLEMENTEREN: spelborden blijven toevoegen tot speler wil stoppen
         maakNieuwSpelbord(dc, input, lang);
 
-        input.nextLine(); // buffer leegmaken
         start(dc, input, lang);
+        
+    
     }
 
     public static void maakNieuwSpelbord(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        boolean invoerFout = true;
-        boolean doorgaan = true;
-
+        boolean fouteInvoer = true, doorgaan = true, spelbordBestaat = true;
         String spelbordNaam;
 
         // 1. Naam voor het spelbord
-        System.out.printf("Geef een naam voor het spelbord:");
-        spelbordNaam = input.next();
+        do
+        {
+            System.out.print("Geef een naam voor het nieuwe spelbord: ");
+            spelbordNaam = input.nextLine().trim();
 
-        dc.voegSpelbordToe(spelbordNaam);
-        System.out.println();
-        System.out.println();
+            try
+            {
+                dc.voegSpelbordToe(spelbordNaam);
+                System.out.printf("Het spelbord %s werd toegevoegd aan het spel %s.%n%n",
+                        dc.geefNaamHuidigSpelbord(),
+                        dc.geefNaamHuidigSpel());
+                
+                spelbordBestaat = false;
+            }
+            catch (SpelbordException e)
+            {
+                System.out.println(e.getMessage() + " Probeer een andere naam.");
+            }
+ 
+        } while (spelbordBestaat);
 
         toonSpelbord(dc);
 
@@ -87,7 +128,7 @@ public class AdminApplicatie
         String keuze = "";
         do
         {
-            System.out.printf("%nVoer een coördinaat in of typ 'stop': ");
+            System.out.printf("Voer een coördinaat in of typ 'stop': ");
             coordinaat = input.next();
             input.nextLine();
 
@@ -101,11 +142,27 @@ public class AdminApplicatie
             keuze = input.next();
             input.nextLine();
 
-            dc.voerVakIn(coordinaat, keuze);
-            toonSpelbord(dc);
+            try
+            {
+                dc.voerVakIn(coordinaat, keuze);
+                toonSpelbord(dc);
+            }
+            catch (SpelbordException e)
+            {
+                System.err.println(e.getMessage() + " Probeer opnieuw.");
+                System.out.println();
+            }
+            
+            
         } while (doorgaan);
 
-        dc.slaHuidigSpelOp();
+        if (doorgaan)
+        {
+            dc.slaHuidigSpelOp();
+            System.out.println("Het spelbord werd opgeslagen.");
+        }
+        else
+            System.out.println("Gestopt.");
     }
 
     public static void toonSpelbord(DomeinController dc)
@@ -127,6 +184,50 @@ public class AdminApplicatie
             System.out.println();
             x++;
         }
+    }
+    
+    private static int invoerMetControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
+    {
+        int keuze = 0;
+        boolean fouteInvoer = true;
+        do
+        {
+            try
+            {                
+                System.out.printf("%s: ", lang.get("list.choice"));
+                keuze = input.nextInt();
+
+                if (keuze < ondergrens || keuze > bovengrens)
+                {
+                    throw new IllegalArgumentException(lang.get("err.input", 
+                        "min", ondergrens, 
+                        "max", bovengrens));
+                }
+                
+                fouteInvoer = false;
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.err.println(e.getMessage());
+                input.nextLine();
+            }
+            catch (InputMismatchException e)
+            {
+                System.err.println(lang.get("err.NaN"));
+                input.nextLine();
+            }
+
+        } while (fouteInvoer);
+                
+        return keuze;
+    }
+    
+    public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+
+        dc.meldAan("AdminTest1", "AdminTest1");
+
+        this.start(dc, input, lang);
     }
 
 }
