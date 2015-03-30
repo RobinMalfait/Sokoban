@@ -254,6 +254,16 @@ public class Spel
         this.huidigSpelbord.voerVakIn(coordinaat, naam);
     }    
     
+    public boolean controleerSpel()
+    {
+        for (Spelbord spelbord : spelborden)
+        {
+            if(spelbord.controleerSpelbord())
+                return true;
+        }
+        return false;        
+    }
+    
     public void slaOp()
     {
         this.id = this.spelMapper.voegSpelToe(naam);

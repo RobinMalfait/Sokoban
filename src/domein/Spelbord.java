@@ -369,7 +369,7 @@ public class Spelbord
         }
     }
     
-    private boolean controleerSpelbord()
+    public boolean controleerSpelbord()
     {
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
         
@@ -387,10 +387,12 @@ public class Spelbord
         }
         
         if (aantalMannetjes != 1)
-            throw new SpelbordException("Er " + (aantalMannetjes == 0 ? "moet" : "mag slechts") + " één mannetje op het spelbord staan. Het spelbord bevat nu " + aantalMannetjes + " mannetjes");
+            return false;
+            //throw new SpelbordException("Er " + (aantalMannetjes == 0 ? "moet" : "mag slechts") + " één mannetje op het spelbord staan. Het spelbord bevat nu " + aantalMannetjes + " mannetjes");
 
-        if (aantalDoelen == 0 || aantalDoelen != aantalKisten )
-            throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
+        if(aantalDoelen == 0 || aantalDoelen != aantalKisten )
+            return false;
+            //throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
         
         return true;
     }

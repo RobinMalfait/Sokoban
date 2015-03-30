@@ -279,6 +279,9 @@ public class DomeinController
      */
     public boolean isAdmin()
     {
+        if(this.huidigeSpeler == null)
+            return false;
+        
         return this.huidigeSpeler.isAdmin();
     }
 
@@ -304,8 +307,14 @@ public class DomeinController
     {
         this.huidigSpel.slaOp();
     }
-     public int geefAantalVerplaatsingen()
+    
+    public int geefAantalVerplaatsingen()
     {
         return this.huidigSpel.geefAantalVerplaatsingen();
+    }
+    
+    public boolean controleerSpel()
+    {
+        return this.huidigSpel.controleerSpel();
     }
 }

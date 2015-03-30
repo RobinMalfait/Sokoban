@@ -8,10 +8,6 @@ import languages.LanguageManager;
 import languages.NL;
 import languages.WVL;
 
-/**
- *
- * @author robin
- */
 public class StartUpConsole 
 {
     public static void main(String[] args)

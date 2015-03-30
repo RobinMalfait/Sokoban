@@ -11,6 +11,7 @@ public class ConsoleApplicatie
 
     public void start(DomeinController dc, Scanner input, LanguageManager lang)
     {
+        
         int keuze;
         
         System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
