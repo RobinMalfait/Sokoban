@@ -293,12 +293,21 @@ public class Spelbord
         return this.voltooid;
     }
     
+    /**
+     * Stel de vakken van het spelbord in op hun beginwaarde.
+     */
     public void resetSpelbord()
     {
         this.geefVakken();
         this.verplaatsingen = 0;
     }
     
+    /**
+     * Plaats een item op een vak.
+     * 
+     * @param coordinaat String
+     * @param keuze String
+     */
     public void voerVakIn(String coordinaat, String keuze)
     {
         coordinaat = coordinaat.trim();
@@ -352,6 +361,11 @@ public class Spelbord
         }        
     }  
     
+    /**
+     * Sla de wijzigingen in het huidige spelbord op.
+     * 
+     * @param spelId int
+     */
     public void slaOp(int spelId)
     {
         if (controleerSpelbord())
@@ -369,6 +383,12 @@ public class Spelbord
         }
     }
     
+    /**
+     * Controleer of het spelbord aan de eisen voldoet.
+     * Een spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
+     * 
+     * @return boolean
+     */
     public boolean controleerSpelbord()
     {
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
