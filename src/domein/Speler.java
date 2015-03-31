@@ -3,7 +3,7 @@ package domein;
 import exceptions.GebruikersnaamException;
 import languages.LanguageManager;
 
-public class Speler
+public class Speler extends Base
 {
     private int id;
     private String naam;
@@ -11,7 +11,6 @@ public class Speler
     private String gebruikersnaam;
     private String wachtwoord;
     private boolean admin;
-    private LanguageManager lang;
 
     //CONSTRUCTOREN
     /**
@@ -199,16 +198,6 @@ public class Speler
     public void setAdmin(boolean admin)
     {
         this.admin = admin;
-    }
-    
-    /**
-     * Stel de taal van de speler in.
-     * 
-     * @param lang LanguageManager 
-     */
-    public void setLang(LanguageManager lang)
-    {
-        this.lang = lang;
     }
     
     //ACTIES

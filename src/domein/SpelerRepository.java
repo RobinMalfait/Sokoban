@@ -5,7 +5,7 @@ import java.util.*;
 import persistentie.SpelerMapper;
 import security.BCrypt;
 
-public class SpelerRepository
+public class SpelerRepository extends Base
 {
     
     private final SpelerMapper spelerMapper;
@@ -49,7 +49,7 @@ public class SpelerRepository
     public void voegToe(Speler speler)
     {
         if (bestaatSpeler(speler.getGebruikersnaam()))
-            throw new GebruikerBestaatException("De gebruikersnaam is al in gebruik.");
+            throw new GebruikerBestaatException(lang.get("user.username.exists"));
 
         this.spelers.add(speler);
         this.spelerMapper.addSpeler(speler);

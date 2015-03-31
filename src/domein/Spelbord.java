@@ -6,7 +6,7 @@ import java.util.Arrays;
 import persistentie.SpelbordMapper;
 import persistentie.VakMapper;
 
-public class Spelbord
+public class Spelbord extends Base
 {
 
     private int spelbordId;       // Hebben we nodig om data uit de database te halen
@@ -258,9 +258,11 @@ public class Spelbord
      */
     private Vak geefAanliggendVak(int posX, int posY, int richting)
     {
-        if (richting < 1 || richting > 4)
+        int min = 1, max = 4;
+        
+        if (richting < min || richting > max)
         {
-            throw new SpelException("De richting die je opgaf klopt niet.");
+            throw new SpelException(lang.get("player.wrongDirection", ":min", min, ":max", max));
         }
         
         switch (richting) {
@@ -318,7 +320,7 @@ public class Spelbord
         int y = Integer.valueOf(xy[1]);
         
         if (x < 0 || x > (vakken.length - 1) || y < 0 || y > (vakken[1].length - 1) )
-            throw new SpelbordException("Het coördinaat ligt buiten het bereik van het spelbord.");
+            throw new SpelbordException(lang.get("player.wrongCoordinates"));
             
         
         if(xy.length == 2)
@@ -356,7 +358,7 @@ public class Spelbord
                     vakken[x][y].setDoel(false);
                     break;
                 default:                                      // niet in lijst
-                    throw new SpelbordException("Ongeldig type.");
+                    throw new SpelbordException(lang.get("err.invalidType"));
                     
             }            
         }        
@@ -375,7 +377,7 @@ public class Spelbord
 
             if (this.spelbordId == 0)
             {
-                throw new SpelbordException("Spel werd niet opgeslaan.");
+                throw new SpelbordException(lang.get("game.notSaved"));
             }
             else
             {

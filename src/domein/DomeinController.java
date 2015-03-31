@@ -25,7 +25,7 @@ public class DomeinController
     public DomeinController(LanguageManager lang)
     {
         spelerRepository = new SpelerRepository();
-        spelRepository = new SpelRepository(lang);
+        spelRepository = new SpelRepository();
         this.lang = lang;
         Base.setLang(lang);
     }
@@ -139,7 +139,7 @@ public class DomeinController
 
         if (this.huidigSpel == null)
         {
-            throw new SpelException("Er werd geen spel gevonden met nummer " + id);
+            throw new SpelException(lang.get("game.notFound", ":id", id));
         }
         else
         {
@@ -159,7 +159,7 @@ public class DomeinController
 
         if (this.huidigSpel == null)
         {
-            throw new SpelException("Er werd geen spel gevonden met nummer " + id);
+            throw new SpelException(lang.get("game.board.notFound", ":id", id));
         }
         else
         {

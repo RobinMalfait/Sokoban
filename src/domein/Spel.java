@@ -242,7 +242,7 @@ public class Spel extends Base
         for (Spelbord spelbord : spelborden)
         {
             if (spelbord.getNaam().equals(naam))
-                throw new SpelbordException("Er bestaat al een spelbord met deze naam.");
+                throw new SpelbordException(lang.get("game.board.exists"));
         }
                 
         Spelbord nieuwSpelbord = new Spelbord(naam);
@@ -305,7 +305,7 @@ public class Spel extends Base
         
         if(id == 0) 
         {
-            throw new SpelException("Spel werd niet opgeslaan.");
+            throw new SpelException(lang.get("game.notSaved"));
         }
         else 
         {
@@ -319,7 +319,7 @@ public class Spel extends Base
         Spelbord spelbord = zoekSpelbord(spelbordId);
         
         if (spelbord == null)
-            throw new IllegalArgumentException("Het spelbord met id " + spelbordId + " werd niet gevonden in het spel " + this.naam + ".");
+            throw new SpelbordException(lang.get("game.board.notFound", ":id", spelbordId));
         else
         {
             spelbordMapper.verwijderSpelbord(spelbordId);

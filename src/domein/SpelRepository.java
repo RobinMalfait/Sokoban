@@ -6,21 +6,19 @@ import java.util.List;
 import languages.LanguageManager;
 import persistentie.SpelMapper;
 
-class SpelRepository 
+class SpelRepository extends Base
 {
     private final SpelMapper spelMapper;
     private List<Spel> spellen;
-    private final LanguageManager lang;
 
     /**
      * Maak een nieuw SpelRepository-object aan
      */
-    public SpelRepository(LanguageManager lang)
+    public SpelRepository()
     {
         this.spelMapper = new SpelMapper();
         this.spellen = new ArrayList<>();
         this.spellen = this.geefSpellen();
-        this.lang = lang;
     }
 
     /**
@@ -82,7 +80,7 @@ class SpelRepository
         {
             if(spel.getNaam().equals(naam))
             {
-                throw new SpelException(lang.get("game.alreadyExists", ":name", naam));
+                throw new SpelException(lang.get("game.exists"));
             }
             else 
             {
