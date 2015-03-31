@@ -124,7 +124,7 @@ public class SpelTest
     public void geefSpelbordenString()
     {
         String[][] spelbordenString = { { "1" , "test_spelbord_1" }, { "2" , "test_spelbord_2" }, { "3" , "test_spelbord_3" } };
-        Assert.assertArrayEquals(spelbordenString, spel.geefSpelbordenString());
+        Assert.assertArrayEquals(spelbordenString, spel.geefLijstSpelborden());
     }   
     
     @After
