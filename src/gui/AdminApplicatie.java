@@ -112,7 +112,7 @@ public class AdminApplicatie
             if(keuze.equals("ja"))
             {
                 dc.slaHuidigSpelOp();
-                System.out.printf("Het spel %s met %d spelborden werd aangemaakt.", dc.geefNaamHuidigSpel(), dc.geefSpelbordenString().length);
+                System.out.printf("Het spel %s met %d spelborden werd aangemaakt.", dc.geefNaamHuidigSpel(), dc.geefLijstSpelborden().length);
             }
             else
             {

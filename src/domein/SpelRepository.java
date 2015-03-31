@@ -51,21 +51,21 @@ class SpelRepository
      * 
      * @return String[][]
      */
-    public String[][] geefSpellenString()
+    public String[][] geefLijstSpellen()
     {
-        String[][] spellenString = new String[this.spellen.size()][];
+        String[][] spellenLijst = new String[this.spellen.size()][];
 
         int teller = 0;
         for(Spel spel: this.spellen)
         {
-            spellenString[teller] = new String[2];
-            spellenString[teller][0] = String.valueOf(spel.getId());
-            spellenString[teller][1] = spel.getNaam();
+            spellenLijst[teller] = new String[2];
+            spellenLijst[teller][0] = String.valueOf(spel.getId());
+            spellenLijst[teller][1] = spel.getNaam();
             
             teller++;
         }
 
-        return spellenString;
+        return spellenLijst;
     }
     
     /**
