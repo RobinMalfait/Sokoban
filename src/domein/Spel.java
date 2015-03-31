@@ -199,10 +199,7 @@ public class Spel
     public void kiesSpelbord(int id)
     {
         this.huidigSpelbord = this.spelbordMapper.geefSpelbord(id, this.id);
-        if(this.huidigSpelbord == null)
-        {
-            throw new SpelException("Het spelbord met het id werd niet gevonden of behoort niet tot dit spel.");
-        }
+
     }
     /**
      * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
