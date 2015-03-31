@@ -19,6 +19,8 @@ public class DomeinController
 
     /**
      * Maak een DomeinController-object aan
+     * 
+     * @param lang LanguageManager;
      */
     public DomeinController(LanguageManager lang)
     {

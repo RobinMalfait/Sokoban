@@ -66,7 +66,7 @@ public class AdminApplicatie
         // 1. Unieke naam vragen voor het aanmaken van een spel.
         do
         {
-            System.out.print("Geef een naam voor het nieuwe sp3l: ");
+            System.out.print("Geef een naam voor het nieuwe spel: ");
             naam = input.nextLine().trim();
 
             try
@@ -112,7 +112,7 @@ public class AdminApplicatie
             if(keuze.equals("ja"))
             {
                 dc.slaHuidigSpelOp();
-                System.out.printf("Het spel %s met %d spelborden werd aangemaakt.", dc.geefNaamHuidigSpel(), dc.geefSpelbordenString().length);
+                System.out.printf("Het spel %s met %d spelborden werd aangemaakt.", dc.geefNaamHuidigSpel(), dc.geefLijstSpelborden().length);
             }
             else
             {
@@ -276,7 +276,7 @@ public class AdminApplicatie
     public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
     {
 
-        dc.meldAan("admin", "admin");
+        dc.meldAan("administrator", "Administrator1");
 
         this.start(dc, input, lang);
     }
