@@ -3,21 +3,24 @@ package domein;
 import exceptions.SpelException;
 import java.util.ArrayList;
 import java.util.List;
+import languages.LanguageManager;
 import persistentie.SpelMapper;
 
 class SpelRepository 
 {
     private final SpelMapper spelMapper;
     private List<Spel> spellen;
+    private final LanguageManager lang;
 
     /**
      * Maak een nieuw SpelRepository-object aan
      */
-    public SpelRepository()
+    public SpelRepository(LanguageManager lang)
     {
         this.spelMapper = new SpelMapper();
         this.spellen = new ArrayList<>();
-        spellen = this.geefSpellen();
+        this.spellen = this.geefSpellen();
+        this.lang = lang;
     }
 
     /**
@@ -25,7 +28,7 @@ class SpelRepository
      * 
      * @return List&lt;Spel&gt;
      */
-    public List<Spel> geefSpellen()
+    private List<Spel> geefSpellen()
     {
         return spelMapper.geefSpellen();
     }
@@ -79,7 +82,7 @@ class SpelRepository
         {
             if(spel.getNaam().equals(naam))
             {
-                throw new SpelException("De naam van het nieuwe spel bestond al.");
+                throw new SpelException(lang.get("game.alreadyExists", ":name", naam));
             }
             else 
             {
@@ -90,4 +93,17 @@ class SpelRepository
         }
         return null;
     }
+
+    void verwijderSpel(int spelId)
+    {
+        Spel spel = zoekSpel(spelId);
+        
+        if (spel == null)
+            throw new SpelException(lang.get("game.notFound", ":id", spelId));
+        
+        spel.verwijderAlleSpelborden();
+        
+        spelMapper.verwijderSpel(spelId);
+    }
+    
 }

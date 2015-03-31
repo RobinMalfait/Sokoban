@@ -11,6 +11,7 @@ public class FR extends Language
      */
     public FR()
     {
+        //user
         map("user.username",            "nom d'utilisateur");
         map("user.name",                "nom");
         map("user.firstname",           "prénom");
@@ -22,9 +23,10 @@ public class FR extends Language
         map("user.logged.in",           "en ligne");
         map("user.logged.out",          "hors ligne");
         map("credentials.wrong",        "Mal informations d'identification");
+        
+        //sign in/up
         map("sign.in",                  "se connecter");
         map("sign.up",                  "s'inscrire");
-        
         map("sign.succes",              "Vous êtes connecté avec succès!");
         map("sign.retry",               "Refaire ou typ: Stop.");
         map("sign.choise",              "Qu'êtes-vous prêt à faire?");
@@ -34,33 +36,45 @@ public class FR extends Language
         map("sign.game.modify",         "Modifier un jeu existant");
         map("sign.quitted",             "Quitté");
         
+        //register
         map("register.fill.in",         "Remplissez les données suivantes pour vous connecter:");
         map("register.retry",           "Refaire");
         map("register.succes",          "Vous vous avez t'inscrit avec succès:");
         
+        //game
         map("game.welcome",             "Bienvenue");
         map("game.play",                "Vous aller joué un nouveaux jeu");
         map("game.choose.list",         "Choisissez un jeu dans la liste ci-dessous");
         map("game.choose",              "Choisissez un jeu");
+        map("game.completed",           "Vous avez completé le jeu");
+        map("game.notFound",            "Le jeu avec l'id :id n'a pas été trouvé.");
+        map("game.alreadyExists",       "Le jeu avec le nom :name existe déjà.");
+        map("game.notSaved",            "Le jeu n'a pas été enregistré.");
+        
+        //gameboard
         map("game.board.loading",       "Le tableau est en train de charger");
         map("game.board.retry",         "Refaire");
         map("game.board.completed",     "Félicitations! Vous avez completé le tableau");
         map("game.board.next",          "tableau suivant");
         map("game.board.moves",         "movements");
-        map("game.completed",           "Vous avez completé le jeu");
+        map("game.board.notFound",      "Le tableau avec l'id :id dans le jeu :game n'a pas été trouvé.");
         
+        //player
         map("player.move",              "Déplacer le mec dans une direction");
         map("player.up",                "en haut");
         map("player.down",              "en bas");
         map("player.left",              "à gauche");
         map("player.right",             "à droite");
         
+        //list
         map("list.choice",              "mon choix");
         map("list.choose",              "Qu'est-ce que vous voulez faire?");
         
+        //application
         map("app.quit",                 "arrêter");
         map("app.quited",               "arrêté");
         
+        //error
         map("err.login",                "Le nom d'utilisateur ou le mot de passe est incorrect");
         map("err.passwordrepeat",       "Le mot de passe et la repitition de mot de passe ne correspondent pas");
         map("err.usernameDR",           "Le nom d'utilisateur doit être au moins 8 caractères");

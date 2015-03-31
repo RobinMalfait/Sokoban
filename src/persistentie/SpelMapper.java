@@ -96,4 +96,9 @@ public class SpelMapper extends Mapper
         }
         return 0; 
     }            
+
+    public void verwijderSpel(int spelId)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

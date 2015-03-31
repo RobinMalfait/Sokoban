@@ -11,6 +11,7 @@ public class NL extends Language
      */
     public NL()
     {
+        //user
         map("user.username",            "Gebruikersnaam");
         map("user.name",                "Naam");
         map("user.firstname",           "Voornaam");
@@ -22,9 +23,10 @@ public class NL extends Language
         map("user.logged.in",           "ingelogd");
         map("user.logged.out",          "uitgelogd");
         map("credentials.wrong",        "foute gegevens");
+        
+        //sign in/up
         map("sign.in",                  "aanmelden");
         map("sign.up",                  "registreren");
-        
         map("sign.succes",              "Je bent succesvol ingelogd");
         map("sign.retry",               "Opnieuw proberen of typ: Stop.");
         map("sign.choise",              "Wat wil je doen?");
@@ -34,33 +36,45 @@ public class NL extends Language
         map("sign.game.modify",         "Pas een bestaand spel aan");
         map("sign.quitted",             "Gestopt");
         
+        //register
         map("register.fill.in",         "Vul onderstaande data in om je te registeren:");
         map("register.retry",           "Opnieuw proberen");
         map("register.succes",          "Je bent succesvol geregistreerd.");
-              
+        
+        //game
         map("game.welcome",             "Welkom");
         map("game.play",                "U zult een nieuw spel spelen");
         map("game.choose.list",         "Kies een spel uit onderstaande lijst");
         map("game.choose",              "Kies een spel");
+        map("game.completed",           "Je hebt het spel voltooid");
+        map("game.notFound",            "Het spel met id :id werd niet gevonden.");
+        map("game.alreadyExists",       "Het spel met naam :name bestaat al.");
+        map("game.notSaved",            "Het spel werd niet opgeslaan.");
+        
+        //gameboard
         map("game.board.loading",       "Het spelbord wordt geladen");
         map("game.board.retry",         "Opnieuw");
         map("game.board.completed",     "Gefeliciteerd! Je hebt het spelbord voltooid");
         map("game.board.next",          "volgende spelbord");
         map("game.board.moves",         "verplaatsingen");
-        map("game.completed",           "Je hebt het spel voltooid");
+        map("game.board.notFound",      "Het spelbord met id :id in het spel :game werd niet gevonden.");
         
+        //player
         map("player.move",              "Verplaats het mannetje in een richting");
         map("player.up",                "omhoog");
         map("player.down",              "omlaag");
         map("player.left",              "links");
         map("player.right",             "rechts");
         
+        //list
         map("list.choice",              "Mijn keuze");
         map("list.choose",              "Wat wenst u te doen?");
         
+        //application
         map("app.quit",                 "stoppen");
         map("app.quited",               "gestopt");
         
+        //error
         map("err.login",                "De gebruikersnaam of het wachtwoord is incorrect.");
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");

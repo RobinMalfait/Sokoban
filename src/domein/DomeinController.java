@@ -25,8 +25,9 @@ public class DomeinController
     public DomeinController(LanguageManager lang)
     {
         spelerRepository = new SpelerRepository();
-        spelRepository = new SpelRepository();
+        spelRepository = new SpelRepository(lang);
         this.lang = lang;
+        Base.setLang(lang);
     }
 
     /**
@@ -315,8 +316,10 @@ public class DomeinController
      * 
      * @param language String
      */
-    public void setLanguage(String language) {
+    public void setLanguage(String language) 
+    {
         this.lang.setLanguage(language);
+        Base.setLanguage(language);
     }
     
     /**
@@ -364,5 +367,15 @@ public class DomeinController
     public boolean controleerSpel()
     {
         return this.huidigSpel.controleerSpel();
+    }
+    
+    public void verwijderSpelbord(int spelbordId)
+    {
+        this.huidigSpel.verwijderSpelbord(spelbordId);
+    }
+    
+    public void verwijderSpel(int spelId)
+    {
+        this.spelRepository.verwijderSpel(spelId);
     }
 }

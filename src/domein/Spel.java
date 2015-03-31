@@ -4,10 +4,11 @@ import exceptions.SpelException;
 import exceptions.SpelbordException;
 import java.util.ArrayList;
 import java.util.List;
+import languages.LanguageManager;
 import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
-public class Spel 
+public class Spel extends Base
 {    
     private final SpelbordMapper spelbordMapper;
     private final SpelMapper spelMapper;
@@ -27,6 +28,8 @@ public class Spel
         
         spelborden = new ArrayList<>();
         this.naam = naam;
+        
+        lang.get(naam);
     }
     
     /**
@@ -127,7 +130,7 @@ public class Spel
     {
         this.spelborden = spelborden;
     }
-    
+     
     //ACTIES   
     /**
      * Toon het spelbord
@@ -330,5 +333,13 @@ public class Spel
         }
         
         return null;
+    }
+
+    public void verwijderAlleSpelborden()
+    {
+        for(Spelbord spelbord : spelborden)
+        {
+            spelbordMapper.verwijderSpelbord(spelbord.getSpelbordId());
+        }
     }
 }
