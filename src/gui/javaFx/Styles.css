@@ -1,3 +1,7 @@
+* {
+    -fx-font-family: calibri;
+}
+
 Pane {
     -fx-background-color: #FFF;
 }
