@@ -85,6 +85,22 @@ public class VakMapper extends Mapper
         }
         
     }
+    
+    public void wijzigVakken(Vak vakken[][], int spelbordId)
+    {
+        for(Vak vakArray[]: vakken)
+            for(Vak vak: vakArray)
+            {
+                try {
+                   updateQuery("UPDATE Vak SET type = ? WHERE spelbordId = ? AND posX = ? AND posY = ?", vak.bepaalDatabaseType(), spelbordId, vak.getPosX(), vak.getPosY());
+                } 
+                catch (SQLException ex)
+                {
+                   Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+                }               
+            }
+       // Misschien een idee om maar 1 query uit te voeren?
+    }
 
     private static Vak maakVakObject(int type, int posX, int posY)
     {

@@ -307,7 +307,7 @@ public class Spel
         else 
         {
             for(Spelbord spelbord: spelborden)
-                spelbord.slaOp(this.id);
+                spelbord.voegToe(this.id);
         }
     }
 

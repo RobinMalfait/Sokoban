@@ -343,8 +343,62 @@ public class AdminApplicatie
         }
         while(fouteInvoer);
         
+        String coordinaat = "";
+        String keuze;
+        boolean doorgaan = true;
+        // Momenteel kennen we een spel en een spelbord om te wijzigen.
+        do
+        {
+            toonSpelbord(dc);
+            
+            System.out.printf("%nVoer een coördinaat in of typ 'stop': ");
+            coordinaat = input.next();
+            input.nextLine();
+
+            if (coordinaat.equals("stop"))
+            {
+                if(!dc.controleerSpel())
+                {
+                    // Het spel kent nog geen afgewerkt spelbord.
+                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat uw wenst te stoppen? (Typ 'stop' om te stoppen): ");
+                    keuze = input.next();
+                    input.nextLine();
+                    
+                    if(keuze.equals("stop"))
+                    {
+                        doorgaan = false;
+                        break;
+                    }
+                    else
+                    {
+                        System.out.printf("Voer een coördinaat: ");
+                        coordinaat = input.next();
+                        input.nextLine();                       
+                    }
+                }
+                else 
+                {
+                    doorgaan = false;
+                    break;                  
+                }
+            }
+
+            System.out.printf("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg): ");
+            keuze = input.next();
+            input.nextLine();
+
+            try
+            {
+                dc.voerVakIn(coordinaat, keuze);
+            } 
+            catch (SpelbordException e)
+            {
+                System.err.println(e.getMessage() + " Probeer opnieuw.");
+                System.out.println();
+            }
+        } while (doorgaan);    
         
-        
+        // Spelbord is gewijzigd.
     }
 
     public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
