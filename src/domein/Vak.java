@@ -117,13 +117,38 @@ public class Vak
     {
         return kist;
     }
-
+    
+    /**
+     * Verkrijg het Mannetje
+     * 
+     * @return Mannetje
+     */
     public Mannetje getMannetje()
     {
         return mannetje;
     }
     
     //SETTERS
+    /**
+     * Stel doel in
+     * 
+     * @param doel boolean
+     */
+    public void setDoel(boolean doel)
+    {
+        this.doel = doel;
+    }
+
+    /**
+     * Stel toegankelijk in
+     * 
+     * @param toegankelijk boolean
+     */
+    public void setToegankelijk(boolean toegankelijk)
+    {
+        this.toegankelijk = toegankelijk;
+    }
+    
     /**
      * Stel een kist in 
      * 
@@ -180,17 +205,12 @@ public class Vak
             return false;
         return true;
     } 
-
-    public void setDoel(boolean doel)
-    {
-        this.doel = doel;
-    }
-
-    public void setToegankelijk(boolean toegankelijk)
-    {
-        this.toegankelijk = toegankelijk;
-    }
     
+    /**
+     * Bepaal het databasetype van het vak
+     * 
+     * @return int
+     */
     public int bepaalDatabaseType()
     {
         if(toegankelijk)
