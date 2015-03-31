@@ -196,10 +196,14 @@ public class Spel
         return null;        
     }
     
-    public void kiesSpelbord(int id)
+    public Spelbord kiesSpelbord(int id)
     {
-        this.huidigSpelbord = this.spelbordMapper.geefSpelbord(id, this.id);
-
+        for(Spelbord spelbord: spelborden)
+        {
+            if(spelbord.getSpelbordId() == id)
+                return spelbord;
+        }
+        return null;
     }
     /**
      * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid

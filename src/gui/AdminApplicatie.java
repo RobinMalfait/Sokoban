@@ -280,7 +280,71 @@ public class AdminApplicatie
     public static void wijzigSpel(DomeinController dc, Scanner input, LanguageManager lang)
     {
         System.out.printf("%n%s%n", lang.get("horizontal.line"));
-        System.out.printf("Een spel wijzigen: %n%n");        
+        System.out.printf("Een spel wijzigen%n%n");
+        
+        // Toon een lijst van spellen
+        for(String[] spel: dc.geefLijstSpellen())
+        {
+            System.out.printf("%d: %s%n", spel[0], spel[1]);
+        }
+        
+        int id = 0;
+        boolean fouteInvoer = true;
+        
+        do
+        {
+            try
+            {
+                System.out.print("Kies een spel door het spel_id op te geven: ");
+                id = input.nextInt();
+                input.nextLine();
+                
+                dc.kiesSpel(id);
+                fouteInvoer = false;
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            catch(SpelException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        while(fouteInvoer);
+        
+         // Toon een lijst van spelborden
+        for(String[] spelbord: dc.geefLijstSpelborden())
+        {
+            System.out.printf("%d: %s%n", spelbord[0], spelbord[1]);
+        }  
+        
+        id = 0;
+        fouteInvoer = true;
+        do
+        {
+            try
+            {
+                System.out.print("Kies een spelbord door het spelbord_id op te geven: ");
+                id = input.nextInt();
+                input.nextLine();
+                
+                dc.kiesSpelbord(id);
+                fouteInvoer = false;
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            catch(SpelException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        while(fouteInvoer);
+        
+        
+        
     }
 
     public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
