@@ -33,7 +33,7 @@ public class SpeelSpelApplicatie
                 lang.get("game.choose.list"));
 
         // Overlopen van de Spellen
-        for (String[] spelString : dc.geefSpellenString())
+        for (String[] spelString : dc.geefLijstSpellen())
         {
             System.out.printf("%4s: %-20s%n", spelString[0], spelString[1]);
         }

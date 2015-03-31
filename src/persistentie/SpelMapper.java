@@ -43,7 +43,13 @@ public class SpelMapper extends Mapper
 
         return null;        
     }
-
+    
+    /**
+     * Geef een Spel met een specifiek id 
+     * 
+     * @param id
+     * @return Spel
+     */
     public Spel geefSpel(int id)
     {
         try
@@ -85,6 +91,12 @@ public class SpelMapper extends Mapper
         return spellen;
     }
     
+    /**
+     * Voeg een spel toe
+     * 
+     * @param naam
+     * @return int
+     */
     public int voegSpelToe(String naam)
     {
         try {
@@ -96,4 +108,9 @@ public class SpelMapper extends Mapper
         }
         return 0; 
     }            
+
+    public void verwijderSpel(int spelId)
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

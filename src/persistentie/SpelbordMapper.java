@@ -50,14 +50,14 @@ public class SpelbordMapper extends Mapper
     /**
      * Geef een spelbord terug op basis van spelbord nummer
      * 
-     * @param spelbordnummer int
+     * @param id, int spelId int
      * @return Spelbord
      */
-    public Spelbord geefSpelbord(int spelbordnummer)
+    public Spelbord geefSpelbord(int id, int spelId)
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE volgorde = ?", spelbordnummer);
+            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE id = ? AND spelbord_id = ?", id, spelId);
 
             List<Spelbord> spelbord = verkrijgSpelborden(rs);
 
@@ -96,6 +96,13 @@ public class SpelbordMapper extends Mapper
         return spelborden;
     }
     
+    /**
+     * Voeg een spelbord toe enkel met naam en id van spel
+     * 
+     * @param naam
+     * @param spelId
+     * @return int
+     */
     public int voegSpelbordToe(String naam, int spelId)
     {
         try {
@@ -107,4 +114,21 @@ public class SpelbordMapper extends Mapper
         }
         return 0; 
     }     
+    
+    /**
+     * Verwijder een spelbord en zijn vakken
+     * 
+     * @param spelbordId 
+     */
+    public void verwijderSpelbord(int spelbordId)
+    {
+        try {
+            deleteQuery("DELETE FROM Spelbord WHERE id = ?", spelbordId);
+            deleteQuery("DELETE FROM Vak WHERE spelbord_id = ?", spelbordId);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -201,6 +201,11 @@ public class Speler
         this.admin = admin;
     }
     
+    /**
+     * Stel de taal van de speler in.
+     * 
+     * @param lang LanguageManager 
+     */
     public void setLang(LanguageManager lang)
     {
         this.lang = lang;

@@ -15,7 +15,12 @@
          <children>
             <Pane id="MeldAanPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Button id="MeldAanPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
+                  <Button id="MeldAanPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
                   <Label id="MeldAanPaneel_lblUsername" layoutX="174.0" layoutY="243.0" text="Gebruikersnaam:" />
                   <TextField id="MeldAanPaneel_txtUsername" layoutX="174.0" layoutY="263.0" prefHeight="26.0" prefWidth="452.0" />
                   <Label id="MeldAanPaneel_lblPassword" layoutX="174.0" layoutY="311.0" text="Wachtwoord:" />
@@ -32,7 +37,12 @@
             </Pane>
             <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Button id="MenuKeuzePaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
+                  <Button id="MenuKeuzePaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
                      <image>
@@ -46,7 +56,12 @@
             </Pane>
             <Pane id="KiesTaalPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Button id="KiesTaalPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
+                  <Button id="KiesTaalPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
                      <image>
@@ -83,7 +98,12 @@
             </Pane>
             <Pane id="RegistreerPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Button id="RegistreerPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
+                  <Button id="RegistreerPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
                   <Label id="RegistreerPaneel_lblFirstName" layoutX="174.0" layoutY="185.0" text="Voornaam:" />
                   <TextField id="RegistreerPaneel_txtFirstName" layoutX="174.0" layoutY="205.0" prefHeight="26.0" prefWidth="452.0" />
                   <Label id="RegistreerPaneel_lblLastName" layoutX="176.0" layoutY="237.0" text="Achternaam:" />
@@ -106,7 +126,12 @@
             </Pane>
             <Pane id="KiesSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Button id="KiesSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
+                  <Button id="KiesSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
                   <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
                      <image>
@@ -131,8 +156,13 @@
             </Pane>
             <Pane id="SpeelSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
-                  <Button id="SpeelSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" styleClass="btn" text="↩" />
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <Button id="SpeelSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="457.0" layoutY="569.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
                   <ImageView fitHeight="64.0" fitWidth="179.0" layoutX="14.0" layoutY="8.0" preserveRatio="true">
                      <image>
                         <Image url="@../images/logo.png" />
@@ -175,10 +205,26 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button id="SpeelSpelPaneel_up" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="btn" text="▲" GridPane.columnIndex="1" />
-                        <Button id="SpeelSpelPaneel_right" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="btn" text="►" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Button id="SpeelSpelPaneel_down" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="btn" text="▼" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button id="SpeelSpelPaneel_left" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="btn" text="◄" GridPane.rowIndex="1" />
+                        <Button id="SpeelSpelPaneel_up" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="up-arrow" />
+                           </styleClass></Button>
+                        <Button id="SpeelSpelPaneel_right" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="right-arrow" />
+                           </styleClass></Button>
+                        <Button id="SpeelSpelPaneel_down" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="down-arrow" />
+                           </styleClass></Button>
+                        <Button id="SpeelSpelPaneel_left" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="left-arrow" />
+                           </styleClass></Button>
                      </children>
                   </GridPane>
                   <Label id="SpeelSpelPaneel_lblSpelbordComplete" layoutX="521.0" layoutY="56.0" text="lblSpelbordComplete" />

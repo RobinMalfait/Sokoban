@@ -19,12 +19,15 @@ public class DomeinController
 
     /**
      * Maak een DomeinController-object aan
+     * 
+     * @param lang LanguageManager;
      */
     public DomeinController(LanguageManager lang)
     {
         spelerRepository = new SpelerRepository();
-        spelRepository = new SpelRepository();
+        spelRepository = new SpelRepository(lang);
         this.lang = lang;
+        Base.setLang(lang);
     }
 
     /**
@@ -145,13 +148,32 @@ public class DomeinController
     }
 
     /**
+     * Kies een spelbord van het huidig spel
+     *
+     * @param id int
+     */
+    public void kiesSpelbord(int id)
+    {
+        // zoek het spelobject in de spelrepository 
+        this.huidigSpel.kiesSpelbord(id);
+
+        if (this.huidigSpel == null)
+        {
+            throw new SpelException("Er werd geen spel gevonden met nummer " + id);
+        }
+        else
+        {
+            this.huidigSpel.bepaalVolgendSpelbord(); // Selecteer het eerste spelbord van het gekozen spel.
+        }
+    }
+    /**
      * Geef een lijst van spellen in 2-dimensionele String vorm
      *
      * @return String[][]
      */
-    public String[][] geefSpellenString()
+    public String[][] geefLijstSpellen()
     {
-        return spelRepository.geefSpellenString();
+        return spelRepository.geefLijstSpellen();
     }
 
     /**
@@ -159,9 +181,9 @@ public class DomeinController
      *
      * @return String[][]
      */
-    public String[][] geefSpelbordenString()
+    public String[][] geefLijstSpelborden()
     {
-        return huidigSpel.geefSpelbordenString();
+        return huidigSpel.geefLijstSpelborden();
     }
 
     /**
@@ -289,32 +311,71 @@ public class DomeinController
         return this.lang;
     }
 
-    public void setLanguage(String language) {
+    /**
+     * Stel de taal in.
+     * 
+     * @param language String
+     */
+    public void setLanguage(String language) 
+    {
         this.lang.setLanguage(language);
+        Base.setLanguage(language);
     }
     
+    /**
+     * Stel de vakken van het huidige spelbord in op hun beginwaarde.
+     */
     public void resetSpelbord() 
     {
         this.huidigSpel.resetSpelbord();
     }
     
+    /**
+     * Plaats een item op een vak.
+     * 
+     * @param coordinaat String
+     * @param naam String
+     */
     public void voerVakIn(String coordinaat, String naam)
     {
         this.huidigSpel.voerVakIn(coordinaat, naam);
     }
     
+    /**
+     * Sla het huidige gewijzigde spel op.
+     */
     public void slaHuidigSpelOp()
     {
         this.huidigSpel.slaOp();
     }
     
+    /**
+     * Geef het aantal verplaatsingen van het huidige spelbord.
+     * 
+     * @return int
+     */
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpel.geefAantalVerplaatsingen();
     }
     
+    /**
+     * Controleer of het gewijzigde spel aan de eisen voldoet.
+     * 
+     * @return boolean
+     */
     public boolean controleerSpel()
     {
         return this.huidigSpel.controleerSpel();
+    }
+    
+    public void verwijderSpelbord(int spelbordId)
+    {
+        this.huidigSpel.verwijderSpelbord(spelbordId);
+    }
+    
+    public void verwijderSpel(int spelId)
+    {
+        this.spelRepository.verwijderSpel(spelId);
     }
 }

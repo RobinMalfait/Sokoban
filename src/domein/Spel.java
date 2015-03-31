@@ -4,10 +4,11 @@ import exceptions.SpelException;
 import exceptions.SpelbordException;
 import java.util.ArrayList;
 import java.util.List;
+import languages.LanguageManager;
 import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
-public class Spel 
+public class Spel extends Base
 {    
     private final SpelbordMapper spelbordMapper;
     private final SpelMapper spelMapper;
@@ -27,6 +28,8 @@ public class Spel
         
         spelborden = new ArrayList<>();
         this.naam = naam;
+        
+        lang.get(naam);
     }
     
     /**
@@ -127,7 +130,7 @@ public class Spel
     {
         this.spelborden = spelborden;
     }
-    
+     
     //ACTIES   
     /**
      * Toon het spelbord
@@ -154,21 +157,21 @@ public class Spel
      *
      * @return String[][]
      */
-    public String[][] geefSpelbordenString()
+    public String[][] geefLijstSpelborden()
     {
-        String[][] spelbordenString = new String[this.spelborden.size()][];
+        String[][] spelbordenLijst = new String[this.spelborden.size()][];
 
         int teller = 0;
         for(Spelbord spelbord: this.spelborden)
         {
-            spelbordenString[teller] = new String[2];
-            spelbordenString[teller][0] = String.valueOf(spelbord.getSpelbordId());
-            spelbordenString[teller][1] = spelbord.getNaam();
+            spelbordenLijst[teller] = new String[2];
+            spelbordenLijst[teller][0] = String.valueOf(spelbord.getSpelbordId());
+            spelbordenLijst[teller][1] = spelbord.getNaam();
             
             teller++;
         }
 
-        return spelbordenString;        
+        return spelbordenLijst;
     }       
     
     /**
@@ -196,6 +199,15 @@ public class Spel
         return null;        
     }
     
+    public Spelbord kiesSpelbord(int id)
+    {
+        for(Spelbord spelbord: spelborden)
+        {
+            if(spelbord.getSpelbordId() == id)
+                return spelbord;
+        }
+        return null;
+    }
     /**
      * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
      *
@@ -239,21 +251,41 @@ public class Spel
         this.spelborden.add(nieuwSpelbord);               
     }
 
+    /**
+     * Stel de vakken van het huidige spelbord in op hun beginwaarde.
+     */
     public void resetSpelbord()
     {
         huidigSpelbord.resetSpelbord();
     }
 
+    /**
+     * Geef het aantal verplaatsingen van het huidige spelbord.
+     * 
+     * @return int
+     */
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpelbord.getVerplaatsingen();
     }
     
+    /**
+     * Plaats een item op een vak.
+     * 
+     * @param coordinaat String
+     * @param naam String
+     */
     public void voerVakIn(String coordinaat, String naam)
     {
         this.huidigSpelbord.voerVakIn(coordinaat, naam);
     }    
     
+    /** 
+     * Controleer of het gewijzigde spel aan de eisen voldoet.
+     * Elk spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
+     * 
+     * @return 
+     */
     public boolean controleerSpel()
     {
         for (Spelbord spelbord : spelborden)
@@ -264,6 +296,9 @@ public class Spel
         return false;        
     }
     
+    /**
+     * Sla de wijzigingen in het huidige spel op.
+     */
     public void slaOp()
     {
         this.id = this.spelMapper.voegSpelToe(naam);
@@ -275,7 +310,40 @@ public class Spel
         else 
         {
             for(Spelbord spelbord: spelborden)
-                spelbord.slaOp(this.id);
+                spelbord.voegToe(this.id);
+        }
+    }
+
+    public void verwijderSpelbord(int spelbordId)
+    {
+        Spelbord spelbord = zoekSpelbord(spelbordId);
+        
+        if (spelbord == null)
+            throw new IllegalArgumentException("Het spelbord met id " + spelbordId + " werd niet gevonden in het spel " + this.naam + ".");
+        else
+        {
+            spelbordMapper.verwijderSpelbord(spelbordId);
+            spelborden.remove(spelbord);
+        }
+        
+    }
+    
+    private Spelbord zoekSpelbord(int spelbordId)
+    {
+        for(Spelbord spelbord : spelborden)
+        {
+            if(spelbord.getSpelbordId() == spelbordId)
+                return spelbord;
+        }
+        
+        return null;
+    }
+
+    public void verwijderAlleSpelborden()
+    {
+        for(Spelbord spelbord : spelborden)
+        {
+            spelbordMapper.verwijderSpelbord(spelbord.getSpelbordId());
         }
     }
 }

@@ -53,7 +53,7 @@ public class KiesSpelPaneel extends BaseGui
         
         GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
                 
-        String spellen[][] = DC.geefSpellenString();
+        String spellen[][] = DC.geefLijstSpellen();
         
         int x = 0;
         int y = 0;

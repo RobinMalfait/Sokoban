@@ -6,7 +6,9 @@ package domein;
  */
 public class Kist
 {
-
+    /**
+     * Maak een Kist-object aan.
+     */
     public Kist()
     {
         
