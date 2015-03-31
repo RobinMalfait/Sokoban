@@ -107,4 +107,16 @@ public class SpelbordMapper extends Mapper
         }
         return 0; 
     }     
+    
+    public void verwijderSpelbord(int spelbordId)
+    {
+        try {
+            deleteQuery("DELETE FROM Spelbord WHERE id = ?", spelbordId);
+            deleteQuery("DELETE FROM Vak WHERE spelbord_id = ?", spelbordId);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
