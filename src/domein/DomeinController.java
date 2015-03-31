@@ -147,6 +147,25 @@ public class DomeinController
     }
 
     /**
+     * Kies een spelbord van het huidig spel
+     *
+     * @param id int
+     */
+    public void kiesSpelbord(int id)
+    {
+        // zoek het spelobject in de spelrepository 
+        this.huidigSpel.kiesSpelbord(id);
+
+        if (this.huidigSpel == null)
+        {
+            throw new SpelException("Er werd geen spel gevonden met nummer " + id);
+        }
+        else
+        {
+            this.huidigSpel.bepaalVolgendSpelbord(); // Selecteer het eerste spelbord van het gekozen spel.
+        }
+    }
+    /**
      * Geef een lijst van spellen in 2-dimensionele String vorm
      *
      * @return String[][]

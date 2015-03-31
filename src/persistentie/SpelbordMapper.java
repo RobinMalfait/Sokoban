@@ -50,14 +50,14 @@ public class SpelbordMapper extends Mapper
     /**
      * Geef een spelbord terug op basis van spelbord nummer
      * 
-     * @param spelbordnummer int
+     * @param id, int spelId int
      * @return Spelbord
      */
-    public Spelbord geefSpelbord(int spelbordnummer)
+    public Spelbord geefSpelbord(int id, int spelId)
     {
         try
         {
-            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE volgorde = ?", spelbordnummer);
+            ResultSet rs = selectQuery("SELECT * FROM Spelbord WHERE id = ? AND spelbord_id = ?", id, spelId);
 
             List<Spelbord> spelbord = verkrijgSpelborden(rs);
 
