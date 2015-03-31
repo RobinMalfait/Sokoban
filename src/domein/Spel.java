@@ -306,4 +306,29 @@ public class Spel
                 spelbord.slaOp(this.id);
         }
     }
+
+    public void verwijderSpelbord(int spelbordId)
+    {
+        Spelbord spelbord = zoekSpelbord(spelbordId);
+        
+        if (spelbord == null)
+            throw new IllegalArgumentException("Het spelbord met id " + spelbordId + " werd niet gevonden in het spel " + this.naam + ".");
+        else
+        {
+            spelbordMapper.verwijderSpelbord(spelbordId);
+            spelborden.remove(spelbord);
+        }
+        
+    }
+    
+    private Spelbord zoekSpelbord(int spelbordId)
+    {
+        for(Spelbord spelbord : spelborden)
+        {
+            if(spelbord.getSpelbordId() == spelbordId)
+                return spelbord;
+        }
+        
+        return null;
+    }
 }
