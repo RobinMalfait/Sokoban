@@ -149,9 +149,9 @@ public class DomeinController
      *
      * @return String[][]
      */
-    public String[][] geefSpellenString()
+    public String[][] geefLijstSpellen()
     {
-        return spelRepository.geefSpellenString();
+        return spelRepository.geefLijstSpellen();
     }
 
     /**
@@ -159,9 +159,9 @@ public class DomeinController
      *
      * @return String[][]
      */
-    public String[][] geefSpelbordenString()
+    public String[][] geefLijstSpelborden()
     {
-        return huidigSpel.geefSpelbordenString();
+        return huidigSpel.geefLijstSpelborden();
     }
 
     /**

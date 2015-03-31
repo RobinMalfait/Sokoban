@@ -154,21 +154,21 @@ public class Spel
      *
      * @return String[][]
      */
-    public String[][] geefSpelbordenString()
+    public String[][] geefLijstSpelborden()
     {
-        String[][] spelbordenString = new String[this.spelborden.size()][];
+        String[][] spelbordenLijst = new String[this.spelborden.size()][];
 
         int teller = 0;
         for(Spelbord spelbord: this.spelborden)
         {
-            spelbordenString[teller] = new String[2];
-            spelbordenString[teller][0] = String.valueOf(spelbord.getSpelbordId());
-            spelbordenString[teller][1] = spelbord.getNaam();
+            spelbordenLijst[teller] = new String[2];
+            spelbordenLijst[teller][0] = String.valueOf(spelbord.getSpelbordId());
+            spelbordenLijst[teller][1] = spelbord.getNaam();
             
             teller++;
         }
 
-        return spelbordenString;        
+        return spelbordenLijst;
     }       
     
     /**
