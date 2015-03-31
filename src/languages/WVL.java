@@ -22,6 +22,7 @@ public class WVL extends Language
         map("user.registration",        "Registroatie van nen nieuwe speeldr");
         map("user.logged.in",           "Igelogd");
         map("user.logged.out",          "Utgelogd");
+        map("user.username.exists",     "Ted ol etwien dien gebrukersnoame.");
         map("credentials.wrong",        "Misse gehevens");
         
         //sign in/up
@@ -32,7 +33,7 @@ public class WVL extends Language
         map("sign.choise",              "Wuk wildje doene?");
         map("sign.play",                "Speelt e spelleke");
         map("sign.quit",                "Stoppn");
-        map("sign.game.conf",           "Moakt e nieuw spel");
+        map("sign.game.conf",           "Moakt e spel");
         map("sign.game.modify",         "Past nen bestoand spel an");
         map("sign.quitted",             "Gestoakt");
         
@@ -48,7 +49,7 @@ public class WVL extends Language
         map("game.choose",              "Kiest een spelleke");
         map("game.completed",           "Get spel utgespeeld");
         map("game.notFound",            "Tspel me nummer :id is nie weregevondn.");
-        map("game.alreadyExists",       "TSpel me de noame :name bestoat ol.");
+        map("game.exists",              "Tis ol e spel me die noame.");
         map("game.notSaved",            "Tspel is nie upgesleegn.");
         
         //gameboard
@@ -57,7 +58,8 @@ public class WVL extends Language
         map("game.board.completed",     "Felicitajes! Jet et spelbord utgespeeld");
         map("game.board.next",          "noaste spelbord");
         map("game.board.moves",         "verplatsingn");
-        map("game.board.notFound",      "Tspelbord met nummer :id in tspel :game is nie weregevondn.");
+        map("game.board.notFound",      "Tspelbord met nummer :id is nie weregevondn in da spel ier.");
+        map("game.board.exists",        "Tis ol e spelbord me die noamde in da spel ier.");
         
         //player
         map("player.move",              "Beweegt jen peetje in een rigtinge");
@@ -65,6 +67,8 @@ public class WVL extends Language
         map("player.down",              "Noa beneedn");
         map("player.left",              "Noa links");
         map("player.right",             "Noa reks");
+        map("player.wrongDirection",    "De richtinge moe tusn :min e :max lign.");
+        map("player.wrongCoordinates",  "De coördinoatn lign butn tspelbord.");
         
         //list
         map("list.choice",              "Men keuze");
@@ -83,5 +87,7 @@ public class WVL extends Language
         map("err.nonvalid",             "Gin geldige keuze.");
         map("err.input",                "Jen keuze moe tusn :min en :max lign.");
         map("err.NaN",                  "Da wos gin ciffer.");
+        map("err.invalidType",          "Ongeldig tipe");
+    
     }
 }

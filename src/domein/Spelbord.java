@@ -402,10 +402,7 @@ public class Spelbord extends Base
     {
         
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
-        
-        System.out.println("test");
-        System.out.println(Arrays.deepToString(vakken));
-        
+          
         for (Vak[] vakArray : vakken)
         {
             for (Vak vak : vakArray)
