@@ -59,7 +59,7 @@ public class MeldAanPaneel extends BaseGui
                 try {
                     DC.meldAan(username.getText(), password.getText());
                     
-                    KiesSpelPaneel kiesSpelPaneel = new KiesSpelPaneel(stage);
+                    SubMenuPaneel subMenuPaneel = new SubMenuPaneel(stage);
                     
                 } catch (WachtwoordException e) {
                     Label lblError = (Label) MeldAanPaneel.this.findByIdInPane(stage, "lblError");

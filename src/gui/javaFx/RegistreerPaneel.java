@@ -78,7 +78,7 @@ public class RegistreerPaneel extends BaseGui
                             
                     DC.registreer(sLastName, sFirstName, sUsername, sPassword, sPasswordRepeat);
                     
-                    KiesSpelPaneel kiesSpelPaneel = new KiesSpelPaneel(stage);
+                    SubMenuPaneel subMenuPaneel = new SubMenuPaneel(stage);
                     
                 } catch (GebruikersnaamException | WachtwoordException e) {
                     Label lblError = (Label) RegistreerPaneel.this.findByIdInPane(stage, "lblError");

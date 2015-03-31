@@ -25,9 +25,6 @@ public class MenuKeuzePaneel extends BaseGui
         Button signUp = (Button) this.findByIdInPane(stage, "signUp");
         signUp.setText(this.lang.get("sign.up").toUpperCase());
         
-        Button stop = (Button) this.findByIdInPane(stage, "stop");
-        stop.setText(this.lang.get("app.quit").toUpperCase());
-        
         signIn.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override

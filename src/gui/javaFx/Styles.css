@@ -52,31 +52,31 @@ Pane {
     -fx-background-image: url(../images/bord/overlay.png);
 }
     
-.M {
+.M { // Muur
     -fx-background-image: url(../images/bord/M.png); 
 }
 
-.V {
+.V { // Kist voltooid
     -fx-background-image: url(../images/bord/V.png); 
 }
 
-.J {
+.J { // Mannetje met doel
     -fx-background-image: url(../images/bord/J.png); 
 }
 
-.D {
+.D { // Doel
     -fx-background-image: url(../images/bord/D.png); 
 }
 
-.K {
+.K { // Kist
     -fx-background-image: url(../images/bord/K.png); 
 }
 
-.Y {
+.Y { // Mannetje
     -fx-background-image: url(../images/bord/Y.png); 
 }
 
-._ {
+._ { // Leeg
     -fx-background-image: url(../images/bord/_.png); 
 }
 
