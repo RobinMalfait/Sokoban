@@ -2,6 +2,7 @@ package domein;
 
 import exceptions.SpelException;
 import exceptions.SpelbordException;
+import java.util.Arrays;
 import persistentie.SpelbordMapper;
 import persistentie.VakMapper;
 
@@ -397,7 +398,11 @@ public class Spelbord
      */
     public boolean controleerSpelbord()
     {
+        
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
+        
+        System.out.println("test");
+        System.out.println(Arrays.deepToString(vakken));
         
         for (Vak[] vakArray : vakken)
         {

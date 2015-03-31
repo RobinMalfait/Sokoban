@@ -285,7 +285,7 @@ public class AdminApplicatie
         // Toon een lijst van spellen
         for(String[] spel: dc.geefLijstSpellen())
         {
-            System.out.printf("%d: %s%n", spel[0], spel[1]);
+            System.out.printf("%s: %s%n", spel[0], spel[1]);
         }
         
         int id = 0;
@@ -316,7 +316,7 @@ public class AdminApplicatie
          // Toon een lijst van spelborden
         for(String[] spelbord: dc.geefLijstSpelborden())
         {
-            System.out.printf("%d: %s%n", spelbord[0], spelbord[1]);
+            System.out.printf("%s: %s%n", spelbord[0], spelbord[1]);
         }  
         
         id = 0;
