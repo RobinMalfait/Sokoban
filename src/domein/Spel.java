@@ -239,21 +239,41 @@ public class Spel
         this.spelborden.add(nieuwSpelbord);               
     }
 
+    /**
+     * Stel de vakken van het huidige spelbord in op hun beginwaarde.
+     */
     public void resetSpelbord()
     {
         huidigSpelbord.resetSpelbord();
     }
 
+    /**
+     * Geef het aantal verplaatsingen van het huidige spelbord.
+     * 
+     * @return int
+     */
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpelbord.getVerplaatsingen();
     }
     
+    /**
+     * Plaats een item op een vak.
+     * 
+     * @param coordinaat String
+     * @param naam String
+     */
     public void voerVakIn(String coordinaat, String naam)
     {
         this.huidigSpelbord.voerVakIn(coordinaat, naam);
     }    
     
+    /** 
+     * Controleer of het gewijzigde spel aan de eisen voldoet.
+     * Elk spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
+     * 
+     * @return 
+     */
     public boolean controleerSpel()
     {
         for (Spelbord spelbord : spelborden)
@@ -264,6 +284,9 @@ public class Spel
         return false;        
     }
     
+    /**
+     * Sla de wijzigingen in het huidige spel op.
+     */
     public void slaOp()
     {
         this.id = this.spelMapper.voegSpelToe(naam);

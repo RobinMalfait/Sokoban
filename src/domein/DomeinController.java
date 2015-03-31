@@ -301,7 +301,7 @@ public class DomeinController
     }
     
     /**
-     * Stel het huidige spelbord opnieuw in.
+     * Stel de vakken van het huidige spelbord in op hun beginwaarde.
      */
     public void resetSpelbord() 
     {
@@ -328,7 +328,7 @@ public class DomeinController
     }
     
     /**
-     * Geef het aantal verplaatsingen in het huidige spel terug.
+     * Geef het aantal verplaatsingen van het huidige spelbord.
      * 
      * @return int
      */
