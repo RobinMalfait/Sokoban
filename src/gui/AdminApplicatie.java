@@ -26,9 +26,10 @@ public class AdminApplicatie
         {
             int keuze;
 
-            System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n%n",
+            System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n%n",
                     lang.get("list.choose"),
                     "Een nieuw spel aanmaken",
+                    "Een spel wijzigen",
                     "Hoofdmenu",
                     lang.get("app.quit"));
 
@@ -43,9 +44,12 @@ public class AdminApplicatie
                     maakNieuwSpel(dc, input, lang);
                     break;
                 case 2:
+                    wijzigSpel(dc, input, lang);
+                    break;                    
+                case 3:
                     (new ConsoleApplicatie()).start(dc, input, lang);
                     break;
-                case 3:
+                case 4:
                     System.out.println(lang.get("app.quited"));
                     break;
                 default:
@@ -66,7 +70,7 @@ public class AdminApplicatie
         // 1. Unieke naam vragen voor het aanmaken van een spel.
         do
         {
-            System.out.print("Geef een naam voor het nieuwe sp3l: ");
+            System.out.print("Geef een naam voor het nieuwe spel: ");
             naam = input.nextLine().trim();
 
             try
@@ -272,11 +276,17 @@ public class AdminApplicatie
 
         return keuze;
     }
+    
+    public static void wijzigSpel(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        System.out.printf("%n%s%n", lang.get("horizontal.line"));
+        System.out.printf("Een spel wijzigen: %n%n");        
+    }
 
     public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
     {
 
-        dc.meldAan("admin", "admin");
+        dc.meldAan("administrator", "Administrator1");
 
         this.start(dc, input, lang);
     }

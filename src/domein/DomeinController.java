@@ -19,6 +19,8 @@ public class DomeinController
 
     /**
      * Maak een DomeinController-object aan
+     * 
+     * @param lang LanguageManager;
      */
     public DomeinController(LanguageManager lang)
     {
@@ -289,30 +291,57 @@ public class DomeinController
         return this.lang;
     }
 
+    /**
+     * Stel de taal in.
+     * 
+     * @param language String
+     */
     public void setLanguage(String language) {
         this.lang.setLanguage(language);
     }
     
+    /**
+     * Stel de vakken van het huidige spelbord in op hun beginwaarde.
+     */
     public void resetSpelbord() 
     {
         this.huidigSpel.resetSpelbord();
     }
     
+    /**
+     * Plaats een item op een vak.
+     * 
+     * @param coordinaat String
+     * @param naam String
+     */
     public void voerVakIn(String coordinaat, String naam)
     {
         this.huidigSpel.voerVakIn(coordinaat, naam);
     }
     
+    /**
+     * Sla het huidige gewijzigde spel op.
+     */
     public void slaHuidigSpelOp()
     {
         this.huidigSpel.slaOp();
     }
     
+    /**
+     * Geef het aantal verplaatsingen van het huidige spelbord.
+     * 
+     * @return int
+     */
     public int geefAantalVerplaatsingen()
     {
         return this.huidigSpel.geefAantalVerplaatsingen();
     }
     
+    /**
+     * Controleer of het gewijzigde spel aan de eisen voldoet.
+     * 
+     * @return boolean
+     */
     public boolean controleerSpel()
     {
         return this.huidigSpel.controleerSpel();
