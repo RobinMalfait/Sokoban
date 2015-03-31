@@ -113,6 +113,11 @@ public class LanguageManager
         return this.language.choice(key, count, replacements);
     }
 
+    /**
+     * Geeft een String van mogelijke talen terug.
+     * 
+     * @return String[]
+     */
     public String[] getLanguages()
     {
         String languageChoices[] = new String[this.languages.size()];

@@ -280,7 +280,125 @@ public class AdminApplicatie
     public static void wijzigSpel(DomeinController dc, Scanner input, LanguageManager lang)
     {
         System.out.printf("%n%s%n", lang.get("horizontal.line"));
-        System.out.printf("Een spel wijzigen: %n%n");        
+        System.out.printf("Een spel wijzigen%n%n");
+        
+        // Toon een lijst van spellen
+        for(String[] spel: dc.geefLijstSpellen())
+        {
+            System.out.printf("%s: %s%n", spel[0], spel[1]);
+        }
+        
+        int id = 0;
+        boolean fouteInvoer = true;
+        
+        do
+        {
+            try
+            {
+                System.out.print("Kies een spel door het spel_id op te geven: ");
+                id = input.nextInt();
+                input.nextLine();
+                
+                dc.kiesSpel(id);
+                fouteInvoer = false;
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            catch(SpelException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        while(fouteInvoer);
+        
+         // Toon een lijst van spelborden
+        for(String[] spelbord: dc.geefLijstSpelborden())
+        {
+            System.out.printf("%s: %s%n", spelbord[0], spelbord[1]);
+        }  
+        
+        id = 0;
+        fouteInvoer = true;
+        do
+        {
+            try
+            {
+                System.out.print("Kies een spelbord door het spelbord_id op te geven: ");
+                id = input.nextInt();
+                input.nextLine();
+                
+                dc.kiesSpelbord(id);
+                fouteInvoer = false;
+            }
+            catch(InputMismatchException e)
+            {
+                System.out.println(e.getMessage());
+            }
+            catch(SpelException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+        while(fouteInvoer);
+        
+        String coordinaat = "";
+        String keuze;
+        boolean doorgaan = true;
+        // Momenteel kennen we een spel en een spelbord om te wijzigen.
+        do
+        {
+            toonSpelbord(dc);
+            
+            System.out.printf("%nVoer een coördinaat in of typ 'stop': ");
+            coordinaat = input.next();
+            input.nextLine();
+
+            if (coordinaat.equals("stop"))
+            {
+                if(!dc.controleerSpel())
+                {
+                    // Het spel kent nog geen afgewerkt spelbord.
+                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat uw wenst te stoppen? (Typ 'stop' om te stoppen): ");
+                    keuze = input.next();
+                    input.nextLine();
+                    
+                    if(keuze.equals("stop"))
+                    {
+                        doorgaan = false;
+                        break;
+                    }
+                    else
+                    {
+                        System.out.printf("Voer een coördinaat: ");
+                        coordinaat = input.next();
+                        input.nextLine();                       
+                    }
+                }
+                else 
+                {
+                    doorgaan = false;
+                    break;                  
+                }
+            }
+
+            System.out.printf("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg): ");
+            keuze = input.next();
+            input.nextLine();
+
+            try
+            {
+                dc.voerVakIn(coordinaat, keuze);
+            } 
+            catch (SpelbordException e)
+            {
+                System.err.println(e.getMessage() + " Probeer opnieuw.");
+                System.out.println();
+            }
+        } while (doorgaan);    
+        
+        // Spelbord is gewijzigd.
     }
 
     public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)

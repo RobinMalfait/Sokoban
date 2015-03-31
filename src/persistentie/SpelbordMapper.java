@@ -96,6 +96,13 @@ public class SpelbordMapper extends Mapper
         return spelborden;
     }
     
+    /**
+     * Voeg een spelbord toe enkel met naam en id van spel
+     * 
+     * @param naam
+     * @param spelId
+     * @return int
+     */
     public int voegSpelbordToe(String naam, int spelId)
     {
         try {
@@ -108,6 +115,11 @@ public class SpelbordMapper extends Mapper
         return 0; 
     }     
     
+    /**
+     * Verwijder een spelbord en zijn vakken
+     * 
+     * @param spelbordId 
+     */
     public void verwijderSpelbord(int spelbordId)
     {
         try {

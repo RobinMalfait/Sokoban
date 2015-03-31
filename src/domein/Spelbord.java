@@ -2,6 +2,7 @@ package domein;
 
 import exceptions.SpelException;
 import exceptions.SpelbordException;
+import java.util.Arrays;
 import persistentie.SpelbordMapper;
 import persistentie.VakMapper;
 
@@ -366,7 +367,7 @@ public class Spelbord
      * 
      * @param spelId int
      */
-    public void slaOp(int spelId)
+    public void voegToe(int spelId)
     {
         if (controleerSpelbord())
         {
@@ -382,7 +383,13 @@ public class Spelbord
             }
         }
     }
-    
+    public void slaOp()
+    {
+        if (controleerSpelbord())
+        {
+            vakMapper.wijzigVakken(vakken, this.spelbordId);
+        }
+    }    
     /**
      * Controleer of het spelbord aan de eisen voldoet.
      * Een spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
@@ -391,7 +398,11 @@ public class Spelbord
      */
     public boolean controleerSpelbord()
     {
+        
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
+        
+        System.out.println("test");
+        System.out.println(Arrays.deepToString(vakken));
         
         for (Vak[] vakArray : vakken)
         {
@@ -416,4 +427,6 @@ public class Spelbord
         
         return true;
     }
+    
+    
 }
