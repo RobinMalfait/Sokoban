@@ -22,6 +22,7 @@ public class NL extends Language
         map("user.registration",        "Registratie van een nieuwe speler");
         map("user.logged.in",           "ingelogd");
         map("user.logged.out",          "uitgelogd");
+        map("user.username.exists",     "Deze gebruikersnaam is al in gebruik.");
         map("credentials.wrong",        "foute gegevens");
         
         //sign in/up
@@ -32,7 +33,7 @@ public class NL extends Language
         map("sign.choise",              "Wat wil je doen?");
         map("sign.play",                "Speel een spel.");
         map("sign.quit",                "Stop.");
-        map("sign.game.conf",           "Configureer een nieuw spel");
+        map("sign.game.conf",           "Maak een spel");
         map("sign.game.modify",         "Pas een bestaand spel aan");
         map("sign.quitted",             "Gestopt");
         
@@ -48,7 +49,7 @@ public class NL extends Language
         map("game.choose",              "Kies een spel");
         map("game.completed",           "Je hebt het spel voltooid");
         map("game.notFound",            "Het spel met id :id werd niet gevonden.");
-        map("game.alreadyExists",       "Het spel met naam :name bestaat al.");
+        map("game.exists",              "Er bestaat al een spel met deze naam.");
         map("game.notSaved",            "Het spel werd niet opgeslaan.");
         
         //gameboard
@@ -57,7 +58,8 @@ public class NL extends Language
         map("game.board.completed",     "Gefeliciteerd! Je hebt het spelbord voltooid");
         map("game.board.next",          "volgende spelbord");
         map("game.board.moves",         "verplaatsingen");
-        map("game.board.notFound",      "Het spelbord met id :id in het spel :game werd niet gevonden.");
+        map("game.board.notFound",      "Het spelbord met id :id werd niet gevonden.");
+        map("game.board.exists",        "Er bestaat al een spelbord met deze naam in dit spel.");
         
         //player
         map("player.move",              "Verplaats het mannetje in een richting");
@@ -65,6 +67,8 @@ public class NL extends Language
         map("player.down",              "omlaag");
         map("player.left",              "links");
         map("player.right",             "rechts");
+        map("player.wrongDirection",    "De richting moet tussen :min en :max liggen.");
+        map("player.wrongCoordinates",  "De coördinaten liggen buiten het bereik van het spelbord.");
         
         //list
         map("list.choice",              "Mijn keuze");
@@ -83,5 +87,6 @@ public class NL extends Language
         map("err.nonvalid",             "Niet geldige keuze.");
         map("err.input",                "De keuze moet tussen :min en :max liggen.");
         map("err.NaN",                  "U gaf geen nummer in.");
+        map("err.invalidType",          "Ongeldig type");
     }
 }

@@ -22,6 +22,7 @@ public class FR extends Language
         map("user.registration",        "Inscription d'un nouveaux joueur");
         map("user.logged.in",           "en ligne");
         map("user.logged.out",          "hors ligne");
+        map("user.username.exists",     "Ce nom d'utilisateur est déjà pris.");
         map("credentials.wrong",        "Mal informations d'identification");
         
         //sign in/up
@@ -48,7 +49,7 @@ public class FR extends Language
         map("game.choose",              "Choisissez un jeu");
         map("game.completed",           "Vous avez completé le jeu");
         map("game.notFound",            "Le jeu avec l'id :id n'a pas été trouvé.");
-        map("game.alreadyExists",       "Le jeu avec le nom :name existe déjà.");
+        map("game.exists",              "Il existe déjà un jeu avec ce nom.");
         map("game.notSaved",            "Le jeu n'a pas été enregistré.");
         
         //gameboard
@@ -57,7 +58,9 @@ public class FR extends Language
         map("game.board.completed",     "Félicitations! Vous avez completé le tableau");
         map("game.board.next",          "tableau suivant");
         map("game.board.moves",         "movements");
-        map("game.board.notFound",      "Le tableau avec l'id :id dans le jeu :game n'a pas été trouvé.");
+        map("game.board.notFound",      "Le tableau avec l'id :id n'a pas été trouvé dans ce jeu.");
+        map("game.board.exists",        "Il existe déjà un tableu avec ce nom dans ce jeu.");
+        
         
         //player
         map("player.move",              "Déplacer le mec dans une direction");
@@ -65,6 +68,8 @@ public class FR extends Language
         map("player.down",              "en bas");
         map("player.left",              "à gauche");
         map("player.right",             "à droite");
+        map("player.wrongDirection",    "Le direction doit se situer entre :min et :max.");
+        map("player.wrongCoordinates",  "Le coordinat ne se situe pas sur le tableau.");
         
         //list
         map("list.choice",              "mon choix");
@@ -83,5 +88,7 @@ public class FR extends Language
         map("err.nonvalid",             "Choix non valide.");
         map("err.input",                "Le choix doit se situer entre :min et :max.");
         map("err.NaN",                  "Vous n'avez pas entrer un nombre.");
+        map("err.invalidType",          "type non valide");
+    
     }
 }
