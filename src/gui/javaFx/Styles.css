@@ -83,3 +83,32 @@ Pane {
 .win {
     -fx-background-image: url(../images/bord/WIN.png);
 }
+
+.up-arrow, .left-arrow, .down-arrow, .right-arrow {
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+    -fx-pref-width: 50;
+    -fx-pref-height: 50;
+}
+
+.up-arrow {
+    -fx-background-image: url(../images/wood.jpg), url(../images/up-arrow.png);
+}
+
+.left-arrow {
+    -fx-background-image: url(../images/wood.jpg), url(../images/left-arrow.png);
+}
+
+.down-arrow {
+    -fx-background-image: url(../images/wood.jpg), url(../images/down-arrow.png);
+}
+
+.right-arrow {
+    -fx-background-image: url(../images/wood.jpg), url(../images/right-arrow.png);
+}
+
+.back {
+    -fx-background-image: url(../images/wood.jpg), url(../images/back.png);
+    -fx-background-repeat: repeat, no-repeat;
+    -fx-background-position: center center;
+}
