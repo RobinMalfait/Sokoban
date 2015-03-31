@@ -61,6 +61,12 @@ public class VakMapper extends Mapper
         return vakken;
     }
 
+    /**
+     * Voegt alle vakken toe aan een Spelbord in een single-query.
+     * 
+     * @param vakken
+     * @param spelbordId 
+     */
     public void voegVakkenToe(Vak vakken[][], int spelbordId)
     {
         // Het maken van slechts 1 query.
@@ -86,6 +92,12 @@ public class VakMapper extends Mapper
         
     }
     
+    /**
+     * Wijzigt alle vakken van een Spelbord.
+     * 
+     * @param vakken
+     * @param spelbordId 
+     */
     public void wijzigVakken(Vak vakken[][], int spelbordId)
     {
         for(Vak vakArray[]: vakken)
@@ -102,6 +114,14 @@ public class VakMapper extends Mapper
        // Misschien een idee om maar 1 query uit te voeren?
     }
 
+    /**
+     * Maakt een object van het Type vak
+     * 
+     * @param type
+     * @param posX
+     * @param posY
+     * @return Vak
+     */
     private static Vak maakVakObject(int type, int posX, int posY)
     {
         switch (type)
