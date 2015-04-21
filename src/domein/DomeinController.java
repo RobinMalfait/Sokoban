@@ -366,7 +366,10 @@ public class DomeinController
      */
     public boolean controleerSpel()
     {
-        return this.huidigSpel.controleerSpel();
+        this.huidigSpel.controleerSpel();
+        //false --> exception
+        
+        return true;
     }
     
     public void verwijderSpelbord(int spelbordId)
