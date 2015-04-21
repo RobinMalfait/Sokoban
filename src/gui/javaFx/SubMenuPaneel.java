@@ -23,10 +23,10 @@ public class SubMenuPaneel extends BaseGui
         playGame.setText(lang.get("game.play").toUpperCase());
         
         Button createGame = (Button) this.findByIdInPane(stage, "createGame");
-        createGame.setText(lang.get("game.conf").toUpperCase());
+        createGame.setText(lang.get("game.create").toUpperCase());
         
         Button modifyGame = (Button) this.findByIdInPane(stage, "modifyGame");
-        modifyGame.setText(lang.get("game.modify"));
+        modifyGame.setText(lang.get("game.modify").toUpperCase());
         
         if (DC.isAdmin()) {
             createGame.setOnMouseClicked(new EventHandler<MouseEvent>() {

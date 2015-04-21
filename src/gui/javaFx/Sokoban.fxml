@@ -280,7 +280,7 @@
                         <Image url="@../images/logo.png" />
                      </image>
                   </ImageView>
-                  <GridPane id="MaakSpelbordPaneel_grid" alignment="CENTER" gridLinesVisible="true" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0" styleClass="_">
+                  <GridPane id="MaakSpelbordPaneel_grid" alignment="CENTER" gridLinesVisible="true" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -318,11 +318,10 @@
                     </rowConstraints>
                      <children>
                         <Button id="MaakSpelbordPaneel_M" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="J" GridPane.columnIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="D" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="K" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="Y" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="_" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button id="MaakSpelbordPaneel_D" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="D" GridPane.rowIndex="1" />
+                        <Button id="MaakSpelbordPaneel_K" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="K" GridPane.columnIndex="1" />
+                        <Button id="MaakSpelbordPaneel_Y" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="Y" GridPane.rowIndex="2" />
+                        <Button id="MaakSpelbordPaneel__" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="_" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <Button id="MaakSpelbordPaneel_save" layoutX="594.0" layoutY="495.0" mnemonicParsing="false" text="OPSLAAN">
