@@ -31,9 +31,9 @@ public class WVL extends Language
         map("sign.succes",              "Ge zie me successe igelogd");
         map("sign.retry",               "Kèreki wére of tiept: Stop");
         map("sign.choise",              "Wuk wildje doene?");
-        map("sign.play",                "Speelt e spelleke");
+        map("sign.play",                "E spelleke speeln");
         map("sign.quit",                "Stoppn");
-        map("sign.game.conf",           "Moakt e spel");
+        map("sign.game.conf",           "E spel moakn");
         map("sign.game.modify",         "Past nen bestoand spel an");
         map("sign.quitted",             "Gestoakt");
         
@@ -44,16 +44,18 @@ public class WVL extends Language
         
         //game
         map("game.welcome",             "Welgekoomn");
-        map("game.play",                "Ge goa een nieuw spelleke speeln");
+        map("game.play",                "E spel speeln");
         map("game.choose.list",         "Kiest een spelleke van onderstoande liste");
         map("game.choose",              "Kiest een spelleke");
         map("game.completed",           "Get spel utgespeeld");
         map("game.notFound",            "Tspel me nummer :id is nie weregevondn.");
         map("game.exists",              "Tis ol e spel me die noame.");
         map("game.notSaved",            "Tspel is nie upgesleegn.");
+        map("game.modify",              "E spel verandern");
+        map("game.create",              "E spel moakn");
         
         //gameboard
-        map("game.board.loading",       "'t Spelbord is ant loadn");
+        map("game.board.loading",       "Tpelbord is ant loadn");
         map("game.board.retry",         "Kèreki wére!");
         map("game.board.completed",     "Felicitajes! Jet et spelbord utgespeeld");
         map("game.board.next",          "noaste spelbord");

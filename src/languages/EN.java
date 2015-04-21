@@ -44,13 +44,15 @@ public class EN extends Language
         
         //game
         map("game.welcome",             "welcome");
-        map("game.play",                "You're going to play a new game");
+        map("game.play",                "Play a game");
         map("game.choose.list",         "Choose a game from the list below");
         map("game.choose",              "Choose a game");
         map("game.completed",           "You've completed the game");
         map("game.notFound",            "The game with id :id was not found.");
         map("game.exists",              "There is already a game with this name.");
         map("game.notSaved",            "The game has not been saved.");
+        map("game.modify",              "Modify a game");
+        map("game.create",              "Create a game");
         
         //gameboard
         map("game.board.loading",       "The gameboard is loading");

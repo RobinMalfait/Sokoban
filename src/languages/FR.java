@@ -44,13 +44,15 @@ public class FR extends Language
         
         //game
         map("game.welcome",             "Bienvenue");
-        map("game.play",                "Vous aller joué un nouveaux jeu");
+        map("game.play",                "Joue un jeu");
         map("game.choose.list",         "Choisissez un jeu dans la liste ci-dessous");
         map("game.choose",              "Choisissez un jeu");
         map("game.completed",           "Vous avez completé le jeu");
         map("game.notFound",            "Le jeu avec l'id :id n'a pas été trouvé.");
         map("game.exists",              "Il existe déjà un jeu avec ce nom.");
         map("game.notSaved",            "Le jeu n'a pas été enregistré.");
+        map("game.modify",              "Modifie un jeu");
+        map("game.create",              "Crée un jeu");
         
         //gameboard
         map("game.board.loading",       "Le tableau est en train de charger");
