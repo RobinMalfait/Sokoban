@@ -286,14 +286,12 @@ public class Spel extends Base
      * 
      * @return 
      */
-    public boolean controleerSpel()
+    public void controleerSpel()
     {
         for (Spelbord spelbord : spelborden)
         {
-            if(spelbord.controleerSpelbord())
-                return true;
+            spelbord.controleerSpelbord();
         }
-        return false;        
     }
     
     /**

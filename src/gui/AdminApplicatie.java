@@ -302,11 +302,7 @@ public class AdminApplicatie
                 dc.kiesSpel(id);
                 fouteInvoer = false;
             }
-            catch(InputMismatchException e)
-            {
-                System.out.println(e.getMessage());
-            }
-            catch(SpelException e)
+            catch(InputMismatchException | SpelException e)
             {
                 System.out.println(e.getMessage());
             }
@@ -332,20 +328,16 @@ public class AdminApplicatie
                 dc.kiesSpelbord(id);
                 fouteInvoer = false;
             }
-            catch(InputMismatchException e)
-            {
-                System.out.println(e.getMessage());
-            }
-            catch(SpelException e)
+            catch(InputMismatchException | SpelException e)
             {
                 System.out.println(e.getMessage());
             }
         }
         while(fouteInvoer);
         
-        String coordinaat = "";
-        String keuze;
+        String coordinaat = "", keuze;
         boolean doorgaan = true;
+        
         // Momenteel kennen we een spel en een spelbord om te wijzigen.
         do
         {
@@ -360,7 +352,7 @@ public class AdminApplicatie
                 if(!dc.controleerSpel())
                 {
                     // Het spel kent nog geen afgewerkt spelbord.
-                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat uw wenst te stoppen? (Typ 'stop' om te stoppen): ");
+                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat u wenst te stoppen? (Typ 'stop' om te stoppen): ");
                     keuze = input.next();
                     input.nextLine();
                     

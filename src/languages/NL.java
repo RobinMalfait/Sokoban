@@ -13,7 +13,7 @@ public class NL extends Language
     {
         //user
         map("user.username",            "Gebruikersnaam");
-        map("user.name",                "Naam");
+        map("user.name",                "Familienaam");
         map("user.firstname",           "Voornaam");
         map("user.password",            "Wachtwoord");
         map("user.password.repeat",     "Wachtwoordherhaling");
@@ -31,8 +31,8 @@ public class NL extends Language
         map("sign.succes",              "Je bent succesvol ingelogd");
         map("sign.retry",               "Opnieuw proberen of typ: Stop.");
         map("sign.choise",              "Wat wil je doen?");
-        map("sign.play",                "Speel een spel.");
-        map("sign.quit",                "Stop.");
+        map("sign.play",                "Speel een spel");
+        map("sign.quit",                "Stop");
         map("sign.game.conf",           "Maak een spel");
         map("sign.game.modify",         "Pas een bestaand spel aan");
         map("sign.quitted",             "Gestopt");
@@ -44,13 +44,15 @@ public class NL extends Language
         
         //game
         map("game.welcome",             "Welkom");
-        map("game.play",                "U zult een nieuw spel spelen");
+        map("game.play",                "Speel een spel");
         map("game.choose.list",         "Kies een spel uit onderstaande lijst");
         map("game.choose",              "Kies een spel");
         map("game.completed",           "Je hebt het spel voltooid");
         map("game.notFound",            "Het spel met id :id werd niet gevonden.");
         map("game.exists",              "Er bestaat al een spel met deze naam.");
         map("game.notSaved",            "Het spel werd niet opgeslaan.");
+        map("game.modify",              "Wijzig een spel");
+        map("game.create",              "Maak een spel");
         
         //gameboard
         map("game.board.loading",       "Het spelbord wordt geladen");
@@ -82,7 +84,7 @@ public class NL extends Language
         map("err.login",                "De gebruikersnaam of het wachtwoord is incorrect.");
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
-        map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");
+        map("err.passwordDR",           "Het wachtwoord moet 8 karakters lang zijn en moet een hoofdletter en een cijfer bevatten.");
         map("err.integer",              "Er werd een geheel getal verwacht.");
         map("err.nonvalid",             "Niet geldige keuze.");
         map("err.input",                "De keuze moet tussen :min en :max liggen.");

@@ -13,13 +13,13 @@ public class WVL extends Language
     {
         //user
         map("user.username",            "Gebrukersnoame");
-        map("user.name",                "Noame");
-        map("user.firstname",           "Vwor noame");
+        map("user.name",                "Achternoame");
+        map("user.firstname",           "Vwornoame");
         map("user.password",            "Wagtwoord");
-        map("user.password.repeat",     "Wagtwoord bevestign");
+        map("user.password.repeat",     "Wagtwordherhoalinge");
         map("user.admin",               "Beheerdre");
-        map("user.added",               "Niewe speeldr toegevoegd");
-        map("user.registration",        "Registroatie van nen nieuwe speeldr");
+        map("user.added",               "Niewe speelr toegevoegd");
+        map("user.registration",        "Registroatie van nen nieuwe speelr");
         map("user.logged.in",           "Igelogd");
         map("user.logged.out",          "Utgelogd");
         map("user.username.exists",     "Ted ol etwien dien gebrukersnoame.");
@@ -31,9 +31,9 @@ public class WVL extends Language
         map("sign.succes",              "Ge zie me successe igelogd");
         map("sign.retry",               "Kèreki wére of tiept: Stop");
         map("sign.choise",              "Wuk wildje doene?");
-        map("sign.play",                "Speelt e spelleke");
+        map("sign.play",                "E spelleke speeln");
         map("sign.quit",                "Stoppn");
-        map("sign.game.conf",           "Moakt e spel");
+        map("sign.game.conf",           "E spel moakn");
         map("sign.game.modify",         "Past nen bestoand spel an");
         map("sign.quitted",             "Gestoakt");
         
@@ -44,16 +44,18 @@ public class WVL extends Language
         
         //game
         map("game.welcome",             "Welgekoomn");
-        map("game.play",                "Ge goa een nieuw spelleke speeln");
+        map("game.play",                "E spel speeln");
         map("game.choose.list",         "Kiest een spelleke van onderstoande liste");
         map("game.choose",              "Kiest een spelleke");
         map("game.completed",           "Get spel utgespeeld");
         map("game.notFound",            "Tspel me nummer :id is nie weregevondn.");
         map("game.exists",              "Tis ol e spel me die noame.");
         map("game.notSaved",            "Tspel is nie upgesleegn.");
+        map("game.modify",              "E spel verandern");
+        map("game.create",              "E spel moakn");
         
         //gameboard
-        map("game.board.loading",       "'t Spelbord is ant loadn");
+        map("game.board.loading",       "Tpelbord is ant loadn");
         map("game.board.retry",         "Kèreki wére!");
         map("game.board.completed",     "Felicitajes! Jet et spelbord utgespeeld");
         map("game.board.next",          "noaste spelbord");
@@ -81,8 +83,8 @@ public class WVL extends Language
         //error
         map("err.login",                "Jen gebrukersnoame of jen wagtwoord i mis");
         map("err.passwordrepeat",       "Jen wagtwoord kom nie overjin me jen wagtwoord bevestiginge");
-        map("err.usernameDR",           "Jen gebrukersnoame moe mistns 8 tjikns lank zin");
-        map("err.passwordDR",           "Jen wagtwoord voldoe nie an de eisn");
+        map("err.usernameDR",           "Jen gebrukersnoame moe mistns 8 teekns lank zin");
+        map("err.passwordDR",           "Jen wagtwoord moe mistns 8 teekns lank zin en e oofdletter en ciffer bevatn");
         map("err.integer",              "Ze verwagtn een geheel getal.");
         map("err.nonvalid",             "Gin geldige keuze.");
         map("err.input",                "Jen keuze moe tusn :min en :max lign.");

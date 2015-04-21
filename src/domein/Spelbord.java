@@ -316,51 +316,52 @@ public class Spelbord extends Base
         coordinaat = coordinaat.trim();
         String[] xy = coordinaat.split(",");
         
+        if (xy.length != 2)
+            throw new SpelbordException(lang.get("player.wrongCoordinates"));
+        
         int x = Integer.valueOf(xy[0]);
         int y = Integer.valueOf(xy[1]);
         
-        if (x < 0 || x > (vakken.length - 1) || y < 0 || y > (vakken[1].length - 1) )
+        if (x < 0 || x > (vakken.length - 1) || y < 0 || y > (vakken[1].length - 1))
             throw new SpelbordException(lang.get("player.wrongCoordinates"));
-            
         
-        if(xy.length == 2)
+        Vak vak = vakken[x][y];
+
+        switch (keuze.toUpperCase())
         {
-            switch (keuze.toUpperCase())
-            {
-                case "_":                                     // Toegankelijk vak - Leeg vak
-                    vakken[x][y].setKist(null);
-                    vakken[x][y].setMannetje(null);
-                    vakken[x][y].setToegankelijk(true);
-                    vakken[x][y].setDoel(false);
-                    break;
-                case "M":                                     // Muur
-                    vakken[x][y].setKist(null);
-                    vakken[x][y].setMannetje(null);
-                    vakken[x][y].setToegankelijk(false);
-                    vakken[x][y].setDoel(false);
-                    break;
-                case "D":                                     // Toegankelijk vak - Met Doel
-                    vakken[x][y].setKist(null);
-                    vakken[x][y].setMannetje(null);
-                    vakken[x][y].setToegankelijk(true);
-                    vakken[x][y].setDoel(true);
-                    break;
-                case "K":                                     // Toegankelijk vak - Met Kist
-                    vakken[x][y].setKist(new Kist());
-                    vakken[x][y].setMannetje(null);
-                    vakken[x][y].setToegankelijk(true);
-                    vakken[x][y].setDoel(false);
-                    break;
-                case "Y":                                     // Toegankelijk vak - Met Mannetje
-                    vakken[x][y].setKist(null);
-                    vakken[x][y].setMannetje(new Mannetje());
-                    vakken[x][y].setToegankelijk(true);
-                    vakken[x][y].setDoel(false);
-                    break;
-                default:                                      // niet in lijst
-                    throw new SpelbordException(lang.get("err.invalidType"));
-                    
-            }            
+            case "_":                                     // Toegankelijk vak - Leeg vak
+                vak.setKist(null);
+                vak.setMannetje(null);
+                vak.setToegankelijk(true);
+                vak.setDoel(false);
+                break;
+            case "M":                                     // Muur
+                vak.setKist(null);
+                vak.setMannetje(null);
+                vak.setToegankelijk(false);
+                vak.setDoel(false);
+                break;
+            case "D":                                     // Toegankelijk vak - Met Doel
+                vak.setKist(null);
+                vak.setMannetje(null);
+                vak.setToegankelijk(true);
+                vak.setDoel(true);
+                break;
+            case "K":                                     // Toegankelijk vak - Met Kist
+                vak.setKist(new Kist());
+                vak.setMannetje(null);
+                vak.setToegankelijk(true);
+                vak.setDoel(false);
+                break;
+            case "Y":                                     // Toegankelijk vak - Met Mannetje
+                vak.setKist(null);
+                vak.setMannetje(new Mannetje());
+                vak.setToegankelijk(true);
+                vak.setDoel(false);
+                break;
+            default:                                      // niet in lijst
+                throw new SpelbordException(lang.get("err.invalidType"));
+           
         }        
     }  
     
@@ -371,34 +372,31 @@ public class Spelbord extends Base
      */
     public void voegToe(int spelId)
     {
-        if (controleerSpelbord())
-        {
-            this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
+        controleerSpelbord();
+                   
+        this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
 
-            if (this.spelbordId == 0)
-            {
-                throw new SpelbordException(lang.get("game.notSaved"));
-            }
-            else
-            {
-                vakMapper.voegVakkenToe(vakken, this.spelbordId);
-            }
+        if (this.spelbordId == 0)
+        {
+            throw new SpelbordException(lang.get("game.notSaved"));
+        }
+        else
+        {
+            vakMapper.voegVakkenToe(vakken, this.spelbordId);
         }
     }
+    
     public void slaOp()
     {
-        if (controleerSpelbord())
-        {
-            vakMapper.wijzigVakken(vakken, this.spelbordId);
-        }
-    }    
+        controleerSpelbord();
+        vakMapper.wijzigVakken(vakken, this.spelbordId);
+    }   
+    
     /**
      * Controleer of het spelbord aan de eisen voldoet.
      * Een spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
-     * 
-     * @return boolean
      */
-    public boolean controleerSpelbord()
+    public void controleerSpelbord()
     {
         
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
@@ -417,14 +415,11 @@ public class Spelbord extends Base
         }
         
         if (aantalMannetjes != 1)
-            return false;
-            //throw new SpelbordException("Er " + (aantalMannetjes == 0 ? "moet" : "mag slechts") + " één mannetje op het spelbord staan. Het spelbord bevat nu " + aantalMannetjes + " mannetjes");
+            throw new SpelbordException("Er " + (aantalMannetjes == 0 ? "moet" : "mag slechts") + " één mannetje op het spelbord staan. Het spelbord bevat nu " + aantalMannetjes + " mannetjes");
 
         if(aantalDoelen == 0 || aantalDoelen != aantalKisten )
-            return false;
-            //throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
+            throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
         
-        return true;
     }
     
     
