@@ -85,7 +85,7 @@ public class FR extends Language
         map("err.login",                "Le nom d'utilisateur ou le mot de passe est incorrect");
         map("err.passwordrepeat",       "Le mot de passe et la repitition de mot de passe ne correspondent pas");
         map("err.usernameDR",           "Le nom d'utilisateur doit être au moins 8 caractères");
-        map("err.passwordDR",           "Le mot de passe ne répond pas aux prescriptions");
+        map("err.passwordDR",           "Le mot de passe doit être au moins 8 caractères et doit contenir un majuscule et un chiffre.");
         map("err.integer",              "Il y avait un nombre entier attendue.");
         map("err.nonvalid",             "Choix non valide.");
         map("err.input",                "Le choix doit se situer entre :min et :max.");

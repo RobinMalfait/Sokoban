@@ -13,7 +13,7 @@ public class NL extends Language
     {
         //user
         map("user.username",            "Gebruikersnaam");
-        map("user.name",                "Naam");
+        map("user.name",                "Familienaam");
         map("user.firstname",           "Voornaam");
         map("user.password",            "Wachtwoord");
         map("user.password.repeat",     "Wachtwoordherhaling");
@@ -84,7 +84,7 @@ public class NL extends Language
         map("err.login",                "De gebruikersnaam of het wachtwoord is incorrect.");
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
-        map("err.passwordDR",           "Het wachtwoord voldoet niet aan de eisen");
+        map("err.passwordDR",           "Het wachtwoord moet 8 karakters lang zijn en moet een hoofdletter en een cijfer bevatten.");
         map("err.integer",              "Er werd een geheel getal verwacht.");
         map("err.nonvalid",             "Niet geldige keuze.");
         map("err.input",                "De keuze moet tussen :min en :max liggen.");

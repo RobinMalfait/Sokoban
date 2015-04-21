@@ -13,13 +13,13 @@ public class WVL extends Language
     {
         //user
         map("user.username",            "Gebrukersnoame");
-        map("user.name",                "Noame");
-        map("user.firstname",           "Vwor noame");
+        map("user.name",                "Achternoame");
+        map("user.firstname",           "Vwornoame");
         map("user.password",            "Wagtwoord");
-        map("user.password.repeat",     "Wagtwoord bevestign");
+        map("user.password.repeat",     "Wagtwordherhoalinge");
         map("user.admin",               "Beheerdre");
-        map("user.added",               "Niewe speeldr toegevoegd");
-        map("user.registration",        "Registroatie van nen nieuwe speeldr");
+        map("user.added",               "Niewe speelr toegevoegd");
+        map("user.registration",        "Registroatie van nen nieuwe speelr");
         map("user.logged.in",           "Igelogd");
         map("user.logged.out",          "Utgelogd");
         map("user.username.exists",     "Ted ol etwien dien gebrukersnoame.");
@@ -83,8 +83,8 @@ public class WVL extends Language
         //error
         map("err.login",                "Jen gebrukersnoame of jen wagtwoord i mis");
         map("err.passwordrepeat",       "Jen wagtwoord kom nie overjin me jen wagtwoord bevestiginge");
-        map("err.usernameDR",           "Jen gebrukersnoame moe mistns 8 tjikns lank zin");
-        map("err.passwordDR",           "Jen wagtwoord voldoe nie an de eisn");
+        map("err.usernameDR",           "Jen gebrukersnoame moe mistns 8 teekns lank zin");
+        map("err.passwordDR",           "Jen wagtwoord moe mistns 8 teekns lank zin en e oofdletter en ciffer bevatn");
         map("err.integer",              "Ze verwagtn een geheel getal.");
         map("err.nonvalid",             "Gin geldige keuze.");
         map("err.input",                "Jen keuze moe tusn :min en :max lign.");

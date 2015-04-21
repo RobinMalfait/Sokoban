@@ -13,7 +13,7 @@ public class EN extends Language
     {
         //user
         map("user.username",            "username");
-        map("user.name",                "name");
+        map("user.name",                "last name");
         map("user.firstname",           "first name");
         map("user.password",            "password");
         map("user.password.repeat",     "password confirmation");
@@ -83,8 +83,8 @@ public class EN extends Language
         //error
         map("err.login",                "The username or password is incorrect");
         map("err.passwordrepeat",       "The password and the password confirmation do not match");
-        map("err.usernameDR",           "The username must be at least 8 characters long");
-        map("err.passwordDR",           "The password does not cope with the requirements");
+        map("err.usernameDR",           "The username must be at least 8 characters");
+        map("err.passwordDR",           "The password must be at least 8 characters and must contain a captal and a number.");
         map("err.integer",              "There was an integer expected.");
         map("err.nonvalid",             "Non valid choice.");
         map("err.input",                "The choice should be between :min and :max.");
