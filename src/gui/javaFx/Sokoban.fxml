@@ -332,6 +332,9 @@
                   </Button>
                   <Pane id="MaakSpelbordPaneel_active" layoutX="606.0" layoutY="68.0" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
                   <Label layoutX="559.0" layoutY="85.0" text="Actief:" />
+                  <Label id="MaakSpelbordPaneel_gameboard_name_label" layoutX="585.0" layoutY="423.0" text="Name:" />
+                  <TextField id="MaakSpelbordPaneel_gameboard_name" layoutX="584.0" layoutY="448.0" />
+                  <Label id="MaakSpelbordPaneel_error" layoutX="211.0" layoutY="21.0" styleClass="label-error" />
                </children>
             </Pane>
          </children>

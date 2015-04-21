@@ -2,7 +2,8 @@ package gui.javaFx;
 
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -23,23 +24,30 @@ public class MaakSpelbordPaneel extends BaseGui
     private String activeField = "M"; // Muur standaard
     
     private String[][] items; // Keep state
+    
+    private Label errorLabel;
 
     public MaakSpelbordPaneel(Stage stage)
     {
         this.board = (GridPane) this.findByIdInPane(stage, "grid");
         this.items = new String[10][10];
-                       
-        DC.voegSpelToe("Test Naam");
         
-        for (int x = 0; x < items.length; x++) 
+        initializeBoard(); 
+        
+        DC.voegSpelToe("Test Game Robin");
+        
+        this.init(stage);
+    }
+
+    private void initializeBoard()
+    {
+        for (int x = 0; x < items.length; x++)
         {
             for (int y = 0; y < items[x].length; y++)
             {
-                items[x][y] = this.activeField;
+                items[x][y] = "_";
             }
         }
-        
-        this.init(stage);
     }
 
     private void init(Stage stage)
@@ -49,6 +57,9 @@ public class MaakSpelbordPaneel extends BaseGui
         stage.setTitle("");
 
         this.show(stage, "#MaakSpelbordPaneel");
+                
+        this.errorLabel = (Label) this.findByIdInPane(stage, "error");
+        ((Label) this.findByIdInPane(stage, "gameboard_name_label")).setText(this.lang.get("game.board.name"));
 
         this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
@@ -69,6 +80,25 @@ public class MaakSpelbordPaneel extends BaseGui
             public void handle(MouseEvent event)
             {
                 MaakSpelbordPaneel.this.updateField((int) event.getSceneX(), (int) event.getSceneY());
+            }
+        });
+        
+        this.findByIdInPane(stage, "save").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+
+            @Override
+            public void handle(MouseEvent event)
+            {
+                TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane(stage, "gameboard_name");
+                String name = gameboardName.getText();
+                
+                if (name == null || name.equals("")) {
+                    MaakSpelbordPaneel.this.setError(lang.get("err.noGameboadName"));
+                } else {
+                    MaakSpelbordPaneel.this.cleanError();
+                    
+                    MaakSpelbordPaneel.this.saveGameboard(name);
+                }
             }
         });
     }
@@ -170,9 +200,30 @@ public class MaakSpelbordPaneel extends BaseGui
         y = (y - y % 50) / 50;
         
         this.items[y][x] = this.activeField;
-        
-        DC.voerVakIn(String.format("%d,%d", x, y), this.activeField);
        
         this.drawBoard();
+    }
+
+    private void setError(String text)
+    {
+        this.errorLabel.setText(text);
+    }
+
+    private void cleanError()
+    {
+        this.setError(""); // Clear the text
+    }
+
+    private void saveGameboard(String name)
+    {
+        DC.voegSpelbordToe(name);
+        
+        for(int row = 0; row < this.items.length; row++) {
+            for (int cell = 0; cell < this.items[row].length; cell++) {
+                DC.voerVakIn(String.format("%d,%d", row, cell), this.items[row][cell]);
+            }
+        }
+        
+        DC.slaHuidigSpelOp();
     }
 }
