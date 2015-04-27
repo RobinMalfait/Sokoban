@@ -17,11 +17,11 @@ public class NL extends Language
         map("user.firstname",           "Voornaam");
         map("user.password",            "Wachtwoord");
         map("user.password.repeat",     "Wachtwoordherhaling");
-        map("user.admin",               "administrator");
+        map("user.admin",               "Administrator");
         map("user.added",               "Nieuwe speler toegevoegd");
         map("user.registration",        "Registratie van een nieuwe speler");
-        map("user.logged.in",           "ingelogd");
-        map("user.logged.out",          "uitgelogd");
+        map("user.logged.in",           "Ingelogd");
+        map("user.logged.out",          "Uitgelogd");
         map("user.username.exists",     "Deze gebruikersnaam is al in gebruik.");
         map("credentials.wrong",        "foute gegevens");
         

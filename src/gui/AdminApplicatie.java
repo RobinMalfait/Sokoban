@@ -283,9 +283,10 @@ public class AdminApplicatie
         System.out.printf("Een spel wijzigen%n%n");
         
         // Toon een lijst van spellen
+        System.out.printf("%-5s%s%n", "ID","SPELNAAM");
         for(String[] spel: dc.geefLijstSpellen())
         {
-            System.out.printf("%s: %s%n", spel[0], spel[1]);
+            System.out.printf("%-5s%s%n", spel[0], spel[1]);
         }
         
         int id = 0;
@@ -310,9 +311,10 @@ public class AdminApplicatie
         while(fouteInvoer);
         
          // Toon een lijst van spelborden
+        System.out.printf("%n%-5s%s%n", "ID","SPELBORDNAAM");
         for(String[] spelbord: dc.geefLijstSpelborden())
         {
-            System.out.printf("%s: %s%n", spelbord[0], spelbord[1]);
+            System.out.printf("%-5s%s%n", spelbord[0], spelbord[1]);
         }  
         
         id = 0;
