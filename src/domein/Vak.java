@@ -194,6 +194,28 @@ public class Vak
         return true;
     }
     
+    public String geefRichtingMannetje()
+    {
+        return this.mannetje.getRichting();
+    }
+    public void stelRichtingMannetjeIn(int richting)
+    {
+        switch(richting)
+        {
+            case 1:
+                this.mannetje.setRichting("N");
+                break;
+            case 2:
+                this.mannetje.setRichting("Z");
+                break;
+            case 3:
+                this.mannetje.setRichting("W");
+                break;
+            case 4:
+                this.mannetje.setRichting("O");
+                break;
+        }
+    }
     /**
      * Is het vak leeg?
      * 

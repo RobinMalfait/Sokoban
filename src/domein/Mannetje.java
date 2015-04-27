@@ -2,6 +2,8 @@ package domein;
 
 public class Mannetje 
 {
+    private String richting = "Z";
+    
     /**
      * Maak een Mannetje-object aan.
      */
@@ -9,5 +11,17 @@ public class Mannetje
     {
         
     }
+
+    public String getRichting()
+    {
+        return richting;
+    }
+
+    public void setRichting(String richting)
+    {
+        this.richting = richting;
+    }
+    
+    
     
 }

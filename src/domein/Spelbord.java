@@ -127,7 +127,15 @@ public class Spelbord extends Base
          V:  Doel met Kist
          J:  Doel met mannetje
          K:  Vak met Kist 
-         Y:  Vak met Mannetje
+         
+         N:  Mannetje gericht naar Omhoog
+         O:  Mannetje gericht naar Rechts
+         Z:  Mannetje gericht naar Omlaag
+         W:  Mannetje gericht naar Links
+        
+         
+        
+        
          -:  Leeg Vak
          */
 
@@ -170,7 +178,7 @@ public class Spelbord extends Base
 
                     else if (vak.bevatMannetje())   //Mannetje
                     {
-                        spelbordString[x][y] = "Y";
+                        spelbordString[x][y] = vak.geefRichtingMannetje();
                     }
 
                     else if (vak.bevatKist())       //Kist
@@ -200,6 +208,8 @@ public class Spelbord extends Base
         Vak vakMetMannetje, aanliggendVak, tweedeAanliggendVak;
         
         vakMetMannetje = geefVakMetMannetje();
+        vakMetMannetje.stelRichtingMannetjeIn(richting);
+        
         aanliggendVak = geefAanliggendVak(vakMetMannetje.getPosX(), vakMetMannetje.getPosY(), richting);
 
         if (aanliggendVak.isLeeg())             //vak zonder kist of muur
@@ -271,7 +281,7 @@ public class Spelbord extends Base
             case 3: posY -= 1; break; // links
             case 4: posY += 1; break; // rechts
         }
-
+        
         return vakken[posX][posY];
     }
     
