@@ -7,8 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import languages.LanguageManager;
 
 /**
  *
@@ -50,8 +48,6 @@ public class KiesTaalPaneel extends BaseGui
     private void drawLanguagesBoard()
     {
         GridPane grid = (GridPane) this.findByIdInPane("grid");
-                
-        LanguageManager lang = DC.getLanguageManager();
         
         int x = 0;
         int y = 0;

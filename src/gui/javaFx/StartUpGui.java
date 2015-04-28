@@ -3,7 +3,6 @@ package gui.javaFx;
 import domein.DomeinController;
 import java.io.IOException;
 import javafx.stage.Stage;
-import languages.LanguageManager;
 
 
 /**
@@ -26,6 +25,7 @@ public class StartUpGui extends BaseGui
         this.loadScene(stage, "Sokoban.fxml");
         
         BaseGui.stage = stage;
+        BaseGui.lang = DC.getLanguageManager();
         
         (new MainPaneel()).run();
     }   

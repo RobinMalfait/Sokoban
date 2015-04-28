@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import languages.LanguageManager;
 
 /**
  *
@@ -20,6 +21,7 @@ public abstract class BaseGui
     protected static DomeinController DC;
     
     protected static Stage stage;
+    protected static LanguageManager lang;
         
     protected void show(String id)
     {

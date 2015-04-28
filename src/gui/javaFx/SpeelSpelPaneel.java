@@ -10,8 +10,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import languages.LanguageManager;
 
 /**
  *
@@ -19,9 +17,6 @@ import languages.LanguageManager;
  */
 public class SpeelSpelPaneel extends BaseGui
 {
-
-    private LanguageManager lang;
-
     private GridPane board;
     private Label boardComplete;
     private Pane overlay;
@@ -60,7 +55,7 @@ public class SpeelSpelPaneel extends BaseGui
             }
         });
 
-        this.registerEvents(stage);
+        this.registerEvents();
 
         this.drawBoard();
     }
@@ -98,7 +93,7 @@ public class SpeelSpelPaneel extends BaseGui
                 ((Pane) this.findByIdInPane("win")).setVisible(true);
             } else
             {
-                this.boardComplete.setText(this.lang.get("game.complete"));
+                this.boardComplete.setText(lang.get("game.complete"));
 
                 this.overlay.setVisible(true);
 
@@ -109,8 +104,6 @@ public class SpeelSpelPaneel extends BaseGui
 
     private void init()
     {
-        this.lang = DC.getLanguageManager();
-
         stage.setTitle("");
 
         this.show("#SpeelSpelPaneel");
@@ -125,7 +118,7 @@ public class SpeelSpelPaneel extends BaseGui
         });
     }
 
-    private void registerEvents(Stage stage)
+    private void registerEvents()
     {
         stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
         {

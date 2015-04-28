@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import languages.LanguageManager;
 
 /**
  *
@@ -25,9 +24,7 @@ public class RegistreerPaneel extends BaseGui
     }
     
     private void init()
-    {
-        LanguageManager lang = DC.getLanguageManager();
-        
+    {       
         stage.setTitle(lang.get("sign.up"));
         
         this.show("#RegistreerPaneel");

@@ -7,8 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import languages.LanguageManager;
 
 /**
  *
@@ -16,9 +14,6 @@ import languages.LanguageManager;
  */
 public class MaakSpelbordPaneel extends BaseGui
 {
-
-    private LanguageManager lang;
-
     private GridPane board;
         
     private String activeField = "M"; // Muur standaard
@@ -53,14 +48,12 @@ public class MaakSpelbordPaneel extends BaseGui
 
     private void init()
     {
-        this.lang = DC.getLanguageManager();
-
         stage.setTitle("");
 
         this.show("#MaakSpelbordPaneel");
                 
         this.errorLabel = (Label) this.findByIdInPane("error");
-        ((Label) this.findByIdInPane("gameboard_name_label")).setText(this.lang.get("game.board.name"));
+        ((Label) this.findByIdInPane("gameboard_name_label")).setText(lang.get("game.board.name"));
 
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {

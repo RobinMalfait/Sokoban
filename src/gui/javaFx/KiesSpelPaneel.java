@@ -7,16 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import languages.LanguageManager;
 
 /**
  *
  * @author robin
  */
 public class KiesSpelPaneel extends BaseGui
-{
-    private LanguageManager lang;
-    
+{    
     public void run()
     {
         this.init();
@@ -25,9 +22,7 @@ public class KiesSpelPaneel extends BaseGui
     }
     
     private void init()
-    {
-        this.lang = DC.getLanguageManager();
-        
+    {        
         String speler[] = DC.geefHuidigeSpeler();
         
         String name = speler[0] + " " + speler[1];
@@ -48,7 +43,7 @@ public class KiesSpelPaneel extends BaseGui
     
     private void drawSpelBoard()
     {
-        ((Label) this.findByIdInPane("kiesSpel")).setText(this.lang.get("game.choose.list") + ":");
+        ((Label) this.findByIdInPane("kiesSpel")).setText(lang.get("game.choose.list") + ":");
         
         GridPane grid = (GridPane) this.findByIdInPane("grid");
                 
