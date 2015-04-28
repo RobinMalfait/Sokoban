@@ -408,9 +408,8 @@ public class Spelbord extends Base
      */
     public void controleerSpelbord()
     {
-        
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
-          
+        
         for (Vak[] vakArray : vakken)
         {
             for (Vak vak : vakArray)
@@ -430,7 +429,7 @@ public class Spelbord extends Base
         if(aantalDoelen == 0 || aantalDoelen != aantalKisten )
             throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
         
-    }
+    }  
     
     
 }

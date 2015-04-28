@@ -199,14 +199,18 @@ public class Spel extends Base
         return null;        
     }
     
-    public Spelbord kiesSpelbord(int id)
+    public void kiesSpelbord(int id)
     {
+        this.huidigSpelbord = null;
+        
         for(Spelbord spelbord: spelborden)
         {
             if(spelbord.getSpelbordId() == id)
-                return spelbord;
+                this.huidigSpelbord = spelbord;
         }
-        return null;
+        
+        if(this.huidigSpelbord == null)
+            throw new SpelException("Kon geen Spelbord kiezen voor het huidig spel.");
     }
     /**
      * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
@@ -293,7 +297,10 @@ public class Spel extends Base
             spelbord.controleerSpelbord();
         }
     }
-    
+     public void controleerSpelbord()
+    {
+        this.huidigSpelbord.controleerSpelbord();
+    }   
     /**
      * Sla de wijzigingen in het huidige spel op.
      */
@@ -312,6 +319,13 @@ public class Spel extends Base
         }
     }
 
+ 
+    public void wijzigSpelbord()
+    {
+        this.huidigSpelbord.slaOp();
+        
+    }
+        
     public void verwijderSpelbord(int spelbordId)
     {
         Spelbord spelbord = zoekSpelbord(spelbordId);
