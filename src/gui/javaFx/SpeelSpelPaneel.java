@@ -222,7 +222,6 @@ public class SpeelSpelPaneel extends BaseGui
     protected void reset(Stage stage)
     {
         DC.resetSpelbord();
-        drawBoard(stage);
     }
 
 }
