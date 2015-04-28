@@ -95,10 +95,7 @@ public class SpeelSpelPaneel extends BaseGui
         {
             if (DC.isEindeSpel())
             {
-
-                this.board.getChildren().clear();
-
-                this.board.getStyleClass().add("win");
+                ((Pane) this.findByIdInPane("win")).setVisible(true);
             } else
             {
                 this.boardComplete.setText(this.lang.get("game.complete"));
@@ -221,6 +218,7 @@ public class SpeelSpelPaneel extends BaseGui
     protected void reset()
     {
         DC.resetSpelbord();
+        ((Pane) this.findByIdInPane("win")).setVisible(false);
     }
 
 }
