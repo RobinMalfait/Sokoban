@@ -82,10 +82,10 @@ public class MeldAanApplicatie extends BaseApplicatie
                 System.out.println(lang.get("sign.quitted"));
                 break;                
             case 3:
-                new AdminApplicatie(dc, input, lang).start();
+                new AdminApplicatie(dc, input, lang).maakNieuwSpel();
                 break;
             case 4:
-                new AdminApplicatie(dc, input, lang).start();
+                new AdminApplicatie(dc, input, lang).wijzigSpel();
                 break;           
         }
     }
