@@ -3,34 +3,29 @@ package gui.javaFx;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import languages.LanguageManager;
 
 /**
  *
  * @author robin
  */
 public class MenuKeuzePaneel extends BaseGui
-{
-    
-    private LanguageManager lang;
-    
-    public MenuKeuzePaneel(Stage stage)
+{    
+    public void run()
     {
-        this.init(stage);
+        this.init();
                 
-        Button signIn = (Button) this.findByIdInPane(stage, "signIn");
-        signIn.setText(this.lang.get("sign.in").toUpperCase());
+        Button signIn = (Button) this.findByIdInPane("signIn");
+        signIn.setText(lang.get("sign.in").toUpperCase());
         
-        Button signUp = (Button) this.findByIdInPane(stage, "signUp");
-        signUp.setText(this.lang.get("sign.up").toUpperCase());
+        Button signUp = (Button) this.findByIdInPane("signUp");
+        signUp.setText(lang.get("sign.up").toUpperCase());
         
         signIn.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MeldAanPaneel meldAanPaneel = new MeldAanPaneel(stage);
+                (new MeldAanPaneel()).run();
             }
         });
         
@@ -39,32 +34,24 @@ public class MenuKeuzePaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                RegistreerPaneel registreerPaneel = new RegistreerPaneel(stage);
+                (new RegistreerPaneel()).run();
             }
         });
     }
     
-    private void init(Stage stage)
+    private void init()
     {
-        this.lang = DC.getLanguageManager();
-        
         stage.setTitle("Sokoban!");
         
-        this.show(stage, "#MenuKeuzePaneel");
+        this.show("#MenuKeuzePaneel");
         
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
             @Override
             public void handle(MouseEvent event)
             {
-                KiesTaalPaneel kiesTaalPaneel = new KiesTaalPaneel(stage);
+                (new KiesTaalPaneel()).run();
             }
         });
-    }
-
-    @Override
-    protected void reset(Stage stage)
-    {
-        
     }
 }

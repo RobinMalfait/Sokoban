@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import languages.LanguageManager;
 
 /**
  *
@@ -19,18 +20,13 @@ public abstract class BaseGui
     
     protected static DomeinController DC;
     
-    /**
-     *
-     * @param stage
-     */
-    protected abstract void reset(Stage stage);
-    
-    protected void show(Stage stage, String paneId)
-    {
-        Pane pane = (Pane) stage.getScene().lookup(paneId);
-
-        this.reset(stage);
+    protected static Stage stage;
+    protected static LanguageManager lang;
         
+    protected void show(String id)
+    {
+        Pane pane = (Pane) stage.getScene().lookup(id);
+
         pane.setVisible(true);
         pane.toFront();
     }
@@ -44,8 +40,8 @@ public abstract class BaseGui
         stage.show();
     }
     
-    protected Node findByIdInPane(Stage stage, String idString)
+    protected Node findByIdInPane(String id)
     {
-        return stage.getScene().lookup("#" + getClass().getSimpleName() + "_" + idString);
+        return stage.getScene().lookup("#" + getClass().getSimpleName() + "_" + id);
     }
 }

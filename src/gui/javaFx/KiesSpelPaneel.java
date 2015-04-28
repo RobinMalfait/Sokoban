@@ -7,51 +7,45 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import languages.LanguageManager;
 
 /**
  *
  * @author robin
  */
 public class KiesSpelPaneel extends BaseGui
-{
-    private LanguageManager lang;
-    
-    public KiesSpelPaneel(Stage stage)
+{    
+    public void run()
     {
-        this.init(stage);
+        this.init();
         
-        this.drawSpelBoard(stage);
+        this.drawSpelBoard();
     }
     
-    private void init(Stage stage)
-    {
-        this.lang = DC.getLanguageManager();
-        
+    private void init()
+    {        
         String speler[] = DC.geefHuidigeSpeler();
         
         String name = speler[0] + " " + speler[1];
         
         stage.setTitle(lang.get("game.welcome").toUpperCase() + " " + name + "!");
         
-        this.show(stage, "#KiesSpelPaneel");
+        this.show("#KiesSpelPaneel");
         
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MeldAanPaneel meldAanPaneel = new MeldAanPaneel(stage);
+                (new SubMenuPaneel()).run();
             }
         });
     }
     
-    private void drawSpelBoard(Stage stage)
+    private void drawSpelBoard()
     {
-        ((Label) this.findByIdInPane(stage, "kiesSpel")).setText(this.lang.get("game.choose.list") + ":");
+        ((Label) this.findByIdInPane("kiesSpel")).setText(lang.get("game.choose.list") + ":");
         
-        GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
+        GridPane grid = (GridPane) this.findByIdInPane("grid");
                 
         String spellen[][] = DC.geefLijstSpellen();
         
@@ -75,7 +69,7 @@ public class KiesSpelPaneel extends BaseGui
                 {
                     DC.kiesSpel(Integer.parseInt(spel[0]));
                     
-                    SpeelSpelPaneel speelSpelPaneel = new SpeelSpelPaneel(stage);
+                    (new SpeelSpelPaneel()).run();
                 }
             });
            
@@ -91,11 +85,5 @@ public class KiesSpelPaneel extends BaseGui
                 y++;
             }
         }
-    }
-
-    @Override
-    protected void reset(Stage stage)
-    {
-        
     }
 }
