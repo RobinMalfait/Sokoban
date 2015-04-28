@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import languages.LanguageManager;
 
 /**
@@ -18,38 +17,39 @@ import languages.LanguageManager;
  */
 public class MeldAanPaneel extends BaseGui
 {
-    public MeldAanPaneel(Stage stage)
+    public void run()
     {
-        this.init(stage);
+        this.init();
+        this.reset();
     }
     
-    private void init(Stage stage)
+    private void init()
     {
         LanguageManager lang = DC.getLanguageManager();
         
         stage.setTitle(lang.get("sign.in"));
         
-        this.show(stage, "#MeldAanPaneel");
+        this.show("#MeldAanPaneel");
         
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(stage);
+                (new MenuKeuzePaneel()).run();
             }
         });
         
-        Label lblUsername = (Label) this.findByIdInPane(stage, "lblUsername");
+        Label lblUsername = (Label) this.findByIdInPane("lblUsername");
         lblUsername.setText(lang.get("user.username") + ":");
         
-        Label lblPassword = (Label) this.findByIdInPane(stage, "lblPassword");
+        Label lblPassword = (Label) this.findByIdInPane("lblPassword");
         lblPassword.setText(lang.get("user.password") + ":");
         
-        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
-        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
+        TextField username = (TextField) this.findByIdInPane("txtUsername");
+        TextField password = (TextField) this.findByIdInPane("txtPassword");
         
-        Button signIn = (Button) this.findByIdInPane(stage, "signIn");    
+        Button signIn = (Button) this.findByIdInPane("signIn");    
         signIn.setText(lang.get("sign.in").toUpperCase());
         
         username.requestFocus(); // focus username
@@ -71,7 +71,7 @@ public class MeldAanPaneel extends BaseGui
             public void handle(KeyEvent event)
             {
                 if (event.getCode() == KeyCode.ENTER) {
-                    login(username, password, stage);
+                    login(username, password);
                 }
             }
         });
@@ -81,21 +81,21 @@ public class MeldAanPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                login(username, password, stage);
+                login(username, password);
                 
             }
         });
     }
     
-    private void login(TextField username, TextField password, Stage stage)
+    private void login(TextField username, TextField password)
     {
         try {
             DC.meldAan(username.getText(), password.getText());
 
-            SubMenuPaneel subMenuPaneel = new SubMenuPaneel(stage);
+            (new SubMenuPaneel()).run();
 
         } catch (WachtwoordException e) {
-            Label lblError = (Label) MeldAanPaneel.this.findByIdInPane(stage, "lblError");
+            Label lblError = (Label) MeldAanPaneel.this.findByIdInPane("lblError");
             lblError.setText(e.getMessage());
             lblError.setVisible(true);
 
@@ -103,15 +103,14 @@ public class MeldAanPaneel extends BaseGui
         }
     }
 
-    @Override
-    protected void reset(Stage stage)
+    protected void reset()
     {
-        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
+        TextField username = (TextField) this.findByIdInPane("txtUsername");
         username.setText("");
-        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
+        TextField password = (TextField) this.findByIdInPane("txtPassword");
         password.setText("");
         
-        Label lblError = (Label) MeldAanPaneel.this.findByIdInPane(stage, "lblError");
+        Label lblError = (Label) MeldAanPaneel.this.findByIdInPane("lblError");
         lblError.setText("");
         lblError.setVisible(false);
     }

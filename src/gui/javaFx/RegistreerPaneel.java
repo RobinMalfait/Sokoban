@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import languages.LanguageManager;
 
 /**
@@ -18,50 +17,52 @@ import languages.LanguageManager;
  */
 public class RegistreerPaneel extends BaseGui
 { 
-    public RegistreerPaneel(Stage stage)
+    public void run()
     {
-        this.init(stage);
+        this.init();
+        
+        this.reset();
     }
     
-    private void init(Stage stage)
+    private void init()
     {
         LanguageManager lang = DC.getLanguageManager();
         
         stage.setTitle(lang.get("sign.up"));
         
-        this.show(stage, "#RegistreerPaneel");
+        this.show("#RegistreerPaneel");
         
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(stage);
+                (new MenuKeuzePaneel()).run();
             }
         });
         
-        Label lblFirstName = (Label) this.findByIdInPane(stage, "lblFirstName");
+        Label lblFirstName = (Label) this.findByIdInPane("lblFirstName");
         lblFirstName.setText(lang.get("user.firstname") + ":");
         
-        Label lblLastName = (Label) this.findByIdInPane(stage, "lblLastName");
+        Label lblLastName = (Label) this.findByIdInPane("lblLastName");
         lblLastName.setText(lang.get("user.name") + ":");
         
-        Label lblUsername = (Label) this.findByIdInPane(stage, "lblUsername");
+        Label lblUsername = (Label) this.findByIdInPane("lblUsername");
         lblUsername.setText(lang.get("user.username") + ":");
         
-        Label lblPassword = (Label) this.findByIdInPane(stage, "lblPassword");
+        Label lblPassword = (Label) this.findByIdInPane("lblPassword");
         lblPassword.setText(lang.get("user.password") + ":");     
         
-        Label lblPasswordRepeat = (Label) this.findByIdInPane(stage, "lblPasswordRepeat");
+        Label lblPasswordRepeat = (Label) this.findByIdInPane("lblPasswordRepeat");
         lblPasswordRepeat.setText(lang.get("user.password.repeat") + ":");
         
-        TextField firstName = (TextField) this.findByIdInPane(stage, "txtFirstName");
-        TextField lastName = (TextField) this.findByIdInPane(stage, "txtLastName");
-        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
-        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
-        TextField passwordRepeat = (TextField) this.findByIdInPane(stage, "txtPasswordRepeat");
+        TextField firstName = (TextField) this.findByIdInPane("txtFirstName");
+        TextField lastName = (TextField) this.findByIdInPane("txtLastName");
+        TextField username = (TextField) this.findByIdInPane("txtUsername");
+        TextField password = (TextField) this.findByIdInPane("txtPassword");
+        TextField passwordRepeat = (TextField) this.findByIdInPane("txtPasswordRepeat");
         
-        Button signUp = (Button) this.findByIdInPane(stage, "signUpBtn");
+        Button signUp = (Button) this.findByIdInPane("signUpBtn");
         signUp.setText(lang.get("sign.up").toUpperCase());
         
         firstName.requestFocus(); // focus first name
@@ -116,7 +117,7 @@ public class RegistreerPaneel extends BaseGui
             public void handle(KeyEvent event)
             {
                 if (event.getCode() == KeyCode.ENTER) {
-                    registreer(firstName, lastName, username, password, passwordRepeat, stage);
+                    registreer(firstName, lastName, username, password, passwordRepeat);
                 }
             }
         });
@@ -127,42 +128,41 @@ public class RegistreerPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                registreer(firstName, lastName, username, password, passwordRepeat, stage);
+                registreer(firstName, lastName, username, password, passwordRepeat);
                 
             }
         });
     }
     
-    private void registreer(TextField firstName, TextField lastName, TextField username, TextField password, TextField passwordRepeat, Stage stage)
+    private void registreer(TextField firstName, TextField lastName, TextField username, TextField password, TextField passwordRepeat)
     {
         try {
-                    String sLastName = lastName.getText() == null ? "" : lastName.getText();
-                    String sFirstName = firstName.getText() == null ? "" : firstName.getText();
-                    String sUsername = username.getText() == null ? "" : username.getText();
-                    String sPassword = password.getText() == null ? "" : password.getText();
-                    String sPasswordRepeat = passwordRepeat.getText() == null ? "" : passwordRepeat.getText();
-                            
-                    DC.registreer(sLastName, sFirstName, sUsername, sPassword, sPasswordRepeat);
-                    
-                    SubMenuPaneel subMenuPaneel = new SubMenuPaneel(stage);
-                    
-                } catch (GebruikersnaamException | WachtwoordException e) {
-                    Label lblError = (Label) RegistreerPaneel.this.findByIdInPane(stage, "lblError");
-                    lblError.setText(e.getMessage());
-                    lblError.setVisible(true);
-                    
-                    firstName.requestFocus();
-                }
+            String sLastName = lastName.getText() == null ? "" : lastName.getText();
+            String sFirstName = firstName.getText() == null ? "" : firstName.getText();
+            String sUsername = username.getText() == null ? "" : username.getText();
+            String sPassword = password.getText() == null ? "" : password.getText();
+            String sPasswordRepeat = passwordRepeat.getText() == null ? "" : passwordRepeat.getText();
+
+            DC.registreer(sLastName, sFirstName, sUsername, sPassword, sPasswordRepeat);
+
+            (new SubMenuPaneel()).run();
+
+        } catch (GebruikersnaamException | WachtwoordException e) {
+            Label lblError = (Label) RegistreerPaneel.this.findByIdInPane("lblError");
+            lblError.setText(e.getMessage());
+            lblError.setVisible(true);
+
+            firstName.requestFocus();
+        }
     }
 
-    @Override
-    protected void reset(Stage stage)
+    protected void reset()
     {
-        TextField firstName = (TextField) this.findByIdInPane(stage, "txtFirstName");
-        TextField lastName = (TextField) this.findByIdInPane(stage, "txtLastName");
-        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
-        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
-        TextField passwordRepeat = (TextField) this.findByIdInPane(stage, "txtPasswordRepeat");
+        TextField firstName = (TextField) this.findByIdInPane("txtFirstName");
+        TextField lastName = (TextField) this.findByIdInPane("txtLastName");
+        TextField username = (TextField) this.findByIdInPane("txtUsername");
+        TextField password = (TextField) this.findByIdInPane("txtPassword");
+        TextField passwordRepeat = (TextField) this.findByIdInPane("txtPasswordRepeat");
         
         firstName.setText("");
         lastName.setText("");
@@ -170,7 +170,7 @@ public class RegistreerPaneel extends BaseGui
         password.setText("");
         passwordRepeat.setText("");
         
-        Label lblError = (Label) RegistreerPaneel.this.findByIdInPane(stage, "lblError");
+        Label lblError = (Label) RegistreerPaneel.this.findByIdInPane("lblError");
         lblError.setText("");
         lblError.setVisible(false);
     }

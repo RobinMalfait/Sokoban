@@ -3,7 +3,6 @@ package gui.javaFx;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import languages.LanguageManager;
 
 /**
@@ -15,17 +14,17 @@ public class SubMenuPaneel extends BaseGui
     
     private LanguageManager lang;
     
-    public SubMenuPaneel(Stage stage)
+    public void run()
     {
-        this.init(stage);
+        this.init();
         
-        Button playGame = (Button) this.findByIdInPane(stage, "playGame");      
+        Button playGame = (Button) this.findByIdInPane("playGame");      
         playGame.setText(lang.get("game.play").toUpperCase());
         
-        Button createGame = (Button) this.findByIdInPane(stage, "createGame");
+        Button createGame = (Button) this.findByIdInPane("createGame");
         createGame.setText(lang.get("game.create").toUpperCase());
         
-        Button modifyGame = (Button) this.findByIdInPane(stage, "modifyGame");
+        Button modifyGame = (Button) this.findByIdInPane("modifyGame");
         modifyGame.setText(lang.get("game.modify").toUpperCase());
         
         if (DC.isAdmin()) {
@@ -34,7 +33,7 @@ public class SubMenuPaneel extends BaseGui
                 @Override
                 public void handle(MouseEvent event)
                 {
-                    MaakSpelbordPaneel maakSpelbordPaneel = new MaakSpelbordPaneel(stage);
+                    (new MaakSpelbordPaneel()).run();
                 }
             });
         } else {
@@ -47,33 +46,26 @@ public class SubMenuPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                KiesSpelPaneel kiesSpelPaneel = new KiesSpelPaneel(stage);
+                (new KiesSpelPaneel()).run();
             }
-        });
-        
+        });        
     }
     
-    private void init(Stage stage)
+    private void init()
     {
         this.lang = DC.getLanguageManager();
         
         stage.setTitle("Sokoban!");
         
-        this.show(stage, "#SubMenuPaneel");
+        this.show( "#SubMenuPaneel");
         
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane( "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(stage);
+                (new MenuKeuzePaneel()).run();
             }
         });
-    }
-
-    @Override
-    protected void reset(Stage stage)
-    {
-        
     }
 }

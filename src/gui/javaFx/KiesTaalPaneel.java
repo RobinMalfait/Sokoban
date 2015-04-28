@@ -16,43 +16,40 @@ import languages.LanguageManager;
  */
 public class KiesTaalPaneel extends BaseGui
 {
-    private Stage stage;
-    
-    public KiesTaalPaneel(Stage stage)
+
+    public void run()
     {
-        this.init(stage);
+        this.init();
         
-        this.drawLanguagesBoard(stage);        
+        this.drawLanguagesBoard();
     }
     
     private void gaVerder(String language)
     {
         DC.setLanguage(language);
         
-        MenuKeuzePaneel menuKeuzePaneel = new MenuKeuzePaneel(this.stage);
+        (new MenuKeuzePaneel()).run();
     }
     
-    private void init(Stage stage)
+    private void init()
     {
-        this.stage = stage;
-        
         stage.setTitle("Kies uw taal!");
         
-        this.show(stage, "#KiesTaalPaneel");
+        this.show("#KiesTaalPaneel");
         
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
             @Override
             public void handle(MouseEvent event)
             {
-                MainPaneel mainPaneel = new MainPaneel(stage);
+                (new MainPaneel()).run();
             }
         });
     }
     
-    private void drawLanguagesBoard(Stage stage)
+    private void drawLanguagesBoard()
     {
-        GridPane grid = (GridPane) this.findByIdInPane(stage, "grid");
+        GridPane grid = (GridPane) this.findByIdInPane("grid");
                 
         LanguageManager lang = DC.getLanguageManager();
         
@@ -75,7 +72,7 @@ public class KiesTaalPaneel extends BaseGui
                 @Override
                 public void handle(MouseEvent event)
                 {
-                    KiesTaalPaneel.this.gaVerder(language);
+                    gaVerder(language);
                 }
             });
            
@@ -91,11 +88,5 @@ public class KiesTaalPaneel extends BaseGui
                 y++;
             }
         }
-    }
-
-    @Override
-    protected void reset(Stage stage)
-    {
-        
     }
 }

@@ -25,19 +25,9 @@ public class StartUpGui extends BaseGui
     {
         this.loadScene(stage, "Sokoban.fxml");
         
-        MainPaneel speelSpelPaneel = this.showIndexPage(stage);
-    }
-
-    private MainPaneel showIndexPage(Stage stage)
-    {
-        return new MainPaneel(stage);
-    }
-
-    @Override
-    protected void reset(Stage stage)
-    {
+        BaseGui.stage = stage;
         
-    }
-    
+        (new MainPaneel()).run();
+    }   
     
 }
