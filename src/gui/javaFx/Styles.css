@@ -72,7 +72,16 @@ Pane {
     -fx-background-image: url(../images/bord/K.png); 
 }
 
-.Y { // Mannetje
+.Z { // Mannetje
+    -fx-background-image: url(../images/bord/Y.png); 
+}
+.N { // Mannetje
+    -fx-background-image: url(../images/bord/Y.png); 
+}
+.O { // Mannetje
+    -fx-background-image: url(../images/bord/Y.png); 
+}
+.W { // Mannetje
     -fx-background-image: url(../images/bord/Y.png); 
 }
 
