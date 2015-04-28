@@ -55,6 +55,7 @@ public class EN extends Language
         map("game.create",              "Create a game");
         
         //gameboard
+        map("game.board",               "Gameboard");
         map("game.board.loading",       "The gameboard is loading");
         map("game.board.retry",         "Retry");
         map("game.board.completed",     "Congratulations! You've completed the gameboard");
