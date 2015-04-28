@@ -33,7 +33,7 @@ public class MaakSpelbordPaneel extends BaseGui
         this.items = new String[10][10];
         
         initializeBoard(); 
-        
+                
         DC.voegSpelToe("Test Game Robin");
         
         this.init(stage);
