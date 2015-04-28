@@ -226,4 +226,10 @@ public class MaakSpelbordPaneel extends BaseGui
         
         DC.slaHuidigSpelOp();
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        
+    }
 }

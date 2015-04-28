@@ -32,6 +32,12 @@ public class StartUpGui extends BaseGui
     {
         return new MainPaneel(stage);
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        
+    }
     
     
 }

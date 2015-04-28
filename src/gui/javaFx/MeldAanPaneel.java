@@ -72,4 +72,13 @@ public class MeldAanPaneel extends BaseGui
             }
         });
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
+        username.setText("");
+        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
+        password.setText("");
+    }
 }

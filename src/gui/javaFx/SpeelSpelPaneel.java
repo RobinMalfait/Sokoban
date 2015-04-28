@@ -218,4 +218,10 @@ public class SpeelSpelPaneel extends BaseGui
         });
     }
 
+    @Override
+    protected void reset(Stage stage)
+    {
+        DC.resetSpelbord();
+    }
+
 }

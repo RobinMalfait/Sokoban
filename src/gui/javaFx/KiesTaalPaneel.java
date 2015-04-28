@@ -92,4 +92,10 @@ public class KiesTaalPaneel extends BaseGui
             }
         }
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        
+    }
 }

@@ -91,4 +91,20 @@ public class RegistreerPaneel extends BaseGui
             }
         });
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        TextField firstName = (TextField) this.findByIdInPane(stage, "txtFirstName");
+        TextField lastName = (TextField) this.findByIdInPane(stage, "txtLastName");
+        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
+        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
+        TextField passwordRepeat = (TextField) this.findByIdInPane(stage, "txtPasswordRepeat");
+        
+        firstName.setText("");
+        lastName.setText("");
+        username.setText("");
+        password.setText("");
+        passwordRepeat.setText("");
+    }
 }
