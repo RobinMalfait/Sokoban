@@ -55,7 +55,8 @@ public class WVL extends Language
         map("game.create",              "E spel moakn");
         
         //gameboard
-        map("game.board.loading",       "Tpelbord is ant loadn");
+        map("game.board",               "Spelbord");
+        map("game.board.loading",       "Tspelbord is ant loadn");
         map("game.board.retry",         "Kèreki wére!");
         map("game.board.completed",     "Felicitajes! Jet et spelbord utgespeeld");
         map("game.board.next",          "noaste spelbord");
