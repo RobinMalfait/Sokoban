@@ -92,4 +92,10 @@ public class KiesSpelPaneel extends BaseGui
             }
         }
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        
+    }
 }

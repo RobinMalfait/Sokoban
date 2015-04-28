@@ -27,4 +27,10 @@ public class MainPaneel extends BaseGui
         });
     }
 
+    @Override
+    protected void reset(Stage stage)
+    {
+        
+    }
+
 }

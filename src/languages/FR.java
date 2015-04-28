@@ -55,6 +55,7 @@ public class FR extends Language
         map("game.create",              "Crée un jeu");
         
         //gameboard
+        map("game.board",               "Tableau");
         map("game.board.loading",       "Le tableau est en train de charger");
         map("game.board.retry",         "Refaire");
         map("game.board.completed",     "Félicitations! Vous avez completé le tableau");

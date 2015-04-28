@@ -320,7 +320,7 @@
                         <Button id="MaakSpelbordPaneel_M" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
                         <Button id="MaakSpelbordPaneel_D" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="D" GridPane.rowIndex="1" />
                         <Button id="MaakSpelbordPaneel_K" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="K" GridPane.columnIndex="1" />
-                        <Button id="MaakSpelbordPaneel_Y" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="Y" GridPane.rowIndex="2" />
+                        <Button id="MaakSpelbordPaneel_Y" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="Z" GridPane.rowIndex="2" />
                         <Button id="MaakSpelbordPaneel__" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="_" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
@@ -335,6 +335,8 @@
                   <Label id="MaakSpelbordPaneel_gameboard_name_label" layoutX="585.0" layoutY="423.0" text="Name:" />
                   <TextField id="MaakSpelbordPaneel_gameboard_name" layoutX="584.0" layoutY="448.0" />
                   <Label id="MaakSpelbordPaneel_error" layoutX="211.0" layoutY="21.0" styleClass="label-error" />
+                  <Label id="MaakSpelbordPaneel_lblSpelNaam" layoutX="211.0" layoutY="22.0" text="Spel naam:" />
+                  <Label id="MaakSpelbordPaneel_lblSpelbord" layoutX="448.0" layoutY="22.0" text="Spelbord:" />
                </children>
             </Pane>
          </children>

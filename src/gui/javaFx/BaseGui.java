@@ -19,10 +19,18 @@ public abstract class BaseGui
     
     protected static DomeinController DC;
     
+    /**
+     *
+     * @param stage
+     */
+    protected abstract void reset(Stage stage);
+    
     protected void show(Stage stage, String paneId)
     {
         Pane pane = (Pane) stage.getScene().lookup(paneId);
 
+        this.reset(stage);
+        
         pane.setVisible(true);
         pane.toFront();
     }

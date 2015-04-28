@@ -70,4 +70,10 @@ public class SubMenuPaneel extends BaseGui
             }
         });
     }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        
+    }
 }

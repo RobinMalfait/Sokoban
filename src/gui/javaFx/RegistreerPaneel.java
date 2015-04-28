@@ -6,6 +6,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import languages.LanguageManager;
@@ -64,12 +66,76 @@ public class RegistreerPaneel extends BaseGui
         
         firstName.requestFocus(); // focus first name
         
+        firstName.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    lastName.requestFocus();
+                }
+            }
+        });
+        
+        lastName.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    username.requestFocus();
+                }
+            }
+        });
+        
+        username.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    password.requestFocus();
+                }
+            }
+        });
+        
+        password.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    passwordRepeat.requestFocus();
+                }
+            }
+        });
+        
+        passwordRepeat.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    registreer(firstName, lastName, username, password, passwordRepeat, stage);
+                }
+            }
+        });
+        
+        
         signUp.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                try {
+                registreer(firstName, lastName, username, password, passwordRepeat, stage);
+                
+            }
+        });
+    }
+    
+    private void registreer(TextField firstName, TextField lastName, TextField username, TextField password, TextField passwordRepeat, Stage stage)
+    {
+        try {
                     String sLastName = lastName.getText() == null ? "" : lastName.getText();
                     String sFirstName = firstName.getText() == null ? "" : firstName.getText();
                     String sUsername = username.getText() == null ? "" : username.getText();
@@ -87,8 +153,25 @@ public class RegistreerPaneel extends BaseGui
                     
                     firstName.requestFocus();
                 }
-                
-            }
-        });
+    }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        TextField firstName = (TextField) this.findByIdInPane(stage, "txtFirstName");
+        TextField lastName = (TextField) this.findByIdInPane(stage, "txtLastName");
+        TextField username = (TextField) this.findByIdInPane(stage, "txtUsername");
+        TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
+        TextField passwordRepeat = (TextField) this.findByIdInPane(stage, "txtPasswordRepeat");
+        
+        firstName.setText("");
+        lastName.setText("");
+        username.setText("");
+        password.setText("");
+        passwordRepeat.setText("");
+        
+        Label lblError = (Label) RegistreerPaneel.this.findByIdInPane(stage, "lblError");
+        lblError.setText("");
+        lblError.setVisible(false);
     }
 }

@@ -140,24 +140,24 @@ public class SpeelSpelPaneel extends BaseGui
                     if (event.getCode().equals(KeyCode.UP))
                     {
                         DC.verplaatsSpeler(1);
-                        SpeelSpelPaneel.this.drawBoard(stage);
+                        drawBoard(stage);
                     } else if (event.getCode().equals(KeyCode.DOWN))
                     {
                         DC.verplaatsSpeler(2);
-                        SpeelSpelPaneel.this.drawBoard(stage);
+                        drawBoard(stage);
 
                     } else if (event.getCode().equals(KeyCode.LEFT))
                     {
                         DC.verplaatsSpeler(3);
-                        SpeelSpelPaneel.this.drawBoard(stage);
+                        drawBoard(stage);
 
                     } else if (event.getCode().equals(KeyCode.RIGHT))
                     {
                         DC.verplaatsSpeler(4);
-                        SpeelSpelPaneel.this.drawBoard(stage);
+                        drawBoard(stage);
                     } else if (event.getCode().equals(KeyCode.ENTER))
                     {
-                        SpeelSpelPaneel.this.drawBoard(stage);
+                        drawBoard(stage);
                     }
                 }
             }
@@ -171,7 +171,7 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(1);
-                    SpeelSpelPaneel.this.drawBoard(stage);
+                    drawBoard(stage);
                 }
             }
         });
@@ -184,7 +184,7 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(2);
-                    SpeelSpelPaneel.this.drawBoard(stage);
+                    drawBoard(stage);
                 }
             }
         });
@@ -198,7 +198,7 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(3);
-                    SpeelSpelPaneel.this.drawBoard(stage);
+                    drawBoard(stage);
                 }
             }
         });
@@ -212,10 +212,16 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(4);
-                    SpeelSpelPaneel.this.drawBoard(stage);
+                    drawBoard(stage);
                 }
             }
         });
+    }
+
+    @Override
+    protected void reset(Stage stage)
+    {
+        DC.resetSpelbord();
     }
 
 }
