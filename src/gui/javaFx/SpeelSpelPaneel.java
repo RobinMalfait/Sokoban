@@ -10,8 +10,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import languages.LanguageManager;
 
 /**
  *
@@ -19,23 +17,20 @@ import languages.LanguageManager;
  */
 public class SpeelSpelPaneel extends BaseGui
 {
+    private GridPane board;
+    private Label boardComplete;
+    private Pane overlay;
 
-    private LanguageManager lang;
-
-    private final GridPane board;
-    private final Label boardComplete;
-    private final Pane overlay;
-
-    public SpeelSpelPaneel(Stage stage)
+    public void run()
     {
-        this.init(stage);
+        this.init();
 
-        Button overlayButton = (Button) this.findByIdInPane(stage, "overlay_next");
-        Button retry = (Button) this.findByIdInPane(stage, "retry");
+        Button overlayButton = (Button) this.findByIdInPane("overlay_next");
+        Button retry = (Button) this.findByIdInPane("retry");
 
-        this.board = (GridPane) this.findByIdInPane(stage, "grid");
-        this.boardComplete = (Label) this.findByIdInPane(stage, "lblSpelbordComplete");
-        this.overlay = (Pane) this.findByIdInPane(stage, "overlay");
+        this.board = (GridPane) this.findByIdInPane("grid");
+        this.boardComplete = (Label) this.findByIdInPane("lblSpelbordComplete");
+        this.overlay = (Pane) this.findByIdInPane("overlay");
 
         retry.setTooltip(new Tooltip(lang.get("game.board.retry").toUpperCase()));
 
@@ -46,7 +41,7 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                SpeelSpelPaneel.this.drawBoard(stage);
+                drawBoard();
             }
         });
 
@@ -56,16 +51,16 @@ public class SpeelSpelPaneel extends BaseGui
             public void handle(MouseEvent event)
             {
                 DC.resetSpelbord();
-                SpeelSpelPaneel.this.drawBoard(stage);
+                drawBoard();
             }
         });
 
-        this.registerEvents(stage);
+        this.registerEvents();
 
-        this.drawBoard(stage);
+        this.drawBoard();
     }
 
-    private void drawBoard(Stage stage)
+    private void drawBoard()
     {
         this.overlay.setVisible(false);
 
@@ -95,13 +90,10 @@ public class SpeelSpelPaneel extends BaseGui
         {
             if (DC.isEindeSpel())
             {
-
-                this.board.getChildren().clear();
-
-                this.board.getStyleClass().add("win");
+                ((Pane) this.findByIdInPane("win")).setVisible(true);
             } else
             {
-                this.boardComplete.setText(this.lang.get("game.complete"));
+                this.boardComplete.setText(lang.get("game.complete"));
 
                 this.overlay.setVisible(true);
 
@@ -110,25 +102,23 @@ public class SpeelSpelPaneel extends BaseGui
         }
     }
 
-    private void init(Stage stage)
+    private void init()
     {
-        this.lang = DC.getLanguageManager();
-
         stage.setTitle("");
 
-        this.show(stage, "#SpeelSpelPaneel");
+        this.show("#SpeelSpelPaneel");
 
-        this.findByIdInPane(stage, "back").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                KiesSpelPaneel kiesSpelPaneel = new KiesSpelPaneel(stage);
+                (new KiesSpelPaneel()).run();
             }
         });
     }
 
-    private void registerEvents(Stage stage)
+    private void registerEvents()
     {
         stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
         {
@@ -140,30 +130,30 @@ public class SpeelSpelPaneel extends BaseGui
                     if (event.getCode().equals(KeyCode.UP))
                     {
                         DC.verplaatsSpeler(1);
-                        drawBoard(stage);
+                        drawBoard();
                     } else if (event.getCode().equals(KeyCode.DOWN))
                     {
                         DC.verplaatsSpeler(2);
-                        drawBoard(stage);
+                        drawBoard();
 
                     } else if (event.getCode().equals(KeyCode.LEFT))
                     {
                         DC.verplaatsSpeler(3);
-                        drawBoard(stage);
+                        drawBoard();
 
                     } else if (event.getCode().equals(KeyCode.RIGHT))
                     {
                         DC.verplaatsSpeler(4);
-                        drawBoard(stage);
+                        drawBoard();
                     } else if (event.getCode().equals(KeyCode.ENTER))
                     {
-                        drawBoard(stage);
+                        drawBoard();
                     }
                 }
             }
         });
 
-        this.findByIdInPane(stage, "up").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane("up").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -171,12 +161,12 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(1);
-                    drawBoard(stage);
+                    drawBoard();
                 }
             }
         });
 
-        this.findByIdInPane(stage, "down").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane("down").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -184,12 +174,12 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(2);
-                    drawBoard(stage);
+                    drawBoard();
                 }
             }
         });
 
-        this.findByIdInPane(stage, "left").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane("left").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
 
             @Override
@@ -198,12 +188,12 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(3);
-                    drawBoard(stage);
+                    drawBoard();
                 }
             }
         });
 
-        this.findByIdInPane(stage, "right").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane("right").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
 
             @Override
@@ -212,16 +202,16 @@ public class SpeelSpelPaneel extends BaseGui
                 if (!DC.isEindeSpel())
                 {
                     DC.verplaatsSpeler(4);
-                    drawBoard(stage);
+                    drawBoard();
                 }
             }
         });
     }
 
-    @Override
-    protected void reset(Stage stage)
+    protected void reset()
     {
         DC.resetSpelbord();
+        ((Pane) this.findByIdInPane("win")).setVisible(false);
     }
 
 }

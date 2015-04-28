@@ -2,7 +2,6 @@ package gui.javaFx;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 /**
  *
@@ -10,27 +9,20 @@ import javafx.stage.Stage;
  */
 public class MainPaneel extends BaseGui
 {
-
-    public MainPaneel(Stage stage)
+    public void run()
     {
         stage.setTitle("Welcome!");
         
-        this.show(stage, "#MainPaneel");
+        this.show("#MainPaneel");
         
-        this.findByIdInPane(stage, "playButton").setOnMouseClicked(new EventHandler<MouseEvent>()
+        this.findByIdInPane("playButton").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                KiesTaalPaneel kiesTaalPaneel = new KiesTaalPaneel(stage);
+                (new KiesTaalPaneel()).run();
             }
         });
-    }
-
-    @Override
-    protected void reset(Stage stage)
-    {
-        
     }
 
 }
