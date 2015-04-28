@@ -156,15 +156,7 @@ public class DomeinController
     {
         // zoek het spelobject in de spelrepository 
         this.huidigSpel.kiesSpelbord(id);
-
-        if (this.huidigSpel == null)
-        {
-            throw new SpelException(lang.get("game.board.notFound", ":id", id));
-        }
-        else
-        {
-            this.huidigSpel.bepaalVolgendSpelbord(); // Selecteer het eerste spelbord van het gekozen spel.
-        }
+           
     }
     /**
      * Geef een lijst van spellen in 2-dimensionele String vorm
@@ -348,7 +340,10 @@ public class DomeinController
     {
         this.huidigSpel.slaOp();
     }
-    
+    public void slaHuidigSpelbordOp()
+    {
+        this.huidigSpel.wijzigSpelbord();
+    }    
     /**
      * Geef het aantal verplaatsingen van het huidige spelbord.
      * 
@@ -364,14 +359,14 @@ public class DomeinController
      * 
      * @return boolean
      */
-    public boolean controleerSpel()
+    public void controleerSpel()
     {
-        this.huidigSpel.controleerSpel();
-        //false --> exception
-        
-        return true;
+            this.huidigSpel.controleerSpel();
     }
-    
+    public void controleerSpelbord()
+    {
+            this.huidigSpel.controleerSpelbord();
+    }    
     public void verwijderSpelbord(int spelbordId)
     {
         this.huidigSpel.verwijderSpelbord(spelbordId);

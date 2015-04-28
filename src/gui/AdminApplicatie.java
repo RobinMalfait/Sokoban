@@ -76,9 +76,7 @@ public class AdminApplicatie
             try
             {
                 dc.voegSpelToe(naam);
-                System.out.printf("Het spel %s werd aangemaakt, u zult nu een spelbord toevoegen.%n",
-                        dc.geefNaamHuidigSpel());
-
+                System.out.printf("Het spel %s werd aangemaakt, u zult nu een spelbord toevoegen.%n", dc.geefNaamHuidigSpel());
                 doorgaan = false;
             } 
             catch (SpelException e)
@@ -106,9 +104,9 @@ public class AdminApplicatie
             maakNieuwSpelbord(dc, input, lang);
         } while(doorgaan);
         
-        // 3. De gebruiker wenst geen nieuwe spelborden toe te voegen. Nu het spel opslan in de databank.
-        if(dc.controleerSpel()) 
-        {
+        // 3. De gebruiker wenst geen nieuwe spelborden toe te voegen. Nu het spel opslaan in de databank.
+        try {
+            dc.controleerSpel();
             System.out.printf("%n%nWenst u het spel met de spelborden op te slaan? Typ 'ja' om op te slaan.");
             keuze = input.next(); 
             input.nextLine(); // Buffer leegmaken     
@@ -121,14 +119,12 @@ public class AdminApplicatie
             else
             {
                 System.err.println("Het spel met zijn spelborden werd niet opgeslagen.");
-            }
+            }            
         }
-        else 
+        catch(Exception e)
         {
             System.err.println("Geen spel is opgeslaan, omdat er geen voltooide spelborden aanwezig waren.");
-        }
-       
-        
+        }     
         
         // 4. Doorsturen naar het adminmenu.
         start(dc, input, lang);
@@ -177,7 +173,13 @@ public class AdminApplicatie
 
             if (coordinaat.equals("stop"))
             {
-                if(!dc.controleerSpel())
+                try 
+                {
+                    dc.controleerSpel();
+                    doorgaan = false;
+                    break;                                        
+                }
+                catch(Exception e)
                 {
                     // Het spel kent nog geen afgewerkt spelbord.
                     System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat uw wenst te stoppen? (Typ 'stop' om te stoppen): ");
@@ -194,13 +196,10 @@ public class AdminApplicatie
                         System.out.printf("Voer een coördinaat: ");
                         coordinaat = input.next();
                         input.nextLine();                       
-                    }
+                    }                    
                 }
-                else 
-                {
-                    doorgaan = false;
-                    break;                  
-                }
+                
+
             }
 
             System.out.printf("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg): ");
@@ -332,7 +331,7 @@ public class AdminApplicatie
             }
             catch(InputMismatchException | SpelException e)
             {
-                System.out.println(e.getMessage());
+                System.err.println(e.getMessage());
             }
         }
         while(fouteInvoer);
@@ -351,32 +350,37 @@ public class AdminApplicatie
 
             if (coordinaat.equals("stop"))
             {
-                if(!dc.controleerSpel())
+                try {
+                    doorgaan = false;
+                    dc.controleerSpelbord(); // Geeft exception als er iets niet juist is.
+                     
+                    dc.slaHuidigSpelbordOp();
+                    System.out.println("Het spelbord is opgeslaan");
+                    break;                    
+                }
+                catch(SpelbordException e)
                 {
-                    // Het spel kent nog geen afgewerkt spelbord.
-                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat u wenst te stoppen? (Typ 'stop' om te stoppen): ");
+                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord (%s). Weet u zeker dat u wenst te stoppen? (Typ 'stop' om te stoppen): ", e.getMessage());
+                    System.out.printf("Let op: dit spelbord zal niet opgeslaan worden indien u stopt!");
                     keuze = input.next();
                     input.nextLine();
-                    
+
                     if(keuze.equals("stop"))
                     {
                         doorgaan = false;
                         break;
                     }
-                    else
+                    else 
                     {
+                        doorgaan = true;
                         System.out.printf("Voer een coördinaat: ");
                         coordinaat = input.next();
-                        input.nextLine();                       
+                        input.nextLine();                         
                     }
                 }
-                else 
-                {
-                    doorgaan = false;
-                    break;                  
-                }
+                
             }
-
+            
             System.out.printf("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg): ");
             keuze = input.next();
             input.nextLine();
@@ -390,6 +394,7 @@ public class AdminApplicatie
                 System.err.println(e.getMessage() + " Probeer opnieuw.");
                 System.out.println();
             }
+            
         } while (doorgaan);    
         
         // Spelbord is gewijzigd.

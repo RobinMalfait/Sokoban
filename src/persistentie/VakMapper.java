@@ -104,7 +104,7 @@ public class VakMapper extends Mapper
             for(Vak vak: vakArray)
             {
                 try {
-                   updateQuery("UPDATE Vak SET type = ? WHERE spelbordId = ? AND posX = ? AND posY = ?", vak.bepaalDatabaseType(), spelbordId, vak.getPosX(), vak.getPosY());
+                   updateQuery("UPDATE Vak SET type = ? WHERE spelbord_id = ? AND posX = ? AND posY = ?", vak.bepaalDatabaseType(), spelbordId, vak.getPosX(), vak.getPosY());
                 } 
                 catch (SQLException ex)
                 {
