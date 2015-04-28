@@ -32,6 +32,10 @@ public class SubMenuPaneel extends BaseGui
                     (new MaakSpelbordPaneel()).run();
                 }
             });
+            
+            modifyGame.setVisible(true);
+            createGame.setVisible(true);
+            
         } else {
             modifyGame.setVisible(false);
             createGame.setVisible(false);
