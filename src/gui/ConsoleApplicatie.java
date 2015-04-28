@@ -6,12 +6,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import languages.LanguageManager;
 
-public class ConsoleApplicatie
+public class ConsoleApplicatie extends BaseApplicatie
 {
-
-    public void start(DomeinController dc, Scanner input, LanguageManager lang)
+    public ConsoleApplicatie(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        
+        super(dc, input, lang);
+    }
+
+    public void start()
+    {
         int keuze;
         
         System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
@@ -30,16 +33,16 @@ public class ConsoleApplicatie
         switch (keuze)
         {
             case 1:
-                (new MeldAanApplicatie()).start(dc, input, lang);
+                (new MeldAanApplicatie(dc, input, lang)).start();
                 break;
             case 2:
-                (new RegistreerApplicatie()).start(dc, input, lang);
+                (new RegistreerApplicatie(dc, input, lang)).start();
                 break;
             case 3:
-                (new SpeelSpelApplicatie()).snelStarten(dc, input, lang);
+                (new SpeelSpelApplicatie(dc, input, lang)).snelStarten();
                 break;
             case 4:
-                (new AdminApplicatie()).snelStarten(dc, input, lang);
+                (new AdminApplicatie(dc, input, lang)).snelStarten();
                 break;
             case 5:
                 System.out.println(lang.get("app.quited"));
@@ -47,41 +50,5 @@ public class ConsoleApplicatie
             default:
                 System.err.println(lang.get("err.nonvalid"));
         }
-    }
-    
-    private int invoerMetControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
-    {
-        int keuze = 0;
-        boolean fouteInvoer = true;
-        do
-        {
-            try
-            {                
-                System.out.printf("%s: ", lang.get("list.choice"));
-                keuze = input.nextInt();
-
-                if (keuze < ondergrens || keuze > bovengrens)
-                {
-                    throw new IllegalArgumentException(lang.get("err.input", 
-                        "min", ondergrens, 
-                        "max", bovengrens));
-                }
-                
-                fouteInvoer = false;
-            }
-            catch (IllegalArgumentException e)
-            {
-                System.err.println(e.getMessage());
-                input.nextLine();
-            }
-            catch (InputMismatchException e)
-            {
-                System.err.println(lang.get("err.NaN"));
-                input.nextLine();
-            }
-
-        } while (fouteInvoer);
-                
-        return keuze;
     }
 }

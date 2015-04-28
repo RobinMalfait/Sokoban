@@ -6,10 +6,14 @@ import exceptions.WachtwoordException;
 import java.util.Scanner;
 import languages.LanguageManager;
 
-public class RegistreerApplicatie
+public class RegistreerApplicatie extends BaseApplicatie
 {
+    public RegistreerApplicatie(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        super(dc, input, lang);
+    }
 
-    public void start(DomeinController dc, Scanner input, LanguageManager lang)
+    public void start()
     {
         boolean invoerFout = true;
 
@@ -48,7 +52,7 @@ public class RegistreerApplicatie
         
         // Geregistreerd
         System.out.printf("%n%s",lang.get("register.succes"));
-        new MeldAanApplicatie().toonMenu(dc, input, lang);
+        new MeldAanApplicatie(dc, input, lang).toonMenu();
 
     }
 }

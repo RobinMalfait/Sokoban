@@ -16,10 +16,14 @@ import languages.LanguageManager;
  *
  * @author Demian
  */
-public class SpeelSpelApplicatie
+public class SpeelSpelApplicatie extends BaseApplicatie
 {
+    public SpeelSpelApplicatie(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        super(dc, input, lang);
+    }
 
-    public void start(DomeinController dc, Scanner input, LanguageManager lang)
+    public void start()
     {
         boolean invoerFout = true;
         int keuze = 0;
@@ -123,12 +127,12 @@ public class SpeelSpelApplicatie
             System.out.println(lang.get("app.quited"));
     }
 
-    public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
+    public void snelStarten()
     {
 
         dc.meldAan("SpeelSpelTest1", "SpeelSpelTest1");
 
-        this.start(dc, input, lang);
+        this.start();
     }
     
     private void laadSpelbord(DomeinController dc, Scanner input, LanguageManager lang)

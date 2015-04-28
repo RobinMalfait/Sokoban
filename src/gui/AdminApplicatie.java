@@ -11,18 +11,15 @@ import languages.LanguageManager;
  *
  * @author Demian
  */
-public class AdminApplicatie
+public class AdminApplicatie extends BaseApplicatie
 {
-    private DomeinController dc;
-    private Scanner input;
-    private LanguageManager lang;
-
-    public void start(DomeinController dc, Scanner input, LanguageManager lang)
+    public AdminApplicatie(DomeinController dc, Scanner input, LanguageManager lang)
     {
-        this.dc = dc;
-        this.input = input;
-        this.lang = lang;
+        super(dc, input, lang);
+    }
 
+    public void start()
+    {
         if (dc.isAdmin())
         {
             this.toonKeuze();
@@ -30,7 +27,7 @@ public class AdminApplicatie
         else
         {
             System.out.println("U bent geen admin.");
-            (new ConsoleApplicatie()).start(dc, input, lang);
+            (new ConsoleApplicatie(dc, input, lang)).start();
         }
     }
 
@@ -57,7 +54,7 @@ public class AdminApplicatie
                 wijzigSpel();
                 break;
             case 3:
-                (new ConsoleApplicatie()).start(dc, input, lang);
+                (new ConsoleApplicatie(dc, input, lang)).start();
                 break;
             case 4:
                 System.out.println(lang.get("app.quited"));
@@ -136,7 +133,7 @@ public class AdminApplicatie
         }
 
         // 4. Doorsturen naar het adminmenu.
-        start(dc, input, lang);
+        start();
     }
 
     public void maakNieuwSpelbord(DomeinController dc, Scanner input, LanguageManager lang)
@@ -304,7 +301,7 @@ public class AdminApplicatie
             System.out.printf("%nVoer een coördinaat (x,y) in of typ 'stop': ");
             coordinaat = input.next();
             input.nextLine();
-
+            
             if (coordinaat.toLowerCase().equals("stop"))
             {
                 // De gebruiker wenst te stoppen.
@@ -354,10 +351,10 @@ public class AdminApplicatie
         } while (doorgaan);
     }
 
-    public void snelStarten(DomeinController dc, Scanner input, LanguageManager lang)
+    public void snelStarten()
     {
         dc.meldAan("administrator", "Administrator1");
-        this.start(dc, input, lang);
+        this.start();
     }
 
     public void kiesSpel()
@@ -376,7 +373,7 @@ public class AdminApplicatie
         {
             try
             {
-                System.out.print("Kies een spel door het spelId op te geven: ");
+                System.out.print("Kies een spel door het spelId op te geven of type 'stop' om te stoppen: ");
                 id = input.nextInt();
                 input.nextLine();
 
@@ -417,4 +414,8 @@ public class AdminApplicatie
         } while (fouteInvoer);
     }
 
+    public void vragenOmTeStoppen()
+    {
+        
+    }
 }

@@ -29,7 +29,7 @@ public class TaalkeuzeApplicatie
             }
         } while (invoerFout);
 
-        new ConsoleApplicatie().start(dc, input, lang);
+        new ConsoleApplicatie(dc, input, lang).start();
     }
     
 }

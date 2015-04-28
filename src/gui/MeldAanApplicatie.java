@@ -9,9 +9,14 @@ import languages.LanguageManager;
  *
  * @author robin
  */
-public class MeldAanApplicatie 
+public class MeldAanApplicatie extends BaseApplicatie
 {
-    public void start(DomeinController dc, Scanner input, LanguageManager lang)
+    public MeldAanApplicatie(DomeinController dc, Scanner input, LanguageManager lang)
+    {
+        super(dc, input, lang);
+    }
+    
+    public void start()
     {   
         boolean invoerFout = true;
         boolean stop = false;
@@ -49,11 +54,11 @@ public class MeldAanApplicatie
             // De gebruiker is succesvol ingelogd.
             System.out.printf("%n%s %s, %s%n%n",lang.get("game.welcome"), gebruikersnaam,lang.get("sign.succes"));
             
-            toonMenu(dc, input, lang); 
+            toonMenu(); 
         } 
     }
     
-    public static void toonMenu(DomeinController dc, Scanner input, LanguageManager lang)
+    public void toonMenu()
     {
         // De mogelijke keuzes weergeven
         System.out.printf("%s%n1: %s%n2: %s%n%n", lang.get("sign.choise"), lang.get("sign.play"), lang.get("sign.quit"));
@@ -69,16 +74,16 @@ public class MeldAanApplicatie
         switch(keuze)
         {
             case 1:
-                new SpeelSpelApplicatie().start(dc, input, lang);
+                new SpeelSpelApplicatie(dc, input, lang).start();
                 break;
             case 2:
                 System.out.println(lang.get("sign.quitted"));
                 break;                
             case 3:
-                new AdminApplicatie().start(dc, input, lang);
+                new AdminApplicatie(dc, input, lang).start();
                 break;
             case 4:
-                new AdminApplicatie().start(dc, input, lang);
+                new AdminApplicatie(dc, input, lang).start();
                 break;           
         }
     }
