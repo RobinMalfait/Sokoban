@@ -36,7 +36,7 @@ public class KiesSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                (new MeldAanPaneel()).run();
+                (new SubMenuPaneel()).run();
             }
         });
     }
