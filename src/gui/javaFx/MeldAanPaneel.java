@@ -1,10 +1,13 @@
 package gui.javaFx;
 
 import exceptions.WachtwoordException;
+import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import languages.LanguageManager;
@@ -51,26 +54,53 @@ public class MeldAanPaneel extends BaseGui
         
         username.requestFocus(); // focus username
         
+        username.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    password.requestFocus();
+                }
+            }
+        });
+        
+        password.setOnKeyPressed(new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent event)
+            {
+                if (event.getCode() == KeyCode.ENTER) {
+                    login(username, password, stage);
+                }
+            }
+        });
+        
         signIn.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                try {
-                    DC.meldAan(username.getText(), password.getText());
-                    
-                    SubMenuPaneel subMenuPaneel = new SubMenuPaneel(stage);
-                    
-                } catch (WachtwoordException e) {
-                    Label lblError = (Label) MeldAanPaneel.this.findByIdInPane(stage, "lblError");
-                    lblError.setText(e.getMessage());
-                    lblError.setVisible(true);
-                    
-                    username.requestFocus();
-                }
+                login(username, password, stage);
                 
             }
         });
+    }
+    
+    private void login(TextField username, TextField password, Stage stage)
+    {
+        try {
+            DC.meldAan(username.getText(), password.getText());
+
+            SubMenuPaneel subMenuPaneel = new SubMenuPaneel(stage);
+
+        } catch (WachtwoordException e) {
+            Label lblError = (Label) MeldAanPaneel.this.findByIdInPane(stage, "lblError");
+            lblError.setText(e.getMessage());
+            lblError.setVisible(true);
+
+            username.requestFocus();
+        }
     }
 
     @Override
@@ -80,5 +110,9 @@ public class MeldAanPaneel extends BaseGui
         username.setText("");
         TextField password = (TextField) this.findByIdInPane(stage, "txtPassword");
         password.setText("");
+        
+        Label lblError = (Label) MeldAanPaneel.this.findByIdInPane(stage, "lblError");
+        lblError.setText("");
+        lblError.setVisible(false);
     }
 }

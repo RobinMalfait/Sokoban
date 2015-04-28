@@ -106,5 +106,9 @@ public class RegistreerPaneel extends BaseGui
         username.setText("");
         password.setText("");
         passwordRepeat.setText("");
+        
+        Label lblError = (Label) RegistreerPaneel.this.findByIdInPane(stage, "lblError");
+        lblError.setText("");
+        lblError.setVisible(false);
     }
 }
