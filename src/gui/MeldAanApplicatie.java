@@ -20,39 +20,41 @@ public class MeldAanApplicatie extends BaseApplicatie
     {   
         boolean invoerFout = true;
         boolean stop = false;
-        String gebruikersnaam = "", wachtwoord;
         
-        //controle inloggegevens
+        String gebruikersnaam = "";
+        String wachtwoord = "";
+
         do 
         {
-            try 
-            {
-                //inloggegevens
-                System.out.print(lang.get("user.username") + ": ");
-                gebruikersnaam = input.next().trim();
+            System.out.print(lang.get("user.username") + ": ");
+            gebruikersnaam = input.next(); input.nextLine();
 
-                if(gebruikersnaam.equals(lang.get("sign.quit")))
-                    stop = true;
-                else
-                {
-                    // Gebruikersnaam is niet gelijk aan "stop", dus we gaan verder.
-                    System.out.print(lang.get("user.password") + ": ");
-                    wachtwoord = input.next().trim();
-                    
+            if(gebruikersnaam.equals(lang.get("sign.quit")))
+            {
+                stop = true;
+            }
+            else
+            {
+                // Gebruikersnaam is niet gelijk aan "stop"
+                System.out.print(lang.get("user.password") + ": ");
+                wachtwoord = input.next(); input.nextLine();
+                
+                try 
+                {   
                     dc.meldAan(gebruikersnaam, wachtwoord);
                     invoerFout = false;                        
-                }              
-            }
-            catch(WachtwoordException e)
-            {
-                System.out.printf("%n%s%n%s%n%n", e.getMessage(), lang.get("sign.retry"));
+                }       
+                catch(WachtwoordException e)
+                {
+                    System.out.printf("%n%s%n%s%n%n", e.getMessage(), lang.get("sign.retry"));
+                }                
             }
         }
         while(invoerFout && !stop);
         
         if(!stop) {
             // De gebruiker is succesvol ingelogd.
-            System.out.printf("%n%s %s, %s%n%n",lang.get("game.welcome"), gebruikersnaam,lang.get("sign.succes"));
+            System.out.printf("%n%s %s %s, %s%n%n",lang.get("game.welcome"), (dc.isAdmin() ? "administrator" : ""), gebruikersnaam,lang.get("sign.succes"));
             
             toonMenu(); 
         } 

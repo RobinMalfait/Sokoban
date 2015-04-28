@@ -8,7 +8,6 @@ import languages.LanguageManager;
 
 public class TaalkeuzeApplicatie
 {
-
     public void start(DomeinController dc, Scanner input)
     {
         int keuze = 0;
