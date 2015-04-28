@@ -51,7 +51,7 @@ public class RegistreerApplicatie extends BaseApplicatie
         } while (invoerFout);
         
         // Geregistreerd
-        System.out.printf("%n%s",lang.get("register.succes"));
+        System.out.printf("%n%s%n",lang.get("register.succes"));
         new MeldAanApplicatie(dc, input, lang).toonMenu();
 
     }

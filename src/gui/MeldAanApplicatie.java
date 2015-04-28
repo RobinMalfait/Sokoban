@@ -26,10 +26,10 @@ public class MeldAanApplicatie extends BaseApplicatie
 
         do 
         {
-            System.out.print(lang.get("user.username") + ": ");
+            System.out.print(lang.get("user.username") + " (type 'stop' om te stoppen): ");
             gebruikersnaam = input.next(); input.nextLine();
 
-            if(gebruikersnaam.equals(lang.get("sign.quit")))
+            if(gebruikersnaam.toLowerCase().equals(lang.get("sign.quit").toLowerCase()))
             {
                 stop = true;
             }
@@ -46,7 +46,7 @@ public class MeldAanApplicatie extends BaseApplicatie
                 }       
                 catch(WachtwoordException e)
                 {
-                    System.out.printf("%n%s%n%s%n%n", e.getMessage(), lang.get("sign.retry"));
+                    System.out.printf("%n%s%n%n", e.getMessage());
                 }                
             }
         }

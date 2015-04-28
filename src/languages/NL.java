@@ -33,8 +33,8 @@ public class NL extends Language
         map("sign.choise",              "Wat wil je doen?");
         map("sign.play",                "Speel een spel");
         map("sign.quit",                "Stop");
-        map("sign.game.conf",           "Maak een spel");
-        map("sign.game.modify",         "Pas een bestaand spel aan");
+        map("sign.game.conf",           "Configureer nieuw spel");
+        map("sign.game.modify",         "Wijzig een spel");
         map("sign.quitted",             "Gestopt");
         
         //register
@@ -85,7 +85,7 @@ public class NL extends Language
         map("err.login",                "De gebruikersnaam of het wachtwoord is incorrect.");
         map("err.passwordrepeat",       "Het wachtwoord en de wachtwoordherhaling komen niet overeen");
         map("err.usernameDR",           "De gebruikersnaam moet minstens 8 karakters lang zijn");
-        map("err.passwordDR",           "Het wachtwoord moet 8 karakters lang zijn en moet een hoofdletter en een cijfer bevatten.");
+        map("err.passwordDR",           "Het wachtwoord moet 8 karakters lang zijn en moet minstens een hoofdletter, een kleine letter en een cijfer bevatten.");
         map("err.integer",              "Er werd een geheel getal verwacht.");
         map("err.nonvalid",             "Niet geldige keuze.");
         map("err.input",                "De keuze moet tussen :min en :max liggen.");
