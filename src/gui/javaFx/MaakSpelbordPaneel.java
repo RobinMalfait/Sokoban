@@ -79,7 +79,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                MaakSpelbordPaneel.this.updateField((int) event.getSceneX(), (int) event.getSceneY());
+                updateField((int) event.getSceneX(), (int) event.getSceneY());
             }
         });
         
@@ -93,11 +93,11 @@ public class MaakSpelbordPaneel extends BaseGui
                 String name = gameboardName.getText();
                 
                 if (name == null || name.equals("")) {
-                    MaakSpelbordPaneel.this.setError(lang.get("err.noGameboadName"));
+                    setError(lang.get("err.noGameboadName"));
                 } else {
-                    MaakSpelbordPaneel.this.cleanError();
+                    cleanError();
                     
-                    MaakSpelbordPaneel.this.saveGameboard(name);
+                    saveGameboard(name);
                 }
             }
         });
@@ -111,7 +111,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                MaakSpelbordPaneel.this.setActiveField(stage, "_");
+                setActiveField(stage, "_");
             }
         });
         
@@ -121,7 +121,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                MaakSpelbordPaneel.this.setActiveField(stage, "M");
+                setActiveField(stage, "M");
             }
         });
         
@@ -131,7 +131,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                MaakSpelbordPaneel.this.setActiveField(stage, "D");
+                setActiveField(stage, "D");
             }
         });
         
@@ -141,7 +141,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                MaakSpelbordPaneel.this.setActiveField(stage, "K");
+                setActiveField(stage, "K");
             }
         });
         
@@ -151,7 +151,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                MaakSpelbordPaneel.this.setActiveField(stage, "Y");
+                setActiveField(stage, "Y");
             }
         });
     }
@@ -230,6 +230,9 @@ public class MaakSpelbordPaneel extends BaseGui
     @Override
     protected void reset(Stage stage)
     {
-        
+        DC.resetSpelbord();
+        this.cleanError();
+        TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane(stage, "gameboard_name");
+        gameboardName.setText("");
     }
 }
