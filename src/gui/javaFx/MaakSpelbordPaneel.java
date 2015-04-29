@@ -15,22 +15,12 @@ import javafx.scene.layout.Pane;
 public class MaakSpelbordPaneel extends BaseGui
 {
     private GridPane board;
-        
     private String activeField = "M"; // Muur standaard
-    
     private String[][] items; // Keep state
-    
     private Label errorLabel;
 
     public void run()
     {
-        this.board = (GridPane) this.findByIdInPane("grid");
-        this.items = new String[10][10];
-        
-        initializeBoard(); 
-                
-        DC.voegSpelToe("Test Game Robin");
-        
         this.init();
         this.reset();
     }
@@ -48,9 +38,20 @@ public class MaakSpelbordPaneel extends BaseGui
 
     private void init()
     {
+        this.board = (GridPane) this.findByIdInPane("grid");
+        this.items = new String[10][10];
+        
+        initializeBoard(); 
+                
+        DC.voegSpelToe("Test Game Robin");
+        
         stage.setTitle("");
 
         this.show("#MaakSpelbordPaneel");
+        
+        this.registerSidebarClickEvents();
+        
+        this.drawBoard();
                 
         this.errorLabel = (Label) this.findByIdInPane("error");
         ((Label) this.findByIdInPane("gameboard_name_label")).setText(lang.get("game.board.name"));
@@ -63,10 +64,6 @@ public class MaakSpelbordPaneel extends BaseGui
                 (new SubMenuPaneel()).run();
             }
         });
-        
-        this.registerSidebarClickEvents();
-        
-        this.drawBoard();
         
         this.board.setOnMouseClicked(new EventHandler<MouseEvent>() 
         {

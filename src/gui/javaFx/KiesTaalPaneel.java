@@ -21,14 +21,7 @@ public class KiesTaalPaneel extends BaseGui
         
         this.drawLanguagesBoard();
     }
-    
-    private void gaVerder(String language)
-    {
-        DC.setLanguage(language);
         
-        (new MenuKeuzePaneel()).run();
-    }
-    
     private void init()
     {
         stage.setTitle("Kies uw taal!");
@@ -43,6 +36,13 @@ public class KiesTaalPaneel extends BaseGui
                 (new MainPaneel()).run();
             }
         });
+    }
+    
+    private void gaVerder(String language)
+    {
+        DC.setLanguage(language);
+        
+        (new MenuKeuzePaneel()).run();
     }
     
     private void drawLanguagesBoard()

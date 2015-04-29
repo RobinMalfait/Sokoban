@@ -13,7 +13,14 @@ public class MenuKeuzePaneel extends BaseGui
     public void run()
     {
         this.init();
-                
+    }
+    
+    private void init()
+    {
+        stage.setTitle("Sokoban!");
+        
+        this.show("#MenuKeuzePaneel");
+        
         Button signIn = (Button) this.findByIdInPane("signIn");
         signIn.setText(lang.get("sign.in").toUpperCase());
         
@@ -37,13 +44,6 @@ public class MenuKeuzePaneel extends BaseGui
                 (new RegistreerPaneel()).run();
             }
         });
-    }
-    
-    private void init()
-    {
-        stage.setTitle("Sokoban!");
-        
-        this.show("#MenuKeuzePaneel");
         
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {

@@ -23,11 +23,7 @@ public class KiesSpelPaneel extends BaseGui
     
     private void init()
     {        
-        String speler[] = DC.geefHuidigeSpeler();
-        
-        String name = speler[0] + " " + speler[1];
-        
-        stage.setTitle(lang.get("game.welcome").toUpperCase() + " " + name + "!");
+        setTitle();
         
         this.show("#KiesSpelPaneel");
         
@@ -39,6 +35,15 @@ public class KiesSpelPaneel extends BaseGui
                 (new SubMenuPaneel()).run();
             }
         });
+    }
+
+    private void setTitle()
+    {
+        String speler[] = DC.geefHuidigeSpeler();
+        
+        String name = speler[0] + " " + speler[1];
+        
+        stage.setTitle(lang.get("game.welcome").toUpperCase() + " " + name + "!");
     }
     
     private void drawSpelBoard()
