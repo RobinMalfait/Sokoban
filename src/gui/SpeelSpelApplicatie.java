@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -28,36 +28,32 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         boolean invoerFout = true;
         int keuze = 0;
         
-        // Welkombericht
-        System.out.printf("%s %s%n", 
-                lang.get("game.welcome"),
-                dc.geefHuidigeSpeler()[0]);
-        
-        System.out.printf("%n%s%n", 
-                lang.get("game.choose.list"));
-
-        // Overlopen van de Spellen
+        // Overlopen van de spellen
+        System.out.printf("%n%s:%n", lang.get("game.choose.list"));
         for (String[] spelString : dc.geefLijstSpellen())
         {
             System.out.printf("%4s: %-20s%n", spelString[0], spelString[1]);
         }
 
         // Keuze van de Spellen
-        System.out.print(lang.get("game.choose") + ": ");
-        
         do 
         {
             try 
             {
-                int spelId = input.nextInt();
-                dc.kiesSpel(spelId);
+                System.out.printf("%nKies een spel, of type 'stop' om te stoppen: ");
+                String spelId = input.next(); input.nextLine();
+                
+                if(spelId.equals("stop")) 
+                    return;
+                
+                dc.kiesSpel(Integer.valueOf(spelId));
                 invoerFout = false;
             }
             catch(SpelException se)
             {
                 System.err.println(se.getMessage());
             }
-            catch(InputMismatchException e)
+            catch(NumberFormatException e)
             {
                 System.err.println(lang.get("err.NaN"));
             }
@@ -66,14 +62,11 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         
         // Het laden van het eerste Spelbord van het spel
         System.out.printf("%n%s%n", lang.get("game.board.loading"));
-
+        invoerFout = true;
         do
         {
-            invoerFout = true;
-            
-            this.laadSpelbord(dc, input, lang);
+            this.toonSpebord();
 
-            //Verplaats de speler (met invoercontrole)
             do
             {
                 System.out.printf("%n%s:%n 1: %s%n 2: %s%n 3: %s%n 4: %s%n 5: %s%n 6: %s%n",
@@ -86,35 +79,38 @@ public class SpeelSpelApplicatie extends BaseApplicatie
                     lang.get("app.quit")
                 );
                 
-                keuze = this.invoerControle(1, 6, input, lang);
+                keuze = invoerMetControle(1, 6, input, lang);
                 
-                if (keuze == 6)         //stoppen
+                if (keuze == 6) {
                     break;       
-                else if (keuze == 5)    //resetSpelbord
+                }
+                else if (keuze == 5) {
                     dc.resetSpelbord();
-                else             
+                }
+                else {          
                     dc.verplaatsSpeler(keuze);
-                
-                this.laadSpelbord(dc, input, lang);
-
+                }
+                this.toonSpebord();
             } while (!dc.isEindeSpelbord());
 
-            // Als men hier komt is het Spelbord voltooid , oftewel wil de gebruiker stoppen.
-            if (keuze == 6)
+            // De gebruiker wenst te stoppen
+            if (keuze == 6) {
                 break;
-
+            }
+            
+            // Het spelbord is voltooid.
             System.out.printf("%n%s%n%n", lang.get("game.board.completed"));
             
             dc.bepaalVolgendSpelbord();
             
             //Mogelijkeheid tot stoppen (met invoercontrole)
-            System.out.printf("%s%n 1: %s%n 2: %s%n",
+            System.out.printf("%s%n 1: %s%n 2: %s%n%n",
                     lang.get("list.choose"),
                     lang.get("game.board.next"),
                     lang.get("app.quit")
             );
             
-            keuze = this.invoerControle(1, 2, input, lang);
+            keuze = this.invoerMetControle(1, 2, input, lang);
             
             if(keuze == 2) //stoppen
                 break;
@@ -123,19 +119,9 @@ public class SpeelSpelApplicatie extends BaseApplicatie
 
         if(dc.isEindeSpel())
             System.out.println(lang.get("game.completed"));
-        else
-            System.out.println(lang.get("app.quited"));
-    }
-
-    public void snelStarten()
-    {
-
-        dc.meldAan("SpeelSpelTest1", "SpeelSpelTest1");
-
-        this.start();
     }
     
-    private void laadSpelbord(DomeinController dc, Scanner input, LanguageManager lang)
+    private void toonSpebord()
     {
         System.out.println();
 
@@ -154,39 +140,4 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         );
     }
     
-    private int invoerControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
-    {
-        int keuze = 0;
-        boolean fouteInvoer = true;
-        do
-        {
-            try
-            {
-                System.out.printf("%s: ", lang.get("list.choice"));
-                keuze = input.nextInt();
-
-                if (keuze < ondergrens || keuze > bovengrens)
-                {
-                    throw new IllegalArgumentException(lang.get("err.input", 
-                        "min", ondergrens, 
-                        "max", bovengrens));
-                }
-                
-                fouteInvoer = false; 
-            }
-            catch (IllegalArgumentException | SpelException e)
-            {
-                System.err.println(e.getMessage());
-                input.nextLine();
-            }
-            catch (InputMismatchException e)
-            {
-                System.err.println(lang.get("err.NaN"));
-                input.nextLine();
-            }
-
-        } while (fouteInvoer);
-                
-        return keuze;
-    }
 }

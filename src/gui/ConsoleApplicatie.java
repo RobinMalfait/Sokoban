@@ -21,15 +21,13 @@ public class ConsoleApplicatie extends BaseApplicatie
 
         do
         {
-            System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
+            System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n%n",
                     lang.get("list.choose"),
                     lang.get("sign.in"),
                     lang.get("sign.up"),
-                    "Test speel spel (voorlopig)",
-                    "Admin",
                     lang.get("app.quit"));
 
-            keuze = invoerMetControle(1, 5, input, lang);
+            keuze = invoerMetControle(1, 3, input, lang);
 
             System.out.println(); // Een extra enter voor de volgende output
             input.nextLine(); // Buffer leegmaken
@@ -43,12 +41,6 @@ public class ConsoleApplicatie extends BaseApplicatie
                     (new RegistreerApplicatie(dc, input, lang)).start();
                     break;
                 case 3:
-                    (new SpeelSpelApplicatie(dc, input, lang)).snelStarten();
-                    break;
-                case 4:
-                    (new AdminApplicatie(dc, input, lang)).snelStarten();
-                    break;
-                case 5:
                     System.out.println(lang.get("app.quited"));
                     doorgaan = false;
                     break;
