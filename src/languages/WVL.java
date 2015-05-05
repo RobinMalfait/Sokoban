@@ -63,6 +63,10 @@ public class WVL extends Language
         map("game.board.moves",         "verplatsingn");
         map("game.board.notFound",      "Tspelbord met nummer :id is nie weregevondn in da spel ier.");
         map("game.board.exists",        "Tis ol e spelbord me die noamde in da spel ier.");
+        map("game.board.has",           "");
+        map("game.board.mustHavePlayer","");
+        map("game.board.playerLimit",   "");
+        map("game.board.boxEquality",   "");
         
         //player
         map("player.move",              "Beweegt jen peetje in een rigtinge");

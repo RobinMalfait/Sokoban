@@ -429,10 +429,10 @@ public class Spelbord extends Base
         }
         
         if (aantalMannetjes != 1)
-            throw new SpelbordException("Er " + (aantalMannetjes == 0 ? "moet" : "mag slechts") + " één mannetje op het spelbord staan. Het spelbord bevat nu " + aantalMannetjes + " mannetjes");
+            throw new SpelbordException(String.format("%s%s", (aantalMannetjes == 0) ? lang.get("game.board.mustHavePlayer") : lang.get("playerLimit") , lang.choice("game.board.has", aantalMannetjes, ":count", aantalMannetjes)));
 
         if(aantalDoelen == 0 || aantalDoelen != aantalKisten )
-            throw new SpelbordException("Het aantal kisten en doelen op het spelbord is niet gelijk.");
+            throw new SpelbordException(lang.get("game.board.boxEquality"));
         
     }  
     

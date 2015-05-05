@@ -63,6 +63,10 @@ public class FR extends Language
         map("game.board.moves",         "movements");
         map("game.board.notFound",      "Le tableau avec l'id :id n'a pas été trouvé dans ce jeu.");
         map("game.board.exists",        "Il existe déjà un tableu avec ce nom dans ce jeu.");
+        map("game.board.has",           "");
+        map("game.board.mustHavePlayer","");
+        map("game.board.playerLimit",   "");
+        map("game.board.boxEquality",   "");
         
         
         //player
