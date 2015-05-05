@@ -51,7 +51,7 @@ public class SubMenuPaneel extends BaseGui
                 @Override
                 public void handle(MouseEvent event)
                 {
-                    (new MaakSpelbordPaneel()).run();
+                    (new MaakSpelPaneel()).run();
                 }
             });
             
