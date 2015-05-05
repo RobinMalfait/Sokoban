@@ -28,29 +28,34 @@ public class Spelbord extends Base
     {
         vakMapper = new VakMapper();
         spelbordMapper = new SpelbordMapper();
-        
+
         this.spelbordId = spelbordId;
         this.naam = naam;
     }
-    
+
     /**
      * Maak een nieuw Spelbord-object aan
-     * @param naam 
+     *
+     * @param naam
      */
     public Spelbord(String naam)
     {
         vakMapper = new VakMapper();
         spelbordMapper = new SpelbordMapper();
-        
+
         this.naam = naam;
-        
+
         vakken = new Vak[10][10];
-        for(int x = 0; x < 10; x++)
-            for(int y = 0; y < 10; y++)
+        for (int x = 0; x < 10; x++)
+        {
+            for (int y = 0; y < 10; y++)
+            {
                 vakken[x][y] = new Vak(x, y, true, false);
-        
+            }
+        }
+
     }
-    
+
     /**
      * Verkrijg het spelbord id nummer
      *
@@ -60,7 +65,7 @@ public class Spelbord extends Base
     {
         return spelbordId;
     }
-    
+
     /**
      * Verkrijg de naam
      *
@@ -70,7 +75,7 @@ public class Spelbord extends Base
     {
         return naam;
     }
-    
+
     /**
      * Is het spelbord voltooid of niet?
      *
@@ -90,7 +95,7 @@ public class Spelbord extends Base
     {
         return verplaatsingen;
     }
-    
+
     /**
      * Verkrijg de vakken
      *
@@ -103,14 +108,14 @@ public class Spelbord extends Base
 
     /**
      * Voltooi een spel
-     * 
-     * @param voltooid 
+     *
+     * @param voltooid
      */
     public void setVoltooid(boolean voltooid)  //Nodig voor testklasse SpelTest
     {
         this.voltooid = voltooid;
     }
-    
+
     /**
      * Stel de vakken in voor het spelbord
      */
@@ -118,7 +123,7 @@ public class Spelbord extends Base
     {
         vakken = vakMapper.geefVakken(spelbordId);
     }
-    
+
     /**
      * Toon het spelbord
      *
@@ -141,8 +146,10 @@ public class Spelbord extends Base
          -:  Leeg Vak
          */
 
-        if(vakken == null)
+        if (vakken == null)
+        {
             geefVakken();
+        }
 
         String[][] spelbordString = new String[vakken.length][vakken[0].length];
 
@@ -157,9 +164,7 @@ public class Spelbord extends Base
                 if (!vak.isToegankelijk())          //Muur
                 {
                     spelbordString[x][y] = "M";
-                }
-
-                //toegankelijk vak
+                } //toegankelijk vak
                 else
                 {
                     if (vak.isDoel())               //DOEL
@@ -167,27 +172,20 @@ public class Spelbord extends Base
                         if (vak.bevatKist())           // --> Doel met kist
                         {
                             spelbordString[x][y] = "V";
-                        }
-                        else if (vak.bevatMannetje())  // --> Doel met mannetje
+                        } else if (vak.bevatMannetje())  // --> Doel met mannetje
                         {
                             spelbordString[x][y] = "J";
-                        }
-                        else                           // --> Doel zonder kist
+                        } else                           // --> Doel zonder kist
                         {
                             spelbordString[x][y] = "D";
                         }
-                    }
-
-                    else if (vak.bevatMannetje())   //Mannetje
+                    } else if (vak.bevatMannetje())   //Mannetje
                     {
                         spelbordString[x][y] = vak.geefRichtingMannetje();
-                    }
-
-                    else if (vak.bevatKist())       //Kist
+                    } else if (vak.bevatKist())       //Kist
                     {
                         spelbordString[x][y] = "K";
-                    }
-                    else                            //Leeg vak
+                    } else                            //Leeg vak
                     {
                         spelbordString[x][y] = "_";
                     }
@@ -199,29 +197,28 @@ public class Spelbord extends Base
 
         return spelbordString;
     }
-    
+
     /**
      * Verplaats de speler in een bepaalde richting
-     * 
-     * @param richting 
+     *
+     * @param richting
      */
     public void verplaatsSpeler(int richting)
     {
         Vak vakMetMannetje, aanliggendVak, tweedeAanliggendVak;
-        
+
         vakMetMannetje = geefVakMetMannetje();
         vakMetMannetje.stelRichtingMannetjeIn(richting);
-        
+
         aanliggendVak = geefAanliggendVak(vakMetMannetje.getPosX(), vakMetMannetje.getPosY(), richting);
 
         if (aanliggendVak.isLeeg())             //vak zonder kist of muur
         {
             aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
             vakMetMannetje.setMannetje(null);
-            
+
             verplaatsingen++;
-        }
-        else if (aanliggendVak.bevatKist())     //vak met kist
+        } else if (aanliggendVak.bevatKist())     //vak met kist
         {
             tweedeAanliggendVak = geefAanliggendVak(aanliggendVak.getPosX(), aanliggendVak.getPosY(), richting);
 
@@ -232,7 +229,7 @@ public class Spelbord extends Base
 
                 aanliggendVak.setMannetje(vakMetMannetje.getMannetje());
                 vakMetMannetje.setMannetje(null);
-                
+
                 verplaatsingen++;
             }
         }
@@ -240,7 +237,7 @@ public class Spelbord extends Base
 
     /**
      * Geeft het vak waar het mannetje op staat terug
-     * 
+     *
      * @return Vak
      */
     private Vak geefVakMetMannetje()
@@ -261,35 +258,44 @@ public class Spelbord extends Base
 
     /**
      * Geef het aanliggend vak, rekening houdend met de richting
-     * 
+     *
      * @param posX
      * @param posY
      * @param richting
-     * 
+     *
      * @return Vak
      */
     private Vak geefAanliggendVak(int posX, int posY, int richting)
     {
         int min = 1, max = 4;
-        
+
         if (richting < min || richting > max)
         {
             throw new SpelException(lang.get("player.wrongDirection", ":min", min, ":max", max));
         }
-        
-        switch (richting) {
-            case 1: posX -= 1; break; // omhoog
-            case 2: posX += 1; break; // omlaag
-            case 3: posY -= 1; break; // links
-            case 4: posY += 1; break; // rechts
+
+        switch (richting)
+        {
+            case 1:
+                posX -= 1;
+                break; // omhoog
+            case 2:
+                posX += 1;
+                break; // omlaag
+            case 3:
+                posY -= 1;
+                break; // links
+            case 4:
+                posY += 1;
+                break; // rechts
         }
-        
+
         return vakken[posX][posY];
     }
-    
+
     /**
      * Controleer of het spelbord voltooid is
-     * 
+     *
      * @return boolean
      */
     public boolean isEindeSpelbord()
@@ -307,7 +313,7 @@ public class Spelbord extends Base
         this.voltooid = true;
         return this.voltooid;
     }
-    
+
     /**
      * Stel de vakken van het spelbord in op hun beginwaarde.
      */
@@ -316,10 +322,10 @@ public class Spelbord extends Base
         this.geefVakken();
         this.verplaatsingen = 0;
     }
-    
+
     /**
      * Plaats een item op een vak.
-     * 
+     *
      * @param coordinaat String
      * @param keuze String
      */
@@ -327,16 +333,20 @@ public class Spelbord extends Base
     {
         coordinaat = coordinaat.trim();
         String[] xy = coordinaat.split(",");
-        
+
         if (xy.length != 2)
+        {
             throw new SpelbordException(lang.get("player.wrongCoordinates"));
-        
+        }
+
         int x = Integer.valueOf(xy[0]);
         int y = Integer.valueOf(xy[1]);
-        
+
         if (x < 0 || x > (vakken.length - 1) || y < 0 || y > (vakken[1].length - 1))
+        {
             throw new SpelbordException(lang.get("player.wrongCoordinates"));
-        
+        }
+
         Vak vak = vakken[x][y];
 
         switch (keuze.toUpperCase())
@@ -373,31 +383,37 @@ public class Spelbord extends Base
                 break;
             default:                                      // niet in lijst
                 throw new SpelbordException(lang.get("err.invalidType"));
-           
-        }        
-    }  
-    
+
+        }
+    }
+
     /**
      * Sla de wijzigingen in het huidige spelbord op.
-     * 
+     *
      * @param spelId int
      */
     public void voegToe(int spelId)
     {
-        controleerSpelbord();
-                   
-        this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
+        try
+        {
+            controleerSpelbord();
 
-        if (this.spelbordId == 0)
+            this.spelbordId = spelbordMapper.voegSpelbordToe(this.naam, spelId);
+
+            if (this.spelbordId == 0)
+            {
+                throw new SpelbordException(lang.get("game.notSaved"));
+            } else
+            {
+                vakMapper.voegVakkenToe(vakken, this.spelbordId);
+            }
+        } 
+        catch (SpelbordException e)
         {
-            throw new SpelbordException(lang.get("game.notSaved"));
-        }
-        else
-        {
-            vakMapper.voegVakkenToe(vakken, this.spelbordId);
+            // Enkel de voltooide spelborden zullen opgeslaan worden.
         }
     }
-    
+
     /**
      * Sla het spel op
      */
@@ -405,36 +421,43 @@ public class Spelbord extends Base
     {
         controleerSpelbord();
         vakMapper.wijzigVakken(vakken, this.spelbordId);
-    }   
-    
+    }
+
     /**
-     * Controleer of het spelbord aan de eisen voldoet.
-     * Een spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
+     * Controleer of het spelbord aan de eisen voldoet. Een spelbord moet
+     * evenveel doelen als kisten bevatten en juist één mannetje hebben.
      */
     public void controleerSpelbord()
     {
         int aantalDoelen = 0, aantalKisten = 0, aantalMannetjes = 0;
-        
+
         for (Vak[] vakArray : vakken)
         {
             for (Vak vak : vakArray)
             {
                 if (vak.isDoel())
+                {
                     aantalDoelen++;
-                else if (vak.bevatKist())
+                } else if (vak.bevatKist())
+                {
                     aantalKisten++;
-                else if (vak.bevatMannetje())
+                } else if (vak.bevatMannetje())
+                {
                     aantalMannetjes++;
+                }
             }
         }
-        
-        if (aantalMannetjes != 1)
-            throw new SpelbordException(String.format("%s %s", (aantalMannetjes == 0) ? lang.get("game.board.mustHavePlayer") : lang.get("playerLimit") , lang.choice("game.board.has", aantalMannetjes, "count", aantalMannetjes)));
 
-        if(aantalDoelen == 0 || aantalDoelen != aantalKisten )
+        if (aantalMannetjes != 1)
+        {
+            throw new SpelbordException(String.format("%s %s", (aantalMannetjes == 0) ? lang.get("game.board.mustHavePlayer") : lang.get("playerLimit"), lang.choice("game.board.has", aantalMannetjes, "count", aantalMannetjes)));
+        }
+
+        if (aantalDoelen == 0 || aantalDoelen != aantalKisten)
+        {
             throw new SpelbordException(lang.get("game.board.boxEquality"));
-        
-    }  
-    
-    
+        }
+
+    }
+
 }

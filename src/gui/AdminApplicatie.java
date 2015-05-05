@@ -56,12 +56,12 @@ public class AdminApplicatie extends BaseApplicatie
             } 
             else
             {
-                System.err.println("Het spel met zijn spelborden werd niet opgeslagen.");
+                System.out.println("Het spel met zijn spelborden werd niet opgeslagen.");
             }
         } 
         catch (Exception e)
         {
-            System.err.println("Geen spel is opgeslaan, omdat er geen voltooide spelborden aanwezig waren.");
+            System.out.println(e.getMessage());
         }
     }
     
