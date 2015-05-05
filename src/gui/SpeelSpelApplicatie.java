@@ -99,9 +99,12 @@ public class SpeelSpelApplicatie extends BaseApplicatie
             }
             
             // Het spelbord is voltooid.
-            System.out.printf("%n%s%n%n", lang.get("game.board.completed"));
+            System.out.printf("%nGefeliciteerd, je voltooide spelbord %d/%d%n%n", dc.geefAantalVoltooideSpelborden(), dc.geefAantalSpelborden());
             
             dc.bepaalVolgendSpelbord();
+
+            if(dc.isEindeSpel())
+                break;
             
             //Mogelijkeheid tot stoppen (met invoercontrole)
             System.out.printf("%s%n 1: %s%n 2: %s%n%n",
@@ -118,7 +121,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         } while (!dc.isEindeSpel());
 
         if(dc.isEindeSpel())
-            System.out.println(lang.get("game.completed"));
+            System.out.printf("%s%n%n", lang.get("game.completed"));
     }
     
     @Override
