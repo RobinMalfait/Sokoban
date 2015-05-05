@@ -290,7 +290,7 @@ public class Spel extends Base
      */
     public void controleerSpel()
     {
-        if(geefVoltooideSpelborden().isEmpty())
+        if(geefCorrecteSpelborden().isEmpty())
             throw new SpelException("Het spel kent geen voltooide spelborden");
     }
      
@@ -379,7 +379,7 @@ public class Spel extends Base
      * 
      * @return List&gt;Spelbord&lt;
      */
-    public List<Spelbord> geefVoltooideSpelborden()
+    public List<Spelbord> geefCorrecteSpelborden()
     {
         List<Spelbord> voltooideSpelborden = new ArrayList<>();
         for (Spelbord spelbord : spelborden)
@@ -404,7 +404,7 @@ public class Spel extends Base
      */
     public int geefAantalVoltooideSpelborden()
     {
-        return this.geefVoltooideSpelborden().size();
+        return this.geefCorrecteSpelborden().size();
     }
 
     /**
