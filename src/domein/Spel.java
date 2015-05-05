@@ -404,7 +404,12 @@ public class Spel extends Base
      */
     public int geefAantalVoltooideSpelborden()
     {
-        return this.geefCorrecteSpelborden().size();
+        int aantal = 0;
+        for(Spelbord spelbord: spelborden)
+            if(spelbord.isVoltooid())
+                aantal++;
+        
+        return aantal;
     }
 
     /**
