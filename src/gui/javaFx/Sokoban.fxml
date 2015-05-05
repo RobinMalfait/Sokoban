@@ -334,7 +334,7 @@
                               <String fx:value="btn-space" />
                            </styleClass>
                         </Button>
-                        <Label id="SpeelSpelPaneel_lblVoltooid" alignment="CENTER" layoutX="200.0" layoutY="229.0" prefHeight="17.0" prefWidth="400.0" styleClass="voltooid" text="1/5 Voltooid" />
+                        <Label id="SpeelSpelPaneel_lblComplete" alignment="CENTER" layoutX="200.0" layoutY="229.0" prefHeight="17.0" prefWidth="400.0" styleClass="voltooid" text="1/5 Voltooid" />
                      </children>
                   </Pane>
                   <Pane id="SpeelSpelPaneel_win" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0" styleClass="win" visible="false" />

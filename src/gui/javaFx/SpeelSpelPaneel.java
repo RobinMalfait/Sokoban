@@ -18,21 +18,41 @@ import javafx.scene.layout.Pane;
 public class SpeelSpelPaneel extends BaseGui
 {
     private GridPane board;
-    private Label boardComplete;
+    private Label complete;
     private Pane overlay;
 
+    
     /**
      * Run het SpeelSpelPaneel
      */
     public void run()
     {
         this.init();
+    }
+    
+    /**
+     * Initialiseer het paneel
+     */
+    private void init()
+    {
+        stage.setTitle(lang.get("sign.play"));
 
+        this.show("#SpeelSpelPaneel");
+
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                (new KiesSpelPaneel()).run();
+            }
+        });
+        
         Button overlayButton = (Button) this.findByIdInPane("overlay_next");
         Button retry = (Button) this.findByIdInPane("retry");
 
         this.board = (GridPane) this.findByIdInPane("grid");
-        this.boardComplete = (Label) this.findByIdInPane("lblSpelbordComplete");
+        this.complete = (Label) this.findByIdInPane("lblComplete");
         this.overlay = (Pane) this.findByIdInPane("overlay");
 
         retry.setTooltip(new Tooltip(lang.get("game.board.retry").toUpperCase()));
@@ -64,32 +84,12 @@ public class SpeelSpelPaneel extends BaseGui
     }
     
     /**
-     * Initialiseer het paneel
-     */
-    private void init()
-    {
-        stage.setTitle(lang.get("sign.play"));
-
-        this.show("#SpeelSpelPaneel");
-
-        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                (new KiesSpelPaneel()).run();
-            }
-        });
-    }
-    
-        /**
      * Teken het bord
      */
     private void drawBoard()
     {
         this.overlay.setVisible(false);
-
-        this.boardComplete.setText("");
+        this.complete.setVisible(false);
 
         int x = 0;
         int y = 0;
@@ -118,9 +118,13 @@ public class SpeelSpelPaneel extends BaseGui
                 ((Pane) this.findByIdInPane("win")).setVisible(true);
             } else
             {
-                this.boardComplete.setText(lang.get("game.complete"));
-
                 this.overlay.setVisible(true);
+                
+                this.complete.setText(
+                    String.format("%d/%d", DC.geefAantalVoltooideSpelborden(), DC.geefAantalSpelborden())
+                );
+                
+                this.complete.setVisible(true);
 
                 DC.bepaalVolgendSpelbord();
             }
