@@ -235,6 +235,38 @@ public class DomeinController
 
         huidigSpel.verplaatsSpeler(richting);
     }
+    
+    /**
+     * Verplaats de speler naar omhoog
+     */
+    public void verplaatsSpelerOmhoog()
+    {
+        this.verplaatsSpeler(1);
+    }
+    
+    /**
+     * Verplaats de speler naar omlaag
+     */
+    public void verplaatsSpelerOmlaag()
+    {
+        this.verplaatsSpeler(2);
+    }
+    
+    /**
+     * Verplaats de speler naar links
+     */
+    public void verplaatsSpelerLinks()
+    {
+        this.verplaatsSpeler(3);
+    }
+    
+    /**
+     * Verplaats de speler naar rechts
+     */
+    public void verplaatsSpelerRechts()
+    {
+        this.verplaatsSpeler(4);
+    }
 
     /**
      * Controleer of het huidig spelbord van het spel voltooid is
