@@ -290,10 +290,8 @@ public class Spel extends Base
      */
     public void controleerSpel()
     {
-        for (Spelbord spelbord : spelborden)
-        {
-            spelbord.controleerSpelbord();
-        }
+        if(geefVoltooideSpelborden().isEmpty())
+            throw new SpelException("Het spel kent geen voltooide spelborden");
     }
      
     /**
@@ -375,5 +373,23 @@ public class Spel extends Base
         {
             spelbordMapper.verwijderSpelbord(spelbord.getSpelbordId());
         }
+    }
+    
+    public List<Spelbord> geefVoltooideSpelborden()
+    {
+        List<Spelbord> voltooideSpelborden = new ArrayList<>();
+        for (Spelbord spelbord : spelborden)
+        {
+            try 
+            {
+                spelbord.controleerSpelbord();
+                voltooideSpelborden.add(spelbord);
+            }
+            catch(SpelbordException e)
+            {
+                
+            }
+        }   
+        return voltooideSpelborden;
     }
 }

@@ -235,7 +235,7 @@ public class AdminApplicatie extends BaseApplicatie
 
         do
         {
-            naam = geefStringIn("%nGeef een naam voor het spelbord in, of type 'stop' om te stoppen");
+            naam = geefStringIn("%nGeef een naam voor het spelbord in, of type 'stop' als je geen spelborden meer wilt toevoegen");
             try 
             {
                 if (naam.equals("stop"))

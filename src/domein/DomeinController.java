@@ -386,7 +386,7 @@ public class DomeinController
     }
     
     /**
-     * Controleer of het gewijzigde spel aan de eisen voldoet.
+     * Controleer of het spel aan de eisen voldoet.
      */
     public void controleerSpel()
     {
