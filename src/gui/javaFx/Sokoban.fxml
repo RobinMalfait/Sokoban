@@ -14,24 +14,6 @@
    <children>
       <StackPane>
          <children>
-            <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Button id="MenuKeuzePaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
-                     <styleClass>
-                        <String fx:value="btn" />
-                        <String fx:value="back" />
-                     </styleClass>
-                  </Button>
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="MenuKeuzePaneel_signIn" layoutX="275.0" layoutY="236.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="AANMELDEN" />
-                  <Button id="MenuKeuzePaneel_signUp" layoutX="275.0" layoutY="322.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="REGISTREREN" />
-               </children>
-            </Pane>
             <Pane id="MeldAanPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
                   <Button id="MeldAanPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
@@ -246,6 +228,24 @@
                   <Label id="KiesSpelPaneel_kiesSpel" layoutX="116.0" layoutY="179.0" text="Kies een spel" />
                </children>
             </Pane>
+            <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button id="MenuKeuzePaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="MenuKeuzePaneel_signIn" layoutX="275.0" layoutY="236.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="AANMELDEN" />
+                  <Button id="MenuKeuzePaneel_signUp" layoutX="275.0" layoutY="322.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="250.0" styleClass="btn" text="REGISTREREN" />
+               </children>
+            </Pane>
             <Pane id="SpeelSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
                   <Button id="SpeelSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
@@ -319,7 +319,6 @@
                            </styleClass></Button>
                      </children>
                   </GridPane>
-                  <Label id="SpeelSpelPaneel_lblSpelbordComplete" layoutX="521.0" layoutY="56.0" text="lblSpelbordComplete" />
                   <Button id="SpeelSpelPaneel_retry" layoutX="622.0" layoutY="349.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="79.0">
                      <styleClass>
                         <String fx:value="btn" />
@@ -327,7 +326,7 @@
                         <String fx:value="btn-retry" />
                      </styleClass>
                   </Button>
-                  <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay" visible="false">
+                  <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay">
                      <children>
                         <Button id="SpeelSpelPaneel_overlay_next" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" prefWidth="400.0" text="VOLGENDE SPELBORD" textAlignment="CENTER">
                            <styleClass>
@@ -335,6 +334,7 @@
                               <String fx:value="btn-space" />
                            </styleClass>
                         </Button>
+                        <Label id="SpeelSpelPaneel_lblComplete" alignment="CENTER" layoutX="200.0" layoutY="229.0" prefHeight="17.0" prefWidth="400.0" styleClass="voltooid" text="1/5 Voltooid" />
                      </children>
                   </Pane>
                   <Pane id="SpeelSpelPaneel_win" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0" styleClass="win" visible="false" />

@@ -344,7 +344,6 @@ public class Spel extends Base
             spelbordMapper.verwijderSpelbord(spelbordId);
             spelborden.remove(spelbord);
         }
-        
     }
     
     /**
@@ -375,6 +374,11 @@ public class Spel extends Base
         }
     }
     
+    /**
+     * Geef voltooide Spelborden
+     * 
+     * @return List&gt;Spelbord&lt;
+     */
     public List<Spelbord> geefVoltooideSpelborden()
     {
         List<Spelbord> voltooideSpelborden = new ArrayList<>();
@@ -391,5 +395,25 @@ public class Spel extends Base
             }
         }   
         return voltooideSpelborden;
+    }
+
+    /**
+     * Geef het anatal voltooide spelborden
+     * 
+     * @return int
+     */
+    public int geefAantalVoltooideSpelborden()
+    {
+        return this.geefVoltooideSpelborden().size();
+    }
+
+    /**
+     * Geef het anatal spelborden
+     * 
+     * @return int
+     */
+    public int geefAantalSpelborden()
+    {
+        return this.spelborden.size();
     }
 }

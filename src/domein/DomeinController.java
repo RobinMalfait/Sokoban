@@ -285,6 +285,16 @@ public class DomeinController
     {
         this.huidigSpel.bepaalVolgendSpelbord();
     }
+    
+    public int geefAantalSpelborden()
+    {
+        return this.huidigSpel.geefAantalSpelborden();
+    }
+    
+    public int geefAantalVoltooideSpelborden()
+    {
+        return this.huidigSpel.geefAantalVoltooideSpelborden();
+    }
 
     /**
      * Controleer of alle spelborden voltooid zijn, is het spel voltooid
