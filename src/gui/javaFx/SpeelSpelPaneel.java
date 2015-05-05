@@ -68,7 +68,7 @@ public class SpeelSpelPaneel extends BaseGui
      */
     private void init()
     {
-        stage.setTitle("");
+        stage.setTitle(lang.get("sign.play"));
 
         this.show("#SpeelSpelPaneel");
 

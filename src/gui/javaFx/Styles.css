@@ -121,3 +121,9 @@ Pane {
     -fx-background-repeat: repeat, no-repeat;
     -fx-background-position: center center;
 }
+
+.voltooid {
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+    -fx-font-size: 2em;
+}
