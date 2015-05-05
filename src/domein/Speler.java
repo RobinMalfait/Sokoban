@@ -1,7 +1,6 @@
 package domein;
 
 import exceptions.GebruikersnaamException;
-import languages.LanguageManager;
 
 public class Speler extends Base
 {
@@ -12,7 +11,6 @@ public class Speler extends Base
     private String wachtwoord;
     private boolean admin;
 
-    //CONSTRUCTOREN
     /**
      * Maak een nieuw Speler object.
      *

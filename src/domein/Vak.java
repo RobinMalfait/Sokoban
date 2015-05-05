@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domein;
 
 /**
@@ -189,9 +184,7 @@ public class Vak
      */
     public boolean bevatMannetje()
     {
-        if(this.mannetje == null)
-            return false;
-        return true;
+        return this.mannetje != null;
     }
     
     public String geefRichtingMannetje()
@@ -223,9 +216,9 @@ public class Vak
      */
     public boolean isLeeg()
     {
-        if(!toegankelijk || bevatKist())  //muur of kist;
-            return false;
-        return true;
+        //muur of kist;
+        
+        return !(!toegankelijk || bevatKist());
     } 
     
     /**

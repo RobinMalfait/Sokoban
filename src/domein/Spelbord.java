@@ -2,7 +2,6 @@ package domein;
 
 import exceptions.SpelException;
 import exceptions.SpelbordException;
-import java.util.Arrays;
 import persistentie.SpelbordMapper;
 import persistentie.VakMapper;
 
@@ -20,7 +19,7 @@ public class Spelbord extends Base
 
     //CONSTRUCTOREN
     /**
-     * Maak een nieuw Spelbord object-aan
+     * Maak een nieuw Spelbord-object aan
      *
      * @param spelbordId int
      * @param naam String
@@ -34,6 +33,10 @@ public class Spelbord extends Base
         this.naam = naam;
     }
     
+    /**
+     * Maak een nieuw Spelbord-object aan
+     * @param naam 
+     */
     public Spelbord(String naam)
     {
         vakMapper = new VakMapper();
@@ -46,8 +49,7 @@ public class Spelbord extends Base
             for(int y = 0; y < 10; y++)
                 vakken[x][y] = new Vak(x, y, true, false);
         
-    }    
-    //GETTERS
+    }
     
     /**
      * Verkrijg het spelbord id nummer
@@ -99,13 +101,16 @@ public class Spelbord extends Base
         return vakken;
     }
 
-    //SETTERS 
+    /**
+     * Voltooi een spel
+     * 
+     * @param voltooid 
+     */
     public void setVoltooid(boolean voltooid)  //Nodig voor testklasse SpelTest
     {
         this.voltooid = voltooid;
     }
     
-    //ACTIES
     /**
      * Stel de vakken in voor het spelbord
      */
@@ -132,9 +137,6 @@ public class Spelbord extends Base
          O:  Mannetje gericht naar Rechts
          Z:  Mannetje gericht naar Omlaag
          W:  Mannetje gericht naar Links
-        
-         
-        
         
          -:  Leeg Vak
          */
@@ -396,6 +398,9 @@ public class Spelbord extends Base
         }
     }
     
+    /**
+     * Sla het spel op
+     */
     public void slaOp()
     {
         controleerSpelbord();
