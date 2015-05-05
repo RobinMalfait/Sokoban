@@ -139,7 +139,7 @@ public class DomeinController
 
         if (this.huidigSpel == null)
         {
-            throw new SpelException(lang.get("game.notFound", ":id", id));
+            throw new SpelException(lang.get("game.notFound", "id", id));
         }
         else
         {
@@ -412,22 +412,24 @@ public class DomeinController
     }    
     
     /**
+     * Verwijder een spel
+     * 
+     * @param spelbordId 
+     */
+    public void verwijderHuidigSpel()
+    {
+        spelRepository.verwijderSpel(huidigSpel);
+        huidigSpel = null;
+    }
+    
+    /**
      * Verwijder een spelbord
      * 
      * @param spelbordId 
      */
-    public void verwijderSpelbord(int spelbordId)
+    public void verwijderHuidigSpelbord()
     {
-        this.huidigSpel.verwijderSpelbord(spelbordId);
+        this.huidigSpel.verwijderHuidigSpelbord();
     }
     
-    /**
-     * Verwijder een spel
-     * 
-     * @param spelId 
-     */
-    public void verwijderSpel(int spelId)
-    {
-        this.spelRepository.verwijderSpel(spelId);
-    }
 }

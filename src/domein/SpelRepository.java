@@ -93,16 +93,10 @@ class SpelRepository extends Base
      * 
      * @param spelId 
      */
-    public void verwijderSpel(int spelId)
-    {
-        Spel spel = zoekSpel(spelId);
-        
-        if (spel == null)
-            throw new SpelException(lang.get("game.notFound", ":id", spelId));
-        
-        spel.verwijderAlleSpelborden();
-        
-        spelMapper.verwijderSpel(spelId);
+    public void verwijderSpel(Spel spel)
+    {        
+        spelMapper.verwijderSpel(spel.getId());
+        spellen.remove(spel);
     }
     
 }

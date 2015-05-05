@@ -111,6 +111,12 @@ public class SpelMapper extends Mapper
 
     public void verwijderSpel(int spelId)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            deleteQuery("DELETE FROM Spel WHERE id = ?", spelId);
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(SpelerMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }     
     }
 }

@@ -329,21 +329,14 @@ public class Spel extends Base
     }
      
     /**
-     * Verwijder een spelbord
+     * Verwijder van het huidig spelbord
      * 
-     * @param spelbordId 
      */
-    public void verwijderSpelbord(int spelbordId)
+    public void verwijderHuidigSpelbord()
     {
-        Spelbord spelbord = zoekSpelbord(spelbordId);
-        
-        if (spelbord == null)
-            throw new SpelbordException(lang.get("game.board.notFound", ":id", spelbordId));
-        else
-        {
-            spelbordMapper.verwijderSpelbord(spelbordId);
-            spelborden.remove(spelbord);
-        }
+            spelbordMapper.verwijderSpelbord(huidigSpelbord.getSpelbordId());
+            spelborden.remove(huidigSpelbord);
+            huidigSpelbord = null;
     }
     
     /**
@@ -361,17 +354,6 @@ public class Spel extends Base
         }
         
         return null;
-    }
-
-    /**
-     * Verwijder alle spelborden
-     */
-    public void verwijderAlleSpelborden()
-    {
-        for(Spelbord spelbord : spelborden)
-        {
-            spelbordMapper.verwijderSpelbord(spelbord.getSpelbordId());
-        }
     }
     
     /**
