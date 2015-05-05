@@ -15,6 +15,9 @@ import javafx.scene.layout.GridPane;
 public class KiesTaalPaneel extends BaseGui
 {
 
+    /**
+     * Run het KiesTaalPaneel
+     */
     public void run()
     {
         this.init();
@@ -22,6 +25,9 @@ public class KiesTaalPaneel extends BaseGui
         this.drawLanguagesBoard();
     }
         
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {
         stage.setTitle("Kies uw taal!");
@@ -38,6 +44,11 @@ public class KiesTaalPaneel extends BaseGui
         });
     }
     
+    /**
+     * Ga verder op basis van taal keuze.
+     * 
+     * @param language 
+     */
     private void gaVerder(String language)
     {
         DC.setLanguage(language);
@@ -45,6 +56,9 @@ public class KiesTaalPaneel extends BaseGui
         (new MenuKeuzePaneel()).run();
     }
     
+    /**
+     * Teken het talen grid.
+     */
     private void drawLanguagesBoard()
     {
         GridPane grid = (GridPane) this.findByIdInPane("grid");

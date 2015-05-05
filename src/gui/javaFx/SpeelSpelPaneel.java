@@ -21,6 +21,9 @@ public class SpeelSpelPaneel extends BaseGui
     private Label boardComplete;
     private Pane overlay;
 
+    /**
+     * Run het SpeelSpelPaneel
+     */
     public void run()
     {
         this.init();
@@ -59,7 +62,29 @@ public class SpeelSpelPaneel extends BaseGui
 
         this.drawBoard();
     }
+    
+    /**
+     * Initialiseer het paneel
+     */
+    private void init()
+    {
+        stage.setTitle("");
 
+        this.show("#SpeelSpelPaneel");
+
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                (new KiesSpelPaneel()).run();
+            }
+        });
+    }
+    
+        /**
+     * Teken het bord
+     */
     private void drawBoard()
     {
         this.overlay.setVisible(false);
@@ -102,22 +127,9 @@ public class SpeelSpelPaneel extends BaseGui
         }
     }
 
-    private void init()
-    {
-        stage.setTitle("");
-
-        this.show("#SpeelSpelPaneel");
-
-        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                (new KiesSpelPaneel()).run();
-            }
-        });
-    }
-
+    /**
+     * Registreer events
+     */
     private void registerEvents()
     {
         stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
@@ -208,6 +220,9 @@ public class SpeelSpelPaneel extends BaseGui
         });
     }
 
+    /**
+     * Reset het paneel
+     */
     protected void reset()
     {
         DC.resetSpelbord();

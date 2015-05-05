@@ -10,16 +10,22 @@ import javafx.scene.input.MouseEvent;
  */
 public class SubMenuPaneel extends BaseGui
 {    
+    /**
+     * Run het SubMenuPaneel
+     */
     public void run()
     {
         this.init();
     }
     
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {        
         stage.setTitle("Sokoban!");
         
-        this.show( "#SubMenuPaneel");
+        this.show("#SubMenuPaneel");
         
         this.findByIdInPane( "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
         {

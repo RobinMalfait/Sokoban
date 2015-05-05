@@ -19,12 +19,18 @@ public class MaakSpelbordPaneel extends BaseGui
     private String[][] items; // Keep state
     private Label errorLabel;
 
+    /**
+     * Run het MaakSpelbordPaneel
+     */
     public void run()
     {
         this.init();
         this.reset();
     }
 
+    /**
+     * Initialiseer het bord
+     */
     private void initializeBoard()
     {
         for (int x = 0; x < items.length; x++)
@@ -36,6 +42,9 @@ public class MaakSpelbordPaneel extends BaseGui
         }
     }
 
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {
         this.board = (GridPane) this.findByIdInPane("grid");
@@ -94,6 +103,10 @@ public class MaakSpelbordPaneel extends BaseGui
         });
     }
 
+    /**
+     * Registreer alle click events van de sidebar
+     * Keuze van veld om dan te kunnen tekenen.
+     */
     private void registerSidebarClickEvents()
     {
         /* Leeg veld */
@@ -147,6 +160,11 @@ public class MaakSpelbordPaneel extends BaseGui
         });
     }
     
+    /**
+     * Zet een veldje op actief.
+     * 
+     * @param field 
+     */
     private void setActiveField(String field)
     {
         this.findByIdInPane("active").getStyleClass().remove(this.activeField);
@@ -156,6 +174,9 @@ public class MaakSpelbordPaneel extends BaseGui
         this.findByIdInPane("active").getStyleClass().add(this.activeField);
     }
     
+    /**
+     * Teken het bord
+     */
     private void drawBoard()
     {
         int x = 0;
@@ -179,6 +200,11 @@ public class MaakSpelbordPaneel extends BaseGui
         }
     }
 
+    /**
+     * Update een veld met coordinaten (x, y)
+     * @param x
+     * @param y 
+     */
     private void updateField(Integer x, Integer y)
     {
         int xOffset = 14;
@@ -195,16 +221,29 @@ public class MaakSpelbordPaneel extends BaseGui
         this.drawBoard();
     }
 
+    /**
+     * Stel de error in
+     * 
+     * @param text 
+     */
     private void setError(String text)
     {
         this.errorLabel.setText(text);
     }
 
+    /**
+     * Maak de error leeg
+     */
     private void cleanError()
     {
         this.setError(""); // Clear the text
     }
 
+    /**
+     * Sla het spelbord op
+     * 
+     * @param name 
+     */
     private void saveGameboard(String name)
     {
         DC.voegSpelbordToe(name);
@@ -218,6 +257,9 @@ public class MaakSpelbordPaneel extends BaseGui
         DC.slaHuidigSpelOp();
     }
 
+    /**
+     * Reset het paneel
+     */
     protected void reset()
     {
         DC.resetSpelbord();

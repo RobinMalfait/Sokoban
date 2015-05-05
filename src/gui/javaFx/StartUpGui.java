@@ -12,6 +12,11 @@ import javafx.stage.Stage;
 public class StartUpGui extends BaseGui
 {
 
+    /**
+     * Maak het StartUpGui-object ana
+     * 
+     * @param dc 
+     */
     public StartUpGui(DomeinController dc)
     {
         BaseGui.DC = dc;
@@ -21,6 +26,12 @@ public class StartUpGui extends BaseGui
         this.height = 600;
     }
   
+    /**
+     * Start de appliactie
+     * 
+     * @param stage
+     * @throws IOException 
+     */
     public void start(Stage stage) throws IOException
     {
         BaseGui.stage = stage;
