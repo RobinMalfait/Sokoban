@@ -26,20 +26,11 @@ public class RegistreerApplicatie extends BaseApplicatie
         {
             try
             {
-                System.out.print(lang.get("user.firstname") + ": ");
-                voornaam = input.nextLine().trim();
-
-                System.out.print(lang.get("user.name") + ": ");
-                naam = input.nextLine().trim();
-
-                System.out.print(lang.get("user.username") + ": ");
-                gebruikersnaam = input.nextLine().trim();
-
-                System.out.print(lang.get("user.password") + ": ");
-                wachtwoord = input.nextLine().trim();
-
-                System.out.print(lang.get("user.password.repeat") + ": ");
-                wachtwoordBevestiging = input.nextLine().trim();
+                voornaam = geefStringIn(lang.get("user.firstname"));
+                naam = geefStringIn(lang.get("user.name"));
+                gebruikersnaam = geefStringIn(lang.get("user.username"));
+                wachtwoord = geefStringIn(lang.get("user.password"));
+                wachtwoordBevestiging = geefStringIn(lang.get("user.password.repeat"));
                 
                 dc.registreer(naam, voornaam, gebruikersnaam, wachtwoord, wachtwoordBevestiging);
                 invoerFout = false;
@@ -51,7 +42,7 @@ public class RegistreerApplicatie extends BaseApplicatie
         } while (invoerFout);
         
         // Geregistreerd
-        System.out.printf("%n%s",lang.get("register.succes"));
+        System.out.printf("%n%s%n",lang.get("register.succes"));
         new MeldAanApplicatie(dc, input, lang).toonMenu();
 
     }

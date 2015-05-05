@@ -244,39 +244,7 @@ public class AdminApplicatie extends BaseApplicatie
         }
     }
 
-    private int invoerMetControle(int ondergrens, int bovengrens)
-    {
-        int keuze = 0;
-        boolean fouteInvoer = true;
-        do
-        {
-            try
-            {
-                System.out.printf("%s: ", lang.get("list.choice"));
-                keuze = input.nextInt();
-
-                if (keuze < ondergrens || keuze > bovengrens)
-                {
-                    throw new IllegalArgumentException(lang.get("err.input",
-                            "min", ondergrens,
-                            "max", bovengrens));
-                }
-
-                fouteInvoer = false;
-            } catch (IllegalArgumentException e)
-            {
-                System.err.println(e.getMessage());
-                input.nextLine();
-            } catch (InputMismatchException e)
-            {
-                System.err.println(lang.get("err.NaN"));
-                input.nextLine();
-            }
-
-        } while (fouteInvoer);
-
-        return keuze;
-    }
+    
 
     public void wijzigSpel()
     {

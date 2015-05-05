@@ -13,6 +13,22 @@ public class SubMenuPaneel extends BaseGui
     public void run()
     {
         this.init();
+    }
+    
+    private void init()
+    {        
+        stage.setTitle("Sokoban!");
+        
+        this.show( "#SubMenuPaneel");
+        
+        this.findByIdInPane( "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                (new MenuKeuzePaneel()).run();
+            }
+        });
         
         Button playGame = (Button) this.findByIdInPane("playGame");      
         playGame.setText(lang.get("game.play").toUpperCase());
@@ -47,22 +63,6 @@ public class SubMenuPaneel extends BaseGui
             public void handle(MouseEvent event)
             {
                 (new KiesSpelPaneel()).run();
-            }
-        });        
-    }
-    
-    private void init()
-    {        
-        stage.setTitle("Sokoban!");
-        
-        this.show( "#SubMenuPaneel");
-        
-        this.findByIdInPane( "back").setOnMouseClicked(new EventHandler<MouseEvent>() 
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                (new MenuKeuzePaneel()).run();
             }
         });
     }

@@ -8,6 +8,7 @@ import languages.LanguageManager;
 
 public class ConsoleApplicatie extends BaseApplicatie
 {
+
     public ConsoleApplicatie(DomeinController dc, Scanner input, LanguageManager lang)
     {
         super(dc, input, lang);
@@ -16,39 +17,35 @@ public class ConsoleApplicatie extends BaseApplicatie
     public void start()
     {
         int keuze;
-        
-        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n5: %s%n%n",
-                lang.get("list.choose"),
-                lang.get("sign.in"),
-                lang.get("sign.up"),
-                "Test speel spel (voorlopig)",
-                "Admin",
-                lang.get("app.quit"));
+        boolean doorgaan = true;
 
-        keuze = invoerMetControle(1, 5, input, lang);
-        
-        System.out.println(); // Een extra enter voor de volgende output
-        input.nextLine(); // Buffer leegmaken
-
-        switch (keuze)
+        do
         {
-            case 1:
-                (new MeldAanApplicatie(dc, input, lang)).start();
-                break;
-            case 2:
-                (new RegistreerApplicatie(dc, input, lang)).start();
-                break;
-            case 3:
-                (new SpeelSpelApplicatie(dc, input, lang)).snelStarten();
-                break;
-            case 4:
-                (new AdminApplicatie(dc, input, lang)).snelStarten();
-                break;
-            case 5:
-                System.out.println(lang.get("app.quited"));
-                break;
-            default:
-                System.err.println(lang.get("err.nonvalid"));
-        }
+            System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n%n",
+                    lang.get("list.choose"),
+                    lang.get("sign.in"),
+                    lang.get("sign.up"),
+                    lang.get("app.quit"));
+
+            keuze = invoerMetControle(1, 3);
+
+            System.out.println(); // Een extra enter voor de volgende output
+
+            switch (keuze)
+            {
+                case 1:
+                    (new MeldAanApplicatie(dc, input, lang)).start();
+                    break;
+                case 2:
+                    (new RegistreerApplicatie(dc, input, lang)).start();
+                    break;
+                case 3:
+                    System.out.println(lang.get("app.quited"));
+                    doorgaan = false;
+                    break;
+                default:
+                    System.err.println(lang.get("err.nonvalid"));
+            }
+        } while (doorgaan);
     }
 }

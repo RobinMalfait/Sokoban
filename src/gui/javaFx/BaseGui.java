@@ -19,7 +19,6 @@ public abstract class BaseGui
     protected int height = 600;
     
     protected static DomeinController DC;
-    
     protected static Stage stage;
     protected static LanguageManager lang;
         
@@ -31,7 +30,7 @@ public abstract class BaseGui
         pane.toFront();
     }
 
-    protected void loadScene(Stage stage, String fxmlFile) throws IOException
+    protected void loadScene(String fxmlFile) throws IOException
     {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlFile));
         Scene scene = new Scene(root.load(), this.width, this.height);

@@ -4,7 +4,6 @@ import exceptions.SpelException;
 import exceptions.SpelbordException;
 import java.util.ArrayList;
 import java.util.List;
-import languages.LanguageManager;
 import persistentie.SpelMapper;
 import persistentie.SpelbordMapper;
 
@@ -18,9 +17,11 @@ public class Spel extends Base
     
     private int id;
     private String naam;
-    
-    //CONSTRUCTOREN
- 
+    /**
+     * Maak een nieuw Spel-bject aan
+     * 
+     * @param naam 
+     */
     public Spel(String naam)
     {
         spelbordMapper = new SpelbordMapper();
@@ -48,7 +49,6 @@ public class Spel extends Base
         this.naam = naam;
     }
     
-    //GETTERS
     /**
      * Verkrijg de id
      * 
@@ -89,8 +89,7 @@ public class Spel extends Base
         return spelborden;
     }
     
-    
-    //SETTERS  
+      
     /**
      * Stel de id in
      * 
@@ -131,7 +130,7 @@ public class Spel extends Base
         this.spelborden = spelborden;
     }
      
-    //ACTIES   
+    
     /**
      * Toon het spelbord
      * 
@@ -239,6 +238,7 @@ public class Spel extends Base
     
     /**
      * Voeg een spelbord toe, en daarna ook de vakken
+     * 
      * @param naam String    
      */
     public void voegSpelbordToe(String naam)
@@ -287,8 +287,6 @@ public class Spel extends Base
     /** 
      * Controleer of het gewijzigde spel aan de eisen voldoet.
      * Elk spelbord moet evenveel doelen als kisten bevatten en juist één mannetje hebben.
-     * 
-     * @return 
      */
     public void controleerSpel()
     {
@@ -297,7 +295,11 @@ public class Spel extends Base
             spelbord.controleerSpelbord();
         }
     }
-     public void controleerSpelbord()
+     
+    /**
+     * Controleer het spelbord
+     */
+    public void controleerSpelbord()
     {
         this.huidigSpelbord.controleerSpelbord();
     }   
@@ -319,13 +321,20 @@ public class Spel extends Base
         }
     }
 
- 
+    /**
+     * Wijzig het spelbord, sla het op.
+     */
     public void wijzigSpelbord()
     {
         this.huidigSpelbord.slaOp();
         
     }
-        
+     
+    /**
+     * Verwijder een spelbord
+     * 
+     * @param spelbordId 
+     */
     public void verwijderSpelbord(int spelbordId)
     {
         Spelbord spelbord = zoekSpelbord(spelbordId);
@@ -340,6 +349,12 @@ public class Spel extends Base
         
     }
     
+    /**
+     * Zoek een spel
+     * 
+     * @param spelbordId
+     * @return 
+     */
     private Spelbord zoekSpelbord(int spelbordId)
     {
         for(Spelbord spelbord : spelborden)
@@ -351,6 +366,9 @@ public class Spel extends Base
         return null;
     }
 
+    /**
+     * Verwijder alle spelborden
+     */
     public void verwijderAlleSpelborden()
     {
         for(Spelbord spelbord : spelborden)

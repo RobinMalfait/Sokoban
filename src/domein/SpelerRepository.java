@@ -1,6 +1,6 @@
 package domein;
 
-import exceptions.GebruikerBestaatException;
+import exceptions.GebruikersnaamException;
 import java.util.*;
 import persistentie.SpelerMapper;
 import security.BCrypt;
@@ -49,7 +49,7 @@ public class SpelerRepository extends Base
     public void voegToe(Speler speler)
     {
         if (bestaatSpeler(speler.getGebruikersnaam()))
-            throw new GebruikerBestaatException(lang.get("user.username.exists"));
+            throw new GebruikersnaamException(lang.get("user.username.exists"));
 
         this.spelers.add(speler);
         this.spelerMapper.addSpeler(speler);

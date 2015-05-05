@@ -279,7 +279,6 @@ public class DomeinController
      * database.
      * 
      * @param naam String
-     * @param vakken int[][]
      */
     public void voegSpelbordToe(String naam)
     {
@@ -356,22 +355,35 @@ public class DomeinController
     
     /**
      * Controleer of het gewijzigde spel aan de eisen voldoet.
-     * 
-     * @return boolean
      */
     public void controleerSpel()
     {
-            this.huidigSpel.controleerSpel();
+        this.huidigSpel.controleerSpel();
     }
+    
+    /**
+     * Controleer het spelbord
+     */
     public void controleerSpelbord()
     {
-            this.huidigSpel.controleerSpelbord();
+        this.huidigSpel.controleerSpelbord();
     }    
+    
+    /**
+     * Verwijder een spelbord
+     * 
+     * @param spelbordId 
+     */
     public void verwijderSpelbord(int spelbordId)
     {
         this.huidigSpel.verwijderSpelbord(spelbordId);
     }
     
+    /**
+     * Verwijder een spel
+     * 
+     * @param spelId 
+     */
     public void verwijderSpel(int spelId)
     {
         this.spelRepository.verwijderSpel(spelId);
