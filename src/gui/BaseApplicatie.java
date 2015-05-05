@@ -28,7 +28,7 @@ public class BaseApplicatie
         this.lang = lang;
     }
 
-    protected int invoerMetControle(int ondergrens, int bovengrens, Scanner input, LanguageManager lang)
+    protected int invoerMetControle(int ondergrens, int bovengrens)
     {
         int keuze = 0;
         boolean fouteInvoer = true;
@@ -38,7 +38,7 @@ public class BaseApplicatie
             {
                 System.out.printf("%s: ", lang.get("list.choice"));
                 keuze = input.nextInt();
-
+                
                 if (keuze < ondergrens || keuze > bovengrens)
                 {
                     throw new IllegalArgumentException(lang.get("err.input",
@@ -47,19 +47,45 @@ public class BaseApplicatie
                 }
 
                 fouteInvoer = false;
-            } catch (IllegalArgumentException e)
+            } 
+            catch (IllegalArgumentException e)
             {
                 System.err.println(e.getMessage());
-                input.nextLine();
-            } catch (InputMismatchException e)
+            } 
+            catch (InputMismatchException e)
             {
                 System.err.println(lang.get("err.NaN"));
+            }
+            finally
+            {
                 input.nextLine();
             }
-
+            
         } while (fouteInvoer);
-
+        
         return keuze;
     }
+    
+    protected String geefStringIn(String label)
+    {
+        System.out.printf("%s: ", label);
+        String string = input.next();
+        input.nextLine();  
+        
+        return string;
+    }
 
+    protected void toonSpebord()
+    {
+        System.out.println();
+
+        for (String[] vakArray : dc.toonSpelbord())
+        {
+            for (String vak : vakArray)
+            {
+                System.out.print(vak + " ");
+            }
+            System.out.println();
+        }
+    }
 }

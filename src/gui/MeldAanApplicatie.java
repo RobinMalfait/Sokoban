@@ -27,25 +27,23 @@ public class MeldAanApplicatie extends BaseApplicatie
 
         do
         {
-            System.out.print(lang.get("user.username") + " (type 'stop' om te stoppen): ");
-            gebruikersnaam = input.next();
-            input.nextLine();
-
+            gebruikersnaam = geefStringIn(lang.get("user.username") + " (type 'stop' om te stoppen)");
+            
             if (gebruikersnaam.toLowerCase().equals(lang.get("sign.quit").toLowerCase()))
             {
                 stop = true;
-            } else
+            } 
+            else
             {
                 // Gebruikersnaam is niet gelijk aan "stop"
-                System.out.print(lang.get("user.password") + ": ");
-                wachtwoord = input.next();
-                input.nextLine();
-
+                wachtwoord = geefStringIn(lang.get("user.password"));
+                
                 try
                 {
                     dc.meldAan(gebruikersnaam, wachtwoord);
                     invoerFout = false;
-                } catch (WachtwoordException e)
+                } 
+                catch (WachtwoordException e)
                 {
                     System.out.printf("%n%s%n%n", e.getMessage());
                 }
@@ -56,7 +54,6 @@ public class MeldAanApplicatie extends BaseApplicatie
         {
             // De gebruiker is succesvol ingelogd.
             System.out.printf("%n%s %s%s, %s%n%n", lang.get("game.welcome"), (dc.isAdmin() ? "administrator " : ""), gebruikersnaam, lang.get("sign.succes"));
-
             toonMenu();
         }
     }
@@ -77,7 +74,7 @@ public class MeldAanApplicatie extends BaseApplicatie
 
             // Keuze maken
             System.out.printf("%n%s%n", lang.get("sign.choise"));
-            int keuze = invoerMetControle(1, maxKeuzenummer, input, lang);
+            int keuze = invoerMetControle(1, maxKeuzenummer);
             
             switch (keuze)
             {

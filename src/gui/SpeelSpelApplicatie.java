@@ -40,8 +40,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         {
             try 
             {
-                System.out.printf("%nKies een spel, of type 'stop' om te stoppen: ");
-                String spelId = input.next(); input.nextLine();
+                String spelId = geefStringIn("%nKies een spel, of type 'stop' om te stoppen: ");
                 
                 if(spelId.equals("stop")) 
                     return;
@@ -79,7 +78,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
                     lang.get("app.quit")
                 );
                 
-                keuze = invoerMetControle(1, 6, input, lang);
+                keuze = invoerMetControle(1, 6);
                 
                 if (keuze == 6) {
                     break;       
@@ -110,7 +109,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
                     lang.get("app.quit")
             );
             
-            keuze = this.invoerMetControle(1, 2, input, lang);
+            keuze = this.invoerMetControle(1, 2);
             
             if(keuze == 2) //stoppen
                 break;
@@ -121,18 +120,10 @@ public class SpeelSpelApplicatie extends BaseApplicatie
             System.out.println(lang.get("game.completed"));
     }
     
-    private void toonSpebord()
+    @Override
+    public void toonSpebord()
     {
-        System.out.println();
-
-        for (String[] vakArray : dc.toonSpelbord())
-        {
-            for (String vak : vakArray)
-            {
-                System.out.print(vak + " ");
-            }
-            System.out.println();
-        }
+        super.toonSpebord();
         
         System.out.printf("%s: %d%n",
                 lang.get("game.board.moves"),

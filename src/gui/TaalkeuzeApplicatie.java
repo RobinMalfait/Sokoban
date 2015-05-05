@@ -26,6 +26,10 @@ public class TaalkeuzeApplicatie
             {
                 System.err.println(e.getMessage());
             }
+            finally
+            {
+                input.nextLine();
+            }
         } while (invoerFout);
 
         new ConsoleApplicatie(dc, input, lang).start();

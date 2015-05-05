@@ -27,10 +27,9 @@ public class ConsoleApplicatie extends BaseApplicatie
                     lang.get("sign.up"),
                     lang.get("app.quit"));
 
-            keuze = invoerMetControle(1, 3, input, lang);
+            keuze = invoerMetControle(1, 3);
 
             System.out.println(); // Een extra enter voor de volgende output
-            input.nextLine(); // Buffer leegmaken
 
             switch (keuze)
             {
