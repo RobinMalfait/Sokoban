@@ -31,58 +31,28 @@ public class AdminApplicatie extends BaseApplicatie
         if(!isAdmin())
             return;
         
-        String naam;
+        String naam, keuze;
         boolean doorgaan = true;
 
         System.out.printf("%n%s%n", lang.get("horizontal.line"));
         System.out.printf("Configuratie van een nieuw spel: %n%n");
 
         // 1. Unieke naam vragen voor het aanmaken van een spel.
-        do
-        {
-            naam = geefStringIn("Geef een naam voor het nieuwe spel");
-            try
-            {
-                dc.voegSpelToe(naam);
-                System.out.printf("Het spel %s werd aangemaakt.%n", dc.geefNaamHuidigSpel());
-                doorgaan = false;
-            } 
-            catch (SpelException e)
-            {
-                System.out.println(e.getMessage() + " Probeer een andere naam.");
-            }
-        } while (doorgaan);
+        voegSpelToe();
 
         // 2. Toevoegen van een spelbord.
-        doorgaan = true;
-        String keuze = "";
-        int aantalSpelborden = 1;
-        do
-        {
-            keuze = geefStringIn("%nGeef een naam voor spelbord " + aantalSpelborden + " in, of type 'stop' om te stoppen");
-
-            if (keuze.equals("stop"))
-            {
-                doorgaan = false;
-                break;
-            }
-            maakNieuwSpelbord(keuze);
-            aantalSpelborden++;
-        } 
-        while (doorgaan);
-
+        voegSpelbordenToe();
+        
         // 3. De gebruiker wenst geen nieuwe spelborden toe te voegen. Nu het spel opslaan in de databank.
         try
         {
             dc.controleerSpel();
-            System.out.printf("%n%nWenst u het spel met de spelborden op te slaan? Typ 'ja' om op te slaan.");
-            keuze = input.next();
-            input.nextLine(); // Buffer leegmaken     
+            keuze = geefStringIn("%n%nWenst u het spel met de spelborden op te slaan? Typ 'ja' om op te slaan."); 
 
             if (keuze.equals("ja"))
             {
                 dc.slaHuidigSpelOp();
-                System.out.printf("Het spel %s met %d spelborden werd aangemaakt.", dc.geefNaamHuidigSpel(), dc.geefLijstSpelborden().length);
+                System.out.printf("Het spel met de spelborden werd opgeslaan.");
             } 
             else
             {
@@ -93,159 +63,65 @@ public class AdminApplicatie extends BaseApplicatie
         {
             System.err.println("Geen spel is opgeslaan, omdat er geen voltooide spelborden aanwezig waren.");
         }
-
-        // 4. Doorsturen naar het adminmenu.
-
+    }
+    
+    public void wijzigSpel()
+    {
+        
     }
 
-    public void maakNieuwSpelbord(String spelbordNaam)
+    public void wijzigHuidigSpelbord()
     {
         boolean fouteInvoer = true;
         boolean doorgaan = true;
 
-        // 1. Unieke naam voor Spelbord in een spel
-        do
-        {
-            try
-            {
-                dc.voegSpelbordToe(spelbordNaam);
-                System.out.printf("Een leegspelbord met naam %s werd toegevoegd aan het spel %s.%n%n",
-                        dc.geefNaamHuidigSpelbord(),
-                        dc.geefNaamHuidigSpel());
-
-                doorgaan = false;
-            } 
-            catch (SpelbordException e)
-            {
-                System.out.println(e.getMessage() + " Probeer een andere naam.");
-            }
-        } while (doorgaan);
-
-        // 2. Een leeg spelbord kennen we, nu de vakken laten wijzigen. 
         String coordinaat = "";
         String keuze = "";
 
-        doorgaan = true;
         do
         {
+            System.out.println();
             toonSpelbord();
             coordinaat = geefStringIn("%nVoer een coördinaat (x,y) in, of typ 'stop' om te stoppen");
 
-            if (coordinaat.equals("stop"))
+            if (!coordinaat.equals("stop"))
             {
+                keuze = geefStringIn("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg)");
+
                 try
                 {
-                    dc.controleerSpel();
+                    dc.voerVakIn(coordinaat, keuze);
+                } 
+                catch (SpelbordException e)
+                {
+                    System.out.printf("%n%s Probeer opnieuw %n", e.getMessage());
+                    System.out.println();
+                }
+            }
+            else 
+            {
+                // De gebruiker wenst te stoppen met het bewerken van het spelbord
+                try
+                {
+                    dc.controleerSpelbord();
                     doorgaan = false;
                     break;
                 } 
                 catch (Exception e)
                 {
                     // Het spel kent nog geen afgewerkt spelbord.
-                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord. Weet u zeker dat uw wenst te stoppen? (Typ 'stop' om te stoppen): ");
-                    keuze = input.next();
-                    input.nextLine();
+                    System.out.printf("%nU gaf aan om te stoppen maar het spelbord is nog niet volledig afgewerkt:%n%s%n%n",  e.getMessage());
+                    keuze = geefStringIn("Weet u zeker dat u wilt stoppen? (type 'stop' om te stoppen)");
 
                     if (keuze.equals("stop"))
                     {
                         doorgaan = false;
                         break;
-                    } else
-                    {
-                        System.out.printf("Voer een coördinaat: ");
-                        coordinaat = input.next();
-                        input.nextLine();
-                    }
-                }
-            }
-
-            keuze = geefStringIn("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg)");
-
-            try
-            {
-                dc.voerVakIn(coordinaat, keuze);
-            } 
-            catch (SpelbordException e)
-            {
-                System.err.println(e.getMessage() + " Probeer opnieuw.");
-                System.out.println();
-            }
+                    } 
+                }               
+            }            
         } while (doorgaan);
-
     }  
-
-    public void wijzigSpel()
-    {
-        System.out.printf("%n%s%n", lang.get("horizontal.line"));
-        System.out.printf("Een spel wijzigen%n%n");
-
-        // Kies een spel uit de lijst.
-        this.kiesSpel();
-
-        // Kies een spelbord uit de lijst.
-        this.kiesSpelbord();
-
-        String coordinaat = "";
-        String keuze = "";
-
-        boolean doorgaan = true;
-
-        do
-        {
-            toonSpelbord();
-
-            System.out.printf("%nVoer een coördinaat (x,y) in of typ 'stop': ");
-            coordinaat = input.next();
-            input.nextLine();
-            
-            if (coordinaat.toLowerCase().equals("stop"))
-            {
-                // De gebruiker wenst te stoppen.
-                try
-                {
-                    // Indien het spelbord gecontroleerd is, en aan alle voorwaarden voordoet, dan slaan we het op.
-                    dc.controleerSpelbord();
-                    dc.slaHuidigSpelbordOp();
-
-                    doorgaan = false;
-                    System.out.println("Het spelbord is opgeslaan");
-                    break;
-                } catch (SpelbordException e)
-                {
-                    System.out.printf("Het systeem kent nog geen 1 volledig afgewerkt spelbord (%s). Weet u zeker dat u wenst te stoppen? (Typ 'stop' om te stoppen): ", e.getMessage());
-                    System.out.printf("Let op: dit spelbord zal niet opgeslaan worden indien u stopt!");
-
-                    keuze = input.next();
-                    input.nextLine();
-
-                    if (keuze.toLowerCase().equals("stop"))
-                    {
-                        doorgaan = false;
-                        break;
-                    } else
-                    {
-                        doorgaan = true;
-                        System.out.printf("Voer een coördinaat in (x,y): ");
-                        coordinaat = input.next();
-                        input.nextLine();
-                    }
-                }
-            }
-
-            System.out.printf("Voer een type in : M (Muur), D (Doel), Y(Mannetje), K (Kist), _ (Leeg): ");
-            keuze = input.next();
-            input.nextLine();
-
-            try
-            {
-                dc.voerVakIn(coordinaat, keuze);
-            } catch (SpelbordException e)
-            {
-                System.err.println(e.getMessage() + " Probeer opnieuw.");
-                System.out.println();
-            }
-        } while (doorgaan);
-    }
 
 
 
@@ -305,6 +181,7 @@ public class AdminApplicatie extends BaseApplicatie
             }
         } while (fouteInvoer);
     }
+    
     @Override
     public void toonSpelbord()
     {
@@ -327,5 +204,55 @@ public class AdminApplicatie extends BaseApplicatie
             System.out.println();
             x++;
         }
+    }
+    
+    // Voeg een spel toe, en plaats deze in de dc als huidigSpel.
+    private void voegSpelToe()
+    {
+        String naam = "";
+        boolean doorgaan = true;
+        
+        do
+        {
+            naam = geefStringIn("Geef een naam voor het nieuwe spel");
+            try
+            {
+                dc.voegSpelToe(naam);
+                System.out.printf("Het spel %s werd aangemaakt.%n", dc.geefNaamHuidigSpel());
+                doorgaan = false;
+            } 
+            catch (SpelException e)
+            {
+                System.out.println(e.getMessage() + " Probeer een andere naam.");
+            }
+        } while (doorgaan);        
+    }
+    
+    private void voegSpelbordenToe()
+    {
+        boolean doorgaan = true;
+        String naam = "";
+
+        do
+        {
+            naam = geefStringIn("%nGeef een naam voor het spelbord in, of type 'stop' om te stoppen");
+            try 
+            {
+                if (naam.equals("stop"))
+                {
+                    doorgaan = false;
+                    break;
+                }      
+                
+                dc.voegSpelbordToe(naam);
+                System.out.println();
+                wijzigHuidigSpelbord();
+            }
+            catch(SpelbordException e)
+            {
+                System.out.printf("De naam die je ingaf voor het spelbord bestaat al, probeer een andere naam.%n");
+            }
+        } 
+        while (doorgaan);       
     }
 }

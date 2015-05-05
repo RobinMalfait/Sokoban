@@ -77,18 +77,15 @@ class SpelRepository extends Base
     {       
         for(Spel spel: spellen)
         {
-            if(spel.getNaam().equals(naam))
+            if(spel.getNaam().toLowerCase().equals(naam.toLowerCase()))
             {
                 throw new SpelException(lang.get("game.exists"));
             }
-            else 
-            {
-                Spel nieuwSpel = new Spel(naam);
-                this.spellen.add(nieuwSpel);
-                return nieuwSpel;
-            }                
         }
-        return null;
+
+        Spel nieuwSpel = new Spel(naam);
+        this.spellen.add(nieuwSpel);
+        return nieuwSpel;
     }
 
     /**
