@@ -48,22 +48,23 @@ public class AdminApplicatie extends BaseApplicatie
         {
             dc.controleerSpel();
             
-            keuze = geefStringIn("%n%nWenst u het spel met de spelborden op te slaan? Typ 'ja' om op te slaan."); 
+            keuze = geefStringIn("%n%nWenst u het spel met de spelborden op te slaan? Typ 'ja' om op te slaan"); 
 
             if (keuze.equals("ja"))
             {
                 dc.slaHuidigSpelOp();
-                System.out.printf("Het spel met de spelborden werd opgeslaan.");
+                System.out.print("Het spel met de spelborden werd opgeslaan.");
             } 
             else
             {
-                System.out.println("Het spel met zijn spelborden werd niet opgeslagen.");
+                System.out.print("Het spel met zijn spelborden werd niet opgeslagen.");
             }
         } 
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
+            System.out.printf(e.getMessage());
         }
+        System.out.printf("%n%s%n%n", lang.get("horizontal.line"));
     }
     
     public void wijzigSpel()
@@ -96,7 +97,6 @@ public class AdminApplicatie extends BaseApplicatie
                 catch (SpelbordException e)
                 {
                     System.out.printf("%n%s Probeer opnieuw %n", e.getMessage());
-                    System.out.println();
                 }
             }
             else 
@@ -224,7 +224,7 @@ public class AdminApplicatie extends BaseApplicatie
             } 
             catch (SpelException e)
             {
-                System.out.println(e.getMessage() + " Probeer een andere naam.");
+                System.out.printf("%s Probeer een andere naam.%n%n", e.getMessage());
             }
         } while (doorgaan);        
     }
@@ -246,7 +246,6 @@ public class AdminApplicatie extends BaseApplicatie
                 }      
                 
                 dc.voegSpelbordToe(naam);
-                System.out.println();
                 wijzigHuidigSpelbord();
             }
             catch(SpelbordException e)
