@@ -47,6 +47,7 @@ public class AdminApplicatie extends BaseApplicatie
         try
         {
             dc.controleerSpel();
+            
             keuze = geefStringIn("%n%nWenst u het spel met de spelborden op te slaan? Typ 'ja' om op te slaan."); 
 
             if (keuze.equals("ja"))

@@ -403,7 +403,8 @@ public class Spelbord extends Base
             if (this.spelbordId == 0)
             {
                 throw new SpelbordException(lang.get("game.notSaved"));
-            } else
+            } 
+            else
             {
                 vakMapper.voegVakkenToe(vakken, this.spelbordId);
             }
