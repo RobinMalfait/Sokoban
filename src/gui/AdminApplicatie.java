@@ -17,55 +17,20 @@ public class AdminApplicatie extends BaseApplicatie
     {
         super(dc, input, lang);
     }
-
-    public void start()
+    public boolean isAdmin()
     {
-        if (dc.isAdmin())
+        if(!dc.isAdmin())
         {
-            this.toonKeuze();
-        } 
-        else
-        {
-            System.out.println("U bent geen admin.");
-            (new ConsoleApplicatie(dc, input, lang)).start();
+            System.out.println("U bent geen admin");
+            return false;
         }
+        return true;
     }
-
-    public void toonKeuze()
-    {
-        int keuze;
-
-        System.out.printf("%n%s%n1: %s%n2: %s%n3: %s%n4: %s%n%n",
-                lang.get("list.choose"),
-                "Een nieuw spel aanmaken",
-                "Een spel wijzigen",
-                "Hoofdmenu",
-                lang.get("app.quit"));
-
-        keuze = this.invoerMetControle(1, 3);
-        System.out.println(); input.nextLine();
-
-        switch (keuze)
-        {
-            case 1:
-                maakNieuwSpel();
-                break;
-            case 2:
-                wijzigSpel();
-                break;
-            case 3:
-                (new ConsoleApplicatie(dc, input, lang)).start();
-                break;
-            case 4:
-                System.out.println(lang.get("app.quited"));
-                break;
-            default:
-                System.err.println(lang.get("err.nonvalid"));
-        }
-    }
-
     public void maakNieuwSpel()
     {
+        if(!isAdmin())
+            return;
+        
         String naam;
         boolean doorgaan = true;
 
@@ -75,13 +40,11 @@ public class AdminApplicatie extends BaseApplicatie
         // 1. Unieke naam vragen voor het aanmaken van een spel.
         do
         {
-            System.out.print("Geef een naam voor het nieuwe spel: ");
-            naam = input.nextLine().trim();
-
+            naam = geefStringIn("Geef een naam voor het nieuwe spel");
             try
             {
                 dc.voegSpelToe(naam);
-                System.out.printf("Het spel %s werd aangemaakt, u zult nu een spelbord toevoegen.%n", dc.geefNaamHuidigSpel());
+                System.out.printf("Het spel %s werd aangemaakt.%n", dc.geefNaamHuidigSpel());
                 doorgaan = false;
             } 
             catch (SpelException e)
@@ -93,19 +56,18 @@ public class AdminApplicatie extends BaseApplicatie
         // 2. Toevoegen van een spelbord.
         doorgaan = true;
         String keuze = "";
-
+        int aantalSpelborden = 1;
         do
         {
-            System.out.printf("%nWilt u (nog) een spelbord toevoegen? Typ 'stop' om te stoppen: ");
-            keuze = input.next();
-            input.nextLine(); // Buffer leegmaken            
+            keuze = geefStringIn("%nGeef een naam voor spelbord " + aantalSpelborden + " in, of type 'stop' om te stoppen");
 
             if (keuze.equals("stop"))
             {
                 doorgaan = false;
                 break;
             }
-            maakNieuwSpelbord(dc, input, lang);
+            maakNieuwSpelbord(keuze);
+            aantalSpelborden++;
         } 
         while (doorgaan);
 
@@ -133,21 +95,17 @@ public class AdminApplicatie extends BaseApplicatie
         }
 
         // 4. Doorsturen naar het adminmenu.
-        start();
+
     }
 
-    public void maakNieuwSpelbord(DomeinController dc, Scanner input, LanguageManager lang)
+    public void maakNieuwSpelbord(String spelbordNaam)
     {
         boolean fouteInvoer = true;
         boolean doorgaan = true;
 
-        String spelbordNaam;
-        // 1. Naam voor het spelbord
+        // 1. Unieke naam voor Spelbord in een spel
         do
         {
-            System.out.printf("%nGeef een naam voor het nieuwe spelbord: ");
-            spelbordNaam = input.nextLine().trim();
-
             try
             {
                 dc.voegSpelbordToe(spelbordNaam);
@@ -171,10 +129,7 @@ public class AdminApplicatie extends BaseApplicatie
         do
         {
             toonSpelbord();
-
-            System.out.printf("%nVoer een coördinaat in of typ 'stop': ");
-            coordinaat = input.next();
-            input.nextLine();
+            coordinaat = geefStringIn("%nVoer een coördinaat (x,y) in, of typ 'stop' om te stoppen");
 
             if (coordinaat.equals("stop"))
             {
@@ -204,9 +159,7 @@ public class AdminApplicatie extends BaseApplicatie
                 }
             }
 
-            System.out.printf("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg): ");
-            keuze = input.next();
-            input.nextLine();
+            keuze = geefStringIn("Voer een type in : M (Muur), D (Doel), Y (Mannetje), K (Kist), _ (Leeg)");
 
             try
             {
@@ -219,32 +172,7 @@ public class AdminApplicatie extends BaseApplicatie
             }
         } while (doorgaan);
 
-    }
-
-    public void toonSpelbord()
-    {
-        int x = 0;
-
-        System.out.print("  ");
-        for (int i = 0; i < 10; i++)
-        {
-            System.out.print(i + " ");
-        }
-
-        System.out.println();
-        for (String[] vakArray : dc.toonSpelbord())
-        {
-            System.out.print(x + " ");
-            for (String vak : vakArray)
-            {
-                System.out.print(vak + " ");
-            }
-            System.out.println();
-            x++;
-        }
-    }
-
-    
+    }  
 
     public void wijzigSpel()
     {
@@ -319,11 +247,7 @@ public class AdminApplicatie extends BaseApplicatie
         } while (doorgaan);
     }
 
-    public void snelStarten()
-    {
-        dc.meldAan("administrator", "Administrator1");
-        this.start();
-    }
+
 
     public void kiesSpel()
     {
@@ -381,9 +305,27 @@ public class AdminApplicatie extends BaseApplicatie
             }
         } while (fouteInvoer);
     }
-
-    public void vragenOmTeStoppen()
+    @Override
+    public void toonSpelbord()
     {
-        
+        int x = 0;
+
+        System.out.print("  ");
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.print(i + " ");
+        }
+
+        System.out.println();
+        for (String[] vakArray : dc.toonSpelbord())
+        {
+            System.out.print(x + " ");
+            for (String vak : vakArray)
+            {
+                System.out.print(vak + " ");
+            }
+            System.out.println();
+            x++;
+        }
     }
 }

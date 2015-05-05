@@ -40,7 +40,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         {
             try 
             {
-                String spelId = geefStringIn("%nKies een spel, of type 'stop' om te stoppen: ");
+                String spelId = geefStringIn("%nKies een spel, of type 'stop' om te stoppen");
                 
                 if(spelId.equals("stop")) 
                     return;
@@ -64,7 +64,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         invoerFout = true;
         do
         {
-            this.toonSpebord();
+            this.toonSpelbord();
 
             do
             {
@@ -89,11 +89,12 @@ public class SpeelSpelApplicatie extends BaseApplicatie
                 else {          
                     dc.verplaatsSpeler(keuze);
                 }
-                this.toonSpebord();
+                this.toonSpelbord();
             } while (!dc.isEindeSpelbord());
 
             // De gebruiker wenst te stoppen
             if (keuze == 6) {
+                System.out.println();
                 break;
             }
             
@@ -121,9 +122,9 @@ public class SpeelSpelApplicatie extends BaseApplicatie
     }
     
     @Override
-    public void toonSpebord()
+    public void toonSpelbord()
     {
-        super.toonSpebord();
+        super.toonSpelbord();
         
         System.out.printf("%s: %d%n",
                 lang.get("game.board.moves"),

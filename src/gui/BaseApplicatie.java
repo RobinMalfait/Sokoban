@@ -68,14 +68,14 @@ public class BaseApplicatie
     
     protected String geefStringIn(String label)
     {
-        System.out.printf("%s: ", label);
+        System.out.printf(label + ": ");
         String string = input.next();
         input.nextLine();  
         
         return string;
     }
 
-    protected void toonSpebord()
+    protected void toonSpelbord()
     {
         System.out.println();
 
