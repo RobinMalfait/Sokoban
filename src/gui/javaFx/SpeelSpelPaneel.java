@@ -137,28 +137,25 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(KeyEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
                     if (event.getCode().equals(KeyCode.UP))
                     {
-                        DC.verplaatsSpeler(1);
+                        DC.verplaatsSpelerOmhoog();
                         drawBoard();
                     } else if (event.getCode().equals(KeyCode.DOWN))
                     {
-                        DC.verplaatsSpeler(2);
+                        DC.verplaatsSpelerOmlaag();
                         drawBoard();
 
                     } else if (event.getCode().equals(KeyCode.LEFT))
                     {
-                        DC.verplaatsSpeler(3);
+                        DC.verplaatsSpelerLinks();
                         drawBoard();
 
                     } else if (event.getCode().equals(KeyCode.RIGHT))
                     {
-                        DC.verplaatsSpeler(4);
-                        drawBoard();
-                    } else if (event.getCode().equals(KeyCode.ENTER))
-                    {
+                        DC.verplaatsSpelerRechts();
                         drawBoard();
                     }
                 }
@@ -170,9 +167,9 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(1);
+                    DC.verplaatsSpelerOmhoog();
                     drawBoard();
                 }
             }
@@ -183,9 +180,9 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(2);
+                    DC.verplaatsSpelerOmlaag();
                     drawBoard();
                 }
             }
@@ -197,9 +194,9 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(3);
+                    DC.verplaatsSpelerLinks();
                     drawBoard();
                 }
             }
@@ -213,7 +210,7 @@ public class SpeelSpelPaneel extends BaseGui
             {
                 if (!DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(4);
+                    DC.verplaatsSpelerRechts();
                     drawBoard();
                 }
             }
