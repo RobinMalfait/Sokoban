@@ -1,5 +1,7 @@
 package gui.javaFx;
 
+import exceptions.SpelException;
+import exceptions.SpelbordException;
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -60,8 +62,8 @@ public class MaakSpelbordPaneel extends BaseGui
         
         this.drawBoard();
                 
-        this.errorLabel = (Label) this.findByIdInPane("error");
-        ((Label) this.findByIdInPane("gameboard_name_label")).setText(lang.get("game.board.name"));
+        this.errorLabel = (Label) this.findByIdInPane("lblError");
+        ((Label) this.findByIdInPane("lblSpelbordNaam")).setText(DC.geefNaamHuidigSpel());
 
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
@@ -89,6 +91,7 @@ public class MaakSpelbordPaneel extends BaseGui
             {
                 TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane("gameboard_name");
                 String name = gameboardName.getText();
+                System.out.println(name);
                 
                 if (name == null || name.equals("")) {
                     setError(lang.get("err.noGameboadName"));
@@ -244,15 +247,20 @@ public class MaakSpelbordPaneel extends BaseGui
      */
     private void saveGameboard(String name)
     {
-        DC.voegSpelbordToe(name);
-        
-        for(int row = 0; row < this.items.length; row++) {
-            for (int cell = 0; cell < this.items[row].length; cell++) {
-                DC.voerVakIn(String.format("%d,%d", row, cell), this.items[row][cell]);
-            }
+        try 
+        {
+            DC.voegSpelbordToe(name);
+            for(int row = 0; row < this.items.length; row++) {
+                for (int cell = 0; cell < this.items[row].length; cell++) {
+                    DC.voerVakIn(String.format("%d,%d", row, cell), this.items[row][cell]);
+                }
+            }  
+            DC.slaHuidigSpelOp();
         }
-        
-        DC.slaHuidigSpelOp();
+        catch(SpelException | SpelbordException e)
+        {
+            setError(e.getMessage());
+        }  
     }
 
     /**
@@ -260,9 +268,11 @@ public class MaakSpelbordPaneel extends BaseGui
      */
     protected void reset()
     {
-        DC.resetSpelbord();
-        ((Label) this.findByIdInPane("error")).setText("");
-        TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane("gameboard_name");
-        gameboardName.setText("");
+        
+        initializeBoard();     
+        setError("");
+        
+        ((Label) this.findByIdInPane("lblSpelbordNaam")).setText("");
+        ((TextField) this.findByIdInPane("gameboard_name")).setText("");
     }
 }
