@@ -161,6 +161,9 @@ public class SpeelSpelPaneel extends BaseGui
                     {
                         DC.verplaatsSpelerRechts();
                         drawBoard();
+                    } else if (event.getCode().equals(KeyCode.ENTER)) // Volgend spel
+                    {
+                        drawBoard();
                     }
                 }
             }
