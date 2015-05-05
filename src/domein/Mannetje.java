@@ -5,23 +5,22 @@ public class Mannetje
     private String richting = "Z";
     
     /**
-     * Maak een Mannetje-object aan.
+     * Verkrijg de richting
+     * 
+     * @return 
      */
-    public Mannetje()
-    {
-        
-    }
-
     public String getRichting()
     {
         return richting;
     }
 
+    /**
+     * Stel de richting in
+     * 
+     * @param richting 
+     */
     public void setRichting(String richting)
     {
         this.richting = richting;
     }
-    
-    
-    
 }

@@ -3,7 +3,6 @@ package domein;
 import exceptions.SpelException;
 import java.util.ArrayList;
 import java.util.List;
-import languages.LanguageManager;
 import persistentie.SpelMapper;
 
 class SpelRepository extends Base
@@ -92,7 +91,12 @@ class SpelRepository extends Base
         return null;
     }
 
-    void verwijderSpel(int spelId)
+    /**
+     * Verwijder een spel
+     * 
+     * @param spelId 
+     */
+    public void verwijderSpel(int spelId)
     {
         Spel spel = zoekSpel(spelId);
         
