@@ -22,6 +22,11 @@ public abstract class BaseGui
     protected static Stage stage;
     protected static LanguageManager lang;
         
+    /**
+     * Toon een paneel op basis van zijn id
+     * 
+     * @param id 
+     */
     protected void show(String id)
     {
         Pane pane = (Pane) stage.getScene().lookup(id);
@@ -30,6 +35,12 @@ public abstract class BaseGui
         pane.toFront();
     }
 
+    /**
+     * Laad een fxml file.
+     * 
+     * @param fxmlFile
+     * @throws IOException 
+     */
     protected void loadScene(String fxmlFile) throws IOException
     {
         FXMLLoader root = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -39,6 +50,12 @@ public abstract class BaseGui
         stage.show();
     }
     
+    /**
+     * Zoek een node op het paneel op basis van zijn id
+     * 
+     * @param id
+     * @return 
+     */
     protected Node findByIdInPane(String id)
     {
         return stage.getScene().lookup("#" + getClass().getSimpleName() + "_" + id);

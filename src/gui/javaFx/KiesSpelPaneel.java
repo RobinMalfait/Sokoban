@@ -14,6 +14,9 @@ import javafx.scene.layout.GridPane;
  */
 public class KiesSpelPaneel extends BaseGui
 {    
+    /**
+     * Run het KiesSpelPaneel
+     */
     public void run()
     {
         this.init();
@@ -21,6 +24,9 @@ public class KiesSpelPaneel extends BaseGui
         this.drawSpelBoard();
     }
     
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {        
         setTitle();
@@ -37,6 +43,9 @@ public class KiesSpelPaneel extends BaseGui
         });
     }
 
+    /**
+     * Stel de titel in
+     */
     private void setTitle()
     {
         String speler[] = DC.geefHuidigeSpeler();
@@ -46,6 +55,9 @@ public class KiesSpelPaneel extends BaseGui
         stage.setTitle(lang.get("game.welcome").toUpperCase() + " " + name + "!");
     }
     
+    /**
+     * Teken het spelbord
+     */
     private void drawSpelBoard()
     {
         ((Label) this.findByIdInPane("kiesSpel")).setText(lang.get("game.choose.list") + ":");

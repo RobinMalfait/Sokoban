@@ -77,18 +77,15 @@ class SpelRepository extends Base
     {       
         for(Spel spel: spellen)
         {
-            if(spel.getNaam().equals(naam))
+            if(spel.getNaam().toLowerCase().equals(naam.toLowerCase()))
             {
                 throw new SpelException(lang.get("game.exists"));
             }
-            else 
-            {
-                Spel nieuwSpel = new Spel(naam);
-                this.spellen.add(nieuwSpel);
-                return nieuwSpel;
-            }                
         }
-        return null;
+
+        Spel nieuwSpel = new Spel(naam);
+        this.spellen.add(nieuwSpel);
+        return nieuwSpel;
     }
 
     /**
@@ -96,16 +93,10 @@ class SpelRepository extends Base
      * 
      * @param spelId 
      */
-    public void verwijderSpel(int spelId)
-    {
-        Spel spel = zoekSpel(spelId);
-        
-        if (spel == null)
-            throw new SpelException(lang.get("game.notFound", ":id", spelId));
-        
-        spel.verwijderAlleSpelborden();
-        
-        spelMapper.verwijderSpel(spelId);
+    public void verwijderSpel(Spel spel)
+    {        
+        spelMapper.verwijderSpel(spel.getId());
+        spellen.remove(spel);
     }
     
 }

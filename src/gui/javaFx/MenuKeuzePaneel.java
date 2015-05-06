@@ -10,11 +10,17 @@ import javafx.scene.input.MouseEvent;
  */
 public class MenuKeuzePaneel extends BaseGui
 {    
+    /**
+     * Run het MenuKeuzePaneel
+     */
     public void run()
     {
         this.init();
     }
     
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {
         stage.setTitle("Sokoban!");

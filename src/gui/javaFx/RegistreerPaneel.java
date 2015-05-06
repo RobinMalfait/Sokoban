@@ -16,6 +16,9 @@ import javafx.scene.input.MouseEvent;
  */
 public class RegistreerPaneel extends BaseGui
 { 
+    /**
+     * Run het RegistreerPaneel
+     */
     public void run()
     {
         this.init();
@@ -23,6 +26,9 @@ public class RegistreerPaneel extends BaseGui
         this.reset();
     }
     
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {       
         stage.setTitle(lang.get("sign.up"));
@@ -131,6 +137,15 @@ public class RegistreerPaneel extends BaseGui
         });
     }
     
+    /**
+     * Registreer een gebruiker
+     * 
+     * @param firstName
+     * @param lastName
+     * @param username
+     * @param password
+     * @param passwordRepeat 
+     */
     private void registreer(TextField firstName, TextField lastName, TextField username, TextField password, TextField passwordRepeat)
     {
         try {
@@ -153,6 +168,9 @@ public class RegistreerPaneel extends BaseGui
         }
     }
 
+    /**
+     * Reset het paneel
+     */
     protected void reset()
     {
         TextField firstName = (TextField) this.findByIdInPane("txtFirstName");

@@ -9,6 +9,9 @@ import javafx.scene.input.MouseEvent;
  */
 public class MainPaneel extends BaseGui
 {
+    /**
+     * Run de MainPaneel
+     */
     public void run()
     {
         stage.setTitle("Welcome!");

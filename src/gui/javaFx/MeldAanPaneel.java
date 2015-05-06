@@ -16,12 +16,18 @@ import javafx.scene.input.MouseEvent;
  */
 public class MeldAanPaneel extends BaseGui
 {
+    /**
+     * Run de MeldAanPaneel
+     */
     public void run()
     {
         this.init();
         this.reset();
     }
     
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {        
         stage.setTitle(lang.get("sign.in"));
@@ -84,6 +90,12 @@ public class MeldAanPaneel extends BaseGui
         });
     }
     
+    /**
+     * Log een gebruiker in op basis van zijn username en password
+     * 
+     * @param username
+     * @param password 
+     */
     private void login(TextField username, TextField password)
     {
         try {
@@ -100,6 +112,9 @@ public class MeldAanPaneel extends BaseGui
         }
     }
 
+    /**
+     * Reset het paneel
+     */
     protected void reset()
     {
         TextField username = (TextField) this.findByIdInPane("txtUsername");

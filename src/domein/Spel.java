@@ -290,10 +290,8 @@ public class Spel extends Base
      */
     public void controleerSpel()
     {
-        for (Spelbord spelbord : spelborden)
-        {
-            spelbord.controleerSpelbord();
-        }
+        if(geefCorrecteSpelborden().isEmpty())
+            throw new SpelException("Het spel kent geen voltooide spelborden");
     }
      
     /**
@@ -331,22 +329,14 @@ public class Spel extends Base
     }
      
     /**
-     * Verwijder een spelbord
+     * Verwijder van het huidig spelbord
      * 
-     * @param spelbordId 
      */
-    public void verwijderSpelbord(int spelbordId)
+    public void verwijderHuidigSpelbord()
     {
-        Spelbord spelbord = zoekSpelbord(spelbordId);
-        
-        if (spelbord == null)
-            throw new SpelbordException(lang.get("game.board.notFound", ":id", spelbordId));
-        else
-        {
-            spelbordMapper.verwijderSpelbord(spelbordId);
-            spelborden.remove(spelbord);
-        }
-        
+            spelbordMapper.verwijderSpelbord(huidigSpelbord.getSpelbordId());
+            spelborden.remove(huidigSpelbord);
+            huidigSpelbord = null;
     }
     
     /**
@@ -365,15 +355,52 @@ public class Spel extends Base
         
         return null;
     }
+    
+    /**
+     * Geef voltooide Spelborden
+     * 
+     * @return List&gt;Spelbord&lt;
+     */
+    public List<Spelbord> geefCorrecteSpelborden()
+    {
+        List<Spelbord> voltooideSpelborden = new ArrayList<>();
+        for (Spelbord spelbord : spelborden)
+        {
+            try 
+            {
+                spelbord.controleerSpelbord();
+                voltooideSpelborden.add(spelbord);
+            }
+            catch(SpelbordException e)
+            {
+                
+            }
+        }   
+        return voltooideSpelborden;
+    }
 
     /**
-     * Verwijder alle spelborden
+     * Geef het anatal voltooide spelborden
+     * 
+     * @return int
      */
-    public void verwijderAlleSpelborden()
+    public int geefAantalVoltooideSpelborden()
     {
-        for(Spelbord spelbord : spelborden)
-        {
-            spelbordMapper.verwijderSpelbord(spelbord.getSpelbordId());
-        }
+        int aantal = 0;
+        for(Spelbord spelbord: spelborden)
+            if(spelbord.isVoltooid())
+                aantal++;
+        
+        return aantal;
+    }
+
+    /**
+     * Geef het anatal spelborden
+     * 
+     * @return int
+     */
+    public int geefAantalSpelborden()
+    {
+        return this.spelborden.size();
     }
 }

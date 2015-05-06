@@ -139,7 +139,7 @@ public class DomeinController
 
         if (this.huidigSpel == null)
         {
-            throw new SpelException(lang.get("game.notFound", ":id", id));
+            throw new SpelException(lang.get("game.notFound", "id", id));
         }
         else
         {
@@ -235,6 +235,38 @@ public class DomeinController
 
         huidigSpel.verplaatsSpeler(richting);
     }
+    
+    /**
+     * Verplaats de speler naar omhoog
+     */
+    public void verplaatsSpelerOmhoog()
+    {
+        this.verplaatsSpeler(1);
+    }
+    
+    /**
+     * Verplaats de speler naar omlaag
+     */
+    public void verplaatsSpelerOmlaag()
+    {
+        this.verplaatsSpeler(2);
+    }
+    
+    /**
+     * Verplaats de speler naar links
+     */
+    public void verplaatsSpelerLinks()
+    {
+        this.verplaatsSpeler(3);
+    }
+    
+    /**
+     * Verplaats de speler naar rechts
+     */
+    public void verplaatsSpelerRechts()
+    {
+        this.verplaatsSpeler(4);
+    }
 
     /**
      * Controleer of het huidig spelbord van het spel voltooid is
@@ -252,6 +284,16 @@ public class DomeinController
     public void bepaalVolgendSpelbord()
     {
         this.huidigSpel.bepaalVolgendSpelbord();
+    }
+    
+    public int geefAantalSpelborden()
+    {
+        return this.huidigSpel.geefAantalSpelborden();
+    }
+    
+    public int geefAantalVoltooideSpelborden()
+    {
+        return this.huidigSpel.geefAantalVoltooideSpelborden();
     }
 
     /**
@@ -354,7 +396,7 @@ public class DomeinController
     }
     
     /**
-     * Controleer of het gewijzigde spel aan de eisen voldoet.
+     * Controleer of het spel aan de eisen voldoet.
      */
     public void controleerSpel()
     {
@@ -370,22 +412,24 @@ public class DomeinController
     }    
     
     /**
+     * Verwijder een spel
+     * 
+     * @param spelbordId 
+     */
+    public void verwijderHuidigSpel()
+    {
+        spelRepository.verwijderSpel(huidigSpel);
+        huidigSpel = null;
+    }
+    
+    /**
      * Verwijder een spelbord
      * 
      * @param spelbordId 
      */
-    public void verwijderSpelbord(int spelbordId)
+    public void verwijderHuidigSpelbord()
     {
-        this.huidigSpel.verwijderSpelbord(spelbordId);
+        this.huidigSpel.verwijderHuidigSpelbord();
     }
     
-    /**
-     * Verwijder een spel
-     * 
-     * @param spelId 
-     */
-    public void verwijderSpel(int spelId)
-    {
-        this.spelRepository.verwijderSpel(spelId);
-    }
 }

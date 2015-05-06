@@ -40,7 +40,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         {
             try 
             {
-                String spelId = geefStringIn("%nKies een spel, of type 'stop' om te stoppen: ");
+                String spelId = geefStringIn("%nKies een spel, of type 'stop' om te stoppen");
                 
                 if(spelId.equals("stop")) 
                     return;
@@ -64,7 +64,7 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         invoerFout = true;
         do
         {
-            this.toonSpebord();
+            this.toonSpelbord();
 
             do
             {
@@ -89,18 +89,22 @@ public class SpeelSpelApplicatie extends BaseApplicatie
                 else {          
                     dc.verplaatsSpeler(keuze);
                 }
-                this.toonSpebord();
+                this.toonSpelbord();
             } while (!dc.isEindeSpelbord());
 
             // De gebruiker wenst te stoppen
             if (keuze == 6) {
+                System.out.println();
                 break;
             }
             
             // Het spelbord is voltooid.
-            System.out.printf("%n%s%n%n", lang.get("game.board.completed"));
+            System.out.printf("%nGefeliciteerd, je voltooide spelbord %d/%d%n%n", dc.geefAantalVoltooideSpelborden(), dc.geefAantalSpelborden());
             
             dc.bepaalVolgendSpelbord();
+
+            if(dc.isEindeSpel())
+                break;
             
             //Mogelijkeheid tot stoppen (met invoercontrole)
             System.out.printf("%s%n 1: %s%n 2: %s%n%n",
@@ -117,13 +121,13 @@ public class SpeelSpelApplicatie extends BaseApplicatie
         } while (!dc.isEindeSpel());
 
         if(dc.isEindeSpel())
-            System.out.println(lang.get("game.completed"));
+            System.out.printf("%s%n%n", lang.get("game.completed"));
     }
     
     @Override
-    public void toonSpebord()
+    public void toonSpelbord()
     {
-        super.toonSpebord();
+        super.toonSpelbord();
         
         System.out.printf("%s: %d%n",
                 lang.get("game.board.moves"),

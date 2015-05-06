@@ -84,6 +84,9 @@ Pane {
 .W { // Mannetje
     -fx-background-image: url(../images/bord/Y.png); 
 }
+.Y { // Mannetje
+    -fx-background-image: url(../images/bord/Y.png); 
+}
 
 ._ { // Leeg
     -fx-background-image: url(../images/bord/_.png); 
@@ -120,4 +123,10 @@ Pane {
     -fx-background-image: url(../images/wood.jpg), url(../images/back.png);
     -fx-background-repeat: repeat, no-repeat;
     -fx-background-position: center center;
+}
+
+.voltooid {
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
+    -fx-font-size: 2em;
 }

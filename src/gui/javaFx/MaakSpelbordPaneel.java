@@ -1,5 +1,7 @@
 package gui.javaFx;
 
+import exceptions.SpelException;
+import exceptions.SpelbordException;
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -14,17 +16,26 @@ import javafx.scene.layout.Pane;
  */
 public class MaakSpelbordPaneel extends BaseGui
 {
+
     private GridPane board;
     private String activeField = "M"; // Muur standaard
     private String[][] items; // Keep state
     private Label errorLabel;
 
+    /**
+     * Run het MaakSpelbordPaneel
+     */
     public void run()
     {
         this.init();
         this.reset();
+        
+         ((Label) this.findByIdInPane("lblNameGame")).setText(DC.geefNaamHuidigSpel());
     }
 
+    /**
+     * Initialiseer het bord            
+     */
     private void initializeBoard()
     {
         for (int x = 0; x < items.length; x++)
@@ -36,36 +47,38 @@ public class MaakSpelbordPaneel extends BaseGui
         }
     }
 
+    /**
+     * Initialiseer het paneel
+     */
     private void init()
     {
         this.board = (GridPane) this.findByIdInPane("grid");
         this.items = new String[10][10];
-        
-        initializeBoard(); 
-                
-        DC.voegSpelToe("Test Game Robin");
-        
+
+        initializeBoard();
+
         stage.setTitle("");
 
         this.show("#MaakSpelbordPaneel");
-        
-        this.registerSidebarClickEvents();
-        
-        this.drawBoard();
-                
-        this.errorLabel = (Label) this.findByIdInPane("error");
-        ((Label) this.findByIdInPane("gameboard_name_label")).setText(lang.get("game.board.name"));
 
+        this.registerSidebarClickEvents();
+
+        this.drawBoard();
+
+        this.errorLabel = (Label) this.findByIdInPane("lblError");
+       
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                (new SubMenuPaneel()).run();
+                // Terug gaan zonder opslaan, dan verwijderen we het spel-object:
+                DC.verwijderHuidigSpel();
+                (new MaakSpelPaneel()).run();
             }
         });
-        
-        this.board.setOnMouseClicked(new EventHandler<MouseEvent>() 
+
+        this.board.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -73,31 +86,48 @@ public class MaakSpelbordPaneel extends BaseGui
                 updateField((int) event.getSceneX(), (int) event.getSceneY());
             }
         });
-        
-        this.findByIdInPane("save").setOnMouseClicked(new EventHandler<MouseEvent>() 
+
+        this.findByIdInPane("saveGameboard").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
 
             @Override
             public void handle(MouseEvent event)
             {
-                TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane("gameboard_name");
+                TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane("txfGameboard");
                 String name = gameboardName.getText();
-                
-                if (name == null || name.equals("")) {
+                System.out.println(name);
+
+                if (name == null || name.equals(""))
+                {
                     setError(lang.get("err.noGameboadName"));
-                } else {
+                } else
+                {
                     cleanError();
-                    
+
                     saveGameboard(name);
                 }
             }
         });
+
+        this.findByIdInPane("saveGame").setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+
+            @Override
+            public void handle(MouseEvent event)
+            {
+                saveGame();
+            }
+        });        
     }
 
+    /**
+     * Registreer alle click events van de sidebar Keuze van veld om dan te
+     * kunnen tekenen.
+     */
     private void registerSidebarClickEvents()
     {
         /* Leeg veld */
-        this.findByIdInPane("_").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("_").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -105,9 +135,9 @@ public class MaakSpelbordPaneel extends BaseGui
                 setActiveField("_");
             }
         });
-        
+
         /* Muur */
-        this.findByIdInPane("M").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("M").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -115,9 +145,9 @@ public class MaakSpelbordPaneel extends BaseGui
                 setActiveField("M");
             }
         });
-        
+
         /* Doel */
-        this.findByIdInPane("D").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("D").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -125,9 +155,9 @@ public class MaakSpelbordPaneel extends BaseGui
                 setActiveField("D");
             }
         });
-        
+
         /* Kist */
-        this.findByIdInPane("K").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("K").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -135,9 +165,9 @@ public class MaakSpelbordPaneel extends BaseGui
                 setActiveField("K");
             }
         });
-        
+
         /* Mannetje */
-        this.findByIdInPane("Y").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        this.findByIdInPane("Y").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
@@ -146,16 +176,24 @@ public class MaakSpelbordPaneel extends BaseGui
             }
         });
     }
-    
+
+    /**
+     * Zet een veldje op actief.
+     *
+     * @param field
+     */
     private void setActiveField(String field)
     {
         this.findByIdInPane("active").getStyleClass().remove(this.activeField);
-               
+
         this.activeField = field;
-                
+
         this.findByIdInPane("active").getStyleClass().add(this.activeField);
     }
-    
+
+    /**
+     * Teken het bord
+     */
     private void drawBoard()
     {
         int x = 0;
@@ -179,50 +217,111 @@ public class MaakSpelbordPaneel extends BaseGui
         }
     }
 
+    /**
+     * Update een veld met coordinaten (x, y)
+     *
+     * @param x
+     * @param y
+     */
     private void updateField(Integer x, Integer y)
     {
         int xOffset = 14;
         int yOffset = 56;
-        
+
         x -= xOffset;
         y -= yOffset;
-        
+
         x = (x - x % 50) / 50;
         y = (y - y % 50) / 50;
-        
+
         this.items[y][x] = this.activeField;
-       
+
         this.drawBoard();
     }
 
+    /**
+     * Stel de error in
+     *
+     * @param text
+     */
     private void setError(String text)
     {
         this.errorLabel.setText(text);
     }
 
+    /**
+     * Maak de error leeg
+     */
     private void cleanError()
     {
         this.setError(""); // Clear the text
     }
 
+    /**
+     * Sla het spelbord op
+     *
+     * @param name
+     */
     private void saveGameboard(String name)
     {
-        DC.voegSpelbordToe(name);
-        
-        for(int row = 0; row < this.items.length; row++) {
-            for (int cell = 0; cell < this.items[row].length; cell++) {
-                DC.voerVakIn(String.format("%d,%d", row, cell), this.items[row][cell]);
+        try
+        {
+            DC.voegSpelbordToe(name);
+            for (int row = 0; row < this.items.length; row++)
+            {
+                for (int cell = 0; cell < this.items[row].length; cell++)
+                {
+                    DC.voerVakIn(String.format("%d,%d", row, cell), this.items[row][cell]);
+                }
             }
+            DC.controleerSpelbord();
+            resetSpelbord();
+            
+            ((Label) this.findByIdInPane("lblAantalSpelborden")).setText("Het spel telt " + DC.geefAantalSpelborden() + " voltooide spelborden.");
+            
+           
+        } catch (SpelException | SpelbordException e)
+        {
+            DC.verwijderHuidigSpelbord(); // Telkens we op opslaan klikken, voegen we het spelbord toe. Indien er een error is, verwijderen we die terug.
+            setError(e.getMessage());
         }
-        
-        DC.slaHuidigSpelOp();
     }
-
+    private void saveGame()
+    {
+        try
+        {
+            DC.slaHuidigSpelOp();
+            resetSpelbord();
+            setError("Het spel werd opgeslaan met de voltooide spelborden!");
+        }
+        catch(SpelException e)
+        {
+            setError(e.getMessage());
+        }
+    }
+    /**
+     * Reset het volledig paneel
+     */
     protected void reset()
     {
-        DC.resetSpelbord();
-        ((Label) this.findByIdInPane("error")).setText("");
-        TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane("gameboard_name");
-        gameboardName.setText("");
+        initializeBoard();
+        setError("");
+        
+        ((Label) this.findByIdInPane("lblAantalSpelborden")).setText("Het spel telt 0 voltooide spelborden.");
+        ((Label) this.findByIdInPane("lblNameGame")).setText("");
+        ((TextField) this.findByIdInPane("txfGameboard")).setText("");
     }
+
+    /**
+     * Reset het spelbord in het paneel
+     */
+    protected void resetSpelbord()
+    {
+        initializeBoard();
+        drawBoard();
+        setError("");
+        
+        ((TextField) this.findByIdInPane("txfGameboard")).setText("");
+    }
+    
 }

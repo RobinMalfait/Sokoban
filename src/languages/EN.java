@@ -63,6 +63,10 @@ public class EN extends Language
         map("game.board.moves",         "moves");
         map("game.board.notFound",      "The gameboard with id :id was not found in this game.");
         map("game.board.exists",        "There is already a gameboard with this name in this game.");
+        map("game.board.has",           "");
+        map("game.board.mustHavePlayer","");
+        map("game.board.playerLimit",   "");
+        map("game.board.boxEquality",   "");
         
         //player
         map("player.move",              "Move the dude in a direction");

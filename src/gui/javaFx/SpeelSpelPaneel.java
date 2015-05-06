@@ -18,18 +18,41 @@ import javafx.scene.layout.Pane;
 public class SpeelSpelPaneel extends BaseGui
 {
     private GridPane board;
-    private Label boardComplete;
+    private Label complete;
     private Pane overlay;
 
+    
+    /**
+     * Run het SpeelSpelPaneel
+     */
     public void run()
     {
         this.init();
+    }
+    
+    /**
+     * Initialiseer het paneel
+     */
+    private void init()
+    {
+        stage.setTitle(lang.get("sign.play"));
 
+        this.show("#SpeelSpelPaneel");
+
+        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent event)
+            {
+                (new KiesSpelPaneel()).run();
+            }
+        });
+        
         Button overlayButton = (Button) this.findByIdInPane("overlay_next");
         Button retry = (Button) this.findByIdInPane("retry");
 
         this.board = (GridPane) this.findByIdInPane("grid");
-        this.boardComplete = (Label) this.findByIdInPane("lblSpelbordComplete");
+        this.complete = (Label) this.findByIdInPane("lblComplete");
         this.overlay = (Pane) this.findByIdInPane("overlay");
 
         retry.setTooltip(new Tooltip(lang.get("game.board.retry").toUpperCase()));
@@ -59,12 +82,14 @@ public class SpeelSpelPaneel extends BaseGui
 
         this.drawBoard();
     }
-
+    
+    /**
+     * Teken het bord
+     */
     private void drawBoard()
     {
         this.overlay.setVisible(false);
-
-        this.boardComplete.setText("");
+        this.complete.setVisible(false);
 
         int x = 0;
         int y = 0;
@@ -93,31 +118,22 @@ public class SpeelSpelPaneel extends BaseGui
                 ((Pane) this.findByIdInPane("win")).setVisible(true);
             } else
             {
-                this.boardComplete.setText(lang.get("game.complete"));
-
                 this.overlay.setVisible(true);
+                
+                this.complete.setText(
+                    String.format("%d/%d", DC.geefAantalVoltooideSpelborden(), DC.geefAantalSpelborden())
+                );
+                
+                this.complete.setVisible(true);
 
                 DC.bepaalVolgendSpelbord();
             }
         }
     }
 
-    private void init()
-    {
-        stage.setTitle("");
-
-        this.show("#SpeelSpelPaneel");
-
-        this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
-            @Override
-            public void handle(MouseEvent event)
-            {
-                (new KiesSpelPaneel()).run();
-            }
-        });
-    }
-
+    /**
+     * Registreer events
+     */
     private void registerEvents()
     {
         stage.getScene().setOnKeyReleased(new EventHandler<KeyEvent>()
@@ -125,27 +141,27 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(KeyEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
                     if (event.getCode().equals(KeyCode.UP))
                     {
-                        DC.verplaatsSpeler(1);
+                        DC.verplaatsSpelerOmhoog();
                         drawBoard();
                     } else if (event.getCode().equals(KeyCode.DOWN))
                     {
-                        DC.verplaatsSpeler(2);
+                        DC.verplaatsSpelerOmlaag();
                         drawBoard();
 
                     } else if (event.getCode().equals(KeyCode.LEFT))
                     {
-                        DC.verplaatsSpeler(3);
+                        DC.verplaatsSpelerLinks();
                         drawBoard();
 
                     } else if (event.getCode().equals(KeyCode.RIGHT))
                     {
-                        DC.verplaatsSpeler(4);
+                        DC.verplaatsSpelerRechts();
                         drawBoard();
-                    } else if (event.getCode().equals(KeyCode.ENTER))
+                    } else if (event.getCode().equals(KeyCode.ENTER)) // Volgend spel
                     {
                         drawBoard();
                     }
@@ -158,9 +174,9 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(1);
+                    DC.verplaatsSpelerOmhoog();
                     drawBoard();
                 }
             }
@@ -171,9 +187,9 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(2);
+                    DC.verplaatsSpelerOmlaag();
                     drawBoard();
                 }
             }
@@ -185,9 +201,9 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(3);
+                    DC.verplaatsSpelerLinks();
                     drawBoard();
                 }
             }
@@ -201,13 +217,16 @@ public class SpeelSpelPaneel extends BaseGui
             {
                 if (!DC.isEindeSpel())
                 {
-                    DC.verplaatsSpeler(4);
+                    DC.verplaatsSpelerRechts();
                     drawBoard();
                 }
             }
         });
     }
 
+    /**
+     * Reset het paneel
+     */
     protected void reset()
     {
         DC.resetSpelbord();
