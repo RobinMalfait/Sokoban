@@ -84,6 +84,9 @@ Pane {
 .W { // Mannetje
     -fx-background-image: url(../images/bord/Y.png); 
 }
+.Y { // Mannetje
+    -fx-background-image: url(../images/bord/Y.png); 
+}
 
 ._ { // Leeg
     -fx-background-image: url(../images/bord/_.png); 
