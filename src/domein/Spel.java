@@ -209,7 +209,7 @@ public class Spel extends Base
         }
         
         if(this.huidigSpelbord == null)
-            throw new SpelException("Kon geen Spelbord kiezen voor het huidig spel.");
+            throw new SpelException(lang.get("err.noCurrentBoard"));
     }
     /**
      * Controleer of alle spelborden voltooid zijn. Zoja, is het spel voltooid
@@ -218,11 +218,12 @@ public class Spel extends Base
      */
     public boolean isEindeSpel()
     {
-        for(Spelbord spelbord: spelborden)
+        for(Spelbord spelbord : spelborden)
         {
-            if(!spelbord.isVoltooid())
+            if( ! spelbord.isVoltooid())
                 return false;
         }
+        
         return true;
     }
     
@@ -291,7 +292,7 @@ public class Spel extends Base
     public void controleerSpel()
     {
         if(geefCorrecteSpelborden().isEmpty())
-            throw new SpelException("Het spel kent geen voltooide spelborden");
+            throw new SpelException(lang.get("game.notCompleted"));
     }
      
     /**

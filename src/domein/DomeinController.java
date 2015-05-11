@@ -413,8 +413,6 @@ public class DomeinController
     
     /**
      * Verwijder een spel
-     * 
-     * @param spelbordId 
      */
     public void verwijderHuidigSpel()
     {
@@ -424,8 +422,6 @@ public class DomeinController
     
     /**
      * Verwijder een spelbord
-     * 
-     * @param spelbordId 
      */
     public void verwijderHuidigSpelbord()
     {

@@ -28,6 +28,8 @@ public class SpeelSpelPaneel extends BaseGui
     public void run()
     {
         this.init();
+        
+        reset();
     }
     
     /**
@@ -215,7 +217,7 @@ public class SpeelSpelPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                if (!DC.isEindeSpel())
+                if ( ! DC.isEindeSpel())
                 {
                     DC.verplaatsSpelerRechts();
                     drawBoard();
@@ -230,6 +232,7 @@ public class SpeelSpelPaneel extends BaseGui
     protected void reset()
     {
         DC.resetSpelbord();
+        this.drawBoard();
         ((Pane) this.findByIdInPane("win")).setVisible(false);
     }
 

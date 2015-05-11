@@ -53,6 +53,7 @@ public class FR extends Language
         map("game.notSaved",            "Le jeu n'a pas été enregistré.");
         map("game.modify",              "Modifie un jeu");
         map("game.create",              "Crée un jeu");
+        map("game.notCompleted",        "");
         
         //gameboard
         map("game.board",               "Tableau");
@@ -96,6 +97,7 @@ public class FR extends Language
         map("err.input",                "Le choix doit se situer entre :min et :max.");
         map("err.NaN",                  "Vous n'avez pas entrer un nombre.");
         map("err.invalidType",          "type non valide");
+        map("err.noCurrentBoard",       "");
     
     }
 }

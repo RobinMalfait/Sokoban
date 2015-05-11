@@ -52,7 +52,8 @@ public class NL extends Language
         map("game.exists",              "Er bestaat al een spel met deze naam.");
         map("game.notSaved",            "Het spel werd niet opgeslaan.");
         map("game.modify",              "Wijzig een spel");
-        map("game.create",              "Maak een spel");
+        map("game.create",              "Maak een spel");        
+        map("game.notCompleted",        "Het spel kent geen voltooide spelborden");
         
         //gameboard
         map("game.board",               "Spelbord");
@@ -95,5 +96,6 @@ public class NL extends Language
         map("err.input",                "De keuze moet tussen :min en :max liggen.");
         map("err.NaN",                  "U gaf geen nummer in.");
         map("err.invalidType",          "Ongeldig type");
+        map("err.noCurrentBoard",       "Kon geen Spelbord kiezen voor het huidig spel.");
     }
 }

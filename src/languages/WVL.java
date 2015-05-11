@@ -53,6 +53,7 @@ public class WVL extends Language
         map("game.notSaved",            "Tspel is nie upgesleegn.");
         map("game.modify",              "E spel verandern");
         map("game.create",              "E spel moakn");
+        map("game.notCompleted",        "");
         
         //gameboard
         map("game.board",               "Spelbord");
@@ -95,6 +96,7 @@ public class WVL extends Language
         map("err.input",                "Jen keuze moe tusn :min en :max lign.");
         map("err.NaN",                  "Da wos gin ciffer.");
         map("err.invalidType",          "Ongeldig tipe");
+        map("err.noCurrentBoard",       "Kost gin spelbord kiezn int huidige spel");
     
     }
 }

@@ -95,6 +95,7 @@ public class EN extends Language
         map("err.input",                "The choice should be between :min and :max.");
         map("err.NaN",                  "You didn't enter a number.");
         map("err.invalidType",          "Invalid type");
+        map("err.noCurrentBoard",       "Couldn't select a board for current game.");
     
     }
 }

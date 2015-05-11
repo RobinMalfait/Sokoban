@@ -99,7 +99,7 @@ public class MaakSpelbordPaneel extends BaseGui
 
                 if (name == null || name.equals(""))
                 {
-                    setError(lang.get("err.noGameboadName"));
+                    setError(lang.get("err.noGameboardName"));
                 } else
                 {
                     cleanError();
