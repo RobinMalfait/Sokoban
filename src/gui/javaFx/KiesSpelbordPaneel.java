@@ -12,19 +12,11 @@ import javafx.scene.layout.GridPane;
  *
  * @author robin
  */
-public class KiesSpelPaneel extends BaseGui
+public class KiesSpelbordPaneel extends BaseGui
 {
-
-    private int soort = 0;
-
-    public KiesSpelPaneel()
+    public KiesSpelbordPaneel()
     {
 
-    }
-
-    public KiesSpelPaneel(int soort)
-    {
-        this.soort = soort;
     }
 
     /**
@@ -44,14 +36,14 @@ public class KiesSpelPaneel extends BaseGui
     {
         setTitle();
 
-        this.show("#KiesSpelPaneel");
+        this.show("#KiesSpelbordPaneel");
 
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
             public void handle(MouseEvent event)
             {
-                (new SubMenuPaneel()).run();
+                (new KiesSpelPaneel(1)).run();
             }
         });
     }
@@ -77,17 +69,17 @@ public class KiesSpelPaneel extends BaseGui
 
         GridPane grid = (GridPane) this.findByIdInPane("grid");
 
-        String spellen[][] = DC.geefLijstSpellen();
+        String spelborden[][] = DC.geefLijstSpelborden();
 
         int x = 0;
         int y = 0;
 
         grid.setAlignment(Pos.CENTER);
 
-        for (String spel[] : spellen)
+        for (String spelbord[] : spelborden)
         {
             Button spelButton = new Button();
-            spelButton.setText(spel[1]);
+            spelButton.setText(spelbord[1]);
             spelButton.getStyleClass().add("btn");
             spelButton.getStyleClass().add("btn-space");
             spelButton.setAlignment(Pos.CENTER);
@@ -99,16 +91,8 @@ public class KiesSpelPaneel extends BaseGui
                 public void handle(MouseEvent event)
                 {
 
-                    DC.kiesSpel(Integer.parseInt(spel[0]));
-
-                    if (soort == 0)
-                    {
-                        (new SpeelSpelPaneel()).run();
-                    }
-                    else if(soort == 1)
-                    {
-                        (new KiesSpelbordPaneel()).run();
-                    }
+                    DC.kiesSpelbord(Integer.parseInt(spelbord[0]));
+                    (new WijzigSpelbordPaneel()).run();
                 }
             });
 

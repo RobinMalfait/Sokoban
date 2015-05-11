@@ -54,7 +54,14 @@ public class SubMenuPaneel extends BaseGui
                     (new MaakSpelPaneel()).run();
                 }
             });
-            
+            modifyGame.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event)
+                {
+                    (new KiesSpelPaneel(1)).run();
+                }
+            });            
             modifyGame.setVisible(true);
             createGame.setVisible(true);
             

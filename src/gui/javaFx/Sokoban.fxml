@@ -36,157 +36,6 @@
                   <Label id="MeldAanPaneel_lblError" layoutX="174.0" layoutY="364.0" styleClass="label-error" text="Error." visible="false" />
                </children>
             </Pane>
-            <Pane id="KiesTaalPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Button id="KiesTaalPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
-                     <styleClass>
-                        <String fx:value="btn" />
-                        <String fx:value="back" />
-                     </styleClass>
-                  </Button>
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <GridPane id="KiesTaalPaneel_grid" layoutX="100.0" layoutY="170.0" prefHeight="400.0" prefWidth="600.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-               </children>
-            </Pane>
-            <Pane id="KiesSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Button id="KiesSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
-                     <styleClass>
-                        <String fx:value="btn" />
-                        <String fx:value="back" />
-                     </styleClass>
-                  </Button>
-                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <GridPane id="KiesSpelPaneel_grid" alignment="CENTER" layoutX="116.0" layoutY="210.0" prefHeight="300.0" prefWidth="600.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-                  <Label id="KiesSpelPaneel_kiesSpel" layoutX="116.0" layoutY="179.0" text="Kies een spel" />
-               </children>
-            </Pane>
-            <Pane id="SpeelSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
-               <children>
-                  <Button id="SpeelSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
-                     <styleClass>
-                        <String fx:value="btn" />
-                        <String fx:value="back" />
-                     </styleClass>
-                  </Button>
-                  <Label layoutX="457.0" layoutY="569.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
-                  <ImageView fitHeight="64.0" fitWidth="179.0" layoutX="14.0" layoutY="8.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/logo.png" />
-                     </image>
-                  </ImageView>
-                  <GridPane id="SpeelSpelPaneel_grid" alignment="CENTER" gridLinesVisible="true" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-                  <GridPane layoutX="584.0" layoutY="450.0" prefHeight="100.0" prefWidth="150.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button id="SpeelSpelPaneel_up" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="up-arrow" />
-                           </styleClass></Button>
-                        <Button id="SpeelSpelPaneel_right" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="right-arrow" />
-                           </styleClass></Button>
-                        <Button id="SpeelSpelPaneel_down" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="down-arrow" />
-                           </styleClass></Button>
-                        <Button id="SpeelSpelPaneel_left" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="1">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="left-arrow" />
-                           </styleClass></Button>
-                     </children>
-                  </GridPane>
-                  <Button id="SpeelSpelPaneel_retry" layoutX="622.0" layoutY="349.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="79.0">
-                     <styleClass>
-                        <String fx:value="btn" />
-                        <String fx:value="btn-space" />
-                        <String fx:value="btn-retry" />
-                     </styleClass>
-                  </Button>
-                  <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay">
-                     <children>
-                        <Button id="SpeelSpelPaneel_overlay_next" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" prefWidth="400.0" text="VOLGENDE SPELBORD" textAlignment="CENTER">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="btn-space" />
-                           </styleClass>
-                        </Button>
-                        <Label id="SpeelSpelPaneel_lblComplete" alignment="CENTER" layoutX="200.0" layoutY="229.0" prefHeight="17.0" prefWidth="400.0" styleClass="voltooid" text="1/5 Voltooid" />
-                     </children>
-                  </Pane>
-                  <Pane id="SpeelSpelPaneel_win" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0" styleClass="win" visible="false" />
-               </children>
-            </Pane>
             <Pane id="MenuKeuzePaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
                   <Button id="MenuKeuzePaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
@@ -287,6 +136,187 @@
                   <Label id="MaakSpelPaneel_lblError" layoutX="174.0" layoutY="374.0" styleClass="label-error" text="Error." visible="false" />
                </children>
             </Pane>
+            <Pane id="SpeelSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button id="SpeelSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="457.0" layoutY="569.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView fitHeight="64.0" fitWidth="179.0" layoutX="14.0" layoutY="8.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane id="SpeelSpelPaneel_grid" alignment="CENTER" gridLinesVisible="true" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <GridPane layoutX="584.0" layoutY="450.0" prefHeight="100.0" prefWidth="150.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button id="SpeelSpelPaneel_up" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="up-arrow" />
+                           </styleClass></Button>
+                        <Button id="SpeelSpelPaneel_right" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="right-arrow" />
+                           </styleClass></Button>
+                        <Button id="SpeelSpelPaneel_down" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="down-arrow" />
+                           </styleClass></Button>
+                        <Button id="SpeelSpelPaneel_left" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="1">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="left-arrow" />
+                           </styleClass></Button>
+                     </children>
+                  </GridPane>
+                  <Button id="SpeelSpelPaneel_retry" layoutX="622.0" layoutY="349.0" mnemonicParsing="false" prefHeight="10.0" prefWidth="79.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-space" />
+                        <String fx:value="btn-retry" />
+                     </styleClass>
+                  </Button>
+                  <Pane id="SpeelSpelPaneel_overlay" prefHeight="600.0" prefWidth="800.0" styleClass="overlay">
+                     <children>
+                        <Button id="SpeelSpelPaneel_overlay_next" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" mnemonicParsing="false" prefWidth="400.0" text="VOLGENDE SPELBORD" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-space" />
+                           </styleClass>
+                        </Button>
+                        <Label id="SpeelSpelPaneel_lblComplete" alignment="CENTER" layoutX="200.0" layoutY="229.0" prefHeight="17.0" prefWidth="400.0" styleClass="voltooid" text="1/5 Voltooid" />
+                     </children>
+                  </Pane>
+                  <Pane id="SpeelSpelPaneel_win" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0" styleClass="win" visible="false" />
+               </children>
+            </Pane>
+            <Pane id="KiesTaalPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button id="KiesTaalPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane id="KiesTaalPaneel_grid" layoutX="100.0" layoutY="170.0" prefHeight="400.0" prefWidth="600.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children>
+            </Pane>
+            <Pane id="KiesSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button id="KiesSpelPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane id="KiesSpelPaneel_grid" alignment="CENTER" layoutX="116.0" layoutY="210.0" prefHeight="300.0" prefWidth="600.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+                  <Label id="KiesSpelPaneel_kiesSpel" layoutX="116.0" layoutY="179.0" text="Kies een spel" />
+               </children>
+            </Pane>
+            <Pane id="KiesSpelbordPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button id="KiesSpelbordPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label layoutX="416.0" layoutY="570.0" text="Bram Lemenu, Bob Naert, Demian Dekoninck en Robin Malfait" />
+                  <ImageView layoutX="125.0" layoutY="43.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane id="KiesSpelbordPaneel_grid" alignment="CENTER" layoutX="116.0" layoutY="210.0" prefHeight="300.0" prefWidth="600.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Label id="KiesSpelbordPaneel_kiesSpel" layoutX="116.0" layoutY="179.0" text="Kies een spelbord" />
+               </children>
+            </Pane>
             <Pane id="MaakSpelbordPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
                <children>
                   <Button id="MaakSpelbordPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
@@ -359,6 +389,70 @@
                      </styleClass>
                   </Button>
                   <Label id="MaakSpelbordPaneel_lblAantalSpelborden" layoutX="430.0" layoutY="23.0" text="Het spel kent 2 spelborden." />
+               </children>
+            </Pane>
+            <Pane id="WijzigSpelbordPaneel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <children>
+                  <Button id="WijzigSpelbordPaneel_back" layoutX="754.0" layoutY="9.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="back" />
+                     </styleClass>
+                  </Button>
+                  <Label id="WijzigSpelbordPaneel_lblError" layoutX="14.0" layoutY="568.0" styleClass="label-error" text="Error" />
+                  <ImageView fitHeight="64.0" fitWidth="179.0" layoutX="14.0" layoutY="8.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/logo.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane id="WijzigSpelbordPaneel_grid" alignment="CENTER" gridLinesVisible="true" layoutX="14.0" layoutY="56.0" prefHeight="500.0" prefWidth="500.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <GridPane id="MaakSpelbordPaneel_items" hgap="10.0" layoutX="606.0" layoutY="148.0" prefHeight="170.0" prefWidth="110.0" vgap="10.0">
+                     <children>
+                        <Button id="WijzigSpelbordPaneel_M" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
+                        <Button id="WijzigSpelbordPaneel_D" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="D" GridPane.rowIndex="1" />
+                        <Button id="WijzigSpelbordPaneel_K" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="K" GridPane.columnIndex="1" />
+                        <Button id="WijzigSpelbordPaneel_Y" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="Z" GridPane.rowIndex="2" />
+                        <Button id="WijzigSpelbordPaneel__" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="_" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Button id="WijzigSpelbordPaneel_saveGameboard" layoutX="602.0" layoutY="392.0" mnemonicParsing="false" styleClass="btn" text="SLA OP" />
+                  <Pane id="WijzigSpelbordPaneel_active" layoutX="606.0" layoutY="68.0" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
+                  <Label layoutX="559.0" layoutY="85.0" text="Actief:" />
+                  <Button id="WijzigSpelbordPaneel_verwijder" layoutX="602.0" layoutY="451.0" mnemonicParsing="false" styleClass="btn" text="VERWIJDER" />
                </children>
             </Pane>
          </children>

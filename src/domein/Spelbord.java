@@ -348,7 +348,7 @@ public class Spelbord extends Base
         }
 
         Vak vak = vakken[x][y];
-
+        
         switch (keuze.toUpperCase())
         {
             case "_":                                     // Toegankelijk vak - Leeg vak
@@ -381,9 +381,15 @@ public class Spelbord extends Base
                 vak.setToegankelijk(true);
                 vak.setDoel(false);
                 break;
+            case "Z":                                     // Toegankelijk vak - Met Mannetje
+                vak.setKist(null);
+                vak.setMannetje(new Mannetje());
+                vak.setToegankelijk(true);
+                vak.setDoel(false);
+                break;
             default:                                      // niet in lijst
                 throw new SpelbordException(lang.get("err.invalidType"));
-
+                    
         }
     }
 
