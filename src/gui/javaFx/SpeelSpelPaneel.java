@@ -231,9 +231,10 @@ public class SpeelSpelPaneel extends BaseGui
      */
     protected void reset()
     {
+        ((Pane) this.findByIdInPane("win")).setVisible(false);
+                
         DC.resetSpelbord();
         this.drawBoard();
-        ((Pane) this.findByIdInPane("win")).setVisible(false);
     }
 
 }

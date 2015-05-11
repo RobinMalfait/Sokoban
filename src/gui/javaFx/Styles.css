@@ -73,19 +73,19 @@ Pane {
 }
 
 .Z { // Mannetje
-    -fx-background-image: url(../images/bord/Y.png); 
+    -fx-background-image: url(../images/bord/Z.png); 
 }
 .N { // Mannetje
-    -fx-background-image: url(../images/bord/Y.png); 
+    -fx-background-image: url(../images/bord/N.png); 
 }
 .O { // Mannetje
-    -fx-background-image: url(../images/bord/Y.png); 
+    -fx-background-image: url(../images/bord/O.png); 
 }
 .W { // Mannetje
-    -fx-background-image: url(../images/bord/Y.png); 
+    -fx-background-image: url(../images/bord/W.png); 
 }
 .Y { // Mannetje
-    -fx-background-image: url(../images/bord/Y.png); 
+    -fx-background-image: url(../images/bord/Z.png); 
 }
 
 ._ { // Leeg
