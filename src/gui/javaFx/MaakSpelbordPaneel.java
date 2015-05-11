@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +22,8 @@ public class MaakSpelbordPaneel extends BaseGui
     private String activeField = "M"; // Muur standaard
     private String[][] items; // Keep state
     private Label errorLabel;
+    
+    private boolean spelIsOpgeslaan = false;
 
     /**
      * Run het MaakSpelbordPaneel
@@ -72,9 +75,26 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                // Terug gaan zonder opslaan, dan verwijderen we het spel-object:
-                DC.verwijderHuidigSpel();
-                (new MaakSpelPaneel()).run();
+                int keuze = 1;
+                if(DC.geefAantalSpelborden() != 0)
+                {
+                    // Er zijn spelborden die volledig zijn, maar nu kijken of het spel is opgeslaan.
+                    if(!spelIsOpgeslaan)
+                    {
+                        Object[] options = {"Ja", "Nee", "Annuleren"};       
+                        keuze = JOptionPane.showOptionDialog(null, "Wenst u het spel op te slaan, alvorens te stoppen?", "Stoppen", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    }
+                }
+                                
+                if(keuze == 1) {
+                    DC.verwijderHuidigSpel();
+                    (new MaakSpelPaneel()).run();                    
+                }
+                else if(keuze == 0)
+                {
+                    saveGame();
+                    (new MaakSpelPaneel()).run();    
+                }
             }
         });
 
@@ -291,6 +311,7 @@ public class MaakSpelbordPaneel extends BaseGui
         try
         {
             DC.slaHuidigSpelOp();
+            spelIsOpgeslaan = true;
             resetSpelbord();
             setError("Het spel werd opgeslaan met de voltooide spelborden!");
         }
@@ -322,6 +343,8 @@ public class MaakSpelbordPaneel extends BaseGui
         setError("");
         
         ((TextField) this.findByIdInPane("txfGameboard")).setText("");
+        
+        
     }
     
 }

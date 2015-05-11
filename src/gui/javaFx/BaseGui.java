@@ -60,4 +60,5 @@ public abstract class BaseGui
     {
         return stage.getScene().lookup("#" + getClass().getSimpleName() + "_" + id);
     }
+    
 }
