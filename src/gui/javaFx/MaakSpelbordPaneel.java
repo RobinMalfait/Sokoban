@@ -75,7 +75,7 @@ public class MaakSpelbordPaneel extends BaseGui
             @Override
             public void handle(MouseEvent event)
             {
-                int keuze = 1;
+                int keuze = 0;
                 if(DC.geefAantalSpelborden() != 0)
                 {
                     // Er zijn spelborden die volledig zijn, maar nu kijken of het spel is opgeslaan.
@@ -83,18 +83,19 @@ public class MaakSpelbordPaneel extends BaseGui
                     {
                         Object[] options = {"Ja", "Nee", "Annuleren"};       
                         keuze = JOptionPane.showOptionDialog(null, "Wenst u het spel op te slaan, alvorens te stoppen?", "Stoppen", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        
+                        if(keuze == 2)
+                            return;
+                        
+                        if(keuze == 0)
+                            saveGame();
+                        
+                        (new MaakSpelPaneel()).run();
+                     
                     }
                 }
-                                
-                if(keuze == 1) {
-                    DC.verwijderHuidigSpel();
-                    (new MaakSpelPaneel()).run();                    
-                }
-                else if(keuze == 0)
-                {
-                    saveGame();
-                    (new MaakSpelPaneel()).run();    
-                }
+                (new MaakSpelPaneel()).run();                
+                
             }
         });
 
@@ -115,7 +116,6 @@ public class MaakSpelbordPaneel extends BaseGui
             {
                 TextField gameboardName = (TextField) MaakSpelbordPaneel.this.findByIdInPane("txfGameboard");
                 String name = gameboardName.getText();
-                System.out.println(name);
 
                 if (name == null || name.equals(""))
                 {

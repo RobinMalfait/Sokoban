@@ -53,7 +53,7 @@ public class AdminApplicatie extends BaseApplicatie
             if (keuze.equals("ja"))
             {
                 dc.slaHuidigSpelOp();
-                System.out.print("Het spel met de spelborden werd opgeslaan.");
+                System.out.printf("Het spel %s met de spelborden (%d) werd opgeslaan.", dc.geefNaamHuidigSpel(), dc.geefAantalSpelborden());
             } 
             else
             {
@@ -155,9 +155,13 @@ public class AdminApplicatie extends BaseApplicatie
                 {
                     dc.voerVakIn(coordinaat, keuze);
                 } 
-                catch (SpelbordException e)
+                catch (SpelbordException se)
                 {
-                    System.out.printf("%n%s Probeer opnieuw %n", e.getMessage());
+                    System.out.printf("%n%s Probeer opnieuw %n", se.getMessage());
+                }
+                catch (NumberFormatException ne)
+                {
+                    System.out.printf(lang.get("player.wrongCoordinates"));
                 }
             }
             else 

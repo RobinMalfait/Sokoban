@@ -65,7 +65,7 @@ public class KiesSpelbordPaneel extends BaseGui
      */
     private void drawSpelBoard()
     {
-        ((Label) this.findByIdInPane("kiesSpel")).setText(lang.get("game.choose.list") + ":");
+        ((Label) this.findByIdInPane("kiesSpel")).setText(lang.get("game.board.choose.list") + ":");
 
         GridPane grid = (GridPane) this.findByIdInPane("grid");
 

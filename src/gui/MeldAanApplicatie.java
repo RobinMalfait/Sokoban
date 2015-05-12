@@ -29,7 +29,7 @@ public class MeldAanApplicatie extends BaseApplicatie
         {
             gebruikersnaam = geefStringIn(lang.get("user.username") + " (type 'stop' om te stoppen)");
             
-            if (gebruikersnaam.toLowerCase().equals(lang.get("sign.quit").toLowerCase()))
+            if (gebruikersnaam.toLowerCase().equals("stop"))
             {
                 stop = true;
             } 
