@@ -55,11 +55,11 @@ public class WVL extends Language
         map("game.create",              "E spel moakn");
         map("game.notCompleted",        "Der zitn gin voltooide spelbordn int spel");
         map("game.new",                 "Noame vot nieuwe spel");
-        map("game.contentsBoards",      "");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
-        map("game.saved",               "");//"Het spel werd opgeslaan met de voltooide spelborden!");
-        map("game.name",                ""); //"Naam spel");
-        map("game.dialog.save",         ""); //"Wenst u het spel op te slaan?");
-        map("game.save",                ""); //"Sla spel op
+        map("game.contentsBoards",      "T spel telt :count voltooid spelbord.| T spel telt :count voltooide spelbordn.");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
+        map("game.saved",               "T spel i ipgesleegn me de voltooide spelbordn!");//"Het spel werd opgeslaan met de voltooide spelborden!");
+        map("game.name",                "Noame vant spel"); //"Naam spel");
+        map("game.dialog.save",         "Wildjet spel ipsloan?"); //"Wenst u het spel op te slaan?");
+        map("game.save",                "Slaat spel ip."); //"Sla spel op
         
         //gameboard
         map("game.board",               "Spelbord");

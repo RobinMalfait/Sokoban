@@ -55,11 +55,11 @@ public class FR extends Language
         map("game.create",              "Crée nouveau jeu");
         map("game.notCompleted",        "Le jeu n'a aucune tableau complète");
         map("game.new",                 "Nom pour le nouveau jeu");
-        map("game.contentsBoards",      "");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
-        map("game.saved",               "");//"Het spel werd opgeslaan met de voltooide spelborden!");
-        map("game.name",                ""); //"Naam spel");
-        map("game.dialog.save",         ""); //"Wenst u het spel op te slaan?");
-        map("game.save",                ""); //"Sla spel op
+        map("game.contentsBoards",      "Le jeux compt :count plateau de jeu complète.| Le jeux compt :count plateaux de jeu complète.");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
+        map("game.saved",               "Le jeu a été enregistré avec les plateaux de jeu complète!");//"Het spel werd opgeslaan met de voltooide spelborden!");
+        map("game.name",                "Nom de jeu"); //"Naam spel");
+        map("game.dialog.save",         "Si vous shouhaitez enregistrer le jeu?"); //"Wenst u het spel op te slaan?");
+        map("game.save",                "Enregistrer le jeu"); //"Sla spel op
                 
         //gameboard
         map("game.board",               "Tableau");
