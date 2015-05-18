@@ -72,10 +72,10 @@ public class EN extends Language
         map("game.board.noElements",    "The gameboard must contain at least one box and one goal.");
         map("game.board.choose.list",   "Choose a gameboard from the list below");
         map("game.board.edit.active",   "Active");
-        map("game.board.save",          "Weet u zeker dat u het spelbord wil opslaan?");
-        map("game.board.cancel",        "U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?");
-        map("game.board.cancelled",     "Het spelbord werd terug in zijn originele toestand gebracht!");
-        map("game.board.saved",         "Het spelbord werd succesvol opgeslaan!");  
+        map("game.board.save",          "Are you sure you want to save the gameboard?");
+        map("game.board.cancel",        "You are going to cancel all changes. Are you sure?");
+        map("game.board.cancelled",     "The gameboard has been brought back to its original state!");
+        map("game.board.saved",         "The gameboard has been saved!");  
         
         //player
         map("player.move",              "Move the dude in a direction");
