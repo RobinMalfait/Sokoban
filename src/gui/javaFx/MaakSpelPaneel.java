@@ -37,6 +37,9 @@ public class MaakSpelPaneel extends BaseGui
                  
         this.errorLabel = (Label) this.findByIdInPane("lblError");
         
+        Label lblSpelnaam = (Label) this.findByIdInPane("lblSpelnaam");
+        lblSpelnaam.setText(lang.get("game.new") + ":");
+        
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override

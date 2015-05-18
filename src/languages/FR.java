@@ -53,7 +53,8 @@ public class FR extends Language
         map("game.notSaved",            "Le jeu n'a pas été enregistré.");
         map("game.modify",              "Modifie un jeu");
         map("game.create",              "Crée un jeu");
-        map("game.notCompleted",        "");
+        map("game.notCompleted",        "Le jeu n'a aucune tableau complète");
+        map("game.new",                 "Nom pour le nouveaux jeu");
         
         //gameboard
         map("game.board",               "Tableau");

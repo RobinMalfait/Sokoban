@@ -54,6 +54,7 @@ public class NL extends Language
         map("game.modify",              "Wijzig een spel");
         map("game.create",              "Maak een spel");        
         map("game.notCompleted",        "Het spel kent geen voltooide spelborden");
+        map("game.new",                 "Naam voor het nieuwe spel");
         
         //gameboard
         map("game.board",               "Spelbord");

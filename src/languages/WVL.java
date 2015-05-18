@@ -53,7 +53,8 @@ public class WVL extends Language
         map("game.notSaved",            "Tspel is nie upgesleegn.");
         map("game.modify",              "E spel verandern");
         map("game.create",              "E spel moakn");
-        map("game.notCompleted",        "");
+        map("game.notCompleted",        "Der zitn gin voltooide spelbordn int spel");
+        map("game.new",                 "Noame vot nieuwe spel");
         
         //gameboard
         map("game.board",               "Spelbord");

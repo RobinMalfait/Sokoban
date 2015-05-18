@@ -18,7 +18,7 @@ import javafx.scene.layout.Pane;
 public class SpeelSpelPaneel extends BaseGui
 {
     private GridPane board;
-    private Label complete;
+    private Label complete, moves;
     private Pane overlay;
 
     
@@ -60,6 +60,8 @@ public class SpeelSpelPaneel extends BaseGui
         retry.setTooltip(new Tooltip(lang.get("game.board.retry").toUpperCase()));
 
         overlayButton.setText(lang.get("game.board.next").toUpperCase());
+        
+        this.moves = (Label) this.findByIdInPane("lblMoves");
 
         overlayButton.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
@@ -112,6 +114,8 @@ public class SpeelSpelPaneel extends BaseGui
             x = 0;
             y++;
         }
+        
+        updateMoves();
 
         if (DC.isEindeSpelbord())
         {
@@ -235,6 +239,11 @@ public class SpeelSpelPaneel extends BaseGui
                 
         DC.resetSpelbord();
         this.drawBoard();
+    }
+    
+    private void updateMoves()
+    {
+        this.moves.setText(lang.get("game.board.moves") + ": " + String.valueOf(DC.geefAantalVerplaatsingen()));
     }
 
 }

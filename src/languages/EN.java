@@ -53,6 +53,8 @@ public class EN extends Language
         map("game.notSaved",            "The game has not been saved.");
         map("game.modify",              "Modify a game");
         map("game.create",              "Create a game");
+        map("game.notCompleted",        "The game has no finished gameboards");
+        map("game.new",                 "Name for the new game");
         
         //gameboard
         map("game.board",               "Gameboard");
