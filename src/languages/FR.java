@@ -81,7 +81,7 @@ public class FR extends Language
         map("game.board.cancel",        "Vous allez annuler toutes les modifications. Etes-vous sûr?");
         map("game.board.cancelled",     "Le plateau de jeu a été ramené à son état d'origine!");
         map("game.board.saved",         "Le plateau de jeu a été sauvé!");  
-        map("game.board.name",          ""); //"Naam spelbord");
+        map("game.board.name",          "Nom de jeu"); //"Naam spelbord");
         
         
         //player

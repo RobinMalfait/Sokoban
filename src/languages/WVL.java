@@ -81,7 +81,7 @@ public class WVL extends Language
         map("game.board.cancel",        "Je ga ol jen veranderingn wegdoen. Ziejt zeekr?"); //U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?
         map("game.board.cancelled",     "Tspelbord sta were lik dat stond."); //Het spelbord werd terug in zijn originele toestand gebracht!
         map("game.board.saved",         "Jen spelbord is succesvol upgeslegen!"); //Het spelbord werd succesvol opgeslaan!
-        map("game.board.name",          ""); //"Naam spelbord");
+        map("game.board.name",          "Noame vant spel"); //"Naam spelbord");
         
         
         //player
