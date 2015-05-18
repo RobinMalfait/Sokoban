@@ -459,8 +459,14 @@ public class Spelbord extends Base
         {
             throw new SpelbordException(String.format("%s %s", (aantalMannetjes == 0) ? lang.get("game.board.mustHavePlayer") : lang.get("playerLimit"), lang.choice("game.board.has", aantalMannetjes, "count", aantalMannetjes)));
         }
+        
+        if (aantalDoelen == 0 || aantalKisten ==0)
+        {
+            throw new SpelbordException(lang.get("game.board.noElements"));
+        }
+        
 
-        if (aantalDoelen == 0 || aantalDoelen != aantalKisten)
+        if (aantalDoelen != aantalKisten)
         {
             throw new SpelbordException(lang.get("game.board.boxEquality"));
         }

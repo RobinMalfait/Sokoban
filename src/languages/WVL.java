@@ -64,10 +64,11 @@ public class WVL extends Language
         map("game.board.moves",         "verplatsingn");
         map("game.board.notFound",      "Tspelbord met nummer :id is nie weregevondn in da spel ier.");
         map("game.board.exists",        "Tis ol e spelbord me die noamde in da spel ier.");
-        map("game.board.has",           "");
-        map("game.board.mustHavePlayer","");
-        map("game.board.playerLimit",   "");
-        map("game.board.boxEquality",   "");
+        map("game.board.has",           "Der stoat nu :count ventje upt spelbord|Der stoan nu :count ventjes upt spelbord"); // 1 mannetje | meerdere mannetjes
+        map("game.board.mustHavePlayer","Der moet jin ventje upt spelbord stoan");
+        map("game.board.playerLimit",   "Der meugt mo jin ventje upt spelbord stoan");
+        map("game.board.boxEquality",   "Taantal kistn en doeln is nie gelik.");
+        map("game.board.noElements",    "Der moe minstens jin kiste en jin doel upt spelbord stoan.");
         
         //player
         map("player.move",              "Beweegt jen peetje in een rigtinge");

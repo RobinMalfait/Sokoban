@@ -63,10 +63,11 @@ public class EN extends Language
         map("game.board.moves",         "moves");
         map("game.board.notFound",      "The gameboard with id :id was not found in this game.");
         map("game.board.exists",        "There is already a gameboard with this name in this game.");
-        map("game.board.has",           "");
-        map("game.board.mustHavePlayer","");
-        map("game.board.playerLimit",   "");
-        map("game.board.boxEquality",   "");
+        map("game.board.has",           "The gameboard has :count dude|The gameboard has :count dudes"); // 1 mannetje | meerdere mannetjes
+        map("game.board.mustHavePlayer","The gameboard must have one dude.");
+        map("game.board.playerLimit",   "The gameboard may only have one dude.");
+        map("game.board.boxEquality",   "The number of boxes and goals is not equal.");
+        map("game.board.noElements",    "The gameboard must contain at least one box and one goal.");
         
         //player
         map("player.move",              "Move the dude in a direction");

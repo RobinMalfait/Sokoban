@@ -67,7 +67,8 @@ public class NL extends Language
         map("game.board.has",           "Het spelbord bevat nu :count mannetje|Het spelbord bevat nu :count mannetjes"); // 1 mannetje | meerdere mannetjes
         map("game.board.mustHavePlayer","Er moet één mannetje op het spelbord staan");
         map("game.board.playerLimit",   "Er mag slechts één mannetje op het spelbord staan");
-        map("game.board.boxEquality",   "Het aantal kisten en doelen op het spelbord is niet gelijk.");
+        map("game.board.boxEquality",   "Het aantal kisten en doelen is niet gelijk.");
+        map("game.board.noElements",    "Er moet minstens één kist en één doel op het spelbord staan.");
         
         //player
         map("player.move",              "Verplaats het mannetje in een richting");

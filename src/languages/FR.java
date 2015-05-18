@@ -64,10 +64,11 @@ public class FR extends Language
         map("game.board.moves",         "movements");
         map("game.board.notFound",      "Le tableau avec l'id :id n'a pas été trouvé dans ce jeu.");
         map("game.board.exists",        "Il existe déjà un tableu avec ce nom dans ce jeu.");
-        map("game.board.has",           "");
-        map("game.board.mustHavePlayer","");
-        map("game.board.playerLimit",   "");
-        map("game.board.boxEquality",   "");
+        map("game.board.has",           "Le tableau contient :count mec|Le tableau contient :count mecs"); // 1 mannetje | meerdere mannetjes
+        map("game.board.mustHavePlayer","Le tableau doit contenir un mec");
+        map("game.board.playerLimit",   "Le tableau peut contenir qu'un seul mec");
+        map("game.board.boxEquality",   "Le nombre de boîtes et des cibles ne sont pas égaux.");
+        map("game.board.noElements",    "Le tableau doit avoir au moins une boîte et une cible.");
         
         
         //player
@@ -97,7 +98,7 @@ public class FR extends Language
         map("err.input",                "Le choix doit se situer entre :min et :max.");
         map("err.NaN",                  "Vous n'avez pas entrer un nombre.");
         map("err.invalidType",          "type non valide");
-        map("err.noCurrentBoard",       "");
+        map("err.noCurrentBoard",       "Ne pouvais pas sélectionner un tableau dans ce jeu.");
     
     }
 }
