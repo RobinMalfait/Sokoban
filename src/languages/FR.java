@@ -72,10 +72,10 @@ public class FR extends Language
         map("game.board.noElements",    "Le tableau doit avoir au moins une boîte et une cible.");
         map("game.board.choose.list",   "Choisissez un tableau dans la liste ci-dessous");
         map("game.board.edit.active",   "Actif");
-        map("game.board.save",          ""); //Weet u zeker dat u het spelbord wil opslaan?
-        map("game.board.cancel",        ""); //U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?
-        map("game.board.cancelled",     ""); //Het spelbord werd terug in zijn originele toestand gebracht!
-        map("game.board.saved",         ""); //Het spelbord werd succesvol opgeslaan!
+        map("game.board.save",          "Etes-vous sûr que vous voulez enregistrer le plateau de jeu?");
+        map("game.board.cancel",        "Vous allez annuler toutes les modifications. Etes-vous sûr?");
+        map("game.board.cancelled",     "Le plateau de jeu a été ramené à son état d'origine!");
+        map("game.board.saved",         "Le plateau de jeu a été sauvé!");  
         
         
         //player
