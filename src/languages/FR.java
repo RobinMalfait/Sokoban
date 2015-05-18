@@ -31,7 +31,7 @@ public class FR extends Language
         map("sign.succes",              "Vous êtes connecté avec succès!");
         map("sign.retry",               "Refaire ou typ: Stop.");
         map("sign.choise",              "Qu'êtes-vous prêt à faire?");
-        map("sign.play",                "Jouer à un jeu");
+        map("sign.play",                "Jouer un jeu");
         map("sign.quit",                "Arreter.");
         map("sign.game.conf",           "Configurer un nouveau jeu");
         map("sign.game.modify",         "Modifier un jeu existant");
@@ -55,7 +55,12 @@ public class FR extends Language
         map("game.create",              "Crée nouveau jeu");
         map("game.notCompleted",        "Le jeu n'a aucune tableau complète");
         map("game.new",                 "Nom pour le nouveau jeu");
-        
+        map("game.contentsBoards",      "");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
+        map("game.saved",               "");//"Het spel werd opgeslaan met de voltooide spelborden!");
+        map("game.name",                ""); //"Naam spel");
+        map("game.dialog.save",         ""); //"Wenst u het spel op te slaan?");
+        map("game.save",                ""); //"Sla spel op
+                
         //gameboard
         map("game.board",               "Tableau");
         map("game.board.loading",       "Le tableau est en train de charger");
@@ -76,6 +81,7 @@ public class FR extends Language
         map("game.board.cancel",        "Vous allez annuler toutes les modifications. Etes-vous sûr?");
         map("game.board.cancelled",     "Le plateau de jeu a été ramené à son état d'origine!");
         map("game.board.saved",         "Le plateau de jeu a été sauvé!");  
+        map("game.board.name",          ""); //"Naam spelbord");
         
         
         //player

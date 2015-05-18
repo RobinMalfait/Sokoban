@@ -55,6 +55,11 @@ public class WVL extends Language
         map("game.create",              "E spel moakn");
         map("game.notCompleted",        "Der zitn gin voltooide spelbordn int spel");
         map("game.new",                 "Noame vot nieuwe spel");
+        map("game.contentsBoards",      "");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
+        map("game.saved",               "");//"Het spel werd opgeslaan met de voltooide spelborden!");
+        map("game.name",                ""); //"Naam spel");
+        map("game.dialog.save",         ""); //"Wenst u het spel op te slaan?");
+        map("game.save",                ""); //"Sla spel op
         
         //gameboard
         map("game.board",               "Spelbord");
@@ -76,6 +81,8 @@ public class WVL extends Language
         map("game.board.cancel",        "Je ga ol jen veranderingn wegdoen. Ziejt zeekr?"); //U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?
         map("game.board.cancelled",     "Tspelbord sta were lik dat stond."); //Het spelbord werd terug in zijn originele toestand gebracht!
         map("game.board.saved",         "Jen spelbord is succesvol upgeslegen!"); //Het spelbord werd succesvol opgeslaan!
+        map("game.board.name",          ""); //"Naam spelbord");
+        
         
         //player
         map("player.move",              "Beweegt jen peetje in een rigtinge");

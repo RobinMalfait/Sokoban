@@ -4,6 +4,7 @@ import exceptions.SpelException;
 import exceptions.SpelbordException;
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -21,7 +22,7 @@ public class MaakSpelbordPaneel extends BaseGui
     private GridPane board;
     private String activeField = "M"; // Muur standaard
     private String[][] items; // Keep state
-    private Label errorLabel;
+    private Label errorLabel, lblAantalSpelborden;
     
     private boolean spelIsOpgeslaan = false;
 
@@ -33,7 +34,7 @@ public class MaakSpelbordPaneel extends BaseGui
         this.init();
         this.reset();
         
-         ((Label) this.findByIdInPane("lblNameGame")).setText(DC.geefNaamHuidigSpel());
+        ((Label) findByIdInPane("nameGame")).setText(DC.geefNaamHuidigSpel());
     }
 
     /**
@@ -69,6 +70,26 @@ public class MaakSpelbordPaneel extends BaseGui
         this.drawBoard();
 
         this.errorLabel = (Label) this.findByIdInPane("lblError");
+        this.lblAantalSpelborden = (Label) this.findByIdInPane("lblAantalSpelborden");
+        
+        Label lblActive = (Label) this.findByIdInPane("lblActive");
+        lblActive.setText(lang.get("game.board.edit.active"));
+        
+        Label lblNameGame = (Label) this.findByIdInPane("lblNameGame");
+        lblNameGame.setText(lang.get("game.name") + ":");
+        
+        Label nameGame = (Label) this.findByIdInPane("nameGame");
+        nameGame.setText(DC.geefNaamHuidigSpel());
+        
+        Label lblNameGameboard = (Label) this.findByIdInPane("lblNameGameboard");
+        lblNameGameboard.setText(lang.get("game.board.name") + ":");
+        
+        Button saveGameboard = (Button) this.findByIdInPane("saveGameboard");
+        saveGameboard.setText(lang.get("save"));
+        
+        Button saveGame = (Button) this.findByIdInPane("saveGame");
+        saveGame.setText(lang.get("game.save"));
+        
        
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
@@ -81,8 +102,8 @@ public class MaakSpelbordPaneel extends BaseGui
                     // Er zijn spelborden die volledig zijn, maar nu kijken of het spel is opgeslaan.
                     if(!spelIsOpgeslaan)
                     {
-                        Object[] options = {"Ja", "Nee", "Annuleren"};       
-                        keuze = JOptionPane.showOptionDialog(null, "Wenst u het spel op te slaan, alvorens te stoppen?", "Stoppen", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                        Object[] options = {lang.get("yes", lang.get("no"), lang.get("cancel"))};       
+                        keuze = JOptionPane.showOptionDialog(null, lang.get("game.dialog.save"), "Stoppen", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                         
                         if(keuze == 2)
                             return;
@@ -297,10 +318,11 @@ public class MaakSpelbordPaneel extends BaseGui
             DC.controleerSpelbord();
             resetSpelbord();
             
-            ((Label) this.findByIdInPane("lblAantalSpelborden")).setText("Het spel telt " + DC.geefAantalSpelborden() + " voltooide spelborden.");
-            
+            updateLblAantalSpelborden();
+            errorLabel.setText(lang.get("game.board.saved"));
            
-        } catch (SpelException | SpelbordException e)
+        } 
+        catch (SpelException | SpelbordException e)
         {
             DC.verwijderHuidigSpelbord(); // Telkens we op opslaan klikken, voegen we het spelbord toe. Indien er een error is, verwijderen we die terug.
             setError(e.getMessage());
@@ -313,7 +335,7 @@ public class MaakSpelbordPaneel extends BaseGui
             DC.slaHuidigSpelOp();
             spelIsOpgeslaan = true;
             resetSpelbord();
-            setError("Het spel werd opgeslaan met de voltooide spelborden!");
+            setError(lang.get("game.saved"));
         }
         catch(SpelException e)
         {
@@ -328,8 +350,8 @@ public class MaakSpelbordPaneel extends BaseGui
         initializeBoard();
         setError("");
         
-        ((Label) this.findByIdInPane("lblAantalSpelborden")).setText("Het spel telt 0 voltooide spelborden.");
-        ((Label) this.findByIdInPane("lblNameGame")).setText("");
+        ((Label) this.findByIdInPane("lblAantalSpelborden")).setText(lang.choice("game.contentsBoards", 0, "count", 0));
+        ((Label) this.findByIdInPane("nameGame")).setText("");
         ((TextField) this.findByIdInPane("txfGameboard")).setText("");
     }
 
@@ -346,5 +368,14 @@ public class MaakSpelbordPaneel extends BaseGui
         
         
     }
+    protected void updateLblAantalSpelborden()
+    {
+        int aantalSpelborden = DC.geefAantalSpelborden();
+        
+        lblAantalSpelborden.setText(lang.choice("game.contentsBoards", aantalSpelborden, "count", aantalSpelborden));
+    }
+    
+    
+
     
 }

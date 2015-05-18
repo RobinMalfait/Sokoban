@@ -55,6 +55,11 @@ public class NL extends Language
         map("game.create",              "Maak nieuw spel");        
         map("game.notCompleted",        "Het spel kent geen voltooide spelborden");
         map("game.new",                 "Naam voor het nieuwe spel");
+        map("game.contentsBoards",      "Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
+        map("game.saved",               "Het spel werd opgeslaan met de voltooide spelborden!");
+        map("game.name",                "Naam spel");
+        map("game.dialog.save",         "Wenst u het spel op te slaan?");
+        map("game.save",                "Sla spel op");
         
         //gameboard
         map("game.board",               "Spelbord");
@@ -75,7 +80,8 @@ public class NL extends Language
         map("game.board.save",          "Weet u zeker dat u het spelbord wil opslaan?");
         map("game.board.cancel",        "U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?");
         map("game.board.cancelled",     "Het spelbord werd terug in zijn originele toestand gebracht!");
-        map("game.board.saved",         "Het spelbord werd succesvol opgeslaan!");        
+        map("game.board.saved",         "Het spelbord werd succesvol opgeslaan!");  
+        map("game.board.name",          "Naam spelbord");
         
         //player
         map("player.move",              "Verplaats het mannetje in een richting");
@@ -106,6 +112,7 @@ public class NL extends Language
         map("err.invalidType",          "Ongeldig type");
         map("err.noCurrentBoard",       "Kon geen Spelbord kiezen voor het huidig spel.");
         map("err.noGameName",           "Vul een naam voor het nieuwe spel in!");
+        map("err.noGameboardName",      "Vul een naam voor het spelbord in!");
         
         //keywords
         map("yes",                      "Ja");

@@ -457,7 +457,7 @@ public class Spelbord extends Base
 
         if (aantalMannetjes != 1)
         {
-            throw new SpelbordException(String.format("%s %s", (aantalMannetjes == 0) ? lang.get("game.board.mustHavePlayer") : lang.get("playerLimit"), lang.choice("game.board.has", aantalMannetjes, "count", aantalMannetjes)));
+            throw new SpelbordException(String.format("%s %s", (aantalMannetjes == 0) ? lang.get("game.board.mustHavePlayer") : lang.get("game.board.playerLimit"), lang.choice("game.board.has", aantalMannetjes, "count", aantalMannetjes)));
         }
         
         if (aantalDoelen == 0 || aantalKisten ==0)

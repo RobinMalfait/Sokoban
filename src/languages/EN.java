@@ -55,6 +55,11 @@ public class EN extends Language
         map("game.create",              "Create new game");
         map("game.notCompleted",        "The game has no finished gameboards");
         map("game.new",                 "Name for the new game");
+        map("game.contentsBoards",      "The game has :count completed board.|The game has :count completed boards.");//"Het spel telt :count voltooid spelbord.|Het spel telt :count voltooide spelborden.");
+        map("game.saved",               "The game has been saved with the completed gameboards.");//"Het spel werd opgeslaan met de voltooide spelborden!");
+        map("game.name",                "Name game"); //"Naam spel");
+        map("game.dialog.save",         "Would you like to save the game?"); //"Wenst u het spel op te slaan?");
+        map("game.save",                "Save game"); //"Sla spel op
         
         //gameboard
         map("game.board",               "Gameboard");
@@ -76,6 +81,8 @@ public class EN extends Language
         map("game.board.cancel",        "You are going to cancel all changes. Are you sure?");
         map("game.board.cancelled",     "The gameboard has been brought back to its original state!");
         map("game.board.saved",         "The gameboard has been saved!");  
+        map("game.board.name",          "Name gameboard"); //"Naam spelbord");
+        
         
         //player
         map("player.move",              "Move the dude in a direction");
@@ -106,6 +113,7 @@ public class EN extends Language
         map("err.invalidType",          "Invalid type");
         map("err.noCurrentBoard",       "Couldn't select a board for current game.");
         map("err.noGameName",           "Enter a name for the new game!");
+        map("err.noGameboardName",      "Enter a name for the gameboard!"); //"Vul een naam voor het spelbord in!");
         
         //keywords
         map("yes",                      "Yes");
