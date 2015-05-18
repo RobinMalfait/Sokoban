@@ -52,7 +52,7 @@ public class EN extends Language
         map("game.exists",              "There is already a game with this name.");
         map("game.notSaved",            "The game has not been saved.");
         map("game.modify",              "Modify a game");
-        map("game.create",              "Create a game");
+        map("game.create",              "Create new game");
         map("game.notCompleted",        "The game has no finished gameboards");
         map("game.new",                 "Name for the new game");
         
@@ -70,6 +70,12 @@ public class EN extends Language
         map("game.board.playerLimit",   "The gameboard may only have one dude.");
         map("game.board.boxEquality",   "The number of boxes and goals is not equal.");
         map("game.board.noElements",    "The gameboard must contain at least one box and one goal.");
+        map("game.board.choose.list",   "Choose a gameboard from the list below");
+        map("game.board.edit.active",   "Active");
+        map("game.board.save",          "Weet u zeker dat u het spelbord wil opslaan?");
+        map("game.board.cancel",        "U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?");
+        map("game.board.cancelled",     "Het spelbord werd terug in zijn originele toestand gebracht!");
+        map("game.board.saved",         "Het spelbord werd succesvol opgeslaan!");  
         
         //player
         map("player.move",              "Move the dude in a direction");
@@ -99,6 +105,14 @@ public class EN extends Language
         map("err.NaN",                  "You didn't enter a number.");
         map("err.invalidType",          "Invalid type");
         map("err.noCurrentBoard",       "Couldn't select a board for current game.");
+        map("err.noGameName",           "Enter a name for the new game!");
+        
+        //keywords
+        map("yes",                      "Yes");
+        map("no",                       "No");
+        map("cancel",                   "Cancel");
+        map("save",                     "Save");
+        map("delete",                   "Delete");
     
     }
 }

@@ -52,7 +52,7 @@ public class NL extends Language
         map("game.exists",              "Er bestaat al een spel met deze naam.");
         map("game.notSaved",            "Het spel werd niet opgeslaan.");
         map("game.modify",              "Wijzig een spel");
-        map("game.create",              "Maak een spel");        
+        map("game.create",              "Maak nieuw spel");        
         map("game.notCompleted",        "Het spel kent geen voltooide spelborden");
         map("game.new",                 "Naam voor het nieuwe spel");
         
@@ -70,6 +70,12 @@ public class NL extends Language
         map("game.board.playerLimit",   "Er mag slechts één mannetje op het spelbord staan");
         map("game.board.boxEquality",   "Het aantal kisten en doelen is niet gelijk.");
         map("game.board.noElements",    "Er moet minstens één kist en één doel op het spelbord staan.");
+        map("game.board.choose.list",   "Kies een spelbord uit onderstaande lijst");
+        map("game.board.edit.active",   "Actief");
+        map("game.board.save",          "Weet u zeker dat u het spelbord wil opslaan?");
+        map("game.board.cancel",        "U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?");
+        map("game.board.cancelled",     "Het spelbord werd terug in zijn originele toestand gebracht!");
+        map("game.board.saved",         "Het spelbord werd succesvol opgeslaan!");        
         
         //player
         map("player.move",              "Verplaats het mannetje in een richting");
@@ -99,5 +105,14 @@ public class NL extends Language
         map("err.NaN",                  "U gaf geen nummer in.");
         map("err.invalidType",          "Ongeldig type");
         map("err.noCurrentBoard",       "Kon geen Spelbord kiezen voor het huidig spel.");
+        map("err.noGameName",           "Vul een naam voor het nieuwe spel in!");
+        
+        //keywords
+        map("yes",                      "Ja");
+        map("no",                       "Nee");
+        map("cancel",                   "Annuleer");
+        map("save",                     "Sla op");
+        map("delete",                   "Verwijder");
+        
     }
 }

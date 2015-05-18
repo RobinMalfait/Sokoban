@@ -283,11 +283,11 @@
                   </GridPane>
                   <Button id="MaakSpelbordPaneel_saveGameboard" layoutX="607.0" layoutY="396.0" mnemonicParsing="false" styleClass="btn" text="SLA OP" />
                   <Pane id="MaakSpelbordPaneel_active" layoutX="606.0" layoutY="68.0" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
-                  <Label layoutX="559.0" layoutY="85.0" text="Actief:" />
-                  <Label layoutX="606.0" layoutY="343.0" text="Naam spelbord:" />
+                  <Label id="MaakSpelbordPaneel_lblActive" layoutX="559.0" layoutY="85.0" text="Actief:" />
+                  <Label id="MaakSpelbordPaneel_lblNameGameboard" layoutX="606.0" layoutY="343.0" text="Naam spelbord:" />
                   <TextField id="MaakSpelbordPaneel_txfGameboard" layoutX="606.0" layoutY="361.0" prefHeight="28.0" prefWidth="162.0" />
-                  <Label layoutX="208.0" layoutY="23.0" text="Naam spel:" />
-                  <Label id="MaakSpelbordPaneel_lblNameGame" layoutX="280.0" layoutY="23.0" text="Naamspelbord" />
+                  <Label id="MaakSpelbordPaneel_lblNameGame" layoutX="208.0" layoutY="23.0" text="Naam spel:" />
+                  <Label id="MaakSpelbordPaneel_lblNameGameboard" layoutX="280.0" layoutY="23.0" text="Naamspelbord" />
                   <Button id="MaakSpelbordPaneel_saveGame" layoutX="533.0" layoutY="491.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="256.0" text="SLA SPEL OP">
                      <styleClass>
                         <String fx:value="btn" />
@@ -355,10 +355,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <Button id="WijzigSpelbordPaneel_saveGameboard" layoutX="602.0" layoutY="392.0" mnemonicParsing="false" styleClass="btn" text="SLA OP" />
+                  <Button id="WijzigSpelbordPaneel_btnSave" layoutX="602.0" layoutY="392.0" mnemonicParsing="false" styleClass="btn" text="SLA OP" />
                   <Pane id="WijzigSpelbordPaneel_active" layoutX="606.0" layoutY="68.0" prefHeight="50.0" prefWidth="50.0" styleClass="M" />
-                  <Label layoutX="559.0" layoutY="85.0" text="Actief:" />
-                  <Button id="WijzigSpelbordPaneel_verwijder" layoutX="602.0" layoutY="451.0" mnemonicParsing="false" styleClass="btn" text="VERWIJDER" />
+                  <Label id="WijzigSpelbordPaneel_lblActive" layoutX="559.0" layoutY="85.0" text="Actief:" />
+                  <Button id="WijzigSpelbordPaneel_btnDelete" layoutX="602.0" layoutY="451.0" mnemonicParsing="false" styleClass="btn" text="VERWIJDER" />
                </children>
             </Pane>
             <Pane id="SpeelSpelPaneel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">

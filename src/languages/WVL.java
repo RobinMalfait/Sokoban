@@ -70,6 +70,12 @@ public class WVL extends Language
         map("game.board.playerLimit",   "Der meugt mo jin ventje upt spelbord stoan");
         map("game.board.boxEquality",   "Taantal kistn en doeln is nie gelik.");
         map("game.board.noElements",    "Der moe minstens jin kiste en jin doel upt spelbord stoan.");
+        map("game.board.choose.list",   "Kiest e spelbord ut onderstoande liste");
+        map("game.board.edit.active",   "Actif");
+        map("game.board.save",          ""); //Weet u zeker dat u het spelbord wil opslaan?
+        map("game.board.cancel",        ""); //U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?
+        map("game.board.cancelled",     ""); //Het spelbord werd terug in zijn originele toestand gebracht!
+        map("game.board.saved",         ""); //Het spelbord werd succesvol opgeslaan!
         
         //player
         map("player.move",              "Beweegt jen peetje in een rigtinge");
@@ -99,6 +105,14 @@ public class WVL extends Language
         map("err.NaN",                  "Da wos gin ciffer.");
         map("err.invalidType",          "Ongeldig tipe");
         map("err.noCurrentBoard",       "Kost gin spelbord kiezn int huidige spel");
+        map("err.noGameName",           "Gif et nieuwe spel e noame!");
+        
+        //keywords
+        map("yes",                      "Joa");
+        map("no",                       "Nin");
+        map("cancel",                   "Annuleern");
+        map("save",                     "Upsloan");
+        map("delete",                   "Verwijdern");
     
     }
 }

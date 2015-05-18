@@ -3,6 +3,7 @@ package gui.javaFx;
 import exceptions.SpelException;
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -31,7 +32,7 @@ public class MaakSpelPaneel extends BaseGui
      */
     private void init()
     {
-        stage.setTitle("Maak nieuw spel");
+        stage.setTitle(lang.get("game.create"));
 
         this.show("#MaakSpelPaneel");
                  
@@ -39,6 +40,9 @@ public class MaakSpelPaneel extends BaseGui
         
         Label lblSpelnaam = (Label) this.findByIdInPane("lblSpelnaam");
         lblSpelnaam.setText(lang.get("game.new") + ":");
+        
+        Button newGameBtn = (Button) this.findByIdInPane("newGameBtn");
+        newGameBtn.setText(lang.get("game.create").toUpperCase());
         
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
@@ -50,7 +54,7 @@ public class MaakSpelPaneel extends BaseGui
         });
         
                
-        this.findByIdInPane("newGameBtn").setOnMouseClicked(new EventHandler<MouseEvent>() 
+        newGameBtn.setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
 
             @Override
@@ -61,7 +65,7 @@ public class MaakSpelPaneel extends BaseGui
                 
                 if (spelNaam == null || spelNaam.equals("")) 
                 {
-                    setError("Vul een naam voor het nieuwe spel in!");
+                    setError(lang.get("err.noGameName"));
                 } 
                 else 
                 {

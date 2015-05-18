@@ -4,6 +4,7 @@ import exceptions.SpelException;
 import exceptions.SpelbordException;
 import static gui.javaFx.BaseGui.DC;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -37,6 +38,8 @@ public class WijzigSpelbordPaneel extends BaseGui
     private void init()
     {
         this.board = (GridPane) this.findByIdInPane("grid");
+        
+        DC.resetSpelbord();
         this.items = DC.toonSpelbord();
 
         stage.setTitle("");
@@ -44,10 +47,19 @@ public class WijzigSpelbordPaneel extends BaseGui
         this.show("#WijzigSpelbordPaneel");
 
         this.registerSidebarClickEvents();
-
+        
         this.drawBoard();
 
         this.errorLabel = (Label) this.findByIdInPane("lblError");
+        
+        Label lblActive = (Label) this.findByIdInPane("lblActive");
+        lblActive.setText(lang.get("game.board.edit.active"));
+        
+        Button btnSave = (Button) this.findByIdInPane("btnSave");
+        btnSave.setText(lang.get("save").toUpperCase());
+        
+        Button btnDelete = (Button) this.findByIdInPane("btnDelete");
+        btnDelete.setText(lang.get("delete").toUpperCase());
 
         this.findByIdInPane("back").setOnMouseClicked(new EventHandler<MouseEvent>()
         {
@@ -67,7 +79,7 @@ public class WijzigSpelbordPaneel extends BaseGui
             }
         });
 
-        this.findByIdInPane("saveGameboard").setOnMouseClicked(new EventHandler<MouseEvent>()
+        btnSave.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
 
             @Override
@@ -77,7 +89,7 @@ public class WijzigSpelbordPaneel extends BaseGui
             }
         });
 
-        this.findByIdInPane("verwijder").setOnMouseClicked(new EventHandler<MouseEvent>()
+        btnDelete.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
 
             @Override
@@ -246,30 +258,31 @@ public class WijzigSpelbordPaneel extends BaseGui
 
             Object[] options =
             {
-                "Ja", "Nee", "Annuleren"
+                lang.get("yes"), lang.get("no"), lang.get("cancel")
             };
-            int keuze = JOptionPane.showOptionDialog(null, "Weet u zeker dat u het spelbord wil opslaan?", "Spelbord opslaan", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            int keuze = JOptionPane.showOptionDialog(null, lang.get("game.board.save"), "Spelbord opslaan", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
             if (keuze == 1)
             {
                 // Men wil de wijzigingen verwerpen
                 Object[] options2 =
                 {
-                    "Ja", "Nee"
+                    lang.get("yes"),lang.get("no")
                 };
-                keuze = JOptionPane.showOptionDialog(null, "U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?", "Ongedaanmaken spelbord", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
+                keuze = JOptionPane.showOptionDialog(null, lang.get("game.board.cancel"), "Ongedaanmaken spelbord", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]);
 
                 if (keuze == 0)
                 {
                     DC.resetSpelbord();
-                    setError("Het spelbord werd terug in zijn originele toestand gebracht!");
+                    setError(lang.get("game.board.cancelled"));
                 }
             } else if (keuze == 0)
             {
                 DC.controleerSpelbord();
                 DC.slaHuidigSpelbordOp();
-                setError("Het spelbord werd succesvol opgeslaan!");
+                setError(lang.get("game.board.saved"));
             }
+            
             this.items = DC.toonSpelbord();
             drawBoard();
 

@@ -52,9 +52,9 @@ public class FR extends Language
         map("game.exists",              "Il existe déjà un jeu avec ce nom.");
         map("game.notSaved",            "Le jeu n'a pas été enregistré.");
         map("game.modify",              "Modifie un jeu");
-        map("game.create",              "Crée un jeu");
+        map("game.create",              "Crée nouveau jeu");
         map("game.notCompleted",        "Le jeu n'a aucune tableau complète");
-        map("game.new",                 "Nom pour le nouveaux jeu");
+        map("game.new",                 "Nom pour le nouveau jeu");
         
         //gameboard
         map("game.board",               "Tableau");
@@ -70,6 +70,12 @@ public class FR extends Language
         map("game.board.playerLimit",   "Le tableau peut contenir qu'un seul mec");
         map("game.board.boxEquality",   "Le nombre de boîtes et des cibles ne sont pas égaux.");
         map("game.board.noElements",    "Le tableau doit avoir au moins une boîte et une cible.");
+        map("game.board.choose.list",   "Choisissez un tableau dans la liste ci-dessous");
+        map("game.board.edit.active",   "Actif");
+        map("game.board.save",          ""); //Weet u zeker dat u het spelbord wil opslaan?
+        map("game.board.cancel",        ""); //U staat op het punt om alle wijzigingen ongedaan te maken. Weet u dit zeker?
+        map("game.board.cancelled",     ""); //Het spelbord werd terug in zijn originele toestand gebracht!
+        map("game.board.saved",         ""); //Het spelbord werd succesvol opgeslaan!
         
         
         //player
@@ -100,6 +106,14 @@ public class FR extends Language
         map("err.NaN",                  "Vous n'avez pas entrer un nombre.");
         map("err.invalidType",          "type non valide");
         map("err.noCurrentBoard",       "Ne pouvais pas sélectionner un tableau dans ce jeu.");
+        map("err.noGameName",           "Entrez un nom pour le nouveau jeu!");
+        
+        //keywords
+        map("yes",                      "Oui");
+        map("no",                       "Non");
+        map("cancel",                   "Annuler");
+        map("save",                     "Sauver");
+        map("delete",                   "Supprimer");
     
     }
 }
