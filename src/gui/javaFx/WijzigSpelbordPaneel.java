@@ -22,7 +22,6 @@ public class WijzigSpelbordPaneel extends BaseGui
     private String activeField = "M"; // Muur standaard
     private String[][] items; // Keep state
     private Label errorLabel;
-
     /**
      * Run het MaakSpelbordPaneel
      */
@@ -96,7 +95,13 @@ public class WijzigSpelbordPaneel extends BaseGui
             public void handle(MouseEvent event)
             {
                 DC.verwijderHuidigSpelbord();
-                setError("Het spelbord is verwijderd!");
+                
+                if(DC.geefAantalSpelborden() == 0) {
+                     setError("Het spelbord en spel zijn verwijderd!");
+                }
+                else {
+                    setError("Het spelbord is verwijderd!");
+                }
             }
         });
     }

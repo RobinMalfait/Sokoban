@@ -102,7 +102,7 @@ public class MaakSpelbordPaneel extends BaseGui
                     // Er zijn spelborden die volledig zijn, maar nu kijken of het spel is opgeslaan.
                     if(!spelIsOpgeslaan)
                     {
-                        Object[] options = {lang.get("yes", lang.get("no"), lang.get("cancel"))};       
+                        Object[] options = {lang.get("yes"), lang.get("no"), lang.get("cancel")};       
                         keuze = JOptionPane.showOptionDialog(null, lang.get("game.dialog.save"), "Stoppen", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                         
                         if(keuze == 2)
@@ -111,9 +111,15 @@ public class MaakSpelbordPaneel extends BaseGui
                         if(keuze == 0)
                             saveGame();
                         
+                        if(keuze == 1)
+                            DC.verwijderHuidigSpel();
+                        
                         (new MaakSpelPaneel()).run();
                      
                     }
+                }
+                else {
+                    DC.verwijderHuidigSpel();
                 }
                 (new MaakSpelPaneel()).run();                
                 
