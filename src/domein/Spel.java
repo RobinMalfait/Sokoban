@@ -336,7 +336,7 @@ public class Spel extends Base
     public void verwijderHuidigSpelbord()
     {
             spelbordMapper.verwijderSpelbord(huidigSpelbord.getSpelbordId());
-            spelborden.remove(huidigSpelbord);
+            if(spelborden.remove(huidigSpelbord));
             huidigSpelbord = null;
     }
     

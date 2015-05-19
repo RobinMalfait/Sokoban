@@ -96,8 +96,10 @@ public class WijzigSpelbordPaneel extends BaseGui
             {
                 DC.verwijderHuidigSpelbord();
                 
+                
                 if(DC.geefAantalSpelborden() == 0) {
-                     setError("Het spelbord en spel zijn verwijderd!");
+                    DC.verwijderHuidigSpel();
+                    setError("Het spelbord en spel zijn verwijderd!");
                 }
                 else {
                     setError("Het spelbord is verwijderd!");
